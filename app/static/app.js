@@ -120,7 +120,16 @@ function renderCatalog() {
   $('catalog-status').textContent = `${items.length} extracteur(s) · ${Math.min(items.length, 80)} affiché(s). Affinez avec un nom.`;
   $('catalog-results').replaceChildren(...items.slice(0, 80).map(source => {
     const row = node('div', 'catalog-row'); const detail = node('div');
-    detail.append(node('strong', '', source.name), node('small', '', source.search ? 'Modèle de recherche prérempli' : 'Modèle URL uniquement · recherche non configurée'));
+    const heading = node('div', 'catalog-source-heading');
+    const preset = node('span', `catalog-preset${source.search ? ' is-configured' : ''}`);
+    const presetIcon = node('span', 'catalog-preset-icon', source.search ? '⚙' : '○');
+    presetIcon.setAttribute('aria-hidden', 'true');
+    preset.append(presetIcon, node('span', '', source.search ? 'Paramétrage prédéfini' : 'Modèle générique'));
+    preset.title = source.search
+      ? 'Un modèle de recherche est prérempli. Sa disponibilité reste à vérifier ; des identifiants peuvent être requis.'
+      : 'Ouverture par URL uniquement. Aucun paramétrage de recherche prédéfini.';
+    heading.append(node('strong', '', source.name), preset);
+    detail.append(heading, node('small', '', source.search ? 'Modèle de recherche prérempli' : 'Modèle URL uniquement · recherche non configurée'));
     if (source.last_check) {
       const labels = {results_received:'résultats reçus', empty:'aucun résultat', failed:'échec de connexion ou d’extraction',
         authentication_required:'authentification requise', rate_limited:'quota ou filtrage de la plateforme',
