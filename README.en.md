@@ -75,13 +75,18 @@ The September 6, 2026 inventory lists 1,750 extractors, automatically grouped in
 
 In **Mes sources** (My sources), add a template or create a connector, test its configuration, then save it. JSON APIs use JSON Pointer paths (`/data/videos`, `/title`, `/owner/name`); pagination and rankings depend on the API. URL-only sources do not provide search.
 
+All **31 search templates** have been reviewed in batches, platform by platform, by reading the official interfaces and the installed extractor code, then probing each template with three suitable queries over two pages: [batch 01](docs/sources-lot-01.md) (20 templates) and [batch 02](docs/sources-lot-02.md) (11 templates). Both reports are in French. A reviewed template does not make its platform verified: **1,719 installed extractors still have no search template**, and playback, audio, live, subtitles and downloading remain unverified for those 31 templates.
+
+Three templates are unusable for a cause identified at the provider or in the upstream extractor (Google Video, Yahoo Video, Rokfin) and five need an account stored in the vault (the four PRX templates and Vimeo). The catalogue shows these limits next to each template.
+
 Dated evidence is recorded in the [source progress report](docs/SOURCES-PROGRESS.md). Documented checks include Dailymotion search, HLS playback of Big Buck Bunny in Chrome and video/audio preparation of that film. They do not validate every platform or every later code revision.
 
 ### Current limitations
 
 - Real DASH playback, live streams, language/subtitle switching, Firefox, Safari and playback authenticated with an external platform remain unverified.
 - No DRM circumvention; OAuth and platform-specific login forms are not implemented.
-- Some connectors reload a growing result prefix, capped at 100 per source, instead of using native pagination.
+- Some connectors reload a growing result prefix, capped at 100 per source, instead of using native pagination. A platform whose ordering shifts between two calls can then repeat results on the next page; the interface drops them, it does not invent them.
+- Duration and date filters are available on Dailymotion only. Search and home rankings depend on each template.
 - Support for formats, large segments, network recovery and persistent queues remains incomplete. Sites may reject extraction or require authentication.
 - Not all new media and source credential capabilities have been validated on Unraid. Consult the reports before treating them as available on an existing installation.
 
@@ -127,6 +132,7 @@ Before proposing a change, run `python -m unittest discover -s tests` in the pro
 
 - [Unraid installation, operation and restoration](docs/UNRAID.md) — French.
 - [Source status, evidence and remaining work](docs/SOURCES-PROGRESS.md) — French.
+- [Search template batch 01](docs/sources-lot-01.md) and [batch 02](docs/sources-lot-02.md) — French; corrections, dated evidence and remaining blockers.
 - [Family foundation validation history](docs/FAMILY-DELIVERY.md) — French; some findings predate the source expansion.
 
 ## License

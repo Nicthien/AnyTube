@@ -5,10 +5,10 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "template": "RedGifsSearch",
+  "template": "Youtube",
   "connector_kind": "ytdlp",
-  "extractor": "RedGifs",
-  "template_revision": "2925c6058fb0dd483fe90f3fe2242da647ef6805f0b7e1f878d66b9d0f51140b",
+  "extractor": "Youtube",
+  "template_revision": "8af0369ba6aff0430ecf7b744998b9951a1acd48da5e787f87b8f4ab9650a1b7",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -16,18 +16,17 @@
     "max_results": 100,
     "search_rankings": [
       "default",
-      "views",
-      "recent",
-      "trending"
+      "views"
     ],
     "duration": false,
     "date": false,
     "home_rankings": [
-      "default"
+      "default",
+      "views"
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:01:19.569430+00:00",
+  "date": "2026-09-06T18:03:06.172909+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -36,7 +35,7 @@
     "download"
   ],
   "search": {
-    "massage": {
+    "nature": {
       "pages": [
         {
           "offset": 0,
@@ -46,12 +45,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "Babe Booty Brunette Tease"
+            "3 Hours of Incredible 4K Nature Footage | BBC Earth",
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
           ],
           "samples": [
-            "https://redgifs.com/watch/lawfultenderkoodoo",
-            "https://redgifs.com/watch/compassionaterecentminibeast"
+            "https://www.youtube.com/watch?v=5PQYM_KSXag",
+            "https://www.youtube.com/watch?v=BHACKCNDMW8"
           ]
         },
         {
@@ -62,19 +61,19 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "BWC Big Dick Monster Cock"
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
+            "12HR Ambient Underwater 4K Nature Relaxation Film: Treasures of the Ocean - Colo"
           ],
           "samples": [
-            "https://redgifs.com/watch/brilliantenchantedaustraliansilkyterrier",
-            "https://redgifs.com/watch/mediumaquamarinetanmuntjac"
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
+            "https://www.youtube.com/watch?v=znnSGHMnCzo"
           ]
         }
       ],
       "status": "results_received",
       "distinct_urls_over_two_pages": 6
     },
-    "dance": {
+    "piano": {
       "pages": [
         {
           "offset": 0,
@@ -84,12 +83,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "Babe Booty Brunette Tease"
+            "most beautiful piano pieces",
+            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]"
           ],
           "samples": [
-            "https://redgifs.com/watch/lawfultenderkoodoo",
-            "https://redgifs.com/watch/compassionaterecentminibeast"
+            "https://www.youtube.com/watch?v=ssN7_u08HFY",
+            "https://www.youtube.com/watch?v=DIvewN35QT4"
           ]
         },
         {
@@ -100,19 +99,19 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "BWC Big Dick Monster Cock"
+            "Werenoi Ft. GIMS - Piano (Clip Officiel)",
+            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie"
           ],
           "samples": [
-            "https://redgifs.com/watch/brilliantenchantedaustraliansilkyterrier",
-            "https://redgifs.com/watch/mediumaquamarinetanmuntjac"
+            "https://www.youtube.com/watch?v=ShR_fQrqsdA",
+            "https://www.youtube.com/watch?v=94wGs8KhJho"
           ]
         }
       ],
       "status": "results_received",
       "distinct_urls_over_two_pages": 6
     },
-    "yoga": {
+    "documentaire": {
       "pages": [
         {
           "offset": 0,
@@ -122,12 +121,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "Babe Booty Brunette Tease"
+            "Anthropocène, l’implacable enquête | Documentaire | ARTE",
+            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE"
           ],
           "samples": [
-            "https://redgifs.com/watch/lawfultenderkoodoo",
-            "https://redgifs.com/watch/compassionaterecentminibeast"
+            "https://www.youtube.com/watch?v=CxpehklhvJo",
+            "https://www.youtube.com/watch?v=ZBkBGExxzgw"
           ]
         },
         {
@@ -138,12 +137,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "BWC Big Dick Monster Cock"
+            "De l'utopie à la réalité | La Californie ! | ARTE",
+            "On a filmé la vie des milliardaires et c'est délirant !"
           ],
           "samples": [
-            "https://redgifs.com/watch/brilliantenchantedaustraliansilkyterrier",
-            "https://redgifs.com/watch/mediumaquamarinetanmuntjac"
+            "https://www.youtube.com/watch?v=cObzLBz37Y8",
+            "https://www.youtube.com/watch?v=UhwXhYerpL0"
           ]
         }
       ],
@@ -164,12 +163,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "Babe Booty Brunette Tease"
+            "Les Vidéos Qui Ont Complètement Cassé Mon Cerveau",
+            "Funniest and most hilarious videos in Africa 😂"
           ],
           "samples": [
-            "https://redgifs.com/watch/lawfultenderkoodoo",
-            "https://redgifs.com/watch/compassionaterecentminibeast"
+            "https://www.youtube.com/watch?v=BSa6fJWAFFo",
+            "https://www.youtube.com/watch?v=lu2tzGqjsQk"
           ]
         },
         {
@@ -180,12 +179,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RedGifs",
-            "BWC Big Dick Monster Cock"
+            "À Contre Sens 2 – Teaser | Prime Video",
+            "AN ADMIN REVEALS THE SECRETS OF KEYBOARD ESCAPE TO ME!! (Incredible)"
           ],
           "samples": [
-            "https://redgifs.com/watch/brilliantenchantedaustraliansilkyterrier",
-            "https://redgifs.com/watch/mediumaquamarinetanmuntjac"
+            "https://www.youtube.com/watch?v=XjQKorGDmes",
+            "https://www.youtube.com/watch?v=2sT_odhBUw4"
           ]
         }
       ],
@@ -194,6 +193,45 @@
     }
   },
   "rankings": {
+    "home:views": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Bébé Requin Danse | Chante et danse! | Animal Songs | PINKFONG Chansons pour les",
+            "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=XqZsoesa55w",
+            "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Adele - Rolling in the Deep (Official Music Video)",
+            "Ariana Grande ft. Nicki Minaj - Side To Side (Official Video) ft. Nicki Minaj"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=rYEDA3JcQqw",
+            "https://www.youtube.com/watch?v=SXiSVQZLje8"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
     "search:views": {
       "pages": [
         {
@@ -204,12 +242,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Blonde Cute Petite",
-            "Blowjob Pornstar"
+            "Sunny Mornings: Beautiful Relaxing Music with Piano, Guitar & Bird Sounds by Ped",
+            "Musique Douce: Relaxante, Calme - Nature Relaxation"
           ],
           "samples": [
-            "https://redgifs.com/watch/equatorialgrubbynoctilio",
-            "https://redgifs.com/watch/messysneakyarmednylonshrimp"
+            "https://www.youtube.com/watch?v=hlWiI4xVXKY",
+            "https://www.youtube.com/watch?v=9TGlc0Fufgk"
           ]
         },
         {
@@ -220,88 +258,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Ass Cute Lana Rhoades",
-            "Car Exhibitionism Exhibitionist Fingering Lilly Vig Public Squirt Squirting r/Ca"
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
+            "Forest Nature 4K • Relaxation Film with Peaceful Meditation Music"
           ],
           "samples": [
-            "https://redgifs.com/watch/unselfishprimebird",
-            "https://redgifs.com/watch/shorttermobeseamericanbulldog"
-          ]
-        }
-      ],
-      "status": "results_received",
-      "distinct_urls_over_two_pages": 6
-    },
-    "search:recent": {
-      "pages": [
-        {
-          "offset": 0,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "Amateur Natural Tits Tits",
-            "Amateur"
-          ],
-          "samples": [
-            "https://redgifs.com/watch/dazzlingpowerfulbighornsheep",
-            "https://redgifs.com/watch/austereintelligentstickleback"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "Ass Fetish Pee",
-            "Ass Babe Big Ass Big Tits Blonde Fit Chicks MILF OnlyFans Pawg Public"
-          ],
-          "samples": [
-            "https://redgifs.com/watch/dependableperfumeddevilfish",
-            "https://redgifs.com/watch/wornflakykentrosaurus"
-          ]
-        }
-      ],
-      "status": "results_received",
-      "distinct_urls_over_two_pages": 6
-    },
-    "search:trending": {
-      "pages": [
-        {
-          "offset": 0,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "RedGifs",
-            "Babe Booty Brunette Tease"
-          ],
-          "samples": [
-            "https://redgifs.com/watch/lawfultenderkoodoo",
-            "https://redgifs.com/watch/compassionaterecentminibeast"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "RedGifs",
-            "BWC Big Dick Monster Cock"
-          ],
-          "samples": [
-            "https://redgifs.com/watch/brilliantenchantedaustraliansilkyterrier",
-            "https://redgifs.com/watch/mediumaquamarinetanmuntjac"
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
+            "https://www.youtube.com/watch?v=jfzs_FR1Hss"
           ]
         }
       ],
@@ -311,8 +273,8 @@
   },
   "status": "results_received",
   "per_query_status": {
-    "massage": "results_received",
-    "dance": "results_received",
-    "yoga": "results_received"
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
   }
 }

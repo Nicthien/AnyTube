@@ -5,10 +5,10 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "template": "GameJoltSearch",
+  "template": "Soundcloud",
   "connector_kind": "ytdlp",
-  "extractor": "GameJolt",
-  "template_revision": "8dc63e9c7fbe414b873ba749df3f44ac5adf32b25314d48baf7ad3fe16c54596",
+  "extractor": "Soundcloud",
+  "template_revision": "3a781d1195430e75322efa6c4309f3f06f48d3f710179aefeb852d8d5176d66d",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:58:44.243457+00:00",
+  "date": "2026-09-06T18:02:19.310550+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -43,12 +43,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Antoher incredible level I played on Kirby Squeak Squad, this is the first one o",
-            "Greenlit AU Update"
+            "Human Nature- Michael Jackson",
+            "Human Nature"
           ],
           "samples": [
-            "https://gamejolt.com/p/antoher-incredible-level-i-played-on-kirby-squeak-squad-this-is-th-d4mrbqqd",
-            "https://gamejolt.com/p/greenlit-au-update-mtmddetu"
+            "https://soundcloud.com/nicoleobara/human-nature-michael-jackson",
+            "https://soundcloud.com/mjimmortal/human-nature"
           ]
         },
         {
@@ -59,19 +59,19 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Random fun facts abt ocs in article for sillies 😛",
-            "Guys, why ruin nature??? Don't ruin nature! on the contrary, take care if you ha"
+            "Human Nature (Loop)",
+            "HUMAN NATURE - MADONNA - SLOWED 0.9X"
           ],
           "samples": [
-            "https://gamejolt.com/p/random-fun-facts-abt-ocs-in-article-for-sillies-h5gtunce",
-            "https://gamejolt.com/p/guys-why-ruin-nature-don-t-ruin-nature-on-the-contrary-take-c-nrxwypmi"
+            "https://soundcloud.com/bjorkota/human-nature-loop",
+            "https://soundcloud.com/user-506280501/human-nature-madonna-slowed-0"
           ]
         }
       ],
       "status": "results_received",
       "distinct_urls_over_two_pages": 6
     },
-    "pixel": {
+    "piano": {
       "pages": [
         {
           "offset": 0,
@@ -81,12 +81,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Seth - Deltarune Chapter 5 Character! 🙇🎨📱📘🟣\n#Sprite #Pixel #Character",
-            "Here is something I’d like to show regarding a piece of pixel art I replicatedI "
+            "DJ KAIFAR & Amaya Roma - Piano",
+            "Chiều Hôm Ấy - JayKii ( Ver Piano )"
           ],
           "samples": [
-            "https://gamejolt.com/p/seth-deltarune-chapter-5-character-sprite-u4biajac",
-            "https://gamejolt.com/p/here-is-something-i-d-like-to-show-regarding-a-piece-of-pixel-art-jygixspu"
+            "https://soundcloud.com/22511409/dj-kaifar-amaya-roma-piano",
+            "https://soundcloud.com/quan-tran-446088055/chieu-hom-ay-jaykii-ver-piano"
           ]
         },
         {
@@ -97,19 +97,19 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "RAVENGER ZONE: important update",
-            "OC Character - Gero\n#oc #pixel #art"
+            "Thế Giới Ảo Tình Yêu Thật (Piano Version) - Trịnh Đình Quang",
+            "Piano Man"
           ],
           "samples": [
-            "https://gamejolt.com/p/ravenger-zone-important-update-wzuwpuwx",
-            "https://gamejolt.com/p/oc-character-gero-oc-pixel-art-arxs7hpa"
+            "https://soundcloud.com/nguyen-thanh-luan-557789519/the-gioi-ao-tinh-yeu-that-piano-version-trinh-dinh-quang",
+            "https://soundcloud.com/billyjoel/piano-man-1"
           ]
         }
       ],
       "status": "results_received",
       "distinct_urls_over_two_pages": 6
     },
-    "horror": {
+    "lofi": {
       "pages": [
         {
           "offset": 0,
@@ -119,12 +119,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Obsessive Shadow: Former Residents on STEAM!!",
-            "Room\nFNAF 4 Reworked\n#fnaf #fangame #horror #art #3D"
+            "She Neva Know Lofi Ver",
+            "Nếu Ngày Ấy ( Lofi ) - Soobin Hoàng Sơn"
           ],
           "samples": [
-            "https://gamejolt.com/p/the-obsessive-shadow-former-residents-on-steam-aat3rifi",
-            "https://gamejolt.com/p/room-fnaf-4-reworked-fnaf-fangame-horror-art-3d-ghdfderp"
+            "https://soundcloud.com/tien-pham-418156952/she-neva-know-lofi-ver",
+            "https://soundcloud.com/thanh-nh-227237344/n-u-ng-y-y-lofi-soobin-ho-ng-s"
           ]
         },
         {
@@ -135,12 +135,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "First look at Ziggy (Model V1) - The Lazy Studio\n#TheLazyStudio #AnalogHorror #F",
-            "Bro they're rebooting Act 1, should i port that too :pensive:\n#fnaf #poll #no #f"
+            "Giải Cứu Thế Giới Lofi",
+            "Khat - Navjot  Ahuja ｜ Slowed Reverb ｜ Lofi ｜ Bass Bhaiya ｜"
           ],
           "samples": [
-            "https://gamejolt.com/p/first-look-at-ziggy-model-v1-the-lazy-studio-thelazystudio-an-v4zq8xsf",
-            "https://gamejolt.com/p/bro-they-re-rebooting-act-1-should-i-port-that-too-pensive-fnaf-vcee7y5w"
+            "https://soundcloud.com/nguyen_thao_anh2k/gi-i-c-u-th-gi-i-lofi",
+            "https://soundcloud.com/bass-bhaiya/khat-navjot-ahuja-slowed"
           ]
         }
       ],
@@ -161,12 +161,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "TWO NEW SONGS!! (September 2026 update)",
-            "Can FNAF Fan Game Devs Beat Their Own Games?"
+            "Nabil - Tayeh Fel Amaken | نبيل - تايه في الأماكن",
+            "Colicky Baby Sleep Sound (75 Minutes)"
           ],
           "samples": [
-            "https://gamejolt.com/p/two-new-songs-september-2026-update-4jyiqe6c",
-            "https://www.youtube.com/watch?v=B1g6mHHXxvE"
+            "https://soundcloud.com/free-music-egypt/tayeh-fel-amaken",
+            "https://soundcloud.com/relaxing-white-noise/colicky-baby-sleep-sound-75-minutes"
           ]
         },
         {
@@ -177,12 +177,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "test player 1 (jumping, running, falling down, sliding on objects, and crouching",
-            "🎞️ Крупнейшая ретроспектива игр СККФII от Tunesmith Bird"
+            "Nabil - W Olt Salam | نبيل - وقولت سلام",
+            "Ace of Base - The Sign"
           ],
           "samples": [
-            "https://gamejolt.com/p/test-player-1-jumping-running-falling-down-sliding-on-objects-gf6yhpeu",
-            "https://gamejolt.com/p/krupneyshaya-retrospektiva-igr-sk-siuegbrj"
+            "https://soundcloud.com/free-music-egypt/w-olt-salam",
+            "https://soundcloud.com/aceofbaseofficial/ace-of-base-the-sign"
           ]
         }
       ],
@@ -194,7 +194,7 @@
   "status": "results_received",
   "per_query_status": {
     "nature": "results_received",
-    "pixel": "results_received",
-    "horror": "results_received"
+    "piano": "results_received",
+    "lofi": "results_received"
   }
 }

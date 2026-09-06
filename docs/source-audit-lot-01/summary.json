@@ -3,9 +3,9 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "generated_at": "2026-09-06T17:26:34.642471+00:00",
+  "generated_at": "2026-09-06T18:06:30.247443+00:00",
   "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
   "batch": "lot-01",
   "templates": 20,
@@ -31,16 +31,16 @@
       "search": "results_received",
       "per_query": {
         "nature": "results_received",
-        "音乐": "results_received",
+        "音乐": "rate_limited",
         "风景": "rate_limited"
       },
       "home": "rate_limited",
       "rankings": {}
     },
     "BiliBiliSearch": {
-      "search": "results_received",
+      "search": "rate_limited",
       "per_query": {
-        "nature": "results_received",
+        "nature": "rate_limited",
         "音乐": "rate_limited",
         "风景": "rate_limited"
       },

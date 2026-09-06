@@ -5,10 +5,10 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "template": "GoogleSearch",
+  "template": "VrSquareSearch",
   "connector_kind": "ytdlp",
-  "extractor": "GoogleSearch",
-  "template_revision": "d93367657c5ed2f8bc378f5b16c9c2c8195657c5619739ff25f51991d8d4939e",
+  "extractor": "VrSquare",
+  "template_revision": "db466a056f8c88a50b6b1b15f302da5148c6199a7cc020a2caa4075d8cdf5a23",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:59:01.135216+00:00",
+  "date": "2026-09-06T18:02:53.303608+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -33,39 +33,29 @@
     "download"
   ],
   "search": {
-    "nature": {
+    "VR": {
       "pages": [
         {
           "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
+          "status": "unsupported_media",
+          "detail": "Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire."
         }
       ],
-      "status": "empty",
+      "status": "unsupported_media",
       "distinct_urls_over_two_pages": 0
     },
-    "piano": {
+    "ライブ": {
       "pages": [
         {
           "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête."
         }
       ],
-      "status": "empty",
+      "status": "temporarily_unavailable",
       "distinct_urls_over_two_pages": 0
     },
-    "documentaire": {
+    "櫻坂": {
       "pages": [
         {
           "offset": 0,
@@ -84,29 +74,24 @@
   },
   "home": {
     "default": {
-      "query_used": "vidéos",
+      "query_used": "VR",
       "served_by": "search",
       "pages": [
         {
           "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
+          "status": "unsupported_media",
+          "detail": "Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire."
         }
       ],
-      "status": "empty",
+      "status": "unsupported_media",
       "distinct_urls_over_two_pages": 0
     }
   },
   "rankings": {},
-  "status": "empty",
+  "status": "unsupported_media",
   "per_query_status": {
-    "nature": "empty",
-    "piano": "empty",
-    "documentaire": "empty"
+    "VR": "unsupported_media",
+    "ライブ": "temporarily_unavailable",
+    "櫻坂": "empty"
   }
 }

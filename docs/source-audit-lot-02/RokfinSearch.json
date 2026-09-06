@@ -5,10 +5,10 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "template": "GoogleSearch",
+  "template": "RokfinSearch",
   "connector_kind": "ytdlp",
-  "extractor": "GoogleSearch",
-  "template_revision": "d93367657c5ed2f8bc378f5b16c9c2c8195657c5619739ff25f51991d8d4939e",
+  "extractor": "Rokfin",
+  "template_revision": "e3e87cea092b693fcc9265d13e445c69fc3c6ad3e5e7f3810e3da89076e831f9",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:59:01.135216+00:00",
+  "date": "2026-09-06T18:01:47.991148+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -33,52 +33,37 @@
     "download"
   ],
   "search": {
+    "news": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête."
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0
+    },
+    "music": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête."
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0
+    },
     "nature": {
       "pages": [
         {
           "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête."
         }
       ],
-      "status": "empty",
-      "distinct_urls_over_two_pages": 0
-    },
-    "piano": {
-      "pages": [
-        {
-          "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
-        }
-      ],
-      "status": "empty",
-      "distinct_urls_over_two_pages": 0
-    },
-    "documentaire": {
-      "pages": [
-        {
-          "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
-        }
-      ],
-      "status": "empty",
+      "status": "temporarily_unavailable",
       "distinct_urls_over_two_pages": 0
     }
   },
@@ -89,24 +74,19 @@
       "pages": [
         {
           "offset": 0,
-          "status": "empty",
-          "count": 0,
-          "distinct_urls": 0,
-          "new_urls": 0,
-          "repeated_urls": 0,
-          "titles": [],
-          "samples": []
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête."
         }
       ],
-      "status": "empty",
+      "status": "temporarily_unavailable",
       "distinct_urls_over_two_pages": 0
     }
   },
   "rankings": {},
-  "status": "empty",
+  "status": "temporarily_unavailable",
   "per_query_status": {
-    "nature": "empty",
-    "piano": "empty",
-    "documentaire": "empty"
+    "news": "temporarily_unavailable",
+    "music": "temporarily_unavailable",
+    "nature": "temporarily_unavailable"
   }
 }

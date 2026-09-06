@@ -75,13 +75,18 @@ L'inventaire du 6 septembre 2026 répertorie 1 750 extracteurs, regroupés autom
 
 Dans **Mes sources**, ajouter un modèle ou créer un connecteur, tester sa configuration, puis l'enregistrer. Les API JSON utilisent des chemins JSON Pointer (`/data/videos`, `/title`, `/owner/name`) ; la pagination et les classements dépendent de l'API. Les sources « URL uniquement » ne fournissent pas de recherche.
 
+Les **31 modèles de recherche** ont été examinés par lots, plateforme par plateforme, en lisant les interfaces officielles et le code des extracteurs installés, puis en sondant chaque modèle avec trois requêtes adaptées sur deux pages : [lot 01](docs/sources-lot-01.md) (20 modèles) et [lot 02](docs/sources-lot-02.md) (11 modèles). Un modèle examiné ne rend pas sa plateforme vérifiée : **1 719 extracteurs installés n'ont toujours aucun modèle de recherche**, et la lecture, l'audio, le direct, les sous-titres et le téléchargement restent non vérifiés pour ces 31 modèles.
+
+Trois modèles sont inutilisables pour une cause identifiée chez le fournisseur ou dans l'extracteur amont (Google Vidéos, Yahoo Vidéos, Rokfin) et cinq attendent un compte déposé dans le coffre (les quatre modèles PRX et Vimeo). Le catalogue affiche ces limites à côté de chaque modèle.
+
 Les preuves datées sont consignées dans [l'état des sources](docs/SOURCES-PROGRESS.md). Les essais documentés comprennent une recherche Dailymotion, la lecture HLS de Big Buck Bunny dans Chrome et la préparation vidéo/audio de ce film. Ils ne valident pas toutes les plateformes ni toutes les révisions ultérieures du code.
 
 ### Limites actuelles
 
 - DASH réel, direct, changements de langues/sous-titres, Firefox, Safari et lecture authentifiée auprès d'une plateforme restent à vérifier.
 - Pas de contournement des DRM ; OAuth et les formulaires de connexion propres aux plateformes ne sont pas implémentés.
-- Certains connecteurs rechargent un préfixe de résultats, limité à 100 par source, au lieu d'utiliser une pagination native.
+- Certains connecteurs rechargent un préfixe de résultats, limité à 100 par source, au lieu d'utiliser une pagination native. Une plateforme dont l'ordre change entre deux appels peut alors répéter des résultats en page suivante ; l'interface les élimine, elle ne les invente pas.
+- Les filtres de durée et de date ne sont disponibles que sur Dailymotion. Les classements de recherche et d'accueil dépendent de chaque modèle.
 - La prise en charge des formats, segments volumineux, reprises réseau et files persistantes reste incomplète. Les sites peuvent refuser l'extraction ou demander une authentification.
 - Les nouvelles capacités média et d'accès aux sources ne sont pas toutes validées sur Unraid. Consulter les rapports avant de les considérer comme disponibles sur une installation existante.
 
@@ -127,6 +132,7 @@ Avant de proposer une modification, lancer `python -m unittest discover -s tests
 
 - [Installation, exploitation et restauration Unraid](docs/UNRAID.md) — français.
 - [État des sources, preuves et travaux restants](docs/SOURCES-PROGRESS.md) — français.
+- [Lot 01 des modèles de recherche](docs/sources-lot-01.md) et [lot 02](docs/sources-lot-02.md) — français ; corrections, preuves datées et blocages restants.
 - [Historique de validation du socle familial](docs/FAMILY-DELIVERY.md) — français ; certains constats précèdent l'extension des sources.
 
 ## Licence

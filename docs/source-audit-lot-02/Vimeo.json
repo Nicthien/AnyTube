@@ -5,26 +5,30 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
-  "template": "PRXSeries",
+  "template": "Vimeo",
   "connector_kind": "json",
-  "extractor": "PRXSeries",
-  "template_revision": "518041b4e6cfcf2cbdee0f6bc23ff6c9cc5425f90cbef7cff8987adc7d1031a0",
+  "extractor": "Vimeo",
+  "template_revision": "2d59f82d75ed45d6a2152c3ea8fd2e68146e810a3c32f96fa5741a921c6d0873",
   "capabilities": {
     "search": true,
     "pagination": true,
     "pagination_mode": "native",
     "max_results": null,
     "search_rankings": [
-      "default"
+      "default",
+      "views",
+      "recent"
     ],
     "duration": false,
     "date": false,
     "home_rankings": [
-      "default"
+      "default",
+      "views",
+      "recent"
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:00:33.751357+00:00",
+  "date": "2026-09-06T18:02:48.173355+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -44,7 +48,7 @@
       "status": "authentication_required",
       "distinct_urls_over_two_pages": 0
     },
-    "climate": {
+    "piano": {
       "pages": [
         {
           "offset": 0,
@@ -55,7 +59,7 @@
       "status": "authentication_required",
       "distinct_urls_over_two_pages": 0
     },
-    "music": {
+    "documentaire": {
       "pages": [
         {
           "offset": 0,
@@ -70,7 +74,7 @@
   "home": {
     "default": {
       "query_used": "vidéos",
-      "served_by": "search",
+      "served_by": "feed",
       "pages": [
         {
           "offset": 0,
@@ -82,11 +86,58 @@
       "distinct_urls_over_two_pages": 0
     }
   },
-  "rankings": {},
+  "rankings": {
+    "home:views": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    },
+    "home:recent": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    }
+  },
   "status": "authentication_required",
   "per_query_status": {
     "nature": "authentication_required",
-    "climate": "authentication_required",
-    "music": "authentication_required"
+    "piano": "authentication_required",
+    "documentaire": "authentication_required"
   }
 }

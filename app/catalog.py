@@ -32,6 +32,38 @@ REVIEWED = {
     'PRXStoriesSearch': {'name': 'PRX · recherche de podcasts', 'access_requirement': 'account'},
     'PRXStory': {'name': 'PRX · podcasts', 'access_requirement': 'account'},
     'RedGifsSearch': {'name': 'RedGifs · recherche'},
+    'Rokfin': {'name': 'Rokfin'},
+    'RokfinSearch': {'name': 'Rokfin · recherche'},
+    'Soundcloud': {'name': 'SoundCloud'},
+    'SoundcloudSearch': {'name': 'SoundCloud · recherche'},
+    'Vimeo': {'name': 'Vimeo', 'access_requirement': 'api_token'},
+    'VrSquareSearch': {'name': 'VR SQUARE · recherche'},
+    'YahooSearch': {'name': 'Yahoo Vidéos'},
+    'Youtube': {'name': 'YouTube'},
+    'YoutubeMusicSearchURL': {'name': 'YouTube Music'},
+    'YoutubeSearch': {'name': 'YouTube · recherche'},
+    'YoutubeSearchURL': {'name': 'YouTube · recherche avancée'},
+}
+
+# Facts established by a reviewed batch, shown next to the template so a reader is not
+# left guessing why a template answers nothing. Never a substitute for a dated trial.
+LIMITATIONS = {
+    'GoogleSearch': 'L’extracteur installé lit le HTML de google.com ; le repère qu’il cherche a disparu et aucun résultat n’est renvoyé. Aucune interface publique sans clé ne le remplace.',
+    'YahooSearch': 'L’extracteur installé appelle une API JSON de Yahoo Vidéos qui ne répond plus en JSON. Aucune interface publique sans clé ne la remplace.',
+    'Rokfin': 'L’extracteur installé récupère ses identifiants de recherche dans les scripts de rokfin.com ; ces scripts ont changé d’emplacement et la recherche échoue.',
+    'RokfinSearch': 'L’extracteur installé récupère ses identifiants de recherche dans les scripts de rokfin.com ; ces scripts ont changé d’emplacement et la recherche échoue.',
+    'VrSquareSearch': 'La recherche répond, mais VR SQUARE ne diffuse ces vidéos que dans son application : elles ne sont pas lisibles ici.',
+    'PRXStory': 'L’API PRX exige un jeton de compte. Déposez-le dans le coffre puis rattachez-le à la source.',
+    'PRXSeries': 'L’API PRX exige un jeton de compte. Déposez-le dans le coffre puis rattachez-le à la source.',
+    'PRXStoriesSearch': 'L’API PRX exige un jeton de compte. Déposez-le dans le coffre puis rattachez-le à la source.',
+    'PRXSeriesSearch': 'L’API PRX exige un jeton de compte. Déposez-le dans le coffre puis rattachez-le à la source.',
+    'Vimeo': 'L’API Vimeo exige un jeton d’accès. Déposez-le dans le coffre puis rattachez-le à la source.',
+    'BiliBili': 'Bilibili refuse par intermittence les recherches répétées (HTTP 412). Réessayez plus tard ; ce refus n’est pas définitif.',
+    'BiliBiliSearch': 'Bilibili refuse par intermittence les recherches répétées (HTTP 412). Réessayez plus tard ; ce refus n’est pas définitif.',
+    'GameJolt': 'La recherche liste des publications de la communauté ; certaines ne contiennent aucun média lisible.',
+    'GameJoltSearch': 'La recherche liste des publications de la communauté ; certaines ne contiennent aucun média lisible.',
+    'PeerTubePlaylist': 'Ce modèle sert aujourd’hui la recherche vidéo de PeerTube ; la recherche de listes de lecture reste à développer.',
+    'MailRuMusicSearch': 'Mail.ru Musique ne diffuse que de l’audio ; la lecture depuis cette source n’a pas été essayée.',
 }
 
 # Search pages explicitly implemented by the installed yt-dlp extractors.
@@ -86,8 +118,8 @@ def catalog():
             item.update(REVIEWED[item['id']], search=True)
         if item['id'] in ('PeerTube','PeerTubePlaylist'):
             item.update(name='PeerTube · Framatube' + (' · collections' if item['id']=='PeerTubePlaylist' else ''),search=True)
-        if item['id'] == 'Vimeo':
-            item.update(name='Vimeo',search=True,access_requirement='api_token')
+        if item['id'] in LIMITATIONS:
+            item['limitation'] = LIMITATIONS[item['id']]
         item['template_status'] = 'search' if item['search'] else 'url_only'
         if checks.get('yt_dlp') == __version__ and item['id'] in checks.get('entries', {}):
             # A batch may re-probe part of the catalogue; an entry keeps its own date when it has one.

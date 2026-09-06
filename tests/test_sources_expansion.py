@@ -142,6 +142,21 @@ class SourceExpansionTests(unittest.TestCase):
             for extractor in platform['extractors']:
                 self.assertEqual(extractor['features']['video']['verification'],'not_verified')
 
+    def test_batch_review_counts_templates_and_never_promotes_a_platform(self):
+        inventory=report([])
+        review=inventory['search_template_review']
+        self.assertGreater(review['search_templates_reviewed'],0)
+        self.assertLessEqual(review['search_templates_reviewed'],review['search_templates'])
+        self.assertTrue(all(name.startswith('batch:') for name in review['batches']))
+        # A reviewed search template still leaves its platform unreviewed and unverified.
+        self.assertEqual(inventory['totals']['reviewed_platforms'],0)
+        self.assertEqual(inventory['totals']['verified_platforms'],0)
+        for platform in inventory['platforms']:
+            self.assertEqual(platform['review_status'],'extractor_inventory_only')
+            for extractor in platform['extractors']:
+                self.assertIn(extractor['search_review'][:6],('batch:','not_re'))
+                self.assertEqual(extractor['playback'],'not_verified')
+
     def test_collection_accepts_sibling_extractor_only_for_active_source(self):
         source, extractor=select_source('https://www.youtube.com/playlist?list=PL1234567890')
         self.assertEqual(source['id'],'Youtube')

@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "DailymotionSearch",
   "connector_kind": "json",
   "extractor": "Dailymotion",
-  "template_revision": "be845253e45e28f6516de9043b91a550f01b2bec80fc1e18ac45d5e11e1fe4f5",
+  "template_revision": "1c2ba3ac7ad66ba9b8f8897b3fd324f9c4cb74aa673d8831ae43eb4a1e3c6ba6",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +30,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:22:34.018728+00:00",
+  "date": "2026-09-06T17:58:14.288719+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -65,12 +65,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Nature nature",
-            "Nature #nature"
+            "Nature #nature",
+            "NATURE NATURE"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/x93g81o",
-            "https://www.dailymotion.com/video/x9n9s0w"
+            "https://www.dailymotion.com/video/x9n9s0w",
+            "https://www.dailymotion.com/video/x6eh5n1"
           ]
         }
       ],
@@ -126,11 +126,11 @@
           "repeated_urls": 0,
           "titles": [
             "Documentaire",
-            "Documentaire complet Documentaire le empire Rome [Documentaire histoire antique]"
+            "DOCUMENTAIRE"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xo6ie",
-            "https://www.dailymotion.com/video/x3cy8fs"
+            "https://www.dailymotion.com/video/xrz2ei",
+            "https://www.dailymotion.com/video/x2ikx44"
           ]
         },
         {
@@ -141,12 +141,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "DOCUMENTAIRE",
-            "Documentaire"
+            "Documentaire",
+            "Documentaire complet Documentaire le empire Rome [Documentaire histoire antique]"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/x2ikx44",
-            "https://www.dailymotion.com/video/x5qs68"
+            "https://www.dailymotion.com/video/x5qs68",
+            "https://www.dailymotion.com/video/x3cy8fs"
           ]
         }
       ],
@@ -167,12 +167,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Goodbye Lara 2026 S01E10 CR AnoZu",
-            "إمدادات البحرية الأمريكية تحت الضغط"
+            "Face à Face (Émission du 06/09/2026)",
+            "Caisse a savon"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/k15YaSSctag7mbJwBF4",
-            "https://www.dailymotion.com/video/xb4ik6q"
+            "https://www.dailymotion.com/video/xb4jbsy",
+            "https://www.dailymotion.com/video/xb4jcka"
           ]
         },
         {
@@ -183,12 +183,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Michel Bussi invité de \"Un dimanche à la campagne\" ©France 2",
-            "Le journal de 18h30 du 06/09/2026"
+            "Marionnettes - le cheval qui tient la maison",
+            "Ma collaboration avec l’artiste sculptrice Ninu"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4he3y",
-            "https://www.dailymotion.com/video/xb4iig2"
+            "https://www.dailymotion.com/video/xb4jble",
+            "https://www.dailymotion.com/video/xb4jbg2"
           ]
         }
       ],
@@ -286,12 +286,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Goodbye Lara 2026 S01E10 CR AnoZu",
-            "إمدادات البحرية الأمريكية تحت الضغط"
+            "Face à Face (Émission du 06/09/2026)",
+            "Caisse a savon"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/k15YaSSctag7mbJwBF4",
-            "https://www.dailymotion.com/video/xb4ik6q"
+            "https://www.dailymotion.com/video/xb4jbsy",
+            "https://www.dailymotion.com/video/xb4jcka"
           ]
         },
         {
@@ -302,12 +302,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Michel Bussi invité de \"Un dimanche à la campagne\" ©France 2",
-            "Le journal de 18h30 du 06/09/2026"
+            "Marionnettes - le cheval qui tient la maison",
+            "Ma collaboration avec l’artiste sculptrice Ninu"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4he3y",
-            "https://www.dailymotion.com/video/xb4iig2"
+            "https://www.dailymotion.com/video/xb4jble",
+            "https://www.dailymotion.com/video/xb4jbg2"
           ]
         }
       ],

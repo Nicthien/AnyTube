@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "BiliBili",
   "connector_kind": "ytdlp",
   "extractor": "BiliBili",
-  "template_revision": "3e3d1434f182ec2c08e52f029b00631cf0656c92459c5ff2e944c132fb4e3bf0",
+  "template_revision": "8ba3ca5b9f62f56c8bdccf0c329839d5fa22fa9d114c9c3f12d297e38c8274e5",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:21:27.180302+00:00",
+  "date": "2026-09-06T17:57:36.610737+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -43,12 +43,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "自然 nature",
-            "Nature"
+            "Nature",
+            "自然 nature"
           ],
           "samples": [
-            "http://www.bilibili.com/video/av117188400778499",
-            "http://www.bilibili.com/video/av117220009121532"
+            "http://www.bilibili.com/video/av117220009121532",
+            "http://www.bilibili.com/video/av117188400778499"
           ]
         },
         {
@@ -59,12 +59,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "全网唯一中英【Hardcore/Boombap】Naughty by Nature - Chain Remains天生顽皮挣脱枷锁",
-            "Nature"
+            "those animal is the beauty of nature",
+            "nature Boy Nature is the beauty of world"
           ],
           "samples": [
-            "http://www.bilibili.com/video/av117212274755700",
-            "http://www.bilibili.com/video/av117218264221317"
+            "http://www.bilibili.com/video/av117220160049544",
+            "http://www.bilibili.com/video/av117220009057052"
           ]
         }
       ],
@@ -75,39 +75,12 @@
       "pages": [
         {
           "offset": 0,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "【Hi-Res无损】再听潮汐，心起涟漪",
-            "【神仙打架】华语乐坛神仙打架150首歌曲，经典歌曲合集，带滚动歌词（分P） p01 偏爱"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av116698757729042",
-            "http://www.bilibili.com/video/av113685351696429"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 1,
-          "repeated_urls": 2,
-          "titles": [
-            "【Hi-Res无损】再听潮汐，心起涟漪",
-            "𝗣𝗹𝗮𝘆𝗹𝗶𝘀𝘁 · 古早流行R&B · 假如选歌是种天赋🎧· 神级前奏/单曲循环/纵享丝滑"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av116698757729042",
-            "http://www.bilibili.com/video/av115840301144606"
-          ]
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard."
         }
       ],
-      "status": "results_received",
-      "distinct_urls_over_two_pages": 4
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0
     },
     "风景": {
       "pages": [
@@ -140,7 +113,7 @@
   "status": "results_received",
   "per_query_status": {
     "nature": "results_received",
-    "音乐": "results_received",
+    "音乐": "rate_limited",
     "风景": "rate_limited"
   }
 }

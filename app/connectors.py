@@ -84,6 +84,7 @@ class Pagination(BaseModel):
 class Connector(BaseModel):
     model_config = ConfigDict(extra='forbid')
     kind: Literal['url', 'ytdlp', 'json'] = 'url'
+    query_escape: Literal['none', 'plain'] = 'none'
     credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
     media_credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
     method: Literal['GET', 'POST'] = 'GET'
@@ -127,7 +128,9 @@ class Connector(BaseModel):
                 continue
             if self.kind not in ('json', 'ytdlp'):
                 raise ValueError('Un connecteur de recherche est requis pour un flux d’accueil.')
-            template(url, {'query', 'limit'})
+            if 'query' in template(url, {'query', 'limit'}):
+                # An accueil built from home_query is a search and is named as one, always.
+                self.home_kind = 'search'
         for url in (self.search_trending_url, self.search_views_url, self.search_recent_url):
             if not url:
                 continue
@@ -180,6 +183,7 @@ def default_connector(source_id):
     if source_id == 'Vimeo':
         base = 'https://api.vimeo.com/videos?query={query}&per_page={limit}'
         return Connector(kind='json',extractor='Vimeo',search_url=base,home_url=base,
+            search_recent_url=base+'&sort=date&direction=desc',search_views_url=base+'&sort=plays&direction=desc',
             home_recent_url=base+'&sort=date&direction=desc',home_views_url=base+'&sort=plays&direction=desc',
             pagination=Pagination(mode='page'),results_path='/data',
             mapping=Mapping(id='/uri',title='/name',url='/link',thumbnail='/pictures/sizes/2/link',channel='/user/name',views='/stats/plays',published='/created_time')).model_dump()
@@ -188,7 +192,7 @@ def default_connector(source_id):
         browse = base + '&q=mediatype%3Amovies&sort[]='
         query = base + '&q=mediatype%3Amovies%20AND%20({query})'
         recent = browse + 'publicdate+desc'
-        return Connector(kind='json', extractor='ArchiveOrg',
+        return Connector(kind='json', extractor='ArchiveOrg', query_escape='plain',
             pagination=Pagination(mode='page'),
             search_url=query,
             search_views_url=query + '&sort[]=downloads+desc',
@@ -199,6 +203,18 @@ def default_connector(source_id):
             results_path='/response/docs', video_url='https://archive.org/details/{id}',
             thumbnail_url='https://archive.org/services/img/{id}',
             mapping=Mapping(id='/identifier', url='', thumbnail='', channel='/creator', duration='', views='')).model_dump()
+    if source_id in ('PRXStory', 'PRXStoriesSearch', 'PRXSeries', 'PRXSeriesSearch'):
+        # yt-dlp calls the same CMS API, but only a JSON connector can carry a vault bearer.
+        series = source_id.startswith('PRXSeries')
+        endpoint = 'series/search' if series else 'stories/search'
+        return Connector(kind='json', extractor='PRXSeries' if series else 'PRXStory',
+            search_url=f'https://cms.prx.org/api/v1/{endpoint}?q={{query}}&per={{limit}}',
+            pagination=Pagination(mode='page'), results_path='/_embedded/prx:items',
+            video_url=('https://beta.prx.org/series/{id}' if series else 'https://beta.prx.org/stories/{id}'),
+            mapping=Mapping(id='/id', title='/title', url='', description='/description',
+                            thumbnail='/_embedded/prx:image/_links/enclosure/href',
+                            channel='/_embedded/prx:account/name', duration='/duration',
+                            views='', published='/releasedAt')).model_dump()
     if source_id in ('Niconico', 'NicovideoSearch', 'NicovideoSearchDate', 'NicovideoSearchURL'):
         # yt-dlp scrapes nicovideo.jp/search, whose markup no longer carries data-video-id.
         # The Snapshot Search API v2 is the documented public interface for the same listing.
@@ -239,6 +255,8 @@ def default_connector(source_id):
         _, search_url, extractor = URL_SEARCH[source_id]
     config = Connector(kind='ytdlp' if prefix or search_url else 'url', extractor=extractor,
                        prefix=prefix or 'ytsearch', search_url=search_url)
+    if source_id == 'VrSquareSearch':
+        config.home_query = 'VR'
     if source_id == 'MailRuMusicSearch':
         # The listing entries carry a distinct File id but inherit the search page as webpage_url.
         config.item_url = 'https://my.mail.ru/music/songs/track-{id}'
@@ -249,10 +267,28 @@ def default_connector(source_id):
         config.search_views_url = browse + 'top'
         config.search_recent_url = browse + 'latest'
     if config.kind == 'ytdlp' and extractor == 'Youtube' and source_id != 'YoutubeMusicSearchURL':
-        # This ranking is a results page for home_query, not a feed published by the platform.
+        # A results page for home_query, not a feed published by the platform. Only the
+        # view-count filter changes the ordering: the upload-date codes tested (CAISAhAB
+        # and CAI%3D) returned the default ranking, so no "recent" ranking is offered.
+        results = 'https://www.youtube.com/results?search_query={query}&sp='
         config.home_kind = 'search'
-        config.home_views_url = 'https://www.youtube.com/results?search_query={query}&sp=CAMSAhAB'
+        config.home_views_url = results + 'CAMSAhAB'
+        config.search_views_url = results + 'CAMSAhAB'
     return config.model_dump()
+
+
+# Lucene-style backends read these as syntax; archive.org rejects backslash escapes,
+# so the operators are neutralised instead of escaped.
+LUCENE_OPERATORS = re.compile(r'[-+&|!(){}\[\]^"~*?:\\/]+')
+LUCENE_KEYWORDS = re.compile(r'\b(AND|OR|NOT|TO)\b')
+
+
+def neutralize_query(query, mode):
+    if mode != 'plain':
+        return query
+    plain = LUCENE_KEYWORDS.sub(lambda found: found.group(0).lower(),
+                                LUCENE_OPERATORS.sub(' ', query))
+    return ' '.join(plain.split()) or 'video'
 
 
 def pointer(data, path):
@@ -293,6 +329,7 @@ class PublicRedirect(HTTPRedirectHandler):
 def search_json(config, query, limit, home=False, *, offset=None, credential=None, return_page=False):
     config = Connector.model_validate(config)
     pattern = config.home_url if home and config.home_url else config.search_url
+    query = neutralize_query(query, config.query_escape)
     url = pattern.format(query=quote(query, safe=''), limit=limit)
     body = {key: value.format(query=query, limit=limit) if isinstance(value, str) else value for key, value in config.body.items()}
     native = offset is not None and config.pagination.mode != 'prefix'

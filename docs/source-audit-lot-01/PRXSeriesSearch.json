@@ -3,17 +3,17 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "PRXSeriesSearch",
-  "connector_kind": "ytdlp",
+  "connector_kind": "json",
   "extractor": "PRXSeries",
-  "template_revision": "a7077ab001c33e6a5c1c9c02eab6193e96f75c105f05c1db661a766496b3be6c",
+  "template_revision": "518041b4e6cfcf2cbdee0f6bc23ff6c9cc5425f90cbef7cff8987adc7d1031a0",
   "capabilities": {
     "search": true,
     "pagination": true,
-    "pagination_mode": "prefix",
-    "max_results": 100,
+    "pagination_mode": "native",
+    "max_results": null,
     "search_rankings": [
       "default"
     ],
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:25:01.452117+00:00",
+  "date": "2026-09-06T18:00:39.413370+00:00",
   "does_not_verify": [
     "video",
     "audio",

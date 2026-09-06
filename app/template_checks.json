@@ -5,168 +5,194 @@
     "BiliBili": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:21:27.180302+00:00",
+      "date": "2026-09-06T17:57:36.610737+00:00",
       "batch": "lot-01"
     },
     "BiliBiliSearch": {
-      "status": "results_received",
-      "count": 3,
-      "date": "2026-09-06T17:22:08.997489+00:00",
+      "status": "rate_limited",
+      "count": 0,
+      "date": "2026-09-06T17:58:02.791605+00:00",
       "batch": "lot-01"
     },
     "Dailymotion": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:22:26.611955+00:00",
+      "date": "2026-09-06T17:58:02.792260+00:00",
       "batch": "lot-01"
     },
     "DailymotionSearch": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:22:34.018728+00:00",
+      "date": "2026-09-06T17:58:14.288719+00:00",
       "batch": "lot-01"
     },
     "GameJolt": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:22:56.280918+00:00",
+      "date": "2026-09-06T17:58:32.582813+00:00",
       "batch": "lot-01"
     },
     "GameJoltSearch": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:23:03.772643+00:00",
+      "date": "2026-09-06T17:58:44.243457+00:00",
       "batch": "lot-01"
     },
     "GoogleSearch": {
       "status": "empty",
       "count": 0,
-      "date": "2026-09-06T17:23:27.947900+00:00",
+      "date": "2026-09-06T17:59:01.135216+00:00",
       "batch": "lot-01"
     },
     "ArchiveOrg": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:21:27.112764+00:00",
+      "date": "2026-09-06T17:57:36.535527+00:00",
       "batch": "lot-01"
     },
     "MailRuMusicSearch": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:23:31.854544+00:00",
+      "date": "2026-09-06T17:59:11.103655+00:00",
       "batch": "lot-01"
     },
     "Niconico": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:23:36.979030+00:00",
+      "date": "2026-09-06T17:59:14.806871+00:00",
       "batch": "lot-01"
     },
     "NicovideoSearchURL": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:24:38.169791+00:00",
+      "date": "2026-09-06T18:00:24.106789+00:00",
       "batch": "lot-01"
     },
     "NicovideoSearch": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:24:03.461463+00:00",
+      "date": "2026-09-06T17:59:41.464985+00:00",
       "batch": "lot-01"
     },
     "NicovideoSearchDate": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:24:29.129940+00:00",
+      "date": "2026-09-06T18:00:07.536338+00:00",
       "batch": "lot-01"
     },
     "PRXStory": {
       "status": "authentication_required",
       "count": 0,
-      "date": "2026-09-06T17:25:08.065692+00:00",
+      "date": "2026-09-06T18:00:49.252548+00:00",
       "batch": "lot-01"
     },
     "PRXSeries": {
       "status": "authentication_required",
       "count": 0,
-      "date": "2026-09-06T17:24:54.771001+00:00",
+      "date": "2026-09-06T18:00:33.751357+00:00",
       "batch": "lot-01"
     },
     "PRXSeriesSearch": {
       "status": "authentication_required",
       "count": 0,
-      "date": "2026-09-06T17:25:01.452117+00:00",
+      "date": "2026-09-06T18:00:39.413370+00:00",
       "batch": "lot-01"
     },
     "PRXStoriesSearch": {
       "status": "authentication_required",
       "count": 0,
-      "date": "2026-09-06T17:25:01.877576+00:00",
+      "date": "2026-09-06T18:00:45.137049+00:00",
       "batch": "lot-01"
     },
     "RedGifsSearch": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:25:37.171574+00:00",
+      "date": "2026-09-06T18:01:19.569430+00:00",
       "batch": "lot-01"
     },
     "Rokfin": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "temporarily_unavailable",
+      "count": 0,
+      "date": "2026-09-06T18:01:47.915696+00:00",
+      "batch": "lot-02"
     },
     "RokfinSearch": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "temporarily_unavailable",
+      "count": 0,
+      "date": "2026-09-06T18:01:47.991148+00:00",
+      "batch": "lot-02"
     },
     "Soundcloud": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:02:19.310550+00:00",
+      "batch": "lot-02"
     },
     "SoundcloudSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:02:26.213729+00:00",
+      "batch": "lot-02"
     },
     "VrSquareSearch": {
-      "status": "empty",
-      "count": 0
+      "status": "unsupported_media",
+      "count": 0,
+      "date": "2026-09-06T18:02:53.303608+00:00",
+      "batch": "lot-02"
     },
     "YahooSearch": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "temporarily_unavailable",
+      "count": 0,
+      "date": "2026-09-06T18:02:58.523906+00:00",
+      "batch": "lot-02"
     },
     "Youtube": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:03:06.172909+00:00",
+      "batch": "lot-02"
     },
     "YoutubeMusicSearchURL": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:03:14.759170+00:00",
+      "batch": "lot-02"
     },
     "YoutubeSearchURL": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:04:11.332616+00:00",
+      "batch": "lot-02"
     },
     "YoutubeSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T18:03:37.918605+00:00",
+      "batch": "lot-02"
     },
     "PeerTube": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:25:08.439427+00:00",
+      "date": "2026-09-06T18:00:50.802157+00:00",
       "batch": "lot-01"
     },
     "PeerTubePlaylist": {
       "status": "results_received",
       "count": 3,
-      "date": "2026-09-06T17:25:14.594419+00:00",
+      "date": "2026-09-06T18:00:54.985929+00:00",
       "batch": "lot-01"
+    },
+    "Vimeo": {
+      "status": "authentication_required",
+      "count": 0,
+      "date": "2026-09-06T18:02:48.173355+00:00",
+      "batch": "lot-02"
     }
   },
   "batches": {
     "lot-01": {
-      "date": "2026-09-06T17:26:34.642471+00:00",
-      "connector_version": "d311cba0679f3f9d",
+      "date": "2026-09-06T18:06:30.247443+00:00",
+      "connector_version": "46d110e31b6b6f38",
       "environment": "local-worktree-lot01",
       "templates": [
         "ArchiveOrg",
@@ -189,6 +215,24 @@
         "PeerTube",
         "PeerTubePlaylist",
         "RedGifsSearch"
+      ]
+    },
+    "lot-02": {
+      "date": "2026-09-06T18:06:32.096576+00:00",
+      "connector_version": "46d110e31b6b6f38",
+      "environment": "local-worktree-lot01",
+      "templates": [
+        "Rokfin",
+        "RokfinSearch",
+        "Soundcloud",
+        "SoundcloudSearch",
+        "Vimeo",
+        "VrSquareSearch",
+        "YahooSearch",
+        "Youtube",
+        "YoutubeMusicSearchURL",
+        "YoutubeSearch",
+        "YoutubeSearchURL"
       ]
     }
   }

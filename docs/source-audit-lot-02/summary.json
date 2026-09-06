@@ -1,0 +1,138 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "46d110e31b6b6f38",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T18:06:32.096576+00:00",
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-02",
+  "templates": 11,
+  "results": {
+    "Rokfin": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "news": "temporarily_unavailable",
+        "music": "temporarily_unavailable",
+        "nature": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "RokfinSearch": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "news": "temporarily_unavailable",
+        "music": "temporarily_unavailable",
+        "nature": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "Soundcloud": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "lofi": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "SoundcloudSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "lofi": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Vimeo": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "piano": "authentication_required",
+        "documentaire": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {
+        "home:views": "authentication_required",
+        "home:recent": "authentication_required",
+        "search:views": "authentication_required",
+        "search:recent": "authentication_required"
+      }
+    },
+    "VrSquareSearch": {
+      "search": "unsupported_media",
+      "per_query": {
+        "VR": "unsupported_media",
+        "ライブ": "temporarily_unavailable",
+        "櫻坂": "empty"
+      },
+      "home": "unsupported_media",
+      "rankings": {}
+    },
+    "YahooSearch": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "nature": "temporarily_unavailable",
+        "piano": "temporarily_unavailable",
+        "documentaire": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "Youtube": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    },
+    "YoutubeMusicSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "jazz": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "YoutubeSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    },
+    "YoutubeSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    }
+  }
+}

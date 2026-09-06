@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "BiliBiliSearch",
   "connector_kind": "ytdlp",
   "extractor": "BiliBili",
-  "template_revision": "3e3d1434f182ec2c08e52f029b00631cf0656c92459c5ff2e944c132fb4e3bf0",
+  "template_revision": "8ba3ca5b9f62f56c8bdccf0c329839d5fa22fa9d114c9c3f12d297e38c8274e5",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:22:08.997489+00:00",
+  "date": "2026-09-06T17:58:02.791605+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -37,39 +37,12 @@
       "pages": [
         {
           "offset": 0,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "Nature",
-            "自然 nature"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av117220009121532",
-            "http://www.bilibili.com/video/av117188400778499"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
-          "titles": [
-            "nature",
-            "Nature #nature #jmjahmed"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av117186806942537",
-            "http://www.bilibili.com/video/av117218750763091"
-          ]
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard."
         }
       ],
-      "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0
     },
     "音乐": {
       "pages": [
@@ -110,9 +83,9 @@
     }
   },
   "rankings": {},
-  "status": "results_received",
+  "status": "rate_limited",
   "per_query_status": {
-    "nature": "results_received",
+    "nature": "rate_limited",
     "音乐": "rate_limited",
     "风景": "rate_limited"
   }

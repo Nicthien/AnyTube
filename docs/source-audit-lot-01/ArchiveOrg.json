@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "ArchiveOrg",
   "connector_kind": "json",
   "extractor": "ArchiveOrg",
-  "template_revision": "739e7fd14d2dc1b2cbbb0e41cc3e83e46ef93e8362bacbd2c60a62989c6b7f93",
+  "template_revision": "271d2ca6fbc34c53a3c9f1860561709ecc279567b64d818ddff5f4da0f01fbc6",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +30,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:21:27.112764+00:00",
+  "date": "2026-09-06T17:57:36.535527+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -49,12 +49,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Nature of Things : CBCNEWS : November 22, 2025 10:00pm-11:01pm EST",
-            "jokes, gags, things of that nature ＊＊＊ [Lifesteal SMP] !plushie"
+            "Mohiniyattam",
+            "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
           ],
           "samples": [
-            "https://archive.org/details/CBCNEWS_20251123_030000_The_Nature_of_Things",
-            "https://archive.org/details/jokes-gags-things-of-that-nature-lifesteal-smp-plushie"
+            "https://archive.org/details/pli.ccrt.Mohiniyattam",
+            "https://archive.org/details/JORDANTV_20250921_064500_Jordan_With_Water_Purity"
           ]
         },
         {
@@ -141,12 +141,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Pascal Ory nous parle de l’Ayatollah Khomeini - Toute L'Histoire",
-            "Military intel /// Police intel /// L'expert policier Rock Larochelle définit co"
+            "MINI-DOCU: Corona in Nederland (FVD Journaal Special)",
+            "Les Filles en Prison (Meufisme et Délinquance) - Partie 1"
           ],
           "samples": [
-            "https://archive.org/details/youtube-LfaSDnjbuS0",
-            "https://archive.org/details/military-intel-111_202205"
+            "https://archive.org/details/youtube-hbdQBCYF5Zo",
+            "https://archive.org/details/youtube-yGQfoWSU8kE"
           ]
         }
       ],
@@ -167,12 +167,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "แม่ม่ายสาวเอลฟ์ ทั้งสวยแถมยังคลั่งรักอีก! #anime #foryou #manga #fypシ #มังงะ",
-            "Mark Hegan. Ulster Sports Club, Belfast. February 27 2026"
+            "Den förbjudna floden - 3. De hemliga källorna",
+            "RAMAL MERLO-LOBOS -"
           ],
           "samples": [
-            "https://archive.org/details/youtube-ftNP6FP0rmI",
-            "https://archive.org/details/mark-hegan.-ulster-sports-club-belfast.-february-27-2026"
+            "https://archive.org/details/svtplay-eYaMnJe",
+            "https://archive.org/details/yt-archive-5vvq-l2nxas"
           ]
         },
         {
@@ -183,12 +183,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "GHANA ARC BOWLING W/ JOSH & CHRIS, EATING KFC - Blueryai VOD 2 / 26 / 25",
-            "Sitka Assembly Special Meeting on FY2025 Budget - April 4, 2024"
+            "5 Septmber 2026 إجتماع الشفا والتحرير",
+            "https://x.com/razz_chikuwa/status/2090659884442513738"
           ],
           "samples": [
-            "https://archive.org/details/httpswww.youtube.comwatchvrh7law5nufs",
-            "https://archive.org/details/openpublica-sitka-alaska-dc415d62-7053-462b-be1e-8bd54b2505b8"
+            "https://archive.org/details/5-septmber-2026",
+            "https://archive.org/details/X-2090659884442513738"
           ]
         }
       ],
@@ -286,12 +286,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "แม่ม่ายสาวเอลฟ์ ทั้งสวยแถมยังคลั่งรักอีก! #anime #foryou #manga #fypシ #มังงะ",
-            "Mark Hegan. Ulster Sports Club, Belfast. February 27 2026"
+            "Den förbjudna floden - 3. De hemliga källorna",
+            "RAMAL MERLO-LOBOS -"
           ],
           "samples": [
-            "https://archive.org/details/youtube-ftNP6FP0rmI",
-            "https://archive.org/details/mark-hegan.-ulster-sports-club-belfast.-february-27-2026"
+            "https://archive.org/details/svtplay-eYaMnJe",
+            "https://archive.org/details/yt-archive-5vvq-l2nxas"
           ]
         },
         {
@@ -302,12 +302,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "GHANA ARC BOWLING W/ JOSH & CHRIS, EATING KFC - Blueryai VOD 2 / 26 / 25",
-            "Sitka Assembly Special Meeting on FY2025 Budget - April 4, 2024"
+            "5 Septmber 2026 إجتماع الشفا والتحرير",
+            "https://x.com/razz_chikuwa/status/2090659884442513738"
           ],
           "samples": [
-            "https://archive.org/details/httpswww.youtube.comwatchvrh7law5nufs",
-            "https://archive.org/details/openpublica-sitka-alaska-dc415d62-7053-462b-be1e-8bd54b2505b8"
+            "https://archive.org/details/5-septmber-2026",
+            "https://archive.org/details/X-2090659884442513738"
           ]
         }
       ],
@@ -362,12 +362,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "San Francisco Planning Commission Meeting - April 4, 2024",
-            "Saturday, 6th September 1913: Grand Jury Adjourns To Go To Ball Game, The Atlant"
+            "Elk Grove Planning Commission Approves New Zoo at Elk Grove, April 4, 2024",
+            "Napa Planning Commission Meeting: Le Petit Elephant Use Permit Approved April 4,"
           ],
           "samples": [
-            "https://archive.org/details/openpublica-san_francisco-california-59c97201-aa1e-4b89-801c-d4b09ee120c2",
-            "https://archive.org/details/1913-09-06-grand-jury-adjourns-to-go-to-ball-game-the-atlanta-constitution"
+            "https://archive.org/details/openpublica-elkgrove-california-65f968e7-c2b7-4f14-85c9-f2cf53f88ac2",
+            "https://archive.org/details/openpublica-napa-california-36d271a3-93ad-43c6-8b09-78aee8856ef6"
           ]
         },
         {
@@ -378,12 +378,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Ken Burns: Henry David Thoreau",
-            "Joint City Council & GUC Board Meeting – April 22, 2024"
+            "Saturday, 6th September 1913: Grand Jury Adjourns To Go To Ball Game, The Atlant",
+            "Sacramento County Board of Supervisors Special Meeting: General Plan Annual Repo"
           ],
           "samples": [
-            "https://archive.org/details/Ken-Burns-Henry-David-Thoreau",
-            "https://archive.org/details/openpublica-greenville-north_carolina-50d9cf5c-14cd-438b-9af4-c18f01376cd2"
+            "https://archive.org/details/1913-09-06-grand-jury-adjourns-to-go-to-ball-game-the-atlanta-constitution",
+            "https://archive.org/details/openpublica-sacramento_county-california-7ZMU7-KHQgM"
           ]
         }
       ],
@@ -417,11 +417,11 @@
           "repeated_urls": 0,
           "titles": [
             "Cosmos: A Personal Voyage ★ Collected PBS Science Series with Bonus Features - a",
-            "WordWorld - TV Series (2007 - 2011)"
+            "All Animated Videos and DVD"
           ],
           "samples": [
             "https://archive.org/details/cosmos_1980",
-            "https://archive.org/details/WWTVSeries20072011"
+            "https://archive.org/details/the-three-caballeros-1996-vhs_202205"
           ]
         }
       ],

@@ -102,7 +102,7 @@ def run(payload):
         with YoutubeDL(opts) as ydl:
             attach_access(ydl, credential)
             data = ydl.extract_info(target, download=False)
-            items = []
+            items, refused = [], None
             for entry in (data or {}).get('entries', []):
                 if not entry:
                     continue
@@ -111,7 +111,10 @@ def run(payload):
                         with YoutubeDL({**opts, 'extract_flat': False}) as detail:
                             attach_access(detail, credential)
                             entry = detail.extract_info(entry['url'], download=False)
-                    except Exception:
+                    except Exception as exc:
+                        # A listing whose every entry is refused is not an empty listing.
+                        from app.failures import classify
+                        refused = refused or classify(exc)
                         continue
                 item = normalize(entry)
                 if config and config.item_url and item['id']:
@@ -119,6 +122,8 @@ def run(payload):
                     item['url'] = config.item_url.format(id=quote(item['id'], safe=''))
                 if item['url']:
                     items.append(item)
+            if not items and refused:
+                raise refused
             return {'items': items}
     if payload['mode'] in ('resolve', 'collection'):
         target = web_url(payload['url'])

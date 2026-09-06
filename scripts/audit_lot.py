@@ -25,6 +25,12 @@ LOT_01 = ['ArchiveOrg', 'BiliBili', 'BiliBiliSearch', 'Dailymotion', 'Dailymotio
           'PRXSeriesSearch', 'PRXStoriesSearch', 'PRXStory', 'PeerTube', 'PeerTubePlaylist',
           'RedGifsSearch']
 
+# Batch 02: the eleven remaining search templates, still in identifier order.
+LOT_02 = ['Rokfin', 'RokfinSearch', 'Soundcloud', 'SoundcloudSearch', 'Vimeo', 'VrSquareSearch',
+          'YahooSearch', 'Youtube', 'YoutubeMusicSearchURL', 'YoutubeSearch', 'YoutubeSearchURL']
+
+BATCHES = {'lot-01': LOT_01, 'lot-02': LOT_02, 'all': LOT_01 + LOT_02}
+
 # Queries chosen for the audience of each platform; a foreign-language query is not a defect.
 QUERIES = {
     'default': ['nature', 'piano', 'documentaire'],
@@ -42,13 +48,22 @@ QUERIES = {
     'PRXSeries': ['nature', 'climate', 'music'],
     'PRXStoriesSearch': ['nature', 'climate', 'music'],
     'PRXSeriesSearch': ['nature', 'climate', 'music'],
+    'Rokfin': ['news', 'music', 'nature'],
+    'RokfinSearch': ['news', 'music', 'nature'],
+    'Soundcloud': ['nature', 'piano', 'lofi'],
+    'SoundcloudSearch': ['nature', 'piano', 'lofi'],
+    'VrSquareSearch': ['VR', 'ライブ', '櫻坂'],
+    'YoutubeMusicSearchURL': ['nature', 'piano', 'jazz'],
 }
 
 PAGE = 3
 
 # One query answering is enough to show the template works; one failing query is not a verdict.
-PRIORITY = ['results_received', 'authentication_required', 'geo_restricted', 'drm_protected',
-            'rate_limited', 'empty', 'timeout', 'invalid_response', 'temporarily_unavailable']
+# Ordered from the most to the least informative. A provider that answers and refuses its own
+# media says more than a query that simply matched nothing.
+PRIORITY = ['results_received', 'authentication_required', 'unsupported_media', 'geo_restricted',
+            'drm_protected', 'rate_limited', 'empty', 'timeout', 'invalid_response',
+            'temporarily_unavailable']
 
 
 def aggregate(statuses):
@@ -139,7 +154,7 @@ async def main(args):
             return entry
 
     known = {item['id'] for item in catalog()}
-    selection = [t for t in (args.template or LOT_01) if t in known]
+    selection = [t for t in (args.template or BATCHES[args.batch]) if t in known]
     if args.summarize_only:
         # Re-derive the batch verdict from stored evidence, without touching the network.
         entries = []
@@ -158,7 +173,7 @@ async def main(args):
         entries = await asyncio.gather(*(guarded(t) for t in selection))
     summary = {**context, 'generated_at': datetime.now(timezone.utc).isoformat(),
                'aggregation': 'un modèle est déclaré au meilleur état observé sur ses requêtes',
-               'batch': 'lot-01', 'templates': len(entries),
+               'batch': args.batch, 'templates': len(entries),
                'results': {e['template']: {'search': e['status'], 'per_query': e['per_query_status'],
                                            'home': e['home'].get('default', {}).get('status'),
                                            'rankings': {k: v['status'] for k, v in e['rankings'].items()}}
@@ -190,8 +205,12 @@ def update_checks(output, summary):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--output', type=Path, default=Path('docs/source-audit-lot-01'))
+    parser.add_argument('--batch', choices=sorted(BATCHES), default='lot-01')
+    parser.add_argument('--output', type=Path, default=None)
     parser.add_argument('--template', action='append')
     parser.add_argument('--summarize-only', action='store_true')
     parser.add_argument('--update-checks', action='store_true')
-    asyncio.run(main(parser.parse_args()))
+    arguments = parser.parse_args()
+    if arguments.output is None:
+        arguments.output = Path('docs/source-audit-' + arguments.batch)
+    asyncio.run(main(arguments))

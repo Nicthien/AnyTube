@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "PeerTubePlaylist",
   "connector_kind": "json",
   "extractor": "PeerTube",
-  "template_revision": "fce800dfeaea42d7cce4ac79f15a298d4fd509b523d81e1c971b2b897f648d30",
+  "template_revision": "a6497d94cc352282a20627b8d92fd585b29f5b8402385fc073c5d61f2cdcf076",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -29,7 +29,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:25:14.594419+00:00",
+  "date": "2026-09-06T18:00:54.985929+00:00",
   "does_not_verify": [
     "video",
     "audio",

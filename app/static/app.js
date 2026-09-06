@@ -126,9 +126,12 @@ function renderCatalog() {
         authentication_required:'authentification requise', rate_limited:'quota ou filtrage de la plateforme',
         geo_restricted:'restriction géographique', drm_protected:'protégé par DRM',
         timeout:'délai dépassé', invalid_response:'réponse invalide',
+        unsupported_media:'média non lisible par AnyTube',
         temporarily_unavailable:'indisponible au moment de l’essai'};
       detail.append(node('small', '', `Essai historique (à revérifier) du ${new Date(source.last_check.date).toLocaleDateString('fr')} : ${labels[source.last_check.status] || 'non testé'}.`));
     }
+    if (source.limitation) detail.append(node('small', 'notice', source.limitation));
+    if (source.access_requirement) detail.append(node('small', '', source.access_requirement === 'api_token' ? 'Accès requis : clé ou jeton d’API, à déposer dans le coffre.' : 'Accès requis : un compte de la plateforme, à déposer dans le coffre.'));
     const preview = node('details'); preview.append(node('summary', '', 'Voir le modèle'));
     const model = node('pre', 'connector-json'); preview.append(model); detail.append(preview);
     preview.addEventListener('toggle', async () => {

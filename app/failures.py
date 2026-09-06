@@ -8,7 +8,11 @@ MESSAGES = {
     'timeout': 'La plateforme a dépassé le délai de réponse.',
     'temporarily_unavailable': 'La plateforme est indisponible ou a refusé la requête.',
     'invalid_response': 'La plateforme a renvoyé une réponse invalide.',
+    'unsupported_media': 'Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire.',
 }
+
+# The provider states the medium is out of reach by design, not by an outage.
+UNSUPPORTED_MARKERS = ('are not supported', 'is not supported', 'app-only', 'unsupported url')
 
 # A 403 alone never means "log in"; only these explicit provider markers do.
 LOGIN_MARKERS = ('only available for registered users', 'sign in to confirm', 'log in to confirm',
@@ -34,9 +38,16 @@ def http_status(exc):
     return None, None
 
 
+def message_of(exc):
+    return str(getattr(exc, 'msg', None) or exc).casefold()
+
+
 def mentions_login(exc):
-    text = str(getattr(exc, 'msg', None) or exc).casefold()
-    return any(marker in text for marker in LOGIN_MARKERS)
+    return any(marker in message_of(exc) for marker in LOGIN_MARKERS)
+
+
+def mentions_unsupported(exc):
+    return any(marker in message_of(exc) for marker in UNSUPPORTED_MARKERS)
 
 
 def retry_delay(headers):
@@ -46,13 +57,14 @@ def retry_delay(headers):
         return 60
 
 
-def classify(exc, login_hint=False):
+def classify(exc, login_hint=False, unsupported_hint=False):
     from yt_dlp.utils import GeoRestrictedError, ExtractorError, DownloadError
     if isinstance(exc, SourceFailure):
         return exc
     if isinstance(exc, GeoRestrictedError):
         return SourceFailure('geo_restricted')
     login_hint = login_hint or mentions_login(exc)
+    unsupported_hint = unsupported_hint or mentions_unsupported(exc)
     status, headers = http_status(exc)
     if status == 401 or (status == 403 and login_hint):
         return SourceFailure('authentication_required')
@@ -64,9 +76,11 @@ def classify(exc, login_hint=False):
         return SourceFailure('timeout')
     # Do not guess that every 403 means authentication, DRM or a regional block.
     if isinstance(exc, DownloadError) and exc.exc_info and exc.exc_info[1] is not exc:
-        return classify(exc.exc_info[1], login_hint)
+        return classify(exc.exc_info[1], login_hint, unsupported_hint)
     if isinstance(exc, ExtractorError) and exc.cause is not None:
-        return classify(exc.cause, login_hint)
-    if login_hint and isinstance(exc, ExtractorError):
+        return classify(exc.cause, login_hint, unsupported_hint)
+    if login_hint:
         return SourceFailure('authentication_required')
+    if unsupported_hint:
+        return SourceFailure('unsupported_media')
     return SourceFailure()

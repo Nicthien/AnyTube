@@ -3,12 +3,12 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "d311cba0679f3f9d",
+  "connector_version": "46d110e31b6b6f38",
   "proxy_configured": false,
   "template": "NicovideoSearchDate",
   "connector_kind": "json",
   "extractor": "Niconico",
-  "template_revision": "82ba5f2965b15496508d16ea30cb6622f528ebff9f251ab80c8eb3b78f431349",
+  "template_revision": "efa16d0530d6b23ecea5ea4d69cb94515a2693f4f21230490c8eb3ffa6a7d5ff",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -28,7 +28,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:24:29.129940+00:00",
+  "date": "2026-09-06T18:00:07.536338+00:00",
   "does_not_verify": [
     "video",
     "audio",

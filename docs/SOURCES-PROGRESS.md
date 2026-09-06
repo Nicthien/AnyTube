@@ -26,23 +26,39 @@ Les modales d'accès ont été inspectées à 390 px dans les deux thèmes et su
 
 50 tests déterministes passent dans `.venv`, dont le garde-fou des dialogues natifs, et `git diff --check` passe. Le dépôt étant encore non suivi, ce dernier ne couvre pas les fichiers nouveaux. Le Python global Windows n'a pas yt-dlp ; utiliser l'environnement du projet avec `requirements-dev.txt` pour les tests. L'image de production ne contient pas le client HTTP de test.
 
-## Lot 01 des modèles de recherche — 6 septembre 2026
+## Lots 01 et 02 des modèles de recherche — 6 septembre 2026
 
 Les vingt premiers modèles de recherche triés par identifiant ont été examinés, corrigés et
 sondés séparément. Le détail, les preuves datées et les blocages restants sont dans
 [`sources-lot-01.md`](sources-lot-01.md) ; les essais réseau sont dans `source-audit-lot-01/`.
 
-Ce lot corrige cinq défauts vérifiés du moteur, pas seulement des modèles : les erreurs HTTP levées
-par yt-dlp n'étaient jamais reconnues (toute réponse 401 ou 429 devenait « plateforme
-indisponible »), la pagination native supprimait les paramètres de requête volontairement vides, un
-listing échouait entièrement dès qu'une entrée n'avait aucun format lisible, des résultats
-pouvaient partager tous la même URL, et un accueil servi par une recherche pouvait être présenté
+Les lots corrigent d'abord des défauts du moteur, pas seulement des modèles : les erreurs HTTP
+levées par yt-dlp n'étaient jamais reconnues (toute réponse 401 ou 429 devenait « plateforme
+indisponible ») ; un refus anti-robot en 412 passait pour une panne ; la pagination native
+supprimait les paramètres de requête volontairement vides ; un listing échouait entièrement dès
+qu'une entrée n'avait aucun format lisible ; un listing dont toutes les entrées étaient refusées
+était présenté comme vide ; des résultats pouvaient partager tous la même URL ; la requête du
+lecteur pouvait casser une recherche construite sur une expression Lucene ; la pagination dépassait
+la fenêtre annoncée par le fournisseur ; et un accueil servi par une recherche pouvait être présenté
 comme un flux de la plateforme.
 
 `engine_version()` couvre les fichiers modifiés : **les preuves antérieures, y compris
 `source-audit-current/`, deviennent historiques** et devront être rejouées.
 
-Les onze modèles de recherche restants n'ont pas été traités par ce lot.
+Le lot 02 traite les onze modèles restants — Rokfin, SoundCloud, Vimeo, VR SQUARE, Yahoo Vidéos et
+YouTube — et **achève les 31 modèles de recherche du catalogue** ; il est décrit dans
+[`sources-lot-02.md`](sources-lot-02.md), preuves dans `source-audit-lot-02/`.
+
+Cela ne termine pas le catalogue : **1 719 extracteurs installés n'ont toujours aucun modèle de
+recherche**, et leur examen plateforme par plateforme reste entier. Le rapport de catalogue expose
+désormais ce décompte séparément (`search_template_review`) : un modèle de recherche examiné par un
+lot ne rend pas sa plateforme revue, et aucune plateforme n'est déclarée revue dans son ensemble.
+
+Trois modèles restent inutilisables pour une cause identifiée en amont, sans correction possible de
+notre côté : `GoogleSearch` et `YahooSearch` (les interfaces que les extracteurs installés appellent
+ne répondent plus dans le format attendu) et `Rokfin` (les identifiants de recherche ne sont plus à
+l'emplacement attendu sur le site). Cinq modèles — les quatre PRX et Vimeo — attendent un compte :
+le chemin par jeton de coffre existe désormais, mais il n'a pas pu être essayé.
 
 ## Travail restant
 
