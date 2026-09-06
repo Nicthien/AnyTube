@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "Soundcloud",
   "connector_kind": "ytdlp",
   "extractor": "Soundcloud",
-  "template_revision": "3a781d1195430e75322efa6c4309f3f06f48d3f710179aefeb852d8d5176d66d",
+  "template_revision": "c7d28dd0be07f6012ba33246234d12664ce94e045c112efa5f6ae8c0b45083f8",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:02:19.310550+00:00",
+  "date": "2026-09-06T18:21:08.415947+00:00",
   "does_not_verify": [
     "video",
     "audio",

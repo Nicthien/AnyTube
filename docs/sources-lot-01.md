@@ -196,20 +196,37 @@ et la lecture.
 n’a pas pu être observé. La correspondance des champs est un test déterministe construit sur le code
 de l’extracteur installé, pas sur une réponse réelle.
 
+### 13. La révision du moteur changeait selon le poste de travail (`app/verification.py`)
+
+`engine_version()` hache les octets bruts des fichiers du moteur, **fins de ligne comprises**. Un
+clone Windows qui reçoit du CRLF et un clone Unix qui reçoit du LF calculent donc deux révisions
+différentes **pour un code identique**. Constaté en fusionnant ces lots : la branche annonçait
+`46d110e31b6b6f38`, `main` annonçait `5966dc7d65103ba4`, et `git diff` entre les deux ne montrait
+aucune différence — l’écart ne portait même pas sur les fichiers modifiés par les lots, mais sur
+`vault.py`, `playback.py`, `registry.py` et six autres, jamais touchés.
+
+Conséquence : toute preuve enregistrée sur un poste devenait « historique » sur un autre, et la
+garantie « ne déclarer vérifiée que la révision effectivement testée » se retournait contre
+elle-même en périmant des preuves valides.
+
+Les fins de ligne sont désormais normalisées avant le hachage. Un test écrit le fichier en CRLF
+puis en LF et vérifie que la révision ne bouge pas. **Les preuves des deux lots ont été
+intégralement rejouées après cette correction** : elles portent la révision reproductible.
+
 ## Résultat par modèle
 
 Les preuves complètes sont dans `docs/source-audit-lot-01/` (un fichier JSON par modèle, plus
 `summary.json`), chacune datée et portant l’environnement, la version de Python, la version de
 yt-dlp, la révision du moteur de connecteurs et la révision du modèle testé.
 
-Environnement : `local-worktree-lot01`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `46d110e31b6b6f38`, sondage du 2026-09-06T18:06:30 UTC. Proxy de sortie configuré : non.
+Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `90864eb5adce6b21`, sondage du 2026-09-06T18:25:08 UTC. Proxy de sortie configuré : non.
 
 Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, sur deux pages de trois résultats. Un modèle est déclaré au meilleur état observé : une requête en échec ne le condamne pas, et une requête qui répond ne masque pas les autres — le détail par requête figure dans les preuves.
 
 | Modèle | Interface réellement utilisée | Recherche (3 requêtes × 2 pages) | Accueil | Classements |
 | --- | --- | --- | --- | --- |
 | `ArchiveOrg` | API `archive.org/advancedsearch.php` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
-| `BiliBili` | yt-dlp `bilisearch` | résultats reçus · 1/3 requêtes · 6 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
+| `BiliBili` | yt-dlp `bilisearch` | quota ou filtrage · 0/3 requêtes · 0 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
 | `BiliBiliSearch` | yt-dlp `bilisearch` | quota ou filtrage · 0/3 requêtes · 0 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
 | `Dailymotion` | API Graph `api.dailymotion.com` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
 | `DailymotionSearch` | API Graph `api.dailymotion.com` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
@@ -246,64 +263,26 @@ Remarques par modèle :
 
 Révisions de modèle effectivement testées :
 
-- `ArchiveOrg` : `271d2ca6fbc34c53a3c9f1860561709e…`
-- `BiliBili` : `8ba3ca5b9f62f56c8bdccf0c329839d5…`
-- `BiliBiliSearch` : `8ba3ca5b9f62f56c8bdccf0c329839d5…`
-- `Dailymotion` : `1c2ba3ac7ad66ba9b8f8897b3fd324f9…`
-- `DailymotionSearch` : `1c2ba3ac7ad66ba9b8f8897b3fd324f9…`
-- `GameJolt` : `8dc63e9c7fbe414b873ba749df3f44ac…`
-- `GameJoltSearch` : `8dc63e9c7fbe414b873ba749df3f44ac…`
-- `GoogleSearch` : `d93367657c5ed2f8bc378f5b16c9c2c8…`
-- `MailRuMusicSearch` : `bd02a9a769fceaa200619e0fc69f8e32…`
-- `Niconico` : `9262024d96bd4f683de05dbdaef6c590…`
-- `NicovideoSearch` : `9262024d96bd4f683de05dbdaef6c590…`
-- `NicovideoSearchDate` : `efa16d0530d6b23ecea5ea4d69cb9451…`
-- `NicovideoSearchURL` : `9262024d96bd4f683de05dbdaef6c590…`
-- `PRXSeries` : `518041b4e6cfcf2cbdee0f6bc23ff6c9…`
-- `PRXSeriesSearch` : `518041b4e6cfcf2cbdee0f6bc23ff6c9…`
-- `PRXStoriesSearch` : `4b66ac9895b951585caf542d86f53d72…`
-- `PRXStory` : `4b66ac9895b951585caf542d86f53d72…`
-- `PeerTube` : `a6497d94cc352282a20627b8d92fd585…`
-- `PeerTubePlaylist` : `a6497d94cc352282a20627b8d92fd585…`
-- `RedGifsSearch` : `2925c6058fb0dd483fe90f3fe2242da6…`
-
-### Vérification de bout en bout par l'API HTTP
-
-Les sondages ci-dessus appellent le worker directement. Un essai supplémentaire a parcouru la
-**couche HTTP complète** — session, `/api/sources`, `/api/search` avec curseur, `/api/home` — le
-6 septembre 2026, sur les deux modèles à pagination native les plus représentatifs :
-
-| Modèle | Page 1 | Page 2 | Résultats communs | Curseur émis | Classement « Plus vues » | Accueil |
-| --- | --- | --- | --- | --- | --- | --- |
-| `Niconico` | 3 | 3 | 0 | oui | 3 résultats, **identiques au tri par défaut** | 10 vidéos, « Flux d’accueil », `feed_kind=feed` |
-| `ArchiveOrg` | 3 | 3 | 0 | oui | 3 résultats, **ordre différent du tri par défaut** | 10 vidéos, « Flux d’accueil », `feed_kind=feed` |
-
-Le classement « Plus vues » de Niconico renvoie les mêmes résultats que la recherche par défaut,
-et c’est attendu : l’API Snapshot n’a pas de tri par pertinence, donc le tri par défaut des modèles
-`Niconico`, `NicovideoSearch` et `NicovideoSearchURL` **est déjà** `-viewCounter`. Seul
-`NicovideoSearchDate`, qui trie par date, voit ce classement changer l’ordre. Le classement n’est
-pas factice, il est redondant pour trois modèles sur quatre.
-
-## Références
-
-Interfaces réellement appelées par les modèles de ce lot, et code des extracteurs installés
-(yt-dlp 2026.08.19). Les URL de documentation ont été ouvertes le 6 septembre 2026.
-
-| Plateforme | Interface appelée | Documentation | Extracteur installé |
-| --- | --- | --- | --- |
-| archive.org | `archive.org/advancedsearch.php` | [advancedsearch](https://archive.org/advancedsearch.php) | [`archiveorg.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/archiveorg.py) |
-| Bilibili | `api.bilibili.com/x/web-interface/search/type` (via yt-dlp) | — | [`bilibili.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/bilibili.py) |
-| Dailymotion | `api.dailymotion.com/videos` | [API Dailymotion](https://developers.dailymotion.com/reference/introduction) | [`dailymotion.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/dailymotion.py) |
-| Game Jolt | `gamejolt.com/site-api/web/search` (via yt-dlp) | — | [`gamejolt.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/gamejolt.py) |
-| Google Vidéos | `google.com/search?tbm=vid` (extraction HTML, via yt-dlp) | — | [`googlesearch.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/googlesearch.py) |
-| Mail.ru Musique | `my.mail.ru/cgi-bin/my/ajax` (via yt-dlp) | — | [`mailru.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/mailru.py) |
-| Niconico | `snapshot.search.nicovideo.jp/api/v2/snapshot/video/contents/search` | [Snapshot Search API v2](https://site.nicovideo.jp/search-api-docs/snapshot) | [`niconico.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/niconico.py) |
-| PeerTube (Framatube) | `framatube.org/api/v1/search/videos` et `/api/v1/videos` | [API REST PeerTube](https://docs.joinpeertube.org/api-rest-reference.html) | [`peertube.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/peertube.py) |
-| PRX | `cms.prx.org/api/v1/stories/search` et `/series/search` | [racine de l’API](https://cms.prx.org/api/v1) | [`prx.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/prx.py) |
-| RedGifs | `api.redgifs.com` via `redgifs.com/browse` (via yt-dlp) | — | [`redgifs.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/redgifs.py) |
-
-Un tiret signifie qu’aucune documentation publique n’a été trouvée : l’interface n’est connue que
-par le code de l’extracteur installé, ce qui est en soi une fragilité.
+- `ArchiveOrg` : `04f41f17da9c958f180c7d78a6876ac9…`
+- `BiliBili` : `2eb9238a5e7bd9f2c97afdc552ddbb67…`
+- `BiliBiliSearch` : `2eb9238a5e7bd9f2c97afdc552ddbb67…`
+- `Dailymotion` : `77212476dc8d0b0dbe593d6997909958…`
+- `DailymotionSearch` : `77212476dc8d0b0dbe593d6997909958…`
+- `GameJolt` : `ce9f5430c06554871328641154d6125f…`
+- `GameJoltSearch` : `ce9f5430c06554871328641154d6125f…`
+- `GoogleSearch` : `75b63b1dd0ddfd984fece6a77f7793f0…`
+- `MailRuMusicSearch` : `00bd3a640d93c9c54cb342a37f32e457…`
+- `Niconico` : `ab20777c40ef59bec6edf6b8094467a3…`
+- `NicovideoSearch` : `ab20777c40ef59bec6edf6b8094467a3…`
+- `NicovideoSearchDate` : `3e69b20b40fbfeaaa2719e479c5fcee8…`
+- `NicovideoSearchURL` : `ab20777c40ef59bec6edf6b8094467a3…`
+- `PRXSeries` : `5b642e1b0a1b8e9301090f4e4dfbb948…`
+- `PRXSeriesSearch` : `5b642e1b0a1b8e9301090f4e4dfbb948…`
+- `PRXStoriesSearch` : `6d22f1ff38b6c0b236087fcc3c47c345…`
+- `PRXStory` : `6d22f1ff38b6c0b236087fcc3c47c345…`
+- `PeerTube` : `3cc6ac9a1e2a65b18b84c27ba7b490df…`
+- `PeerTubePlaylist` : `3cc6ac9a1e2a65b18b84c27ba7b490df…`
+- `RedGifsSearch` : `aa2e106e3797e08477c104f3d6f683d2…`
 
 ## Ce qui reste à faire
 
@@ -373,6 +352,7 @@ par le code de l’extracteur installé, ce qui est en soi une fragilité.
 | `app/main.py` | Libellé et `feed_kind` de l’accueil, plafond de fenêtre, `keep_blank_values` |
 | `app/catalog.py` | Noms revus du lot, `access_requirement`, table `LIMITATIONS`, date par entrée dans `last_check` |
 | `app/inventory.py` | Décompte séparé des modèles de recherche examinés par lot, sans promouvoir la plateforme |
+| `app/verification.py` | Révision du moteur indépendante des fins de ligne du dépôt |
 | `app/static/app.js` | Libellés des états d’essai et affichage des limitations connues et des accès requis |
 | `app/template_checks.json` | Essais du lot 01 redatés ; les entrées hors lot ne sont pas touchées |
 | `scripts/audit_lot.py` | Nouvel outil de sondage par lot (recherche, accueil, classements, deux pages) |
@@ -399,6 +379,8 @@ par le code de l’extracteur installé, ce qui est en soi une fragilité.
   figer le code avant de lancer une campagne d’essais.
 - `app/inventory.py` n’est pas couvert par `engine_version()` : son décompte peut évoluer sans
   périmer les preuves.
+- Depuis la correction 13, la révision ne dépend plus des fins de ligne du dépôt local : une preuve
+  enregistrée sous Windows reste valable sur un clone Unix, et inversement.
 
 ## Comment rejouer les preuves
 
@@ -415,7 +397,7 @@ reconstruire le résumé complet du lot à partir des preuves déjà stockées.
 
 ## Validation exécutée
 
-- `python -m unittest discover -s tests` — **84 tests, tous verts** (50 avant les lots, 34 ajoutés
+- `python -m unittest discover -s tests` — **85 tests, tous verts** (50 avant les lots, 35 ajoutés
   par les lots 01 et 02), dans `.venv` du projet, Python 3.14.6.
 - `git diff --check` — sans avertissement.
 - Garde-fou des dialogues natifs (`tests/test_bootstrap.py`) — inclus dans la série.

@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "MailRuMusicSearch",
   "connector_kind": "ytdlp",
   "extractor": "MailRuMusic",
-  "template_revision": "bd02a9a769fceaa200619e0fc69f8e321c5c5e13742d3119133e86826d72d880",
+  "template_revision": "00bd3a640d93c9c54cb342a37f32e45778abd13e41e6bcf91bda8cf942572eb8",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:59:11.103655+00:00",
+  "date": "2026-09-06T18:17:52.406561+00:00",
   "does_not_verify": [
     "video",
     "audio",

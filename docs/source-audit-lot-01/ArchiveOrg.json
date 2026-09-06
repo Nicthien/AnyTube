@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "ArchiveOrg",
   "connector_kind": "json",
   "extractor": "ArchiveOrg",
-  "template_revision": "271d2ca6fbc34c53a3c9f1860561709ecc279567b64d818ddff5f4da0f01fbc6",
+  "template_revision": "04f41f17da9c958f180c7d78a6876ac9d1d856485dd7a697fad1700062166ab7",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +30,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:57:36.535527+00:00",
+  "date": "2026-09-06T18:16:25.733252+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -49,12 +49,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Mohiniyattam",
-            "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
+            "The Nature of Things : CBCNEWS : November 22, 2025 10:00pm-11:01pm EST",
+            "jokes, gags, things of that nature ＊＊＊ [Lifesteal SMP] !plushie"
           ],
           "samples": [
-            "https://archive.org/details/pli.ccrt.Mohiniyattam",
-            "https://archive.org/details/JORDANTV_20250921_064500_Jordan_With_Water_Purity"
+            "https://archive.org/details/CBCNEWS_20251123_030000_The_Nature_of_Things",
+            "https://archive.org/details/jokes-gags-things-of-that-nature-lifesteal-smp-plushie"
           ]
         },
         {
@@ -141,12 +141,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "MINI-DOCU: Corona in Nederland (FVD Journaal Special)",
-            "Les Filles en Prison (Meufisme et Délinquance) - Partie 1"
+            "Les Filles en Prison (Meufisme et Délinquance) - Partie 1",
+            "Contre-Enquêtes : L'Affaire Omar Raddad, la vérité sur une grâce"
           ],
           "samples": [
-            "https://archive.org/details/youtube-hbdQBCYF5Zo",
-            "https://archive.org/details/youtube-yGQfoWSU8kE"
+            "https://archive.org/details/youtube-yGQfoWSU8kE",
+            "https://archive.org/details/youtube-AG0bToBW-70"
           ]
         }
       ],
@@ -167,12 +167,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Den förbjudna floden - 3. De hemliga källorna",
-            "RAMAL MERLO-LOBOS -"
+            "Operation Khyber Ziarat Mangi Dam Post Attack",
+            "Mighty Ducks Ep 1"
           ],
           "samples": [
-            "https://archive.org/details/svtplay-eYaMnJe",
-            "https://archive.org/details/yt-archive-5vvq-l2nxas"
+            "https://archive.org/details/00536-operation-al-khyber-11-full-hd-online-video-cutter.com",
+            "https://archive.org/details/mighty-ducks-ep-1"
           ]
         },
         {
@@ -180,20 +180,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 1,
+          "repeated_urls": 2,
           "titles": [
-            "5 Septmber 2026 إجتماع الشفا والتحرير",
-            "https://x.com/razz_chikuwa/status/2090659884442513738"
+            "Mighty Ducks Ep 1",
+            "NET - Visuals"
           ],
           "samples": [
-            "https://archive.org/details/5-septmber-2026",
-            "https://archive.org/details/X-2090659884442513738"
+            "https://archive.org/details/mighty-ducks-ep-1",
+            "https://archive.org/details/km_20260906_720p_50f_20260906_154914"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 4
     }
   },
   "rankings": {
@@ -286,12 +286,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Den förbjudna floden - 3. De hemliga källorna",
-            "RAMAL MERLO-LOBOS -"
+            "Operation Khyber Ziarat Mangi Dam Post Attack",
+            "Mighty Ducks Ep 1"
           ],
           "samples": [
-            "https://archive.org/details/svtplay-eYaMnJe",
-            "https://archive.org/details/yt-archive-5vvq-l2nxas"
+            "https://archive.org/details/00536-operation-al-khyber-11-full-hd-online-video-cutter.com",
+            "https://archive.org/details/mighty-ducks-ep-1"
           ]
         },
         {
@@ -299,20 +299,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 1,
+          "repeated_urls": 2,
           "titles": [
-            "5 Septmber 2026 إجتماع الشفا والتحرير",
-            "https://x.com/razz_chikuwa/status/2090659884442513738"
+            "Mighty Ducks Ep 1",
+            "NET - Visuals"
           ],
           "samples": [
-            "https://archive.org/details/5-septmber-2026",
-            "https://archive.org/details/X-2090659884442513738"
+            "https://archive.org/details/mighty-ducks-ep-1",
+            "https://archive.org/details/km_20260906_720p_50f_20260906_154914"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 4
     },
     "search:views": {
       "pages": [

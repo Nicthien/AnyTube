@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "YoutubeSearchURL",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "ed7628b5afc3b9c264103d8f8e0374485a317ad16951a89ac5e851c42052ca36",
+  "template_revision": "8b36a034b9401b22c1d98d2729518c1584c7a670a7f63b1318813f0e70df44d4",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -26,7 +26,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:04:11.332616+00:00",
+  "date": "2026-09-06T18:22:59.968524+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -58,20 +58,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "Forest River Nature Sounds - Gentle Stream with Birdsong | 4K Relaxing Nature Am",
-            "12HR Ambient Underwater 4K Nature Relaxation Film: Treasures of the Ocean - Colo"
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by "
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=29XymHesxa0",
-            "https://www.youtube.com/watch?v=znnSGHMnCzo"
+            "https://www.youtube.com/watch?v=BHACKCNDMW8",
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     },
     "piano": {
       "pages": [
@@ -84,11 +84,11 @@
           "repeated_urls": 0,
           "titles": [
             "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
-            "Werenoi Ft. GIMS - Piano (Clip Officiel)"
+            "4 Beautiful Soundtracks | Relaxing Piano [10min]"
           ],
           "samples": [
             "https://www.youtube.com/watch?v=DIvewN35QT4",
-            "https://www.youtube.com/watch?v=ShR_fQrqsdA"
+            "https://www.youtube.com/watch?v=t_Kd_G7p6ZQ"
           ]
         },
         {
@@ -96,20 +96,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "4 Beautiful Soundtracks | Relaxing Piano [10min]",
+            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie",
             "Werenoi Ft. GIMS - Piano (Clip Officiel)"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=t_Kd_G7p6ZQ",
+            "https://www.youtube.com/watch?v=94wGs8KhJho",
             "https://www.youtube.com/watch?v=ShR_fQrqsdA"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "distinct_urls_over_two_pages": 6
     },
     "documentaire": {
       "pages": [
@@ -121,12 +121,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE",
-            "Kim Il-sung | Dictateurs, mode d'emploi | ARTE"
+            "Anthropocène, l’implacable enquête | Documentaire | ARTE",
+            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=ZBkBGExxzgw",
-            "https://www.youtube.com/watch?v=XOGRvCeUnMQ"
+            "https://www.youtube.com/watch?v=CxpehklhvJo",
+            "https://www.youtube.com/watch?v=ZBkBGExxzgw"
           ]
         },
         {
@@ -137,12 +137,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Alliance contre la Chine | Documentaire | ARTE",
-            "Dans les coulisses de l'École de Guerre française | Épisode 2 | Documentaire Com"
+            "La Terre en mouvements | Documentaire | ARTE",
+            "Les géants du ciel : les avions capables de transporter l’impossible | Documenta"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=oXM4V1KbFgo",
-            "https://www.youtube.com/watch?v=09k7ZiPyq-k"
+            "https://www.youtube.com/watch?v=Qpw1Ru3xBds",
+            "https://www.youtube.com/watch?v=-7sn8BD0JH0"
           ]
         }
       ],
@@ -164,11 +164,11 @@
           "repeated_urls": 0,
           "titles": [
             "Les Vidéos Qui Ont Complètement Cassé Mon Cerveau",
-            "Funniest and most hilarious videos in Africa 😂"
+            "Funniest and Most Hilarious Videos in Africa / Part 16"
           ],
           "samples": [
             "https://www.youtube.com/watch?v=BSa6fJWAFFo",
-            "https://www.youtube.com/watch?v=lu2tzGqjsQk"
+            "https://www.youtube.com/watch?v=SeGSWksY1XU"
           ]
         },
         {
@@ -180,11 +180,11 @@
           "repeated_urls": 0,
           "titles": [
             "I REACT to Shayvise's VIDEOS!",
-            "Destroy the Indestructible Cube, WIN $1,000!"
+            "Celui qui Résiste le plus longtemps Gagne !"
           ],
           "samples": [
             "https://www.youtube.com/watch?v=TMJ2fc39EXE",
-            "https://www.youtube.com/watch?v=wGvjnxpyZNQ"
+            "https://www.youtube.com/watch?v=IIp30Rkmw4Q"
           ]
         }
       ],
@@ -220,12 +220,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Adele - Rolling in the Deep (Official Music Video)",
-            "Ariana Grande ft. Nicki Minaj - Side To Side (Official Video) ft. Nicki Minaj"
+            "Ariana Grande ft. Nicki Minaj - Side To Side (Official Video) ft. Nicki Minaj",
+            "BTS (방탄소년단) 'Dynamite' Official MV"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=rYEDA3JcQqw",
-            "https://www.youtube.com/watch?v=SXiSVQZLje8"
+            "https://www.youtube.com/watch?v=SXiSVQZLje8",
+            "https://www.youtube.com/watch?v=gdZLi9oWNZg"
           ]
         }
       ],
@@ -258,12 +258,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
-            "Forest Nature 4K • Relaxation Film with Peaceful Meditation Music"
+            "Human Nature",
+            "Simulating an Ant Colony for 1000 Days"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
-            "https://www.youtube.com/watch?v=jfzs_FR1Hss"
+            "https://www.youtube.com/watch?v=oqLpko9Gprs",
+            "https://www.youtube.com/watch?v=PyiCHWfBQPY"
           ]
         }
       ],

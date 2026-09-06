@@ -10,6 +10,9 @@ from app.failures import classify, SourceFailure
 from app.pagination import capabilities, search_config
 from app.worker import run
 
+LF = b'\n'
+CRLF = b'\r\n'
+
 LOT_02 = ['Rokfin', 'RokfinSearch', 'Soundcloud', 'SoundcloudSearch', 'Vimeo', 'VrSquareSearch',
           'YahooSearch', 'Youtube', 'YoutubeMusicSearchURL', 'YoutubeSearch', 'YoutubeSearchURL']
 
@@ -125,6 +128,26 @@ class BatchTemplateTests(unittest.TestCase):
     def test_an_existing_source_that_declared_a_feed_is_corrected_not_refused(self):
         stored = {**default_connector('Vimeo'), 'home_kind': 'feed'}
         self.assertEqual(Connector.model_validate(stored).home_kind, 'search')
+
+    def test_the_engine_revision_does_not_depend_on_the_checkout_line_endings(self):
+        """A Windows clone must not declare every stored proof obsolete."""
+        from pathlib import Path
+        from app.verification import engine_version
+        source_file = Path(__file__).resolve().parents[1] / 'app' / 'connectors.py'
+        original = source_file.read_bytes()
+        unix = original.replace(CRLF, LF)
+        windows = unix.replace(LF, CRLF)
+        self.assertNotEqual(unix, windows)
+        try:
+            source_file.write_bytes(windows)
+            engine_version.cache_clear()
+            on_windows_checkout = engine_version()
+            source_file.write_bytes(unix)
+            engine_version.cache_clear()
+            self.assertEqual(on_windows_checkout, engine_version())
+        finally:
+            source_file.write_bytes(original)
+            engine_version.cache_clear()
 
     def test_vr_square_home_query_matches_the_catalogue_it_searches(self):
         self.assertEqual(default_connector('VrSquareSearch')['home_query'], 'VR')

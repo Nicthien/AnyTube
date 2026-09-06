@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "DailymotionSearch",
   "connector_kind": "json",
   "extractor": "Dailymotion",
-  "template_revision": "1c2ba3ac7ad66ba9b8f8897b3fd324f9c4cb74aa673d8831ae43eb4a1e3c6ba6",
+  "template_revision": "77212476dc8d0b0dbe593d6997909958d863565627fab7d9dc9f013c31afd08a",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +30,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T17:58:14.288719+00:00",
+  "date": "2026-09-06T18:16:57.899604+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -142,11 +142,11 @@
           "repeated_urls": 0,
           "titles": [
             "Documentaire",
-            "Documentaire complet Documentaire le empire Rome [Documentaire histoire antique]"
+            "Documentaire"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/x5qs68",
-            "https://www.dailymotion.com/video/x3cy8fs"
+            "https://www.dailymotion.com/video/x26n9i",
+            "https://www.dailymotion.com/video/x5qs68"
           ]
         }
       ],
@@ -167,12 +167,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Face à Face (Émission du 06/09/2026)",
-            "Caisse a savon"
+            "Ponce s'en prend méchamment à Anyme pendant le Z event",
+            "Le journal de 19h30 du 06/09/2026"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jbsy",
-            "https://www.dailymotion.com/video/xb4jcka"
+            "https://www.dailymotion.com/video/xb4jlty",
+            "https://www.dailymotion.com/video/xb4jm1e"
           ]
         },
         {
@@ -183,12 +183,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Marionnettes - le cheval qui tient la maison",
-            "Ma collaboration avec l’artiste sculptrice Ninu"
+            "Numb Inside [ Hatanaïre AMV Devil May Cry ]",
+            "Soulage ta main sans bouger de ta chaise – Douleurs, engourdissements et picotem"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jble",
-            "https://www.dailymotion.com/video/xb4jbg2"
+            "https://www.dailymotion.com/video/xb4jh4m",
+            "https://www.dailymotion.com/video/xb4jium"
           ]
         }
       ],
@@ -286,12 +286,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Face à Face (Émission du 06/09/2026)",
-            "Caisse a savon"
+            "Ponce s'en prend méchamment à Anyme pendant le Z event",
+            "Le journal de 19h30 du 06/09/2026"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jbsy",
-            "https://www.dailymotion.com/video/xb4jcka"
+            "https://www.dailymotion.com/video/xb4jlty",
+            "https://www.dailymotion.com/video/xb4jm1e"
           ]
         },
         {
@@ -302,12 +302,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Marionnettes - le cheval qui tient la maison",
-            "Ma collaboration avec l’artiste sculptrice Ninu"
+            "Numb Inside [ Hatanaïre AMV Devil May Cry ]",
+            "Soulage ta main sans bouger de ta chaise – Douleurs, engourdissements et picotem"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jble",
-            "https://www.dailymotion.com/video/xb4jbg2"
+            "https://www.dailymotion.com/video/xb4jh4m",
+            "https://www.dailymotion.com/video/xb4jium"
           ]
         }
       ],
@@ -362,12 +362,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Orcas: Wave Wizards! 🌊",
-            "Wet Jono: the movie | movie | 2020 | Official Featurette"
+            "La novia maldita del padrino",
+            "Orcas: Wave Wizards! 🌊"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4i18a",
-            "https://www.dailymotion.com/video/xb4htd6"
+            "https://www.dailymotion.com/video/xb4j6ai",
+            "https://www.dailymotion.com/video/xb4i18a"
           ]
         },
         {
@@ -378,12 +378,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Begotten | movie | 1991 | Official Teaser",
-            "Sold to the Warlord, Born for the Sky: He bought a princess, but awakened a drag"
+            "Heysel 85 | movie | 2026 | Official Trailer",
+            "Begotten | movie | 1991 | Official Teaser"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4hryu",
-            "https://www.dailymotion.com/video/xb4hkfu"
+            "https://www.dailymotion.com/video/xb4hsra",
+            "https://www.dailymotion.com/video/xb4hryu"
           ]
         }
       ],

@@ -1,7 +1,7 @@
 # Lot 02 — les onze modèles de recherche restants
 
-Lot arrêté le 6 septembre 2026 sur la branche `codex/sources-lot-01`, dans le même checkout séparé
-et à la même révision de moteur que [`sources-lot-01.md`](sources-lot-01.md). Les corrections du
+Lot arrêté le 6 septembre 2026, à la même révision de moteur que
+[`sources-lot-01.md`](sources-lot-01.md). Les corrections du
 moteur communes aux deux lots sont décrites dans le rapport du lot 01 et ne sont pas répétées ici.
 
 ## Périmètre
@@ -81,7 +81,7 @@ vérifié** : sans jeton d’accès l’API répond 401, et aucun jeton n’est 
 Les preuves complètes sont dans `docs/source-audit-lot-02/` (un fichier JSON par modèle, plus
 `summary.json`), au même format et à la même révision que celles du lot 01.
 
-Environnement : `local-worktree-lot01`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `46d110e31b6b6f38`, sondage du 2026-09-06T18:06:32 UTC. Proxy de sortie configuré : non.
+Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `90864eb5adce6b21`, sondage du 2026-09-06T18:25:10 UTC. Proxy de sortie configuré : non.
 
 Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, sur deux pages de trois résultats. Un modèle est déclaré au meilleur état observé : une requête en échec ne le condamne pas, et une requête qui répond ne masque pas les autres — le détail par requête figure dans les preuves.
 
@@ -94,9 +94,9 @@ Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, s
 | `Vimeo` | API Vimeo (JSON officiel) — jeton d’accès requis | authentification requise · 0/3 requêtes · 0 URL distinctes, 0 répétées | authentification requise · servi par flux | `home:views` : authentification requise<br>`home:recent` : authentification requise<br>`search:views` : authentification requise<br>`search:recent` : authentification requise |
 | `VrSquareSearch` | yt-dlp `VrSquareSearch` (ajax livr.jp) | média non lisible · 0/3 requêtes · 0 URL distinctes, 0 répétées | média non lisible · servi par recherche « VR » | aucun classement disponible |
 | `YahooSearch` | yt-dlp `yvsearch` (API JSON Yahoo Vidéos) | panne temporaire · 0/3 requêtes · 0 URL distinctes, 0 répétées | panne temporaire · servi par recherche « vidéos » | aucun classement disponible |
-| `Youtube` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
-| `YoutubeMusicSearchURL` | yt-dlp sur `music.youtube.com/search` | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | aucun classement disponible |
-| `YoutubeSearch` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
+| `Youtube` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
+| `YoutubeMusicSearchURL` | yt-dlp sur `music.youtube.com/search` | résultats reçus · 3/3 requêtes · 15 URL distinctes, 3 répétées | résultats reçus · servi par recherche « vidéos » | aucun classement disponible |
+| `YoutubeSearch` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 15 URL distinctes, 3 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
 | `YoutubeSearchURL` | yt-dlp sur `youtube.com/results` (filtre vidéo) | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
 
 Remarques par modèle :
@@ -109,31 +109,17 @@ Remarques par modèle :
 
 Révisions de modèle effectivement testées :
 
-- `Rokfin` : `e3e87cea092b693fcc9265d13e445c69…`
-- `RokfinSearch` : `e3e87cea092b693fcc9265d13e445c69…`
-- `Soundcloud` : `3a781d1195430e75322efa6c4309f3f0…`
-- `SoundcloudSearch` : `3a781d1195430e75322efa6c4309f3f0…`
-- `Vimeo` : `2d59f82d75ed45d6a2152c3ea8fd2e68…`
-- `VrSquareSearch` : `db466a056f8c88a50b6b1b15f302da51…`
-- `YahooSearch` : `12cb997cf40861dd235060aa289d3130…`
-- `Youtube` : `8af0369ba6aff0430ecf7b744998b995…`
-- `YoutubeMusicSearchURL` : `2c3c7e6016884ece6d68c7d0bb89ebb8…`
-- `YoutubeSearch` : `8af0369ba6aff0430ecf7b744998b995…`
-- `YoutubeSearchURL` : `ed7628b5afc3b9c264103d8f8e037448…`
-
-## Références
-
-| Plateforme | Interface appelée | Documentation | Extracteur installé |
-| --- | --- | --- | --- |
-| Rokfin | endpoint de recherche découvert dans les scripts de `rokfin.com` (via yt-dlp) | — | [`rokfin.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/rokfin.py) |
-| SoundCloud | `api-v2.soundcloud.com` (via yt-dlp) | — | [`soundcloud.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/soundcloud.py) |
-| Vimeo | `api.vimeo.com/videos` | [API Vimeo · videos](https://developer.vimeo.com/api/reference/videos) | [`vimeo.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/vimeo.py) |
-| VR SQUARE | `livr.jp/ajax/web-search` (via yt-dlp) | — | [`vrsquare.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/vrsquare.py) |
-| Yahoo Vidéos | `video.search.yahoo.com/search?o=js` (via yt-dlp) | — | [`yahoo.py`](https://github.com/yt-dlp/yt-dlp/blob/2026.08.19/yt_dlp/extractor/yahoo.py) |
-| YouTube | `ytsearch` et `youtube.com/results` (via yt-dlp) | — | [`youtube/`](https://github.com/yt-dlp/yt-dlp/tree/2026.08.19/yt_dlp/extractor/youtube) |
-
-Un tiret signifie qu’aucune documentation publique n’a été trouvée : l’interface n’est connue que
-par le code de l’extracteur installé. C’est précisément ce qui a cassé `Rokfin` et `YahooSearch`.
+- `Rokfin` : `fc82a747a1b29e39aadff96957e17cbd…`
+- `RokfinSearch` : `fc82a747a1b29e39aadff96957e17cbd…`
+- `Soundcloud` : `c7d28dd0be07f6012ba33246234d1266…`
+- `SoundcloudSearch` : `c7d28dd0be07f6012ba33246234d1266…`
+- `Vimeo` : `177a509fdb0e17b88d0c745cf43204ec…`
+- `VrSquareSearch` : `03d1d5e2fa5f964698e27ec8c567d358…`
+- `YahooSearch` : `24bee9c137c2531148c832a737729430…`
+- `Youtube` : `f841bf70b56ad6c81663780824ad8413…`
+- `YoutubeMusicSearchURL` : `f0b7e2b0b8320155c3bc37d8988a86ce…`
+- `YoutubeSearch` : `f841bf70b56ad6c81663780824ad8413…`
+- `YoutubeSearchURL` : `8b36a034b9401b22c1d98d2729518c15…`
 
 ## Ce qui reste à faire
 
@@ -194,7 +180,7 @@ python scripts/audit_lot.py --batch lot-02 --update-checks
 
 ## Validation exécutée
 
-- `python -m unittest discover -s tests` — **84 tests, tous verts**, dans `.venv` du projet.
+- `python -m unittest discover -s tests` — **85 tests, tous verts**, dans `.venv` du projet.
 - `git diff --check` — sans avertissement.
 - Garde-fou des dialogues natifs — inclus dans la série.
 - Les essais réseau restent hors de `tests/` : aucun test déterministe n’ouvre de connexion.

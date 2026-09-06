@@ -1,11 +1,11 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
-  "generated_at": "2026-09-06T18:06:30.247443+00:00",
+  "generated_at": "2026-09-06T18:25:08.842256+00:00",
   "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
   "batch": "lot-01",
   "templates": 20,
@@ -28,9 +28,9 @@
       }
     },
     "BiliBili": {
-      "search": "results_received",
+      "search": "rate_limited",
       "per_query": {
-        "nature": "results_received",
+        "nature": "rate_limited",
         "音乐": "rate_limited",
         "风景": "rate_limited"
       },

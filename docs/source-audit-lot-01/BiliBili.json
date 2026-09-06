@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "BiliBili",
   "connector_kind": "ytdlp",
   "extractor": "BiliBili",
-  "template_revision": "8ba3ca5b9f62f56c8bdccf0c329839d5fa22fa9d114c9c3f12d297e38c8274e5",
+  "template_revision": "2eb9238a5e7bd9f2c97afdc552ddbb67f7f8090d230a74a333e791d654234957",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:57:36.610737+00:00",
+  "date": "2026-09-06T18:16:25.805371+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -37,39 +37,12 @@
       "pages": [
         {
           "offset": 0,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "Nature",
-            "自然 nature"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av117220009121532",
-            "http://www.bilibili.com/video/av117188400778499"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "those animal is the beauty of nature",
-            "nature Boy Nature is the beauty of world"
-          ],
-          "samples": [
-            "http://www.bilibili.com/video/av117220160049544",
-            "http://www.bilibili.com/video/av117220009057052"
-          ]
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard."
         }
       ],
-      "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0
     },
     "音乐": {
       "pages": [
@@ -110,9 +83,9 @@
     }
   },
   "rankings": {},
-  "status": "results_received",
+  "status": "rate_limited",
   "per_query_status": {
-    "nature": "results_received",
+    "nature": "rate_limited",
     "音乐": "rate_limited",
     "风景": "rate_limited"
   }

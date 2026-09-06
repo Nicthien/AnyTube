@@ -14,8 +14,10 @@ import os
 
 @lru_cache(maxsize=1)
 def engine_version():
+    # Line endings are normalised: the same code must yield the same revision on any
+    # checkout, otherwise a Windows clone would declare every stored proof obsolete.
     root = Path(__file__).parent
-    return hashlib.sha256(b''.join((root / name).read_bytes() for name in
+    return hashlib.sha256(b''.join((root / name).read_bytes().replace(b'\r\n', b'\n') for name in
         ('connectors.py', 'worker.py', 'catalog.py', 'pagination.py', 'verification.py', 'registry.py', 'vault.py', 'failures.py', 'adapters.py', 'access.py', 'discovery.py', 'relay.py', 'playback.py', 'main.py', 'library.py', 'egress.py', 'static/playback.js', 'static/vendor/shaka-player.js'))).hexdigest()[:16]
 
 

@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "Vimeo",
   "connector_kind": "json",
   "extractor": "Vimeo",
-  "template_revision": "2d59f82d75ed45d6a2152c3ea8fd2e68146e810a3c32f96fa5741a921c6d0873",
+  "template_revision": "177a509fdb0e17b88d0c745cf43204ec670d7dd3cd3e0595ff7d8afe65c4a8b2",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -28,7 +28,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:02:48.173355+00:00",
+  "date": "2026-09-06T18:21:37.110190+00:00",
   "does_not_verify": [
     "video",
     "audio",

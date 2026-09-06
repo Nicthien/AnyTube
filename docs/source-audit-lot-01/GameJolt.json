@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "GameJolt",
   "connector_kind": "ytdlp",
   "extractor": "GameJolt",
-  "template_revision": "8dc63e9c7fbe414b873ba749df3f44ac5adf32b25314d48baf7ad3fe16c54596",
+  "template_revision": "ce9f5430c06554871328641154d6125f3e15e44bee860511473fa4e168d1c152",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T17:58:32.582813+00:00",
+  "date": "2026-09-06T18:17:12.897727+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -82,11 +82,11 @@
           "repeated_urls": 0,
           "titles": [
             "Seth - Deltarune Chapter 5 Character! 🙇🎨📱📘🟣\n#Sprite #Pixel #Character",
-            "Here is something I’d like to show regarding a piece of pixel art I replicatedI "
+            "\"DELTARUNE: WHY ME\" - Deltarune fangame looking for pixel artists/animators, and"
           ],
           "samples": [
             "https://gamejolt.com/p/seth-deltarune-chapter-5-character-sprite-u4biajac",
-            "https://gamejolt.com/p/here-is-something-i-d-like-to-show-regarding-a-piece-of-pixel-art-jygixspu"
+            "https://gamejolt.com/p/deltarune-why-me-deltarune-fangame-looking-for-pixel-artists-a-8mb2ndpc"
           ]
         },
         {
@@ -162,11 +162,11 @@
           "repeated_urls": 0,
           "titles": [
             "TWO NEW SONGS!! (September 2026 update)",
-            "Can FNAF Fan Game Devs Beat Their Own Games?"
+            "25/20 COMPLETED!:gj/fire:/25/20 ПРОЙДЕН!:gj/fire:"
           ],
           "samples": [
             "https://gamejolt.com/p/two-new-songs-september-2026-update-4jyiqe6c",
-            "https://www.youtube.com/watch?v=B1g6mHHXxvE"
+            "https://gamejolt.com/p/25-20-completed-gj-fire-25-20-proyden-gj-fire-fr3zbx4i"
           ]
         },
         {
@@ -177,12 +177,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "test player 1 (jumping, running, falling down, sliding on objects, and crouching",
-            "🎞️ Крупнейшая ретроспектива игр СККФII от Tunesmith Bird"
+            "🎞️ Крупнейшая ретроспектива игр СККФII от Tunesmith Bird",
+            "test player 1 (jumping, running, falling down, sliding on objects, and crouching"
           ],
           "samples": [
-            "https://gamejolt.com/p/test-player-1-jumping-running-falling-down-sliding-on-objects-gf6yhpeu",
-            "https://gamejolt.com/p/krupneyshaya-retrospektiva-igr-sk-siuegbrj"
+            "https://gamejolt.com/p/krupneyshaya-retrospektiva-igr-sk-siuegbrj",
+            "https://gamejolt.com/p/test-player-1-jumping-running-falling-down-sliding-on-objects-gf6yhpeu"
           ]
         }
       ],

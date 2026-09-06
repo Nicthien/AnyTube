@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "YoutubeSearch",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "8af0369ba6aff0430ecf7b744998b9951a1acd48da5e787f87b8f4ab9650a1b7",
+  "template_revision": "f841bf70b56ad6c81663780824ad84134b99b9fb68c83540cf1dc99b2cde3747",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -26,7 +26,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:03:37.918605+00:00",
+  "date": "2026-09-06T18:22:26.326839+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -45,12 +45,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "3 Hours of Incredible 4K Nature Footage | BBC Earth",
-            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
+            "Nature Europe 4K • Calm Horizon with Deep Relaxing Music | Relaxation Film",
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by "
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=5PQYM_KSXag",
-            "https://www.youtube.com/watch?v=BHACKCNDMW8"
+            "https://www.youtube.com/watch?v=SYyvx6GE2UI",
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw"
           ]
         },
         {
@@ -58,20 +58,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
-            "10 Hours Fantastic Views of Nature 4K with Relaxation Music"
+            "Nature Europe 4K • Calm Horizon with Deep Relaxing Music | Relaxation Film",
+            "Unbelievable Moments From Nature - Narrated by David Attenborough | BBC Earth"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
-            "https://www.youtube.com/watch?v=AKeUssuu3Is"
+            "https://www.youtube.com/watch?v=SYyvx6GE2UI",
+            "https://www.youtube.com/watch?v=JV7r8yV_eGg"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     },
     "piano": {
       "pages": [
@@ -83,12 +83,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie",
-            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]"
+            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
+            "most beautiful piano pieces"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=94wGs8KhJho",
-            "https://www.youtube.com/watch?v=DIvewN35QT4"
+            "https://www.youtube.com/watch?v=DIvewN35QT4",
+            "https://www.youtube.com/watch?v=ssN7_u08HFY"
           ]
         },
         {
@@ -99,12 +99,12 @@
           "new_urls": 2,
           "repeated_urls": 1,
           "titles": [
-            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
-            "She Was Told to Play a Simple Piano Tune — Then She Stunned Them All with a Fier"
+            "Werenoi Ft. GIMS - Piano (Clip Officiel)",
+            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=DIvewN35QT4",
-            "https://www.youtube.com/watch?v=Hx7HZkfFD7I"
+            "https://www.youtube.com/watch?v=ShR_fQrqsdA",
+            "https://www.youtube.com/watch?v=94wGs8KhJho"
           ]
         }
       ],
@@ -121,12 +121,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Anthropocène, l’implacable enquête | Documentaire | ARTE",
-            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE"
+            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE",
+            "Kim Il-sung | Dictateurs, mode d'emploi | ARTE"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=CxpehklhvJo",
-            "https://www.youtube.com/watch?v=ZBkBGExxzgw"
+            "https://www.youtube.com/watch?v=ZBkBGExxzgw",
+            "https://www.youtube.com/watch?v=XOGRvCeUnMQ"
           ]
         },
         {
@@ -134,20 +134,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "De l'utopie à la réalité | La Californie ! | ARTE",
-            "Dans les coulisses de l'École de Guerre française | Épisode 2 | Documentaire Com"
+            "Les géants du ciel : les avions capables de transporter l’impossible | Documenta",
+            "Alliance contre la Chine | Documentaire | ARTE"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=cObzLBz37Y8",
-            "https://www.youtube.com/watch?v=09k7ZiPyq-k"
+            "https://www.youtube.com/watch?v=-7sn8BD0JH0",
+            "https://www.youtube.com/watch?v=oXM4V1KbFgo"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     }
   },
   "home": {
@@ -176,8 +176,8 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
             "I REACT to Shayvise's VIDEOS!",
             "Destroy the Indestructible Cube, WIN $1,000!"
@@ -189,7 +189,7 @@
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     }
   },
   "rankings": {
@@ -255,20 +255,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
-            "Forest Nature 4K • Relaxation Film with Peaceful Meditation Music"
+            "Human Nature",
+            "Simulating an Ant Colony for 1000 Days"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
-            "https://www.youtube.com/watch?v=jfzs_FR1Hss"
+            "https://www.youtube.com/watch?v=oqLpko9Gprs",
+            "https://www.youtube.com/watch?v=PyiCHWfBQPY"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "distinct_urls_over_two_pages": 6
     }
   },
   "status": "results_received",

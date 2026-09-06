@@ -45,6 +45,11 @@ comme un flux de la plateforme.
 `engine_version()` couvre les fichiers modifiés : **les preuves antérieures, y compris
 `source-audit-current/`, deviennent historiques** et devront être rejouées.
 
+Cette révision est désormais **reproductible d'un poste à l'autre** : elle hachait les octets bruts,
+fins de ligne comprises, si bien qu'un clone Windows et un clone Unix annonçaient deux révisions
+différentes pour un code identique et périmaient mutuellement leurs preuves. Les fins de ligne sont
+normalisées avant le hachage, et les preuves des deux lots ont été rejouées après la correction.
+
 Le lot 02 traite les onze modèles restants — Rokfin, SoundCloud, Vimeo, VR SQUARE, Yahoo Vidéos et
 YouTube — et **achève les 31 modèles de recherche du catalogue** ; il est décrit dans
 [`sources-lot-02.md`](sources-lot-02.md), preuves dans `source-audit-lot-02/`.

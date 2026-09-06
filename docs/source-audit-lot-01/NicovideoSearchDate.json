@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "NicovideoSearchDate",
   "connector_kind": "json",
   "extractor": "Niconico",
-  "template_revision": "efa16d0530d6b23ecea5ea4d69cb94515a2693f4f21230490c8eb3ffa6a7d5ff",
+  "template_revision": "3e69b20b40fbfeaaa2719e479c5fcee8614634af1b97c496d4b67981666e7882",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -28,7 +28,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T18:00:07.536338+00:00",
+  "date": "2026-09-06T18:18:49.208480+00:00",
   "does_not_verify": [
     "video",
     "audio",

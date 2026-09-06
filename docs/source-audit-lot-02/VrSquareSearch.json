@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "VrSquareSearch",
   "connector_kind": "ytdlp",
   "extractor": "VrSquare",
-  "template_revision": "db466a056f8c88a50b6b1b15f302da5148c6199a7cc020a2caa4075d8cdf5a23",
+  "template_revision": "03d1d5e2fa5f964698e27ec8c567d358da9f1fe938bb4350b0c07cca5ddb1a87",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:02:53.303608+00:00",
+  "date": "2026-09-06T18:21:37.138860+00:00",
   "does_not_verify": [
     "video",
     "audio",

@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "Rokfin",
   "connector_kind": "ytdlp",
   "extractor": "Rokfin",
-  "template_revision": "e3e87cea092b693fcc9265d13e445c69fc3c6ad3e5e7f3810e3da89076e831f9",
+  "template_revision": "fc82a747a1b29e39aadff96957e17cbd55157434033ce83ac0d69e5edab82a43",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +24,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:01:47.915696+00:00",
+  "date": "2026-09-06T18:20:35.943637+00:00",
   "does_not_verify": [
     "video",
     "audio",

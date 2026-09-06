@@ -1,14 +1,14 @@
 {
-  "environment": "local-worktree-lot01",
+  "environment": "local-main",
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "46d110e31b6b6f38",
+  "connector_version": "90864eb5adce6b21",
   "proxy_configured": false,
   "template": "Youtube",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "8af0369ba6aff0430ecf7b744998b9951a1acd48da5e787f87b8f4ab9650a1b7",
+  "template_revision": "f841bf70b56ad6c81663780824ad84134b99b9fb68c83540cf1dc99b2cde3747",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -26,7 +26,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:03:06.172909+00:00",
+  "date": "2026-09-06T18:21:53.921164+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -45,12 +45,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "3 Hours of Incredible 4K Nature Footage | BBC Earth",
-            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+            "3 Hours of Incredible 4K Nature Footage | BBC Earth"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=5PQYM_KSXag",
-            "https://www.youtube.com/watch?v=BHACKCNDMW8"
+            "https://www.youtube.com/watch?v=BHACKCNDMW8",
+            "https://www.youtube.com/watch?v=5PQYM_KSXag"
           ]
         },
         {
@@ -83,12 +83,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "most beautiful piano pieces",
-            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]"
+            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
+            "most beautiful piano pieces"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=ssN7_u08HFY",
-            "https://www.youtube.com/watch?v=DIvewN35QT4"
+            "https://www.youtube.com/watch?v=DIvewN35QT4",
+            "https://www.youtube.com/watch?v=ssN7_u08HFY"
           ]
         },
         {
@@ -99,12 +99,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Werenoi Ft. GIMS - Piano (Clip Officiel)",
-            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie"
+            "Beautiful Piano Love Songs Playlist - The Best Relaxing Piano Instrumental Love ",
+            "Werenoi Ft. GIMS - Piano (Clip Officiel)"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=ShR_fQrqsdA",
-            "https://www.youtube.com/watch?v=94wGs8KhJho"
+            "https://www.youtube.com/watch?v=e_Au65kjpdo",
+            "https://www.youtube.com/watch?v=ShR_fQrqsdA"
           ]
         }
       ],
@@ -134,20 +134,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "De l'utopie à la réalité | La Californie ! | ARTE",
-            "On a filmé la vie des milliardaires et c'est délirant !"
+            "La Terre en mouvements | Documentaire | ARTE",
+            "Les géants du ciel : les avions capables de transporter l’impossible | Documenta"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=cObzLBz37Y8",
-            "https://www.youtube.com/watch?v=UhwXhYerpL0"
+            "https://www.youtube.com/watch?v=Qpw1Ru3xBds",
+            "https://www.youtube.com/watch?v=-7sn8BD0JH0"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     }
   },
   "home": {
@@ -179,12 +179,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "À Contre Sens 2 – Teaser | Prime Video",
-            "AN ADMIN REVEALS THE SECRETS OF KEYBOARD ESCAPE TO ME!! (Incredible)"
+            "Destroy the Indestructible Cube, WIN $1,000!",
+            "I REACT to Shayvise's VIDEOS!"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=XjQKorGDmes",
-            "https://www.youtube.com/watch?v=2sT_odhBUw4"
+            "https://www.youtube.com/watch?v=wGvjnxpyZNQ",
+            "https://www.youtube.com/watch?v=TMJ2fc39EXE"
           ]
         }
       ],
@@ -258,12 +258,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
-            "Forest Nature 4K • Relaxation Film with Peaceful Meditation Music"
+            "Human Nature",
+            "Simulating an Ant Colony for 1000 Days"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
-            "https://www.youtube.com/watch?v=jfzs_FR1Hss"
+            "https://www.youtube.com/watch?v=oqLpko9Gprs",
+            "https://www.youtube.com/watch?v=PyiCHWfBQPY"
           ]
         }
       ],
