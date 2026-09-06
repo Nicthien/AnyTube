@@ -132,8 +132,10 @@ def health():
 
 
 @app.get('/api/catalog')
-def available(q: str = Query('', max_length=200)):
-    items = [s for s in catalog() if q.casefold() in s['name'].casefold()]
+def available(q: str = Query('', max_length=200), grouped: bool = False):
+    from app.catalog import source_catalog
+    items = [s for s in (source_catalog() if grouped else catalog())
+             if q.casefold() in (s['name'] + ' ' + s.get('search_terms', '')).casefold()]
     return {'items': items, 'total': len(items)}
 
 

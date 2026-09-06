@@ -111,13 +111,13 @@ $('delete-source').addEventListener('click', async () => {
 });
 $('add-source').addEventListener('click', async () => {
   $('catalog-dialog').showModal(); $('catalog-status').textContent = 'Chargement du catalogue…'; $('catalog-query').value = '';
-  try { state.catalog = (await api('/api/catalog')).items; renderCatalog(); } catch (e) { $('catalog-status').textContent = e.message; }
+  try { state.catalog = (await api('/api/catalog?grouped=true')).items; renderCatalog(); } catch (e) { $('catalog-status').textContent = e.message; }
 });
 $('catalog-query').addEventListener('input', renderCatalog);
 function renderCatalog() {
   const query = $('catalog-query').value.toLocaleLowerCase();
-  const items = state.catalog.filter(s => s.name.toLocaleLowerCase().includes(query));
-  $('catalog-status').textContent = `${items.length} extracteur(s) · ${Math.min(items.length, 80)} affiché(s). Affinez avec un nom.`;
+  const items = state.catalog.filter(s => `${s.name} ${s.search_terms || ''}`.toLocaleLowerCase().includes(query));
+  $('catalog-status').textContent = `${items.length} entrée(s) · ${Math.min(items.length, 80)} affichée(s). Les variantes regroupées sont accessibles dans chaque source.`;
   $('catalog-results').replaceChildren(...items.slice(0, 80).map(source => {
     const row = node('div', 'catalog-row'); const detail = node('div');
     const heading = node('div', 'catalog-source-heading');
@@ -152,6 +152,23 @@ function renderCatalog() {
     }
     const preview = node('details'); preview.append(node('summary', '', 'Voir le modèle'));
     const model = node('pre', 'connector-json'); preview.append(model); detail.append(preview);
+    if (source.variants?.length > 1) {
+      const label = node('label', 'field', 'Fonction ou variante');
+      const select = node('select');
+      for (const variant of source.variants) {
+        const choice = node('option', '', `${variant.name} · ${variant.id}`);
+        choice.value = variant.id; select.append(choice);
+      }
+      select.value = source.id; label.append(select); detail.insertBefore(label, preview);
+      const variants = source.variants;
+      select.addEventListener('change', () => {
+        source = variants.find(item => item.id === select.value);
+        preview.open = false; model.textContent = '';
+        const added = state.sources.some(item => item.id === source.id);
+        add.disabled = added && !instanceField;
+        add.textContent = added && !instanceField ? 'Ajoutée' : 'Ajouter';
+      });
+    }
     preview.addEventListener('toggle', async () => {
       if (!preview.open) return;
       model.textContent = 'Chargement…';

@@ -3,6 +3,30 @@ import json
 from pathlib import Path
 from yt_dlp.extractor import gen_extractor_classes
 
+# Explicitly reviewed same-service families. Never merge unrelated services merely
+# because yt-dlp implements them in the same Python module.
+SOURCE_FAMILIES = {
+    'bilibili': 'BiliBili', 'dailymotion': 'Dailymotion',
+    'gamejolt': 'GameJolt', 'niconico': 'Niconico',
+    'peertube': 'PeerTube', 'prx': 'PRXStory',
+    'rokfin': 'Rokfin', 'soundcloud': 'Soundcloud', 'youtube': 'Youtube',
+}
+
+
+def source_catalog():
+    entries = catalog()
+    by_id = {entry['id']: entry for entry in entries}
+    result = []
+    for entry in entries:
+        primary = SOURCE_FAMILIES.get(entry['platform_id'])
+        if not primary or primary not in by_id:
+            result.append(entry)
+        elif entry['id'] == primary:
+            variants = [item for item in entries if item['platform_id'] == entry['platform_id']]
+            result.append({**entry, 'variants': variants,
+                           'search_terms': ' '.join(item['name'] + ' ' + item['id'] for item in variants)})
+    return result
+
 SEARCH = {
     'Youtube': ('YouTube', 'ytsearch'),
     'Dailymotion': ('Dailymotion', 'dailymotion'),
