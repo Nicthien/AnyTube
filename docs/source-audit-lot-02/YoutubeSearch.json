@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "YoutubeSearch",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "f841bf70b56ad6c81663780824ad84134b99b9fb68c83540cf1dc99b2cde3747",
+  "template_revision": "43b252c5a4e056a82b6f5bc3be17dfdbc905797c2a1dbc0696ce75781450bb50",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -26,7 +27,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:22:26.326839+00:00",
+  "date": "2026-09-06T18:42:55.396808+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -46,11 +47,11 @@
           "repeated_urls": 0,
           "titles": [
             "Nature Europe 4K • Calm Horizon with Deep Relaxing Music | Relaxation Film",
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by "
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
           ],
           "samples": [
             "https://www.youtube.com/watch?v=SYyvx6GE2UI",
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw"
+            "https://www.youtube.com/watch?v=BHACKCNDMW8"
           ]
         },
         {
@@ -58,20 +59,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "Nature Europe 4K • Calm Horizon with Deep Relaxing Music | Relaxation Film",
-            "Unbelievable Moments From Nature - Narrated by David Attenborough | BBC Earth"
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
+            "Relaxing Music with Nature Sounds - Waterfall HD"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=SYyvx6GE2UI",
-            "https://www.youtube.com/watch?v=JV7r8yV_eGg"
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
+            "https://www.youtube.com/watch?v=lE6RYpe9IT0"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "distinct_urls_over_two_pages": 6
     },
     "piano": {
       "pages": [
@@ -99,12 +100,12 @@
           "new_urls": 2,
           "repeated_urls": 1,
           "titles": [
-            "Werenoi Ft. GIMS - Piano (Clip Officiel)",
-            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie"
+            "most beautiful piano pieces",
+            "8 Hours of Beautiful Piano Music • Sleep Music, Fall Asleep, Relaxing Sleeping M"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=ShR_fQrqsdA",
-            "https://www.youtube.com/watch?v=94wGs8KhJho"
+            "https://www.youtube.com/watch?v=ssN7_u08HFY",
+            "https://www.youtube.com/watch?v=OeHLHNKQCXA"
           ]
         }
       ],
@@ -121,12 +122,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Benito Mussolini | Dictateurs, mode d'emploi | ARTE",
-            "Kim Il-sung | Dictateurs, mode d'emploi | ARTE"
+            "Anthropocène, l’implacable enquête | Documentaire | ARTE",
+            "La fabrique de l'ignorance | Documentaire | ARTE"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=ZBkBGExxzgw",
-            "https://www.youtube.com/watch?v=XOGRvCeUnMQ"
+            "https://www.youtube.com/watch?v=CxpehklhvJo",
+            "https://www.youtube.com/watch?v=KGqCRbqzvBI"
           ]
         },
         {
@@ -138,11 +139,11 @@
           "repeated_urls": 1,
           "titles": [
             "Les géants du ciel : les avions capables de transporter l’impossible | Documenta",
-            "Alliance contre la Chine | Documentaire | ARTE"
+            "Dans les coulisses de l'École de Guerre française | Épisode 2 | Documentaire Com"
           ],
           "samples": [
             "https://www.youtube.com/watch?v=-7sn8BD0JH0",
-            "https://www.youtube.com/watch?v=oXM4V1KbFgo"
+            "https://www.youtube.com/watch?v=09k7ZiPyq-k"
           ]
         }
       ],
@@ -176,20 +177,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "I REACT to Shayvise's VIDEOS!",
-            "Destroy the Indestructible Cube, WIN $1,000!"
+            "Destroy the Indestructible Cube, WIN $1,000!",
+            "The least satisfying videos in the world!"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=TMJ2fc39EXE",
-            "https://www.youtube.com/watch?v=wGvjnxpyZNQ"
+            "https://www.youtube.com/watch?v=wGvjnxpyZNQ",
+            "https://www.youtube.com/watch?v=PBc9xOWM49c"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "distinct_urls_over_two_pages": 6
     }
   },
   "rankings": {
@@ -205,11 +206,11 @@
           "repeated_urls": 0,
           "titles": [
             "Bébé Requin Danse | Chante et danse! | Animal Songs | PINKFONG Chansons pour les",
-            "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars"
+            "Shakira - Chantaje (Official Video) ft. Maluma"
           ],
           "samples": [
             "https://www.youtube.com/watch?v=XqZsoesa55w",
-            "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+            "https://www.youtube.com/watch?v=6Mgqbai3fKo"
           ]
         },
         {
@@ -217,8 +218,8 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
             "Adele - Rolling in the Deep (Official Music Video)",
             "Ariana Grande ft. Nicki Minaj - Side To Side (Official Video) ft. Nicki Minaj"
@@ -230,7 +231,7 @@
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     },
     "search:views": {
       "pages": [

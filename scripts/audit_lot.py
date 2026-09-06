@@ -109,10 +109,10 @@ async def two_pages(config, query, *, home=False, ranking='default'):
     return {'pages': pages, 'status': status, 'distinct_urls_over_two_pages': len(seen)}
 
 
-async def probe(template_id):
-    config = default_connector(template_id)
+async def probe(template_id, instance=''):
+    config = default_connector(template_id, instance) if instance else default_connector(template_id)
     caps = capabilities(config)
-    entry = {'template': template_id, 'connector_kind': config['kind'],
+    entry = {'template': template_id, 'instance': instance, 'connector_kind': config['kind'],
              'extractor': config['extractor'], 'template_revision': revision(config),
              'capabilities': caps, 'date': datetime.now(timezone.utc).isoformat(),
              'does_not_verify': ['video', 'audio', 'live', 'subtitles', 'download'],
@@ -147,12 +147,15 @@ async def main(args):
 
     async def guarded(template_id):
         async with semaphore:
-            entry = await probe(template_id)
-            (args.output / (template_id + '.json')).write_text(
+            entry = await probe(template_id, args.instance)
+            name = template_id + ('@' + args.instance if args.instance else '')
+            (args.output / (name + '.json')).write_text(
                 json.dumps({**context, **entry}, ensure_ascii=False, indent=2), encoding='utf-8')
-            print(template_id, entry['status'], flush=True)
+            print(name, entry['status'], flush=True)
             return entry
 
+    if args.instance and not args.template:
+        raise SystemExit('--instance demande --template.')
     known = {item['id'] for item in catalog()}
     selection = [t for t in (args.template or BATCHES[args.batch]) if t in known]
     if args.summarize_only:
@@ -208,6 +211,8 @@ if __name__ == '__main__':
     parser.add_argument('--batch', choices=sorted(BATCHES), default='lot-01')
     parser.add_argument('--output', type=Path, default=None)
     parser.add_argument('--template', action='append')
+    parser.add_argument('--instance', default='',
+                        help="hôte d'une instance auto-hébergée, pour un modèle qui se décline")
     parser.add_argument('--summarize-only', action='store_true')
     parser.add_argument('--update-checks', action='store_true')
     arguments = parser.parse_args()

@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "Vimeo",
+  "instance": "",
   "connector_kind": "json",
   "extractor": "Vimeo",
-  "template_revision": "177a509fdb0e17b88d0c745cf43204ec670d7dd3cd3e0595ff7d8afe65c4a8b2",
+  "template_revision": "6baf1762cb161f8901e6d7210aa9462bb00a53eb2394ac22eb3a2bb71557d56e",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -28,7 +29,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:21:37.110190+00:00",
+  "date": "2026-09-06T18:42:09.203612+00:00",
   "does_not_verify": [
     "video",
     "audio",

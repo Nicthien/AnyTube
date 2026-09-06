@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "YoutubeMusicSearchURL",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "f0b7e2b0b8320155c3bc37d8988a86ce80c95756fc3b628c990e55eefc41f174",
+  "template_revision": "20968898ff4f072bebd22f420c68dd735e22f91c9f560ccb3d89a9f2047a6d07",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:22:00.623300+00:00",
+  "date": "2026-09-06T18:42:30.760521+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -56,20 +57,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 1,
-          "repeated_urls": 2,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "Uploads from Sounds of Nature for Deep Sleep and Relaxation - Topic",
-            "Birds & Streams"
+            "Rain Sound (Pure White Noise for Natural Deep Sleep Inducing)",
+            "Amazon Jungle (Nature Sounds Only)"
           ],
           "samples": [
-            "https://www.youtube.com/playlist?list=UU6EU0ZpiKQbdODePSZlP7fw",
-            "https://www.youtube.com/playlist?list=RDCLAK5uy_mbiV5Yf70rsze2fxgIqK9k2Gi1sl-MOGM"
+            "https://music.youtube.com/watch?v=13EL6Mgeocc",
+            "https://music.youtube.com/watch?v=0PAAlv1y2Yc"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 4
+      "distinct_urls_over_two_pages": 5
     },
     "piano": {
       "pages": [
@@ -81,12 +82,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Gentle Piano",
-            "Classical Solo Piano"
+            "Solo Piano Bliss",
+            "Uploads from Piano Covers - Topic"
           ],
           "samples": [
-            "https://www.youtube.com/playlist?list=RDCLAK5uy_ldooV6iHaoPy6VKyVuHDq0DT4lh-3tRqQ",
-            "https://www.youtube.com/playlist?list=RDCLAK5uy_kmK1aMjb7sJ6eWV95Co02JwJJmdi0z05M"
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_l3jcyafhPprVNoFpQZL02ofimw9WsO6mE",
+            "https://www.youtube.com/playlist?list=UU5jQ8ZY76VZhkLPVROUcvog"
           ]
         },
         {
@@ -94,8 +95,8 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
             "Solo Piano Bliss",
             "Uploads from Jacob's Piano - Topic"
@@ -107,7 +108,7 @@
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     },
     "jazz": {
       "pages": [
@@ -174,20 +175,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
+          "new_urls": 2,
+          "repeated_urls": 1,
           "titles": [
-            "Laurent Gerra on RTL: the top 10 most viewed videos in 2025",
-            "Holo Horema"
+            "These videos should NEVER have been broadcast - CDF n°86 (Horror Thread)",
+            "Laurent Gerra on RTL: the top 10 most viewed videos in 2025"
           ],
           "samples": [
-            "https://music.youtube.com/watch?v=dK2obTuESu8",
-            "https://music.youtube.com/watch?v=J9EcT_HDXdY"
+            "https://music.youtube.com/watch?v=3D-vyaRIr9g",
+            "https://music.youtube.com/watch?v=dK2obTuESu8"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 5
     }
   },
   "rankings": {},

@@ -81,7 +81,7 @@ vérifié** : sans jeton d’accès l’API répond 401, et aucun jeton n’est 
 Les preuves complètes sont dans `docs/source-audit-lot-02/` (un fichier JSON par modèle, plus
 `summary.json`), au même format et à la même révision que celles du lot 01.
 
-Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `90864eb5adce6b21`, sondage du 2026-09-06T18:25:10 UTC. Proxy de sortie configuré : non.
+Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `dc55fa36c76fffbe`, sondage du 2026-09-06T18:46:46 UTC. Proxy de sortie configuré : non.
 
 Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, sur deux pages de trois résultats. Un modèle est déclaré au meilleur état observé : une requête en échec ne le condamne pas, et une requête qui répond ne masque pas les autres — le détail par requête figure dans les preuves.
 
@@ -94,10 +94,10 @@ Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, s
 | `Vimeo` | API Vimeo (JSON officiel) — jeton d’accès requis | authentification requise · 0/3 requêtes · 0 URL distinctes, 0 répétées | authentification requise · servi par flux | `home:views` : authentification requise<br>`home:recent` : authentification requise<br>`search:views` : authentification requise<br>`search:recent` : authentification requise |
 | `VrSquareSearch` | yt-dlp `VrSquareSearch` (ajax livr.jp) | média non lisible · 0/3 requêtes · 0 URL distinctes, 0 répétées | média non lisible · servi par recherche « VR » | aucun classement disponible |
 | `YahooSearch` | yt-dlp `yvsearch` (API JSON Yahoo Vidéos) | panne temporaire · 0/3 requêtes · 0 URL distinctes, 0 répétées | panne temporaire · servi par recherche « vidéos » | aucun classement disponible |
-| `Youtube` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
+| `Youtube` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
 | `YoutubeMusicSearchURL` | yt-dlp sur `music.youtube.com/search` | résultats reçus · 3/3 requêtes · 15 URL distinctes, 3 répétées | résultats reçus · servi par recherche « vidéos » | aucun classement disponible |
-| `YoutubeSearch` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 15 URL distinctes, 3 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
-| `YoutubeSearchURL` | yt-dlp sur `youtube.com/results` (filtre vidéo) | résultats reçus · 3/3 requêtes · 17 URL distinctes, 1 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
+| `YoutubeSearch` | yt-dlp `ytsearch` | résultats reçus · 3/3 requêtes · 16 URL distinctes, 2 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
+| `YoutubeSearchURL` | yt-dlp sur `youtube.com/results` (filtre vidéo) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par recherche « vidéos » | `home:views` : résultats reçus<br>`search:views` : résultats reçus |
 
 Remarques par modèle :
 
@@ -109,17 +109,17 @@ Remarques par modèle :
 
 Révisions de modèle effectivement testées :
 
-- `Rokfin` : `fc82a747a1b29e39aadff96957e17cbd…`
-- `RokfinSearch` : `fc82a747a1b29e39aadff96957e17cbd…`
-- `Soundcloud` : `c7d28dd0be07f6012ba33246234d1266…`
-- `SoundcloudSearch` : `c7d28dd0be07f6012ba33246234d1266…`
-- `Vimeo` : `177a509fdb0e17b88d0c745cf43204ec…`
-- `VrSquareSearch` : `03d1d5e2fa5f964698e27ec8c567d358…`
-- `YahooSearch` : `24bee9c137c2531148c832a737729430…`
-- `Youtube` : `f841bf70b56ad6c81663780824ad8413…`
-- `YoutubeMusicSearchURL` : `f0b7e2b0b8320155c3bc37d8988a86ce…`
-- `YoutubeSearch` : `f841bf70b56ad6c81663780824ad8413…`
-- `YoutubeSearchURL` : `8b36a034b9401b22c1d98d2729518c15…`
+- `Rokfin` : `1c846b931f31eb57a5a470a98a645241…`
+- `RokfinSearch` : `1c846b931f31eb57a5a470a98a645241…`
+- `Soundcloud` : `495260edd8c9c0c2adb6fc6f55c8e954…`
+- `SoundcloudSearch` : `495260edd8c9c0c2adb6fc6f55c8e954…`
+- `Vimeo` : `6baf1762cb161f8901e6d7210aa9462b…`
+- `VrSquareSearch` : `feaad6cbf0df9171d7928d984eeceea4…`
+- `YahooSearch` : `c3af03b229ae5fe002e17e1f27e34316…`
+- `Youtube` : `43b252c5a4e056a82b6f5bc3be17dfdb…`
+- `YoutubeMusicSearchURL` : `20968898ff4f072bebd22f420c68dd73…`
+- `YoutubeSearch` : `43b252c5a4e056a82b6f5bc3be17dfdb…`
+- `YoutubeSearchURL` : `68b34994817792590de741b16c7a54a7…`
 
 ## Ce qui reste à faire
 
@@ -180,7 +180,7 @@ python scripts/audit_lot.py --batch lot-02 --update-checks
 
 ## Validation exécutée
 
-- `python -m unittest discover -s tests` — **85 tests, tous verts**, dans `.venv` du projet.
+- `python -m unittest discover -s tests` — **96 tests, tous verts**, dans `.venv` du projet.
 - `git diff --check` — sans avertissement.
 - Garde-fou des dialogues natifs — inclus dans la série.
 - Les essais réseau restent hors de `tests/` : aucun test déterministe n’ouvre de connexion.

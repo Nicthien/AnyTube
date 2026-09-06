@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "BiliBili",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "BiliBili",
-  "template_revision": "2eb9238a5e7bd9f2c97afdc552ddbb67f7f8090d230a74a333e791d654234957",
+  "template_revision": "9e700252bcba4838467a858aadb56770492844bf68973111e1399597de002143",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:16:25.805371+00:00",
+  "date": "2026-09-06T18:36:44.109593+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -37,23 +38,66 @@
       "pages": [
         {
           "offset": 0,
-          "status": "rate_limited",
-          "detail": "La plateforme limite les requêtes. Réessayez plus tard."
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature",
+            "自然 nature"
+          ],
+          "samples": [
+            "http://www.bilibili.com/video/av117220009121532",
+            "http://www.bilibili.com/video/av117188400778499"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 2,
+          "distinct_urls": 2,
+          "new_urls": 2,
+          "repeated_urls": 0,
+          "titles": [
+            "Today minivlog #morning #parrot #nature #bilibili",
+            "#nature#sky#viralcontrnt#world"
+          ],
+          "samples": [
+            "http://www.bilibili.com/video/av117221669996036",
+            "http://www.bilibili.com/video/av117221971988816"
+          ]
         }
       ],
-      "status": "rate_limited",
-      "distinct_urls_over_two_pages": 0
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5
     },
     "音乐": {
       "pages": [
         {
           "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【神仙打架】华语乐坛神仙打架150首歌曲，经典歌曲合集，带滚动歌词（分P） p01 偏爱",
+            "【Hi-Res无损】再听潮汐，心起涟漪"
+          ],
+          "samples": [
+            "http://www.bilibili.com/video/av113685351696429",
+            "http://www.bilibili.com/video/av116698757729042"
+          ]
+        },
+        {
+          "offset": 3,
           "status": "rate_limited",
           "detail": "La plateforme limite les requêtes. Réessayez plus tard."
         }
       ],
-      "status": "rate_limited",
-      "distinct_urls_over_two_pages": 0
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 3
     },
     "风景": {
       "pages": [
@@ -83,10 +127,10 @@
     }
   },
   "rankings": {},
-  "status": "rate_limited",
+  "status": "results_received",
   "per_query_status": {
-    "nature": "rate_limited",
-    "音乐": "rate_limited",
+    "nature": "results_received",
+    "音乐": "results_received",
     "风景": "rate_limited"
   }
 }

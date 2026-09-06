@@ -169,12 +169,24 @@ def sources(q: str = Query('', max_length=200)):
 
 
 @app.get('/api/templates/{source_id}')
-def source_template(source_id: str):
+def source_template(source_id: str, instance: str = Query('', max_length=200)):
+    from app.catalog import playback_supported
+    from app.connectors import instance_host
     entry = next((s for s in catalog() if s['id'] == source_id), None)
     if not entry:
         raise HTTPException(404, 'Modèle introuvable.')
-    config = default_connector(source_id)
-    return {**entry, 'connector': config, 'revision': revision(config), 'connector_version': engine_version(), 'yt_dlp': __version__}
+    if instance and not entry.get('instance_software'):
+        raise HTTPException(400, 'Ce modèle ne se décline pas par instance.')
+    try:
+        config = default_connector(source_id, instance)
+        host = instance_host(instance, entry.get('default_instance', ''))
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+    known = playback_supported(source_id, host)
+    return {**entry, 'connector': config, 'revision': revision(config), 'instance': host,
+            # A search that answers on an unknown instance still has no playback path.
+            'playback_extractor': None if known is None else ('installed' if known else 'missing'),
+            'connector_version': engine_version(), 'yt_dlp': __version__}
 
 
 @app.get('/api/sources/{source_id}/template-diff')
@@ -183,13 +195,14 @@ def template_diff(source_id: str):
     if not source:
         raise HTTPException(404, 'Source introuvable.')
     template_id = source_id if not source_id.startswith('custom-') else source['connector']['extractor']
-    delivered = source_template(template_id)
+    delivered = source_template(template_id, '')
     return {**delivered, 'differences': differences(source['connector'], delivered['connector'])}
 
 
 class SourceCreate(BaseModel):
     id: str | None = Field(default=None, min_length=1, max_length=150)
     name: str | None = Field(default=None, min_length=1, max_length=100)
+    instance: str | None = Field(default=None, max_length=200)
     connector: Connector | None = None
 
 
@@ -225,7 +238,17 @@ def add_source(body: SourceCreate):
         item = next((s for s in catalog() if s['id'] == body.id), None)
         if not item:
             raise HTTPException(400, 'Source inconnue du catalogue yt-dlp.')
-        config = default_connector(item['id'])
+        if body.instance:
+            # One template, many self-hosted instances: each becomes its own saved source.
+            if not item.get('instance_software'):
+                raise HTTPException(400, 'Ce modèle ne se décline pas par instance.')
+            delivered = source_template(item['id'], body.instance)
+            config, host = delivered['connector'], delivered['instance']
+            item = {**item, 'id': 'custom-' + uuid.uuid4().hex,
+                    'name': (body.name or f'{item["instance_software"]} · {host}').strip()[:100],
+                    'instance': host, 'playback_extractor': delivered['playback_extractor']}
+        else:
+            config = default_connector(item['id'])
     with connect() as db:
         if db.execute('SELECT 1 FROM sources WHERE id=? AND owner=?', (item['id'],owner())).fetchone():
             raise HTTPException(409, 'Cette source est déjà ajoutée.')

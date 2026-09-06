@@ -219,14 +219,14 @@ Les preuves complètes sont dans `docs/source-audit-lot-01/` (un fichier JSON pa
 `summary.json`), chacune datée et portant l’environnement, la version de Python, la version de
 yt-dlp, la révision du moteur de connecteurs et la révision du modèle testé.
 
-Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `90864eb5adce6b21`, sondage du 2026-09-06T18:25:08 UTC. Proxy de sortie configuré : non.
+Environnement : `local-main`, Windows-11-10.0.26200-SP0, Python 3.14.6, yt-dlp 2026.08.19, révision du moteur de connecteurs `dc55fa36c76fffbe`, sondage du 2026-09-06T18:46:44 UTC. Proxy de sortie configuré : non.
 
 Chaque recherche est essayée avec trois requêtes adaptées à la plateforme, sur deux pages de trois résultats. Un modèle est déclaré au meilleur état observé : une requête en échec ne le condamne pas, et une requête qui répond ne masque pas les autres — le détail par requête figure dans les preuves.
 
 | Modèle | Interface réellement utilisée | Recherche (3 requêtes × 2 pages) | Accueil | Classements |
 | --- | --- | --- | --- | --- |
 | `ArchiveOrg` | API `archive.org/advancedsearch.php` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
-| `BiliBili` | yt-dlp `bilisearch` | quota ou filtrage · 0/3 requêtes · 0 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
+| `BiliBili` | yt-dlp `bilisearch` | résultats reçus · 2/3 requêtes · 8 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
 | `BiliBiliSearch` | yt-dlp `bilisearch` | quota ou filtrage · 0/3 requêtes · 0 URL distinctes, 0 répétées | quota ou filtrage · servi par recherche « vidéos » | aucun classement disponible |
 | `Dailymotion` | API Graph `api.dailymotion.com` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
 | `DailymotionSearch` | API Graph `api.dailymotion.com` (JSON officiel) | résultats reçus · 3/3 requêtes · 18 URL distinctes, 0 répétées | résultats reçus · servi par flux | `home:trending` : résultats reçus<br>`home:views` : résultats reçus<br>`home:recent` : résultats reçus<br>`search:views` : résultats reçus<br>`search:recent` : résultats reçus<br>`search:trending` : résultats reçus |
@@ -263,26 +263,41 @@ Remarques par modèle :
 
 Révisions de modèle effectivement testées :
 
-- `ArchiveOrg` : `04f41f17da9c958f180c7d78a6876ac9…`
-- `BiliBili` : `2eb9238a5e7bd9f2c97afdc552ddbb67…`
-- `BiliBiliSearch` : `2eb9238a5e7bd9f2c97afdc552ddbb67…`
-- `Dailymotion` : `77212476dc8d0b0dbe593d6997909958…`
-- `DailymotionSearch` : `77212476dc8d0b0dbe593d6997909958…`
-- `GameJolt` : `ce9f5430c06554871328641154d6125f…`
-- `GameJoltSearch` : `ce9f5430c06554871328641154d6125f…`
-- `GoogleSearch` : `75b63b1dd0ddfd984fece6a77f7793f0…`
-- `MailRuMusicSearch` : `00bd3a640d93c9c54cb342a37f32e457…`
-- `Niconico` : `ab20777c40ef59bec6edf6b8094467a3…`
-- `NicovideoSearch` : `ab20777c40ef59bec6edf6b8094467a3…`
-- `NicovideoSearchDate` : `3e69b20b40fbfeaaa2719e479c5fcee8…`
-- `NicovideoSearchURL` : `ab20777c40ef59bec6edf6b8094467a3…`
-- `PRXSeries` : `5b642e1b0a1b8e9301090f4e4dfbb948…`
-- `PRXSeriesSearch` : `5b642e1b0a1b8e9301090f4e4dfbb948…`
-- `PRXStoriesSearch` : `6d22f1ff38b6c0b236087fcc3c47c345…`
-- `PRXStory` : `6d22f1ff38b6c0b236087fcc3c47c345…`
-- `PeerTube` : `3cc6ac9a1e2a65b18b84c27ba7b490df…`
-- `PeerTubePlaylist` : `3cc6ac9a1e2a65b18b84c27ba7b490df…`
-- `RedGifsSearch` : `aa2e106e3797e08477c104f3d6f683d2…`
+- `ArchiveOrg` : `e1c64a5865622a9ddaa1daec0d3af43f…`
+- `BiliBili` : `9e700252bcba4838467a858aadb56770…`
+- `BiliBiliSearch` : `9e700252bcba4838467a858aadb56770…`
+- `Dailymotion` : `ae2a70f964ff6fb234813ea1251c2ed1…`
+- `DailymotionSearch` : `ae2a70f964ff6fb234813ea1251c2ed1…`
+- `GameJolt` : `9f6aee4cad6c45675324667863157944…`
+- `GameJoltSearch` : `9f6aee4cad6c45675324667863157944…`
+- `GoogleSearch` : `40c691c6ebdf0a93e653c3e44350e996…`
+- `MailRuMusicSearch` : `1355f372d8eb1feb4dd33436c22f4f0a…`
+- `Niconico` : `f4919c1f06417c501423e09eeb6322fa…`
+- `NicovideoSearch` : `f4919c1f06417c501423e09eeb6322fa…`
+- `NicovideoSearchDate` : `819a60a81385802a1fa889f40531c1ed…`
+- `NicovideoSearchURL` : `f4919c1f06417c501423e09eeb6322fa…`
+- `PRXSeries` : `5716deb3b74937f46b29bcad86a5d978…`
+- `PRXSeriesSearch` : `5716deb3b74937f46b29bcad86a5d978…`
+- `PRXStoriesSearch` : `e55bdab3af48ebc1d879cbc8730dac96…`
+- `PRXStory` : `e55bdab3af48ebc1d879cbc8730dac96…`
+- `PeerTube` : `6c54602930a9346b7dddbb937bdc2c30…`
+- `PeerTubePlaylist` : `6c54602930a9346b7dddbb937bdc2c30…`
+- `RedGifsSearch` : `d9f57dd4ea1bcb6d69ae6f425e09eebf…`
+
+### Un modèle décliné sur d'autres instances
+
+Le modèle PeerTube ne vise plus uniquement `framatube.org` : l'hôte se choisit à l'ajout de la
+source. Deux instances autres que celle par défaut ont été sondées séparément, au même format et à
+la même révision :
+
+| Instance | Recherche | Pages 1 et 2 | Accueil | Preuve |
+| --- | --- | --- | --- | --- |
+| `tilvids.com` | 3/3 requêtes servies | 16 URL distinctes | résultats reçus | `PeerTube@tilvids.com.json` |
+| `video.blender.org` | 3/3 requêtes servies | 8 URL distinctes | résultats reçus | `PeerTube@video.blender.org.json` |
+
+Ces preuves sont **hors du verdict du lot** : elles concernent une déclinaison, pas un modèle du
+catalogue, et `--summarize-only` ne les agrège pas. L'extracteur installé reconnaît ces deux hôtes,
+donc la lecture y est possible — mais elle n'a **pas** été essayée, comme pour tout le lot.
 
 ## Ce qui reste à faire
 
@@ -360,6 +375,9 @@ Révisions de modèle effectivement testées :
 | `tests/test_sources_expansion.py` | Garde-fou : un modèle examiné ne promeut pas sa plateforme |
 | `README.md`, `README.en.md` | État réel des 31 modèles et limites, dans les deux langues |
 | `docs/sources-lot-01.md`, `docs/sources-lot-02.md` | Les deux rapports |
+| `app/catalog.py`, `app/main.py`, `app/static/app.js` | Déclinaison d'un modèle par instance auto-hébergée |
+| `scripts/triage_families.py`, `docs/family-triage.json` | Tri des familles restantes par coût probable |
+| `docs/HANDOFF-SOURCES.md` | Note de passation pour la suite du chantier |
 | `docs/source-audit-lot-01/`, `docs/source-audit-lot-02/` | Preuves réseau datées |
 
 ## Conflits d’intégration possibles
@@ -397,8 +415,8 @@ reconstruire le résumé complet du lot à partir des preuves déjà stockées.
 
 ## Validation exécutée
 
-- `python -m unittest discover -s tests` — **85 tests, tous verts** (50 avant les lots, 35 ajoutés
-  par les lots 01 et 02), dans `.venv` du projet, Python 3.14.6.
+- `python -m unittest discover -s tests` — **96 tests, tous verts** (50 avant les lots, 46 ajoutés
+  depuis), dans `.venv` du projet, Python 3.14.6.
 - `git diff --check` — sans avertissement.
 - Garde-fou des dialogues natifs (`tests/test_bootstrap.py`) — inclus dans la série.
 - Les essais réseau sont dans `scripts/audit_lot.py`, séparés de la série déterministe : aucun test

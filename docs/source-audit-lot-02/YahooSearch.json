@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "YahooSearch",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "YahooSearch",
-  "template_revision": "24bee9c137c2531148c832a7377294308de9631f58576c0ba569a5a14cbea170",
+  "template_revision": "c3af03b229ae5fe002e17e1f27e34316ed76b23204966cbd4d444337b6db76da",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:21:47.761511+00:00",
+  "date": "2026-09-06T18:42:19.821730+00:00",
   "does_not_verify": [
     "video",
     "audio",

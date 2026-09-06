@@ -79,6 +79,8 @@ Les **31 modèles de recherche** ont été examinés par lots, plateforme par pl
 
 Trois modèles sont inutilisables pour une cause identifiée chez le fournisseur ou dans l'extracteur amont (Google Vidéos, Yahoo Vidéos, Rokfin) et cinq attendent un compte déposé dans le coffre (les quatre modèles PRX et Vimeo). Le catalogue affiche ces limites à côté de chaque modèle.
 
+Les logiciels auto-hébergés se déclinent : un modèle PeerTube, autant de sources que d'instances. Indiquer le domaine au moment de l'ajout suffit ; l'extracteur installé reconnaît 1 292 instances. Une instance qu'il ne connaît pas reste ajoutable, avec la recherche mais **sans lecture**, et l'interface le dit.
+
 Les preuves datées sont consignées dans [l'état des sources](docs/SOURCES-PROGRESS.md). Les essais documentés comprennent une recherche Dailymotion, la lecture HLS de Big Buck Bunny dans Chrome et la préparation vidéo/audio de ce film. Ils ne valident pas toutes les plateformes ni toutes les révisions ultérieures du code.
 
 ### Limites actuelles
@@ -133,6 +135,7 @@ Avant de proposer une modification, lancer `python -m unittest discover -s tests
 - [Installation, exploitation et restauration Unraid](docs/UNRAID.md) — français.
 - [État des sources, preuves et travaux restants](docs/SOURCES-PROGRESS.md) — français.
 - [Lot 01 des modèles de recherche](docs/sources-lot-01.md) et [lot 02](docs/sources-lot-02.md) — français ; corrections, preuves datées et blocages restants.
+- `python scripts/triage_families.py` — classe les familles sans modèle de recherche par coût probable ; résultat dans [docs/family-triage.json](docs/family-triage.json).
 - [Historique de validation du socle familial](docs/FAMILY-DELIVERY.md) — français ; certains constats précèdent l'extension des sources.
 
 ## Licence

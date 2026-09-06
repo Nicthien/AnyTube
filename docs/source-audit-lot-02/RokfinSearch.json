@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "RokfinSearch",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "Rokfin",
-  "template_revision": "fc82a747a1b29e39aadff96957e17cbd55157434033ce83ac0d69e5edab82a43",
+  "template_revision": "1c846b931f31eb57a5a470a98a645241f66cc73a018c4427eb4526421cd91cb7",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:20:36.129612+00:00",
+  "date": "2026-09-06T18:41:11.946105+00:00",
   "does_not_verify": [
     "video",
     "audio",

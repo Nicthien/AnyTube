@@ -168,9 +168,23 @@ class Connector(BaseModel):
         return self
 
 
-def default_connector(source_id):
+def instance_host(value, fallback=''):
+    """Self-hosted software shares one API across many hosts; the host stays fixed once chosen."""
+    value = (value or '').strip()
+    if not value:
+        return fallback
+    parts = urlsplit(value if '//' in value else 'https://' + value)
+    if parts.scheme not in ('http', 'https'):
+        raise ValueError('Indiquez le domaine de l’instance, éventuellement préfixé par https://.')
+    if parts.path.strip('/') or parts.query or parts.fragment:
+        raise ValueError('Indiquez seulement le domaine de l’instance, sans chemin ni paramètre.')
+    public_url(urlunsplit(('https', parts.netloc, '/', '', '')))
+    return parts.hostname.lower()
+
+
+def default_connector(source_id, instance=''):
     if source_id in ('PeerTube', 'PeerTubePlaylist'):
-        base = 'https://framatube.org/api/v1/'
+        base = 'https://' + instance_host(instance, 'framatube.org') + '/api/v1/'
         feed = base + 'videos?count={limit}'
         return Connector(kind='json', extractor='PeerTube', home_query='peertube',
             search_url=base+'search/videos?search={query}&count={limit}&sort=-match',

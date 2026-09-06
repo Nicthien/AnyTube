@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "ArchiveOrg",
+  "instance": "",
   "connector_kind": "json",
   "extractor": "ArchiveOrg",
-  "template_revision": "04f41f17da9c958f180c7d78a6876ac9d1d856485dd7a697fad1700062166ab7",
+  "template_revision": "e1c64a5865622a9ddaa1daec0d3af43f401a571ee7e7183d1dc94955cbd854a8",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +31,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T18:16:25.733252+00:00",
+  "date": "2026-09-06T18:36:44.038774+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -49,12 +50,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Nature of Things : CBCNEWS : November 22, 2025 10:00pm-11:01pm EST",
-            "jokes, gags, things of that nature ＊＊＊ [Lifesteal SMP] !plushie"
+            "Mohiniyattam",
+            "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
           ],
           "samples": [
-            "https://archive.org/details/CBCNEWS_20251123_030000_The_Nature_of_Things",
-            "https://archive.org/details/jokes-gags-things-of-that-nature-lifesteal-smp-plushie"
+            "https://archive.org/details/pli.ccrt.Mohiniyattam",
+            "https://archive.org/details/JORDANTV_20250921_064500_Jordan_With_Water_Purity"
           ]
         },
         {
@@ -65,12 +66,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Water Reuse Project Update - January to February 2017",
-            "A Sign In Creation : JORDANTV : July 14, 2026 4:50am-5:01am +03"
+            "Jordan With Water Purity : JORDANTV : January 25, 2026 9:45am-10:01am +03",
+            "Jordan With Water Purity : JORDANTV : February 1, 2026 8:45am-9:01am +03"
           ],
           "samples": [
-            "https://archive.org/details/kerrtx-Water_Reuse_Project_Update_-_January_to_February_2017",
-            "https://archive.org/details/JORDANTV_20260714_015000_A_Sign_In_Creation"
+            "https://archive.org/details/JORDANTV_20260125_064500_Jordan_With_Water_Purity",
+            "https://archive.org/details/JORDANTV_20260201_054500_Jordan_With_Water_Purity"
           ]
         }
       ],
@@ -87,12 +88,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "9convert.com 주말엔 나랑놀아 1080p",
-            "Fryderyk Chopin, KRAKOVIAK. GRAN RONDO' DA CONCERTO - Georges Cziffra, Georges C"
+            "Tubebuddy Tutorial Italiano - Tool per Crescere su Youtube",
+            "Jadoo 5/5S OST - You Don’t Belong In Kabul (Piracy Check Piano)"
           ],
           "samples": [
-            "https://archive.org/details/9convert.com-1080p_20260713_0021",
-            "https://archive.org/details/chopin-krakowiak-op.-14-audio-sheet-cziffra"
+            "https://archive.org/details/youtube-Z-5xL6Ng4O8",
+            "https://archive.org/details/youtube-X9NySWWiYhs"
           ]
         },
         {
@@ -103,12 +104,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Stupid Morning Bullshit - Tuesday, June 6th, 2017",
-            "Au bord de l'Oder - Valse - Feliks Dzieżanowski - Pour Clarinette et Piano"
+            "Lubbock ISD Inspire - Talkington School for Young Women Leaders Spirio System",
+            "Piano Starts Swarming With Girls....Survival Mode"
           ],
           "samples": [
-            "https://archive.org/details/stupid-morning-bullshit-tuesday-june-6th-2017",
-            "https://archive.org/details/oder_20220508"
+            "https://archive.org/details/lubisdtx-Lubbock_ISD_Inspire_-_Talkington_School_for_Young_Women_Leaders_Spirio_System",
+            "https://archive.org/details/youtube-nixH11UCFTE"
           ]
         }
       ],
@@ -125,12 +126,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "NOS-NTR Nieuwsuur 2020-06-28",
-            "MANIFESTATION MONSTRE au Pakistan en soutien à IMRAN KHAN et CONTRE LES USA !!!"
+            "Truth in Numbers: Everything, According to Wikipedia",
+            "QUI - a Striké cette Vidéo ? Voir la Description"
           ],
           "samples": [
-            "https://archive.org/details/nieuwsuur-2020-06-28",
-            "https://archive.org/details/youtube-yugACus8aS0"
+            "https://archive.org/details/20100000-documentaire-truth-in-numbers-everything-according-to-wikipedia",
+            "https://archive.org/details/youtube-mnvfTzWC4Ys"
           ]
         },
         {
@@ -141,12 +142,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Les Filles en Prison (Meufisme et Délinquance) - Partie 1",
-            "Contre-Enquêtes : L'Affaire Omar Raddad, la vérité sur une grâce"
+            "Pascal Ory nous parle de l’Ayatollah Khomeini - Toute L'Histoire",
+            "Military intel /// Police intel /// L'expert policier Rock Larochelle définit co"
           ],
           "samples": [
-            "https://archive.org/details/youtube-yGQfoWSU8kE",
-            "https://archive.org/details/youtube-AG0bToBW-70"
+            "https://archive.org/details/youtube-LfaSDnjbuS0",
+            "https://archive.org/details/military-intel-111_202205"
           ]
         }
       ],
@@ -167,12 +168,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Operation Khyber Ziarat Mangi Dam Post Attack",
-            "Mighty Ducks Ep 1"
+            "msnbc.com video 2007-12-24",
+            "Kansas City City Council Meeting - March 28, 2024"
           ],
           "samples": [
-            "https://archive.org/details/00536-operation-al-khyber-11-full-hd-online-video-cutter.com",
-            "https://archive.org/details/mighty-ducks-ep-1"
+            "https://archive.org/details/msnbc.com-video-2007-12-24",
+            "https://archive.org/details/openpublica-kansas_city-missouri-beb6f9ea-2e3e-4161-9f51-d5602a49337c"
           ]
         },
         {
@@ -180,20 +181,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 1,
-          "repeated_urls": 2,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "Mighty Ducks Ep 1",
-            "NET - Visuals"
+            "شريط أناشيد تبسم",
+            "Elk Grove State of the City Address - March 29, 2024"
           ],
           "samples": [
-            "https://archive.org/details/mighty-ducks-ep-1",
-            "https://archive.org/details/km_20260906_720p_50f_20260906_154914"
+            "https://archive.org/details/nesidler-tebessem-arpaca-tam-dolu",
+            "https://archive.org/details/openpublica-elkgrove-california-16d706af-ee19-11ee-98bb-0050569183fa"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 4
+      "distinct_urls_over_two_pages": 6
     }
   },
   "rankings": {
@@ -286,12 +287,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Operation Khyber Ziarat Mangi Dam Post Attack",
-            "Mighty Ducks Ep 1"
+            "msnbc.com video 2007-12-24",
+            "Kansas City City Council Meeting - March 28, 2024"
           ],
           "samples": [
-            "https://archive.org/details/00536-operation-al-khyber-11-full-hd-online-video-cutter.com",
-            "https://archive.org/details/mighty-ducks-ep-1"
+            "https://archive.org/details/msnbc.com-video-2007-12-24",
+            "https://archive.org/details/openpublica-kansas_city-missouri-beb6f9ea-2e3e-4161-9f51-d5602a49337c"
           ]
         },
         {
@@ -299,20 +300,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 1,
-          "repeated_urls": 2,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "Mighty Ducks Ep 1",
-            "NET - Visuals"
+            "شريط أناشيد تبسم",
+            "Elk Grove State of the City Address - March 29, 2024"
           ],
           "samples": [
-            "https://archive.org/details/mighty-ducks-ep-1",
-            "https://archive.org/details/km_20260906_720p_50f_20260906_154914"
+            "https://archive.org/details/nesidler-tebessem-arpaca-tam-dolu",
+            "https://archive.org/details/openpublica-elkgrove-california-16d706af-ee19-11ee-98bb-0050569183fa"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 4
+      "distinct_urls_over_two_pages": 6
     },
     "search:views": {
       "pages": [

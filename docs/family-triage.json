@@ -1,0 +1,271 @@
+{
+  "yt_dlp": "2026.08.19",
+  "families": 927,
+  "families_with_a_search_template": 16,
+  "families_pending": 911,
+  "pending_with_a_visible_json_api": 407,
+  "pending_with_api_and_search_hint": 233,
+  "note": "Un tri de candidats, pas une revue : chaque famille reste à lire, implémenter et sonder.",
+  "candidates": [
+    {
+      "family": "aenetworks",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "yoga.appsvcs.aetnd.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "cbsnews",
+      "extractors": 7,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "feeds-cbsn.cbsnews.com",
+        "feeds.cbsn.cbsnews.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "espn",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-app.espn.com",
+        "espn.api.edge.bamgrid.com",
+        "hs-consumer-api.espncricinfo.com",
+        "registerdisney.go.com",
+        "watch-cdn.product.api.espn.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "instagram",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.instagram.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "microsoftembed",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-v2.build.microsoft.com",
+        "learn.microsoft.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nba",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.nba.net",
+        "content-api-prod.nba.com",
+        "neulionscnbav2-a.akamaihd.net",
+        "watch.nba.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nbc",
+      "extractors": 10,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-leap.nbcsports.com",
+        "friendship.nbc.co",
+        "stream.nbcolympics.com",
+        "stream.nbcsports.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "ndr",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.ndr.de"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nhk",
+      "extractors": 8,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.nhk.or.jp"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "npo",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "start-player.npo.nl",
+        "www.npostart.nl",
+        "www.ntr.nl"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nrk",
+      "extractors": 10,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "nrkno-skole-prod.kube.nrk.no"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "orf",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-tvthek.orf.at",
+        "audioapi.orf.at",
+        "bits.orf.at"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "polskieradio",
+      "extractors": 7,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "lp3test.polskieradio.pl",
+        "www.polskieradio.pl"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "qqmusic",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "i.y.qq.com",
+        "u.y.qq.com"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "radiofrance",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.radiofrance.fr"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rai",
+      "extractors": 10,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.rai.tv"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rtlnl",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.rtl.nl"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rtve",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api2.rtve.es",
+        "www.rtve.es"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rutube",
+      "extractors": 7,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "rutube.ru"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "skyit",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "apid.sky.it",
+        "tv8.it"
+      ],
+      "mentions_search": true,
+      "login_required": false,
+      "score": 12
+    }
+  ]
+}

@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "MailRuMusicSearch",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "MailRuMusic",
-  "template_revision": "00bd3a640d93c9c54cb342a37f32e45778abd13e41e6bcf91bda8cf942572eb8",
+  "template_revision": "1355f372d8eb1feb4dd33436c22f4f0a0914afe97bbe1cc4ef73fef0c4b77964",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:17:52.406561+00:00",
+  "date": "2026-09-06T18:38:29.663251+00:00",
   "does_not_verify": [
     "video",
     "audio",

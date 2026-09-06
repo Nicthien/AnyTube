@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "GameJolt",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "GameJolt",
-  "template_revision": "ce9f5430c06554871328641154d6125f3e15e44bee860511473fa4e168d1c152",
+  "template_revision": "9f6aee4cad6c45675324667863157944abc32da3b4408e7eab5e3fe826f574ae",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:17:12.897727+00:00",
+  "date": "2026-09-06T18:37:51.040290+00:00",
   "does_not_verify": [
     "video",
     "audio",

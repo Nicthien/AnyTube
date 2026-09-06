@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "SoundcloudSearch",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "Soundcloud",
-  "template_revision": "c7d28dd0be07f6012ba33246234d12664ce94e045c112efa5f6ae8c0b45083f8",
+  "template_revision": "495260edd8c9c0c2adb6fc6f55c8e954f8b67b0f0ef262636ad4e5406132b9ba",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -24,7 +25,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:21:09.431295+00:00",
+  "date": "2026-09-06T18:41:42.359324+00:00",
   "does_not_verify": [
     "video",
     "audio",

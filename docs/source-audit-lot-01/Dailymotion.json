@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "Dailymotion",
+  "instance": "",
   "connector_kind": "json",
   "extractor": "Dailymotion",
-  "template_revision": "77212476dc8d0b0dbe593d6997909958d863565627fab7d9dc9f013c31afd08a",
+  "template_revision": "ae2a70f964ff6fb234813ea1251c2ed17c3540695d8eabb7812c88ae291c7b24",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -30,7 +31,7 @@
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T18:16:27.366836+00:00",
+  "date": "2026-09-06T18:37:20.364896+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -65,11 +66,11 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Nature #nature",
+            "Nature nature",
             "NATURE NATURE"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/x9n9s0w",
+            "https://www.dailymotion.com/video/x93g81o",
             "https://www.dailymotion.com/video/x6eh5n1"
           ]
         }
@@ -126,11 +127,11 @@
           "repeated_urls": 0,
           "titles": [
             "Documentaire",
-            "DOCUMENTAIRE"
+            "Documentaire"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xrz2ei",
-            "https://www.dailymotion.com/video/x2ikx44"
+            "https://www.dailymotion.com/video/x1hi7d",
+            "https://www.dailymotion.com/video/x4dkkx"
           ]
         },
         {
@@ -142,11 +143,11 @@
           "repeated_urls": 0,
           "titles": [
             "Documentaire",
-            "Documentaire"
+            "DOCUMENTAIRE"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/x26n9i",
-            "https://www.dailymotion.com/video/x5qs68"
+            "https://www.dailymotion.com/video/xo6ie",
+            "https://www.dailymotion.com/video/x2ikx44"
           ]
         }
       ],
@@ -167,12 +168,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Ponce s'en prend méchamment à Anyme pendant le Z event",
-            "Le journal de 19h30 du 06/09/2026"
+            "First day at Dragon School… but Momo isn’t ready to say goodbye 🥹🐉🎒",
+            "Agenouillez-vous devant la Reine du Dragon (DRAMA 2026) | Film Complet en França"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jlty",
-            "https://www.dailymotion.com/video/xb4jm1e"
+            "https://www.dailymotion.com/video/xb4jusu",
+            "https://www.dailymotion.com/video/xb4jqc2"
           ]
         },
         {
@@ -183,12 +184,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Numb Inside [ Hatanaïre AMV Devil May Cry ]",
-            "Soulage ta main sans bouger de ta chaise – Douleurs, engourdissements et picotem"
+            "Europe 1 soir - Hélène Roué - 06/09/2026 - Partie 7",
+            "LES PREMIÈRES TENSIONS DANS L’AMOUR EST DANS LE PRÉ 🐮"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jh4m",
-            "https://www.dailymotion.com/video/xb4jium"
+            "https://www.dailymotion.com/video/xb4jrsa",
+            "https://www.dailymotion.com/video/xb4jrxq"
           ]
         }
       ],
@@ -224,11 +225,11 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Bordeaux-Bègles donne une leçon au Racing et prend provisoirement la tête du Top",
+            "Indonésie : les images de l'éruption qui paralyse le trafic aérien",
             "Antoine Griezmann poursuit sa série en MLS, déjà auteur de quatre buts - Foot - "
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4bmwa",
+            "https://www.dailymotion.com/video/xb4gov2",
             "https://www.dailymotion.com/video/xb4fcle"
           ]
         }
@@ -286,12 +287,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Ponce s'en prend méchamment à Anyme pendant le Z event",
-            "Le journal de 19h30 du 06/09/2026"
+            "First day at Dragon School… but Momo isn’t ready to say goodbye 🥹🐉🎒",
+            "Agenouillez-vous devant la Reine du Dragon (DRAMA 2026) | Film Complet en França"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jlty",
-            "https://www.dailymotion.com/video/xb4jm1e"
+            "https://www.dailymotion.com/video/xb4jusu",
+            "https://www.dailymotion.com/video/xb4jqc2"
           ]
         },
         {
@@ -302,12 +303,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Numb Inside [ Hatanaïre AMV Devil May Cry ]",
-            "Soulage ta main sans bouger de ta chaise – Douleurs, engourdissements et picotem"
+            "Europe 1 soir - Hélène Roué - 06/09/2026 - Partie 7",
+            "LES PREMIÈRES TENSIONS DANS L’AMOUR EST DANS LE PRÉ 🐮"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4jh4m",
-            "https://www.dailymotion.com/video/xb4jium"
+            "https://www.dailymotion.com/video/xb4jrsa",
+            "https://www.dailymotion.com/video/xb4jrxq"
           ]
         }
       ],
@@ -362,12 +363,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "La novia maldita del padrino",
-            "Orcas: Wave Wizards! 🌊"
+            "route three ways to climax drama [Full Movie]",
+            "La novia maldita del padrino"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4j6ai",
-            "https://www.dailymotion.com/video/xb4i18a"
+            "https://www.dailymotion.com/video/xb4jq5i",
+            "https://www.dailymotion.com/video/xb4j6ai"
           ]
         },
         {
@@ -378,12 +379,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Heysel 85 | movie | 2026 | Official Trailer",
-            "Begotten | movie | 1991 | Official Teaser"
+            "Wet Jono: the movie | movie | 2020 | Official Featurette",
+            "Heysel 85 | movie | 2026 | Official Trailer"
           ],
           "samples": [
-            "https://www.dailymotion.com/video/xb4hsra",
-            "https://www.dailymotion.com/video/xb4hryu"
+            "https://www.dailymotion.com/video/xb4htd6",
+            "https://www.dailymotion.com/video/xb4hsra"
           ]
         }
       ],
@@ -417,11 +418,11 @@
           "repeated_urls": 0,
           "titles": [
             "'Never the animal's fault': unearthed footage reveals the real Steve Irwin",
-            "Mister Guadeloupe 2026 Jérémie Comminges : De pompier à Mister Guadeloupe, son p"
+            "Proximité avec la nature, dépassement de soi… Le trail séduit de plus en plus de"
           ],
           "samples": [
             "https://www.dailymotion.com/video/xb3ouy2",
-            "https://www.dailymotion.com/video/xb40mly"
+            "https://www.dailymotion.com/video/xb4doh6"
           ]
         }
       ],

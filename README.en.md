@@ -79,6 +79,8 @@ All **31 search templates** have been reviewed in batches, platform by platform,
 
 Three templates are unusable for a cause identified at the provider or in the upstream extractor (Google Video, Yahoo Video, Rokfin) and five need an account stored in the vault (the four PRX templates and Vimeo). The catalogue shows these limits next to each template.
 
+Self-hosted software is instantiable: one PeerTube template, as many sources as instances. Give the domain when adding the source; the installed extractor recognises 1,292 instances. An instance it does not know can still be added, with search but **without playback**, and the interface says so.
+
 Dated evidence is recorded in the [source progress report](docs/SOURCES-PROGRESS.md). Documented checks include Dailymotion search, HLS playback of Big Buck Bunny in Chrome and video/audio preparation of that film. They do not validate every platform or every later code revision.
 
 ### Current limitations
@@ -133,6 +135,7 @@ Before proposing a change, run `python -m unittest discover -s tests` in the pro
 - [Unraid installation, operation and restoration](docs/UNRAID.md) — French.
 - [Source status, evidence and remaining work](docs/SOURCES-PROGRESS.md) — French.
 - [Search template batch 01](docs/sources-lot-01.md) and [batch 02](docs/sources-lot-02.md) — French; corrections, dated evidence and remaining blockers.
+- `python scripts/triage_families.py` — ranks the families without a search template by likely cost; output in [docs/family-triage.json](docs/family-triage.json).
 - [Family foundation validation history](docs/FAMILY-DELIVERY.md) — French; some findings predate the source expansion.
 
 ## License

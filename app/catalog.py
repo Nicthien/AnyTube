@@ -66,6 +66,28 @@ LIMITATIONS = {
     'MailRuMusicSearch': 'Mail.ru Musique ne diffuse que de l’audio ; la lecture depuis cette source n’a pas été essayée.',
 }
 
+# Self-hosted software: the same API answers on every instance, so one template covers many
+# hosts. The chosen host is fixed inside the saved connector, never taken from a search query.
+INSTANCE_SOFTWARE = {
+    'PeerTube': {'software': 'PeerTube', 'default_instance': 'framatube.org',
+                 'probe_url': 'https://{host}/videos/watch/{uuid}'},
+    'PeerTubePlaylist': {'software': 'PeerTube', 'default_instance': 'framatube.org',
+                         'probe_url': 'https://{host}/videos/watch/{uuid}'},
+}
+# A well-formed identifier of the right shape, used only to ask the installed extractor
+# whether it recognises a host. Never fetched.
+PROBE_UUID = '00000000-0000-4000-8000-000000000000'
+
+
+def playback_supported(source_id, host):
+    """yt-dlp only knows a fixed list of instances; search can work where playback cannot."""
+    from yt_dlp.extractor import gen_extractor_classes
+    entry = INSTANCE_SOFTWARE.get(source_id)
+    if not entry or not host:
+        return None
+    target = entry['probe_url'].format(host=host, uuid=PROBE_UUID)
+    return any(cls.ie_key() != 'Generic' and cls.suitable(target) for cls in gen_extractor_classes())
+
 # Search pages explicitly implemented by the installed yt-dlp extractors.
 URL_SEARCH = {
     'YoutubeMusicSearchURL': ('YouTube Music', 'https://music.youtube.com/search?q={query}', 'Youtube'),
@@ -120,6 +142,9 @@ def catalog():
             item.update(name='PeerTube · Framatube' + (' · collections' if item['id']=='PeerTubePlaylist' else ''),search=True)
         if item['id'] in LIMITATIONS:
             item['limitation'] = LIMITATIONS[item['id']]
+        if item['id'] in INSTANCE_SOFTWARE:
+            item['instance_software'] = INSTANCE_SOFTWARE[item['id']]['software']
+            item['default_instance'] = INSTANCE_SOFTWARE[item['id']]['default_instance']
         item['template_status'] = 'search' if item['search'] else 'url_only'
         if checks.get('yt_dlp') == __version__ and item['id'] in checks.get('entries', {}):
             # A batch may re-probe part of the catalogue; an entry keeps its own date when it has one.

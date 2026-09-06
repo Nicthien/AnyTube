@@ -65,6 +65,35 @@ ne répondent plus dans le format attendu) et `Rokfin` (les identifiants de rech
 l'emplacement attendu sur le site). Cinq modèles — les quatre PRX et Vimeo — attendent un compte :
 le chemin par jeton de coffre existe désormais, mais il n'a pas pu être essayé.
 
+## Un modèle par logiciel, et un tri du reste — 6 septembre 2026
+
+Deux changements visent la vitesse de création des sources, pas une plateforme en particulier.
+
+**Un modèle, toutes les instances.** Les logiciels auto-hébergés répondent à la même API sur
+chaque hôte. Le modèle PeerTube était figé sur `framatube.org` ; l'hôte se choisit désormais à
+l'ajout de la source (`POST /api/sources` avec `instance`, ou le champ prévu dans le catalogue),
+et chaque instance devient une source distincte. L'extracteur installé reconnaît **1 292**
+instances PeerTube : le modèle unique couvre donc potentiellement 1 292 sources au lieu d'une.
+
+L'hôte est fixé dans le connecteur enregistré, jamais déduit d'une requête : le domaine reste
+constant, les adresses privées, les ports non standard, les identifiants dans l'URL et les chemins
+sont refusés. Une instance que l'extracteur installé **ne** connaît pas est acceptée mais annoncée
+comme telle : la recherche fonctionne, la lecture non. Ce n'est pas une supposition, c'est le
+résultat de l'interrogation de l'extracteur au moment de l'ajout.
+
+**Un tri du reste.** `scripts/triage_families.py` lit le code des extracteurs installés et sépare
+les familles selon qu'une API JSON à hôte fixe y est déjà visible. Sur les 911 familles sans modèle
+de recherche, **407** exposent une telle API et **233** mentionnent en plus une recherche. Le
+backlog réaliste est donc de l'ordre de deux cents familles, pas de neuf cents. Le classement est
+écrit dans `family-triage.json`.
+
+C'est un tri de candidats, jamais une revue : une famille citée reste entièrement à lire, à
+implémenter et à sonder. Le score n'indique que le coût probable.
+
+Le gisement facile est en revanche épuisé : les dix classes `SearchInfoExtractor` de yt-dlp sont
+toutes exploitées, et il ne reste que deux classes de recherche par URL inutilisées
+(`CiscoLiveSearch`, `OpenRecChannelSearch`). Tout le reste demande d'écrire le connecteur.
+
 ## Travail restant
 
 1. Registre de revues éditable/versionné : examiner les 927 regroupements et les interfaces officielles plateforme par plateforme ; relier les preuves à une identité de source stable à travers les modifications de configuration ; consolider les totaux vérifiés depuis les preuves.

@@ -3,12 +3,13 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
   "template": "Youtube",
+  "instance": "",
   "connector_kind": "ytdlp",
   "extractor": "Youtube",
-  "template_revision": "f841bf70b56ad6c81663780824ad84134b99b9fb68c83540cf1dc99b2cde3747",
+  "template_revision": "43b252c5a4e056a82b6f5bc3be17dfdbc905797c2a1dbc0696ce75781450bb50",
   "capabilities": {
     "search": true,
     "pagination": true,
@@ -26,7 +27,7 @@
     ],
     "home_kind": "search"
   },
-  "date": "2026-09-06T18:21:53.921164+00:00",
+  "date": "2026-09-06T18:42:26.005618+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -45,12 +46,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
-            "3 Hours of Incredible 4K Nature Footage | BBC Earth"
+            "3 Hours of Incredible 4K Nature Footage | BBC Earth",
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=BHACKCNDMW8",
-            "https://www.youtube.com/watch?v=5PQYM_KSXag"
+            "https://www.youtube.com/watch?v=5PQYM_KSXag",
+            "https://www.youtube.com/watch?v=BHACKCNDMW8"
           ]
         },
         {
@@ -61,12 +62,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
-            "12HR Ambient Underwater 4K Nature Relaxation Film: Treasures of the Ocean - Colo"
+            "Forest River Nature Sounds - Gentle Stream with Birdsong | 4K Relaxing Nature Am",
+            "8 HOURS OF RELAXING NATURE SOUNDS AND GENTLE BIRDSONG"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
-            "https://www.youtube.com/watch?v=znnSGHMnCzo"
+            "https://www.youtube.com/watch?v=29XymHesxa0",
+            "https://www.youtube.com/watch?v=aVS7PHjSxdI"
           ]
         }
       ],
@@ -83,12 +84,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
-            "most beautiful piano pieces"
+            "Relaxing Piano Music & Rain Sounds for Deep Sleep, Stress Relief and Anxiety, Me",
+            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=DIvewN35QT4",
-            "https://www.youtube.com/watch?v=ssN7_u08HFY"
+            "https://www.youtube.com/watch?v=eKO9BGdQ7Wk",
+            "https://www.youtube.com/watch?v=DIvewN35QT4"
           ]
         },
         {
@@ -99,12 +100,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Beautiful Piano Love Songs Playlist - The Best Relaxing Piano Instrumental Love ",
-            "Werenoi Ft. GIMS - Piano (Clip Officiel)"
+            "4 Beautiful Soundtracks | Relaxing Piano [10min]",
+            "Sensational Pianist Lucy Stuns Everyone at Leeds Train Station | The Piano Serie"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=e_Au65kjpdo",
-            "https://www.youtube.com/watch?v=ShR_fQrqsdA"
+            "https://www.youtube.com/watch?v=t_Kd_G7p6ZQ",
+            "https://www.youtube.com/watch?v=94wGs8KhJho"
           ]
         }
       ],
@@ -134,20 +135,20 @@
           "status": "results_received",
           "count": 3,
           "distinct_urls": 3,
-          "new_urls": 2,
-          "repeated_urls": 1,
+          "new_urls": 3,
+          "repeated_urls": 0,
           "titles": [
-            "La Terre en mouvements | Documentaire | ARTE",
+            "Dans les coulisses de l'École de Guerre française | Épisode 2 | Documentaire Com",
             "Les géants du ciel : les avions capables de transporter l’impossible | Documenta"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=Qpw1Ru3xBds",
+            "https://www.youtube.com/watch?v=09k7ZiPyq-k",
             "https://www.youtube.com/watch?v=-7sn8BD0JH0"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 5
+      "distinct_urls_over_two_pages": 6
     }
   },
   "home": {
@@ -179,12 +180,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "Destroy the Indestructible Cube, WIN $1,000!",
-            "I REACT to Shayvise's VIDEOS!"
+            "I REACT to Shayvise's VIDEOS!",
+            "Funniest and Most Hilarious Videos in Africa / Part 16"
           ],
           "samples": [
-            "https://www.youtube.com/watch?v=wGvjnxpyZNQ",
-            "https://www.youtube.com/watch?v=TMJ2fc39EXE"
+            "https://www.youtube.com/watch?v=TMJ2fc39EXE",
+            "https://www.youtube.com/watch?v=SeGSWksY1XU"
           ]
         }
       ],

@@ -3,9 +3,9 @@
   "host": "Windows-11-10.0.26200-SP0",
   "python": "3.14.6",
   "yt_dlp": "2026.08.19",
-  "connector_version": "90864eb5adce6b21",
+  "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
-  "generated_at": "2026-09-06T18:25:08.842256+00:00",
+  "generated_at": "2026-09-06T18:46:44.790813+00:00",
   "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
   "batch": "lot-01",
   "templates": 20,
@@ -28,10 +28,10 @@
       }
     },
     "BiliBili": {
-      "search": "rate_limited",
+      "search": "results_received",
       "per_query": {
-        "nature": "rate_limited",
-        "音乐": "rate_limited",
+        "nature": "results_received",
+        "音乐": "results_received",
         "风景": "rate_limited"
       },
       "home": "rate_limited",

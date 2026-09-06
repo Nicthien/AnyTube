@@ -5,16 +5,16 @@
   "yt_dlp": "2026.08.19",
   "connector_version": "dc55fa36c76fffbe",
   "proxy_configured": false,
-  "template": "Niconico",
-  "instance": "",
+  "template": "PeerTube",
+  "instance": "video.blender.org",
   "connector_kind": "json",
-  "extractor": "Niconico",
-  "template_revision": "f4919c1f06417c501423e09eeb6322fab33fa8793a22e3a4eca29d5f6e4c3bd0",
+  "extractor": "PeerTube",
+  "template_revision": "6a1cfc141285c59081aa8f4066275b8f9ab808b958f1cde5da610e3b8c1d7b15",
   "capabilities": {
     "search": true,
     "pagination": true,
     "pagination_mode": "native",
-    "max_results": 1600,
+    "max_results": null,
     "search_rankings": [
       "default",
       "views",
@@ -24,12 +24,13 @@
     "date": false,
     "home_rankings": [
       "default",
+      "trending",
       "views",
       "recent"
     ],
     "home_kind": "feed"
   },
-  "date": "2026-09-06T18:38:32.658556+00:00",
+  "date": "2026-09-06T18:46:00.148625+00:00",
   "does_not_verify": [
     "video",
     "audio",
@@ -48,12 +49,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "初音ミク オリジナル曲　『 Strangers 』",
-            "【二年目】狩猟生活（その３４）"
+            "The Roast of Nature Clicker | Scripting for Artists [14]",
+            "Armature Objects - Blender Fundamentals"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm18307409",
-            "https://www.nicovideo.jp/watch/sm26127545"
+            "https://video.blender.org/videos/watch/76be65e0-e729-464f-ab3f-124fd9cf4eef",
+            "https://video.blender.org/videos/watch/657bbbf2-b085-4d6a-a9f3-c6b191f9c7fb"
           ]
         },
         {
@@ -64,98 +65,62 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "二年目狩猟生活（その５４）",
-            "二年目狩猟生活（その３５）"
+            "New Armature Display - Blender 2.8 Code Quest",
+            "Blender 3.0 - Every New Feature in 6 minutes"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm27620668",
-            "https://www.nicovideo.jp/watch/sm26623758"
+            "https://video.blender.org/videos/watch/ec913276-1cf0-4e34-afb3-bba8b60faa3a",
+            "https://video.blender.org/videos/watch/43aeb437-0a0a-4669-a383-46b649e3e9b8"
           ]
         }
       ],
       "status": "results_received",
       "distinct_urls_over_two_pages": 6
     },
-    "音楽": {
+    "piano": {
       "pages": [
         {
           "offset": 0,
           "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
           "repeated_urls": 0,
           "titles": [
-            "【東方】Bad Apple!!　ＰＶ【影絵】",
-            "新・豪血寺一族 -煩悩解放 - レッツゴー！陰陽師"
+            "The making of Arturo e il Gabbiano A Blender short film - Luca Di Cecca, Nicolas"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm8628149",
-            "https://www.nicovideo.jp/watch/sm9"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "【初音ミク】みくみくにしてあげる♪【してやんよ】",
-            "初音ミク　が　オリジナル曲を歌ってくれたよ「メルト」"
-          ],
-          "samples": [
-            "https://www.nicovideo.jp/watch/sm1097445",
-            "https://www.nicovideo.jp/watch/sm1715919"
+            "https://video.blender.org/videos/watch/13d2059d-3f24-406b-a134-c6fe5f0a0351"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 1
     },
-    "風景": {
+    "documentaire": {
       "pages": [
         {
           "offset": 0,
           "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
           "repeated_urls": 0,
           "titles": [
-            "【作業用BGM】 音楽レイプ！ NONA REEVES feat.野獣と化した先輩.mp4",
-            "【初音ミク】THE WORLDS【オリジナルジェットコースターPV】"
+            "Help Needed with Add-ons Documentation - Blender 3.1"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm21746571",
-            "https://www.nicovideo.jp/watch/sm19856000"
-          ]
-        },
-        {
-          "offset": 3,
-          "status": "results_received",
-          "count": 3,
-          "distinct_urls": 3,
-          "new_urls": 3,
-          "repeated_urls": 0,
-          "titles": [
-            "決闘者の皆さんが艦これに興味を持ったようです",
-            "ドアラ グッドウィルドームに立つ!"
-          ],
-          "samples": [
-            "https://www.nicovideo.jp/watch/sm22930803",
-            "https://www.nicovideo.jp/watch/sm354359"
+            "https://video.blender.org/videos/watch/4970e813-ed81-49cb-9132-bd8ee84e3bb2"
           ]
         }
       ],
       "status": "results_received",
-      "distinct_urls_over_two_pages": 6
+      "distinct_urls_over_two_pages": 1
     }
   },
   "home": {
     "default": {
-      "query_used": "vidéos",
+      "query_used": "peertube",
       "served_by": "feed",
       "pages": [
         {
@@ -166,12 +131,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "りりぴ　(2026/9/5)  おしさひ",
-            "sc^イカれた生放送(サガフロリマスター)　１１－６"
+            "Overgrown 🤝 Cowboi - Blender Studio Log 31",
+            "Blender 5.3 is UNFAIR - Blender Today LIVE #288"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm46765838",
-            "https://www.nicovideo.jp/watch/sm46749183"
+            "https://video.blender.org/videos/watch/f90e0f5c-4d0b-4ccf-8559-c9e590aec633",
+            "https://video.blender.org/videos/watch/c1c8d764-de9b-4800-9274-5a26ac7db66b"
           ]
         },
         {
@@ -182,12 +147,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "【たんプリ】ｼ先脳【手描き】",
-            "日本書紀入門　第02回 一書に曰くの衝撃"
+            "TEXTURES made simple? Layers & painting galore - Blender Tomorrow",
+            "What's New in Blender 5.2 LTS! Official Overview"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm46766588",
-            "https://www.nicovideo.jp/watch/sm46766587"
+            "https://video.blender.org/videos/watch/3cefaf00-52de-4189-bf65-2e50e8705fd3",
+            "https://video.blender.org/videos/watch/65f539fe-0014-48e9-a30d-b16bf8a25101"
           ]
         }
       ],
@@ -196,6 +161,45 @@
     }
   },
   "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "OVERGROWN: a feature film project by Blender Studio",
+            "Making of Caminandes: Llamigos - Blender Open Movie"
+          ],
+          "samples": [
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605",
+            "https://video.blender.org/videos/watch/515fa4ff-7038-42a3-9e1b-ef7154bd7398"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SINGULARITY - Painterly Space Adventure",
+            "Big Buck Bunny 60fps 4K - Official Blender Foundation Short Film"
+          ],
+          "samples": [
+            "https://video.blender.org/videos/watch/1ba07bbb-1456-4293-99a6-833fa450eda0",
+            "https://video.blender.org/videos/watch/6402b77c-b61f-4a06-96ca-c8420a2becf4"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
     "home:views": {
       "served_by": "feed",
       "pages": [
@@ -207,12 +211,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "【東方】Bad Apple!!　ＰＶ【影絵】",
-            "M.C.ドナルドはダンスに夢中なのか？最終鬼畜道化師ドナルド・Ｍ"
+            "Inverse Kinematics Bone Constraint",
+            "OVERGROWN: a feature film project by Blender Studio"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm8628149",
-            "https://www.nicovideo.jp/watch/sm2057168"
+            "https://video.blender.org/videos/watch/20f9cc94-1c52-4485-bca3-272df8a899a2",
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605"
           ]
         },
         {
@@ -223,12 +227,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "【おにべろす】出会いから今までまとめ 百鬼あやめ(鬼)と戌亥とこ（ベロス）",
-            "『初音ミク』千本桜『オリジナル曲PV』"
+            "Ocean Modifier Example",
+            "SINGULARITY - Painterly Space Adventure"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm35919998",
-            "https://www.nicovideo.jp/watch/sm15630734"
+            "https://video.blender.org/videos/watch/509d3fe2-80f5-4a03-8496-95a51b8e6917",
+            "https://video.blender.org/videos/watch/1ba07bbb-1456-4293-99a6-833fa450eda0"
           ]
         }
       ],
@@ -246,12 +250,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "りりぴ　(2026/9/5)  おしさひ",
-            "sc^イカれた生放送(サガフロリマスター)　１１－６"
+            "Overgrown 🤝 Cowboi - Blender Studio Log 31",
+            "Blender 5.3 is UNFAIR - Blender Today LIVE #288"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm46765838",
-            "https://www.nicovideo.jp/watch/sm46749183"
+            "https://video.blender.org/videos/watch/f90e0f5c-4d0b-4ccf-8559-c9e590aec633",
+            "https://video.blender.org/videos/watch/c1c8d764-de9b-4800-9274-5a26ac7db66b"
           ]
         },
         {
@@ -262,12 +266,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "【たんプリ】ｼ先脳【手描き】",
-            "日本書紀入門　第02回 一書に曰くの衝撃"
+            "TEXTURES made simple? Layers & painting galore - Blender Tomorrow",
+            "What's New in Blender 5.2 LTS! Official Overview"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm46766588",
-            "https://www.nicovideo.jp/watch/sm46766587"
+            "https://video.blender.org/videos/watch/3cefaf00-52de-4189-bf65-2e50e8705fd3",
+            "https://video.blender.org/videos/watch/65f539fe-0014-48e9-a30d-b16bf8a25101"
           ]
         }
       ],
@@ -284,12 +288,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "初音ミク オリジナル曲　『 Strangers 』",
-            "【二年目】狩猟生活（その３４）"
+            "OVERGROWN: a feature film project by Blender Studio",
+            "SINGULARITY - Painterly Space Adventure"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm18307409",
-            "https://www.nicovideo.jp/watch/sm26127545"
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605",
+            "https://video.blender.org/videos/watch/1ba07bbb-1456-4293-99a6-833fa450eda0"
           ]
         },
         {
@@ -300,12 +304,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "二年目狩猟生活（その５４）",
-            "二年目狩猟生活（その３５）"
+            "Nuclear-Powered Underwater Creatures - Blender Studio Log 23",
+            "Blender 4.0 New Features Official Overview"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/sm27620668",
-            "https://www.nicovideo.jp/watch/sm26623758"
+            "https://video.blender.org/videos/watch/daa65c18-6e13-4a51-9f9c-5343b97118fe",
+            "https://video.blender.org/videos/watch/0312db19-d6fa-40e3-970c-3b383535721e"
           ]
         }
       ],
@@ -322,12 +326,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "夕陽に染まる海",
-            "野鳥界トップクラスに仲良しなキジバト夫婦のイチャイチャが尊すぎる… #shorts　"
+            "OVERGROWN: a feature film project by Blender Studio",
+            "VOICEOVER Natively in Blender - Blender Tomorrow"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/ss46752957",
-            "https://www.nicovideo.jp/watch/ss46747159"
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605",
+            "https://video.blender.org/videos/watch/d24abf72-6e68-4683-a54d-da5a21247f96"
           ]
         },
         {
@@ -338,12 +342,12 @@
           "new_urls": 3,
           "repeated_urls": 0,
           "titles": [
-            "【Comedy Duo】The Duality of Lincoln",
-            "敦賀をぷらついた"
+            "TEXTURE CACHE MIPMAPS — Blender Today LIVE #278",
+            "SINGULARITY - Painterly Space Adventure"
           ],
           "samples": [
-            "https://www.nicovideo.jp/watch/ss46735721",
-            "https://www.nicovideo.jp/watch/ss46733429"
+            "https://video.blender.org/videos/watch/8a450879-7931-412b-822d-4da39adfcf70",
+            "https://video.blender.org/videos/watch/1ba07bbb-1456-4293-99a6-833fa450eda0"
           ]
         }
       ],
@@ -354,7 +358,7 @@
   "status": "results_received",
   "per_query_status": {
     "nature": "results_received",
-    "音楽": "results_received",
-    "風景": "results_received"
+    "piano": "results_received",
+    "documentaire": "results_received"
   }
 }

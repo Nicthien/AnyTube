@@ -132,20 +132,37 @@ function renderCatalog() {
     }
     if (source.limitation) detail.append(node('small', 'notice', source.limitation));
     if (source.access_requirement) detail.append(node('small', '', source.access_requirement === 'api_token' ? 'Accès requis : clé ou jeton d’API, à déposer dans le coffre.' : 'Accès requis : un compte de la plateforme, à déposer dans le coffre.'));
+    let instanceField = null;
+    if (source.instance_software) {
+      const label = node('label', 'field');
+      label.append(node('span', '', `Instance ${source.instance_software} (un même modèle sert toutes les instances)`));
+      instanceField = node('input'); instanceField.type = 'text'; instanceField.placeholder = source.default_instance;
+      instanceField.setAttribute('aria-label', `Domaine de l’instance ${source.instance_software}`);
+      label.append(instanceField); detail.append(label);
+      detail.append(node('small', '', 'Laisser vide pour l’instance par défaut. Une instance inconnue de l’extracteur installé permet la recherche, pas la lecture.'));
+    }
     const preview = node('details'); preview.append(node('summary', '', 'Voir le modèle'));
     const model = node('pre', 'connector-json'); preview.append(model); detail.append(preview);
     preview.addEventListener('toggle', async () => {
-      if (!preview.open || model.textContent) return;
+      if (!preview.open) return;
       model.textContent = 'Chargement…';
-      try { model.textContent = JSON.stringify((await api(`/api/templates/${encodeURIComponent(source.id)}`)).connector, null, 2); }
+      const host = instanceField?.value.trim();
+      try { model.textContent = JSON.stringify((await api(`/api/templates/${encodeURIComponent(source.id)}${host ? '?instance=' + encodeURIComponent(host) : ''}`)).connector, null, 2); }
       catch (e) { model.textContent = e.message; }
     });
     const exists = state.sources.some(s => s.id === source.id);
-    const add = button(exists ? 'Ajoutée' : 'Ajouter', 'secondary', async () => {
+    const add = button(exists && !instanceField ? 'Ajoutée' : 'Ajouter', 'secondary', async () => {
       add.disabled = true;
-      try { await api('/api/sources', { method: 'POST', body: JSON.stringify({ id: source.id }) }); await loadSources(); renderCatalog(); toast(`${source.name} ajoutée.`); }
+      const host = instanceField?.value.trim();
+      try {
+        const created = await api('/api/sources', { method: 'POST', body: JSON.stringify({ id: source.id, instance: host || null }) });
+        await loadSources(); renderCatalog();
+        toast(created.playback_extractor === 'missing'
+          ? `${created.name} ajoutée. Recherche disponible ; l’extracteur installé ne connaît pas cette instance, la lecture ne fonctionnera pas.`
+          : `${created.name} ajoutée.`);
+      }
       catch (e) { $('catalog-status').textContent = e.message; add.disabled = false; }
-    }); add.disabled = exists; row.append(detail, add); return row;
+    }); add.disabled = exists && !instanceField; row.append(detail, add); return row;
   }));
 }
 function duration(value) { if (!Number.isFinite(value)) return ''; const seconds = Math.floor(value); return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`; }
