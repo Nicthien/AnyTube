@@ -26,6 +26,24 @@ Les modales d'accès ont été inspectées à 390 px dans les deux thèmes et su
 
 50 tests déterministes passent dans `.venv`, dont le garde-fou des dialogues natifs, et `git diff --check` passe. Le dépôt étant encore non suivi, ce dernier ne couvre pas les fichiers nouveaux. Le Python global Windows n'a pas yt-dlp ; utiliser l'environnement du projet avec `requirements-dev.txt` pour les tests. L'image de production ne contient pas le client HTTP de test.
 
+## Lot 01 des modèles de recherche — 6 septembre 2026
+
+Les vingt premiers modèles de recherche triés par identifiant ont été examinés, corrigés et
+sondés séparément. Le détail, les preuves datées et les blocages restants sont dans
+[`sources-lot-01.md`](sources-lot-01.md) ; les essais réseau sont dans `source-audit-lot-01/`.
+
+Ce lot corrige cinq défauts vérifiés du moteur, pas seulement des modèles : les erreurs HTTP levées
+par yt-dlp n'étaient jamais reconnues (toute réponse 401 ou 429 devenait « plateforme
+indisponible »), la pagination native supprimait les paramètres de requête volontairement vides, un
+listing échouait entièrement dès qu'une entrée n'avait aucun format lisible, des résultats
+pouvaient partager tous la même URL, et un accueil servi par une recherche pouvait être présenté
+comme un flux de la plateforme.
+
+`engine_version()` couvre les fichiers modifiés : **les preuves antérieures, y compris
+`source-audit-current/`, deviennent historiques** et devront être rejouées.
+
+Les onze modèles de recherche restants n'ont pas été traités par ce lot.
+
 ## Travail restant
 
 1. Registre de revues éditable/versionné : examiner les 927 regroupements et les interfaces officielles plateforme par plateforme ; relier les preuves à une identité de source stable à travers les modifications de configuration ; consolider les totaux vérifiés depuis les preuves.

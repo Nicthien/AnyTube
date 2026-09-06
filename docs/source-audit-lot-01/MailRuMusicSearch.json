@@ -1,0 +1,192 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "MailRuMusicSearch",
+  "connector_kind": "ytdlp",
+  "extractor": "MailRuMusic",
+  "template_revision": "df8a1b328b4ef1defc8ae7ec8db5341c1c7131c47dad5191c6fb0a58a4fc394f",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T17:23:31.854544+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Engelbert Humperdinck - Nature Boy",
+            "Roger Williams - Nature Boy"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-2bc5e906993f9636c23014afdffd3988",
+            "https://my.mail.ru/music/songs/track-7c0c7200824b65e67b8f52d522ac221b"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Sounds Of Nature - дуэт с кукушкой",
+            "Enigma - We Are Nature"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-1bced9a23bb0283dcb1428fcbf6cada3",
+            "https://my.mail.ru/music/songs/track-96b662f3b80da6e555465399583d2f14"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "пианино": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piano Bar, Essential Jazz, Jazz Background Music, Mellow Jazz Mood, Lounge Music",
+            "Piano Bar, Coffee Shop Jazz, Jazz Background Music, Mellow Jazz Mood, Jazz Songs"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-46b427bfa00700f3dece780843e1da55",
+            "https://my.mail.ru/music/songs/track-c888781095f1481c8c9b0e1080ee5023"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piano Bar, Essential Jazz, Restaurant Music, Coffee Shop Jazz, Mellow Jazz Mood,",
+            "Tom Barabas - Midnight Affair"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-7109d4b760438d03a10587fb314f6246",
+            "https://my.mail.ru/music/songs/track-1f9df37597eb477ad5e28ba6a568501e"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "рок": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Score - Stronger",
+            "The Score - Legend"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-59b7b431691f56644ebb9319d6dbbcdb",
+            "https://my.mail.ru/music/songs/track-fcb225841d76ce3d469962192c7a04ea"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Score - Head Up",
+            "The Score - Unstoppable"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-a9c6eb9a9bc22245ec43153216e0233b",
+            "https://my.mail.ru/music/songs/track-e435048ea6171ce45018f650e8309cb1"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Hamid El Kasri[www.StounAmi.Net] Musique, clips, Vidéos/ Chaabi, Rai, Gnawa, - T"
+          ],
+          "samples": [
+            "https://my.mail.ru/music/songs/track-448b564d684955e17b3dd4aba4853881"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "empty",
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 1
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "пианино": "results_received",
+    "рок": "results_received"
+  }
+}

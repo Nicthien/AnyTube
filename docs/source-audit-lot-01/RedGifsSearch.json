@@ -1,0 +1,318 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "RedGifsSearch",
+  "connector_kind": "ytdlp",
+  "extractor": "RedGifs",
+  "template_revision": "5ef170a964176fcf35c58aa4a4d0da142f8a6622930d2a907f1710e409360c32",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T17:25:37.171574+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "massage": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/lawfultenderkoodoo",
+            "https://redgifs.com/watch/looseamusedbluetonguelizard"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/brownfarflunggoat",
+            "https://redgifs.com/watch/fuzzyexaltedneonblueguppy"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "dance": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/lawfultenderkoodoo",
+            "https://redgifs.com/watch/looseamusedbluetonguelizard"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/brownfarflunggoat",
+            "https://redgifs.com/watch/fuzzyexaltedneonblueguppy"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "yoga": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/lawfultenderkoodoo",
+            "https://redgifs.com/watch/looseamusedbluetonguelizard"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/brownfarflunggoat",
+            "https://redgifs.com/watch/fuzzyexaltedneonblueguppy"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/lawfultenderkoodoo",
+            "https://redgifs.com/watch/looseamusedbluetonguelizard"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/brownfarflunggoat",
+            "https://redgifs.com/watch/fuzzyexaltedneonblueguppy"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "rankings": {
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Blonde Cute Petite",
+            "Blowjob Pornstar"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/equatorialgrubbynoctilio",
+            "https://redgifs.com/watch/messysneakyarmednylonshrimp"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Ass Cute Lana Rhoades",
+            "Car Exhibitionism Exhibitionist Fingering Lilly Vig Public Squirt Squirting r/Ca"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/unselfishprimebird",
+            "https://redgifs.com/watch/shorttermobeseamericanbulldog"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Amateur Big Tits Boobs Bouncing Tits Natural Tits Tits",
+            "BBC BBC slut Big Tits Brunette Cuckold Gangbang Glasses Hotwife Interracial Orga"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/clearangelicmouse",
+            "https://redgifs.com/watch/blanksnowxenopterygii"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Amateur Ass Big Tits OnlyFans",
+            "Big Dick Big Tits Blonde Ebony Latina Male Masturbation Masturbating Sex Sissy S"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/upsetgoldenrodhogget",
+            "https://redgifs.com/watch/educatedecstaticguineapig"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/lawfultenderkoodoo",
+            "https://redgifs.com/watch/looseamusedbluetonguelizard"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "RedGifs",
+            "RedGifs"
+          ],
+          "samples": [
+            "https://redgifs.com/watch/brownfarflunggoat",
+            "https://redgifs.com/watch/fuzzyexaltedneonblueguppy"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "massage": "results_received",
+    "dance": "results_received",
+    "yoga": "results_received"
+  }
+}

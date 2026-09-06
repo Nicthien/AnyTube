@@ -1,0 +1,271 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T17:26:34.642471+00:00",
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-01",
+  "templates": 20,
+  "results": {
+    "ArchiveOrg": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "BiliBili": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音乐": "results_received",
+        "风景": "rate_limited"
+      },
+      "home": "rate_limited",
+      "rankings": {}
+    },
+    "BiliBiliSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音乐": "rate_limited",
+        "风景": "rate_limited"
+      },
+      "home": "rate_limited",
+      "rankings": {}
+    },
+    "Dailymotion": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "DailymotionSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "GameJolt": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "pixel": "results_received",
+        "horror": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "GameJoltSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "pixel": "results_received",
+        "horror": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "GoogleSearch": {
+      "search": "empty",
+      "per_query": {
+        "nature": "empty",
+        "piano": "empty",
+        "documentaire": "empty"
+      },
+      "home": "empty",
+      "rankings": {}
+    },
+    "MailRuMusicSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "пианино": "results_received",
+        "рок": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Niconico": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearchDate": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "PRXSeries": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXSeriesSearch": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXStoriesSearch": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXStory": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PeerTube": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "PeerTubePlaylist": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "RedGifsSearch": {
+      "search": "results_received",
+      "per_query": {
+        "massage": "results_received",
+        "dance": "results_received",
+        "yoga": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    }
+  }
+}

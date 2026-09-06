@@ -1,0 +1,112 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "GoogleSearch",
+  "connector_kind": "ytdlp",
+  "extractor": "GoogleSearch",
+  "template_revision": "ba6728c6cceeed532b09835a0e6e46e2ee81d8488dec615954aa8a4dfe1e0af8",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T17:23:27.947900+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0
+    }
+  },
+  "rankings": {},
+  "status": "empty",
+  "per_query_status": {
+    "nature": "empty",
+    "piano": "empty",
+    "documentaire": "empty"
+  }
+}

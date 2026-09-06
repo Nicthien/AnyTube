@@ -122,7 +122,11 @@ function renderCatalog() {
     const row = node('div', 'catalog-row'); const detail = node('div');
     detail.append(node('strong', '', source.name), node('small', '', source.search ? 'Modèle de recherche prérempli' : 'Modèle URL uniquement · recherche non configurée'));
     if (source.last_check) {
-      const labels = {results_received:'résultats reçus', empty:'aucun résultat', failed:'échec de connexion ou d’extraction'};
+      const labels = {results_received:'résultats reçus', empty:'aucun résultat', failed:'échec de connexion ou d’extraction',
+        authentication_required:'authentification requise', rate_limited:'quota ou filtrage de la plateforme',
+        geo_restricted:'restriction géographique', drm_protected:'protégé par DRM',
+        timeout:'délai dépassé', invalid_response:'réponse invalide',
+        temporarily_unavailable:'indisponible au moment de l’essai'};
       detail.append(node('small', '', `Essai historique (à revérifier) du ${new Date(source.last_check.date).toLocaleDateString('fr')} : ${labels[source.last_check.status] || 'non testé'}.`));
     }
     const preview = node('details'); preview.append(node('summary', '', 'Voir le modèle'));

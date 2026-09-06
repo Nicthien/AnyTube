@@ -1,0 +1,438 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "DailymotionSearch",
+  "connector_kind": "json",
+  "extractor": "Dailymotion",
+  "template_revision": "be845253e45e28f6516de9043b91a550f01b2bec80fc1e18ac45d5e11e1fe4f5",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": true,
+    "date": true,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T17:22:34.018728+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature, nature, nature!",
+            "nature nature"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x51xwf",
+            "https://www.dailymotion.com/video/x55nrl"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature nature",
+            "Nature #nature"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x93g81o",
+            "https://www.dailymotion.com/video/x9n9s0w"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piano Piano",
+            "Piano Piano"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xbv6yq",
+            "https://www.dailymotion.com/video/xbv26h"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "toby \"piano piano\"",
+            "Régions - Piano piano…"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x3xf0k",
+            "https://www.dailymotion.com/video/x7kx6lo"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Documentaire",
+            "Documentaire complet Documentaire le empire Rome [Documentaire histoire antique]"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xo6ie",
+            "https://www.dailymotion.com/video/x3cy8fs"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "DOCUMENTAIRE",
+            "Documentaire"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x2ikx44",
+            "https://www.dailymotion.com/video/x5qs68"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Goodbye Lara 2026 S01E10 CR AnoZu",
+            "إمدادات البحرية الأمريكية تحت الضغط"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/k15YaSSctag7mbJwBF4",
+            "https://www.dailymotion.com/video/xb4ik6q"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Michel Bussi invité de \"Un dimanche à la campagne\" ©France 2",
+            "Le journal de 18h30 du 06/09/2026"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4he3y",
+            "https://www.dailymotion.com/video/xb4iig2"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Crash en plein show aérien : un avion de chasse s'écrase en Grèce",
+            "Miraculés du Népal : dix jours après la catastrophe, deux ouvriers extraits viva"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb471q6",
+            "https://www.dailymotion.com/video/xb3tx8u"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Bordeaux-Bègles donne une leçon au Racing et prend provisoirement la tête du Top",
+            "Antoine Griezmann poursuit sa série en MLS, déjà auteur de quatre buts - Foot - "
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4bmwa",
+            "https://www.dailymotion.com/video/xb4fcle"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Live CNEWS",
+            "Couple taking a walk at the shore beach"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x3b68jn",
+            "https://www.dailymotion.com/video/x87d4ev"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Millenium TV LoL",
+            "Drone view of beautiful green landscape"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xj7bck",
+            "https://www.dailymotion.com/video/x87bn71"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Goodbye Lara 2026 S01E10 CR AnoZu",
+            "إمدادات البحرية الأمريكية تحت الضغط"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/k15YaSSctag7mbJwBF4",
+            "https://www.dailymotion.com/video/xb4ik6q"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Michel Bussi invité de \"Un dimanche à la campagne\" ©France 2",
+            "Le journal de 18h30 du 06/09/2026"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4he3y",
+            "https://www.dailymotion.com/video/xb4iig2"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SHARJAH",
+            "Un sanctuaire pour les éléphants unique en Europe"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x9y7zwo",
+            "https://www.dailymotion.com/video/x8lpe9m"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Gilles promène sa vache en centre-ville",
+            "Las 10 ciudades más verdes del mundo"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x9dmo9w",
+            "https://www.dailymotion.com/video/x80ay18"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Orcas: Wave Wizards! 🌊",
+            "Wet Jono: the movie | movie | 2020 | Official Featurette"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4i18a",
+            "https://www.dailymotion.com/video/xb4htd6"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Begotten | movie | 1991 | Official Teaser",
+            "Sold to the Warlord, Born for the Sky: He bought a princess, but awakened a drag"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4hryu",
+            "https://www.dailymotion.com/video/xb4hkfu"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Crue soudaine au Grand Canyon : plus de 20 personnes seraient portées disparues",
+            "« Une force de la nature » et « un gars qui ne se limite pas trop » : pourquoi l"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb2o5y2",
+            "https://www.dailymotion.com/video/xb45292"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "'Never the animal's fault': unearthed footage reveals the real Steve Irwin",
+            "Mister Guadeloupe 2026 Jérémie Comminges : De pompier à Mister Guadeloupe, son p"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb3ouy2",
+            "https://www.dailymotion.com/video/xb40mly"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  }
+}

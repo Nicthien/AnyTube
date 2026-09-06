@@ -97,7 +97,8 @@ def run(payload):
             target = pattern.format(query=quote(query, safe=''), limit=payload['limit'])
         elif key == 'ytsearch' and payload.get('home') and payload.get('ranking') == 'views':
             target = 'https://www.youtube.com/results?' + urlencode({'search_query': query, 'sp': 'CAMSAhAB'})
-        opts.update(extract_flat='in_playlist', playlistend=payload['limit'])
+        # A listing never needs playable formats; posts without media must not abort the page.
+        opts.update(extract_flat='in_playlist', playlistend=payload['limit'], ignore_no_formats_error=True)
         with YoutubeDL(opts) as ydl:
             attach_access(ydl, credential)
             data = ydl.extract_info(target, download=False)
@@ -113,6 +114,9 @@ def run(payload):
                     except Exception:
                         continue
                 item = normalize(entry)
+                if config and config.item_url and item['id']:
+                    # Some listings inherit the search page as webpage_url; rebuild the item page.
+                    item['url'] = config.item_url.format(id=quote(item['id'], safe=''))
                 if item['url']:
                     items.append(item)
             return {'items': items}
@@ -123,7 +127,8 @@ def run(payload):
         if payload['mode'] == 'collection':
             offset = payload.get('offset', 0)
             size = min(payload.get('limit', 20), 50)
-            opts.update(noplaylist=False, extract_flat='in_playlist', playliststart=offset+1, playlistend=offset+size+1)
+            opts.update(noplaylist=False, extract_flat='in_playlist', playliststart=offset+1, playlistend=offset+size+1,
+                        ignore_no_formats_error=True)
         with YoutubeDL(opts) as ydl:
             attach_access(ydl, credential)
             info = ydl.extract_info(target, download=False, ie_key=payload.get('extractor_key'))

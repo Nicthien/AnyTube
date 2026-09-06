@@ -1,0 +1,92 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "PRXSeriesSearch",
+  "connector_kind": "ytdlp",
+  "extractor": "PRXSeries",
+  "template_revision": "a7077ab001c33e6a5c1c9c02eab6193e96f75c105f05c1db661a766496b3be6c",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T17:25:01.452117+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    },
+    "climate": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    },
+    "music": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources."
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0
+    }
+  },
+  "rankings": {},
+  "status": "authentication_required",
+  "per_query_status": {
+    "nature": "authentication_required",
+    "climate": "authentication_required",
+    "music": "authentication_required"
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "environment": "local-worktree-lot01",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "d311cba0679f3f9d",
+  "proxy_configured": false,
+  "template": "ArchiveOrg",
+  "connector_kind": "json",
+  "extractor": "ArchiveOrg",
+  "template_revision": "739e7fd14d2dc1b2cbbb0e41cc3e83e46ef93e8362bacbd2c60a62989c6b7f93",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T17:21:27.112764+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Nature of Things : CBCNEWS : November 22, 2025 10:00pm-11:01pm EST",
+            "jokes, gags, things of that nature ＊＊＊ [Lifesteal SMP] !plushie"
+          ],
+          "samples": [
+            "https://archive.org/details/CBCNEWS_20251123_030000_The_Nature_of_Things",
+            "https://archive.org/details/jokes-gags-things-of-that-nature-lifesteal-smp-plushie"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Water Reuse Project Update - January to February 2017",
+            "A Sign In Creation : JORDANTV : July 14, 2026 4:50am-5:01am +03"
+          ],
+          "samples": [
+            "https://archive.org/details/kerrtx-Water_Reuse_Project_Update_-_January_to_February_2017",
+            "https://archive.org/details/JORDANTV_20260714_015000_A_Sign_In_Creation"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "9convert.com 주말엔 나랑놀아 1080p",
+            "Fryderyk Chopin, KRAKOVIAK. GRAN RONDO' DA CONCERTO - Georges Cziffra, Georges C"
+          ],
+          "samples": [
+            "https://archive.org/details/9convert.com-1080p_20260713_0021",
+            "https://archive.org/details/chopin-krakowiak-op.-14-audio-sheet-cziffra"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Stupid Morning Bullshit - Tuesday, June 6th, 2017",
+            "Au bord de l'Oder - Valse - Feliks Dzieżanowski - Pour Clarinette et Piano"
+          ],
+          "samples": [
+            "https://archive.org/details/stupid-morning-bullshit-tuesday-june-6th-2017",
+            "https://archive.org/details/oder_20220508"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "NOS-NTR Nieuwsuur 2020-06-28",
+            "MANIFESTATION MONSTRE au Pakistan en soutien à IMRAN KHAN et CONTRE LES USA !!!"
+          ],
+          "samples": [
+            "https://archive.org/details/nieuwsuur-2020-06-28",
+            "https://archive.org/details/youtube-yugACus8aS0"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Pascal Ory nous parle de l’Ayatollah Khomeini - Toute L'Histoire",
+            "Military intel /// Police intel /// L'expert policier Rock Larochelle définit co"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-LfaSDnjbuS0",
+            "https://archive.org/details/military-intel-111_202205"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "แม่ม่ายสาวเอลฟ์ ทั้งสวยแถมยังคลั่งรักอีก! #anime #foryou #manga #fypシ #มังงะ",
+            "Mark Hegan. Ulster Sports Club, Belfast. February 27 2026"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-ftNP6FP0rmI",
+            "https://archive.org/details/mark-hegan.-ulster-sports-club-belfast.-february-27-2026"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "GHANA ARC BOWLING W/ JOSH & CHRIS, EATING KFC - Blueryai VOD 2 / 26 / 25",
+            "Sitka Assembly Special Meeting on FY2025 Budget - April 4, 2024"
+          ],
+          "samples": [
+            "https://archive.org/details/httpswww.youtube.comwatchvrh7law5nufs",
+            "https://archive.org/details/openpublica-sitka-alaska-dc415d62-7053-462b-be1e-8bd54b2505b8"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Egybest V 20.0.4",
+            "h40"
+          ],
+          "samples": [
+            "https://archive.org/details/egybest-v-20.0.4",
+            "https://archive.org/details/videos_horizontal"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "[군체] 인터내셔널 예고편 (청소년 관람불가 ver) | 5월 21일 극장 대개봉",
+            "Alter Ego"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-sfvEWaihvWQ",
+            "https://archive.org/details/youtube-k-M45W_iWMs"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "graphics",
+            "test file mp4"
+          ],
+          "samples": [
+            "https://archive.org/details/dobba_graphics",
+            "https://archive.org/details/Pbtestfilemp4videotestmp4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "ical-capcut-template-1",
+            "Vietnam Travel Guide Hanoi, Ha Long Bay, Ho Chi Minh 1"
+          ],
+          "samples": [
+            "https://archive.org/details/ical-capcut-template-1",
+            "https://archive.org/details/vietnam-travel-guide-hanoi-ha-long-bay-ho-chi-minh-1_202101"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "แม่ม่ายสาวเอลฟ์ ทั้งสวยแถมยังคลั่งรักอีก! #anime #foryou #manga #fypシ #มังงะ",
+            "Mark Hegan. Ulster Sports Club, Belfast. February 27 2026"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-ftNP6FP0rmI",
+            "https://archive.org/details/mark-hegan.-ulster-sports-club-belfast.-february-27-2026"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "GHANA ARC BOWLING W/ JOSH & CHRIS, EATING KFC - Blueryai VOD 2 / 26 / 25",
+            "Sitka Assembly Special Meeting on FY2025 Budget - April 4, 2024"
+          ],
+          "samples": [
+            "https://archive.org/details/httpswww.youtube.comwatchvrh7law5nufs",
+            "https://archive.org/details/openpublica-sitka-alaska-dc415d62-7053-462b-be1e-8bd54b2505b8"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "From the Ground Up",
+            "Final Fantasy II (SNES) - 3:56 - Kevin Juang"
+          ],
+          "samples": [
+            "https://archive.org/details/FromtheG1954",
+            "https://archive.org/details/FinalFantasy2_356"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Park Conscious",
+            "Have I Told You Lately That I Love You?"
+          ],
+          "samples": [
+            "https://archive.org/details/ParkCons1938",
+            "https://archive.org/details/HaveITol1958"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "San Francisco Planning Commission Meeting - April 4, 2024",
+            "Saturday, 6th September 1913: Grand Jury Adjourns To Go To Ball Game, The Atlant"
+          ],
+          "samples": [
+            "https://archive.org/details/openpublica-san_francisco-california-59c97201-aa1e-4b89-801c-d4b09ee120c2",
+            "https://archive.org/details/1913-09-06-grand-jury-adjourns-to-go-to-ball-game-the-atlanta-constitution"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Ken Burns: Henry David Thoreau",
+            "Joint City Council & GUC Board Meeting – April 22, 2024"
+          ],
+          "samples": [
+            "https://archive.org/details/Ken-Burns-Henry-David-Thoreau",
+            "https://archive.org/details/openpublica-greenville-north_carolina-50d9cf5c-14cd-438b-9af4-c18f01376cd2"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "LOGAN PAUL SUICIDE FOREST VIDEO",
+            "HentaiHaven-Dump-v1"
+          ],
+          "samples": [
+            "https://archive.org/details/logan-paul-suicide-forest-reupload",
+            "https://archive.org/details/hentai-haven-archive-2018"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Cosmos: A Personal Voyage ★ Collected PBS Science Series with Bonus Features - a",
+            "WordWorld - TV Series (2007 - 2011)"
+          ],
+          "samples": [
+            "https://archive.org/details/cosmos_1980",
+            "https://archive.org/details/WWTVSeries20072011"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  }
+}

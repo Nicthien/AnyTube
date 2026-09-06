@@ -71,6 +71,8 @@ class Pagination(BaseModel):
     mode: Literal['prefix', 'page', 'offset'] = 'prefix'
     parameter: str = Field(default='page', max_length=100, pattern=r'^[A-Za-z_][A-Za-z0-9_]*$')
     has_more_path: str = Field(default='', max_length=300)
+    # Documented ceiling of the provider window; 0 means the provider states no limit.
+    maximum_results: int = Field(default=0, ge=0, le=100000)
 
     @model_validator(mode='after')
     def check(self):
@@ -90,10 +92,15 @@ class Connector(BaseModel):
     extractor: str = Field(default='', max_length=150)
     prefix: str = Field(default='ytsearch', max_length=50)
     search_url: str = Field(default='', max_length=2000)
+    search_trending_url: str = Field(default='', max_length=2000)
+    search_views_url: str = Field(default='', max_length=2000)
+    search_recent_url: str = Field(default='', max_length=2000)
+    item_url: str = Field(default='', max_length=2000)
     results_path: str = Field(default='/list', max_length=300)
     video_url: str = Field(default='', max_length=2000)
     thumbnail_url: str = Field(default='', max_length=2000)
     home_query: str = Field(default='vidéos', max_length=200)
+    home_kind: Literal['feed', 'search'] = 'feed'
     home_url: str = Field(default='', max_length=2000)
     home_trending_url: str = Field(default='', max_length=2000)
     home_views_url: str = Field(default='', max_length=2000)
@@ -121,6 +128,17 @@ class Connector(BaseModel):
             if self.kind not in ('json', 'ytdlp'):
                 raise ValueError('Un connecteur de recherche est requis pour un flux d’accueil.')
             template(url, {'query', 'limit'})
+        for url in (self.search_trending_url, self.search_views_url, self.search_recent_url):
+            if not url:
+                continue
+            if self.kind not in ('json', 'ytdlp'):
+                raise ValueError('Un connecteur de recherche est requis pour un classement de recherche.')
+            if 'query' not in template(url, {'query', 'limit'}) and not body_query:
+                raise ValueError('L’URL de classement doit contenir {query}.')
+        if self.item_url:
+            if self.kind != 'ytdlp':
+                raise ValueError('Le modèle d’URL par résultat s’applique aux connecteurs yt-dlp ; utilisez video_url en JSON.')
+            template(self.item_url, {'id'})
         if self.kind == 'ytdlp' and self.prefix not in PREFIXES:
             raise ValueError('Préfixe de recherche yt-dlp non pris en charge.')
         if self.kind == 'ytdlp' and self.search_url:
@@ -152,7 +170,9 @@ def default_connector(source_id):
         base = 'https://framatube.org/api/v1/'
         feed = base + 'videos?count={limit}'
         return Connector(kind='json', extractor='PeerTube', home_query='peertube',
-            search_url=base+'search/videos?search={query}&count={limit}',
+            search_url=base+'search/videos?search={query}&count={limit}&sort=-match',
+            search_views_url=base+'search/videos?search={query}&count={limit}&sort=-views',
+            search_recent_url=base+'search/videos?search={query}&count={limit}&sort=-publishedAt',
             home_url=feed+'&sort=-publishedAt', home_recent_url=feed+'&sort=-publishedAt',
             home_views_url=feed+'&sort=-views', home_trending_url=feed+'&sort=-trending',
             pagination=Pagination(mode='offset',parameter='start'), results_path='/data',
@@ -165,14 +185,42 @@ def default_connector(source_id):
             mapping=Mapping(id='/uri',title='/name',url='/link',thumbnail='/pictures/sizes/2/link',channel='/user/name',views='/stats/plays',published='/created_time')).model_dump()
     if source_id == 'ArchiveOrg':
         base = 'https://archive.org/advancedsearch.php?output=json&rows={limit}&fl[]=identifier&fl[]=title&fl[]=description&fl[]=creator'
-        recent = base + '&q=mediatype%3Amovies&sort[]=publicdate+desc'
+        browse = base + '&q=mediatype%3Amovies&sort[]='
+        query = base + '&q=mediatype%3Amovies%20AND%20({query})'
+        recent = browse + 'publicdate+desc'
         return Connector(kind='json', extractor='ArchiveOrg',
             pagination=Pagination(mode='page'),
-            search_url=base + '&q=mediatype%3Amovies%20AND%20({query})',
+            search_url=query,
+            search_views_url=query + '&sort[]=downloads+desc',
+            search_recent_url=query + '&sort[]=publicdate+desc',
+            search_trending_url=query + '&sort[]=week+desc',
             home_url=recent, home_recent_url=recent,
+            home_views_url=browse + 'downloads+desc', home_trending_url=browse + 'week+desc',
             results_path='/response/docs', video_url='https://archive.org/details/{id}',
             thumbnail_url='https://archive.org/services/img/{id}',
             mapping=Mapping(id='/identifier', url='', thumbnail='', channel='/creator', duration='', views='')).model_dump()
+    if source_id in ('Niconico', 'NicovideoSearch', 'NicovideoSearchDate', 'NicovideoSearchURL'):
+        # yt-dlp scrapes nicovideo.jp/search, whose markup no longer carries data-video-id.
+        # The Snapshot Search API v2 is the documented public interface for the same listing.
+        base = ('https://snapshot.search.nicovideo.jp/api/v2/snapshot/video/contents/search'
+                '?fields=contentId%2Ctitle%2Cdescription%2CviewCounter%2ClengthSeconds%2CstartTime%2CthumbnailUrl'
+                '&_context=AnyTube&_limit={limit}')
+        search = base + '&targets=title%2Cdescription%2Ctags&q={query}&_sort='
+        # An empty q with tagsExact is a corpus-wide listing, not a query typed by the reader.
+        feed = base + '&targets=tagsExact&q=&_sort='
+        default = '-startTime' if source_id == 'NicovideoSearchDate' else '-viewCounter'
+        return Connector(kind='json', extractor='Niconico',
+            # The snapshot API answers 400 past _offset + _limit = 1600.
+            pagination=Pagination(mode='offset', parameter='_offset', maximum_results=1600),
+            results_path='/data',
+            search_url=search + default,
+            search_views_url=search + '-viewCounter', search_recent_url=search + '-startTime',
+            home_url=feed + '-startTime', home_recent_url=feed + '-startTime',
+            home_views_url=feed + '-viewCounter',
+            video_url='https://www.nicovideo.jp/watch/{id}',
+            mapping=Mapping(id='/contentId', title='/title', url='', thumbnail='/thumbnailUrl',
+                            channel='', duration='/lengthSeconds', views='/viewCounter',
+                            published='/startTime')).model_dump()
     if source_id in ('Dailymotion', 'DailymotionSearch'):
         feed = 'https://api.dailymotion.com/videos?sort={sort}&limit={{limit}}&fields=id,title,description,thumbnail_480_url,duration,views_total,owner.screenname,created_time'
         return Connector(kind='json', extractor='Dailymotion',
@@ -191,7 +239,18 @@ def default_connector(source_id):
         _, search_url, extractor = URL_SEARCH[source_id]
     config = Connector(kind='ytdlp' if prefix or search_url else 'url', extractor=extractor,
                        prefix=prefix or 'ytsearch', search_url=search_url)
+    if source_id == 'MailRuMusicSearch':
+        # The listing entries carry a distinct File id but inherit the search page as webpage_url.
+        config.item_url = 'https://my.mail.ru/music/songs/track-{id}'
+    if source_id == 'RedGifsSearch':
+        browse = 'https://www.redgifs.com/browse?tags={query}&order='
+        config.search_url = browse + 'trending'
+        config.search_trending_url = browse + 'trending'
+        config.search_views_url = browse + 'top'
+        config.search_recent_url = browse + 'latest'
     if config.kind == 'ytdlp' and extractor == 'Youtube' and source_id != 'YoutubeMusicSearchURL':
+        # This ranking is a results page for home_query, not a feed published by the platform.
+        config.home_kind = 'search'
         config.home_views_url = 'https://www.youtube.com/results?search_query={query}&sp=CAMSAhAB'
     return config.model_dump()
 
@@ -243,7 +302,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
             body[config.pagination.parameter] = value
         else:
             parts = urlsplit(url)
-            params = [(k, v) for k, v in parse_qsl(parts.query) if k != config.pagination.parameter]
+            # keep_blank_values: a deliberately empty parameter is part of the template.
+            params = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if k != config.pagination.parameter]
             url = urlunsplit(parts._replace(query=urlencode(params + [(config.pagination.parameter, value)])))
     public_url(url)
     # DNS and secondary requests are additionally checked by the worker network guard.

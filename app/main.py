@@ -371,12 +371,14 @@ async def search(body: SearchRequest):
         try:
             offset=offsets[source['id']]
             config = configs[source['id']]
-            if not native_pagination(config) and offset >= MAX_RESULTS:
+            ceiling = capabilities(config)['max_results']
+            if ceiling and offset >= ceiling:
                 return {'id':source['id'], 'source': source['name'], 'items': []}
             result = await run_worker({'mode': 'search', 'source': source['id'], 'connector': config, 'query': body.query.strip(), 'limit': min(MAX_RESULTS,offset+body.limit),
                                       **({'page_size':body.limit, 'offset':offset} if native_pagination(config) else {})})
             items=result['items'][:body.limit] if result.get('native_page') else result['items'][offset:offset+body.limit]
             more=result.get('has_more',False) if result.get('native_page') else len(items)==body.limit and offset+body.limit<MAX_RESULTS
+            more=more and (not ceiling or offset+body.limit<ceiling)
             record(source['connector'], body.query, 'verified' if items else 'empty', len(items))
             return {'id':source['id'],'source': source['name'], 'cursor':encode_cursor(offset+body.limit,contexts[source['id']]) if more else None,'items': [{**item, 'source': source['name'], 'source_id': source['id']} for item in items]}
         except Exception as exc:
@@ -407,7 +409,12 @@ async def home_source(source_id: str, ranking: Literal['default', 'trending', 'v
     config = Connector.model_validate(source['connector'])
     context=[source_id,revision(config.model_dump()),ranking]
     offset=decode_cursor(cursor,context)
-    label = 'Flux d’accueil' if config.home_url else f'Recherche : {config.home_query.strip()}'
+    # A search standing in for a home feed is always named as such, never shown as a feed.
+    query_label = config.home_query.strip()
+    from_search = config.home_kind == 'search' or not config.home_url
+    label = ('Flux d’accueil' if config.home_url else f'Recherche : {query_label}')
+    if config.home_url and from_search:
+        label = f'Recherche utilisée comme accueil : {query_label}'
     if ranking != 'default':
         from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
         label = {'trending': 'Tendances', 'views': 'Plus vues', 'recent': 'Nouveautés'}[ranking]
@@ -415,13 +422,18 @@ async def home_source(source_id: str, ranking: Literal['default', 'trending', 'v
         parts = urlsplit(config.home_url)
         if config.kind in ('json', 'ytdlp') and custom:
             config.home_url = custom
+            from_search = config.home_kind == 'search'
+            if from_search:
+                label += f' · recherche : {query_label}'
         elif config.kind == 'json' and parts.hostname == 'api.dailymotion.com' and parts.path == '/videos':
-            params = [(key, value) for key, value in parse_qsl(parts.query) if key != 'sort']
+            from_search = False
+            params = [(key, value) for key, value in parse_qsl(parts.query, keep_blank_values=True) if key != 'sort']
             params.append(('sort', {'trending': 'trending', 'views': 'visited', 'recent': 'recent'}[ranking]))
             # Keep template placeholders readable for the worker's URL formatting.
             config.home_url = urlunsplit(parts._replace(query=urlencode(params, safe='{}')))
         elif config.kind == 'ytdlp' and config.prefix == 'ytsearch' and ranking == 'views':
-            label += f' · Recherche : {config.home_query.strip()}'
+            from_search = True
+            label += f' · recherche : {query_label}'
         else:
             return {'items': [], 'label': label, 'message': 'Ce classement n’est pas disponible pour cette source. Choisissez Sélection ou configurez un flux JSON dans Mes sources.'}
     if config.kind == 'url' or (not config.home_url and not config.home_query.strip()):
@@ -436,11 +448,13 @@ async def home_source(source_id: str, ranking: Literal['default', 'trending', 'v
                                        'query': config.home_query.strip(), 'limit': min(MAX_RESULTS,offset+10), 'home': True, 'ranking': ranking,
                                        **({'page_size':10, 'offset':offset} if native_pagination(config.model_dump()) else {})})
             items=result['items'][:10] if result.get('native_page') else result['items'][offset:offset+10]
+            ceiling=capabilities(config.model_dump())['max_results']
             more=result.get('has_more',False) if result.get('native_page') else len(items)==10 and offset+10<MAX_RESULTS
+            more=more and (not ceiling or offset+10<ceiling)
             record(source['connector'], ranking, 'verified' if items else 'empty', len(items), feature='home' if ranking=='default' else 'rankings')
-            response = {'items': [{**item, 'source': source['name'], 'source_id': source_id} for item in items], 'label': label,'next_cursor':encode_cursor(offset+10,context) if more else None,'max_results':capabilities(config.model_dump())['max_results']}
+            response = {'items': [{**item, 'source': source['name'], 'source_id': source_id} for item in items], 'label': label,'feed_kind':'search' if from_search else 'feed','next_cursor':encode_cursor(offset+10,context) if more else None,'max_results':capabilities(config.model_dump())['max_results']}
         except Exception as exc:
-            return {'items': [], 'label': label, 'error': str(exc)}
+            return {'items': [], 'label': label, 'feed_kind': 'search' if from_search else 'feed', 'error': str(exc)}
     if len(home_cache) >= 100:
         home_cache.pop(next(iter(home_cache)))
     home_cache[key] = (time.monotonic(), response)

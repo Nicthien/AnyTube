@@ -4,75 +4,111 @@
   "entries": {
     "BiliBili": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:21:27.180302+00:00",
+      "batch": "lot-01"
     },
     "BiliBiliSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:22:08.997489+00:00",
+      "batch": "lot-01"
     },
     "Dailymotion": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:22:26.611955+00:00",
+      "batch": "lot-01"
     },
     "DailymotionSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:22:34.018728+00:00",
+      "batch": "lot-01"
     },
     "GameJolt": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:22:56.280918+00:00",
+      "batch": "lot-01"
     },
     "GameJoltSearch": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:23:03.772643+00:00",
+      "batch": "lot-01"
     },
     "GoogleSearch": {
       "status": "empty",
-      "count": 0
+      "count": 0,
+      "date": "2026-09-06T17:23:27.947900+00:00",
+      "batch": "lot-01"
     },
     "ArchiveOrg": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:21:27.112764+00:00",
+      "batch": "lot-01"
     },
     "MailRuMusicSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:23:31.854544+00:00",
+      "batch": "lot-01"
     },
     "Niconico": {
-      "status": "empty",
-      "count": 0
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:23:36.979030+00:00",
+      "batch": "lot-01"
     },
     "NicovideoSearchURL": {
-      "status": "empty",
-      "count": 0
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:24:38.169791+00:00",
+      "batch": "lot-01"
     },
     "NicovideoSearch": {
-      "status": "empty",
-      "count": 0
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:24:03.461463+00:00",
+      "batch": "lot-01"
     },
     "NicovideoSearchDate": {
-      "status": "empty",
-      "count": 0
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:24:29.129940+00:00",
+      "batch": "lot-01"
     },
     "PRXStory": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "authentication_required",
+      "count": 0,
+      "date": "2026-09-06T17:25:08.065692+00:00",
+      "batch": "lot-01"
     },
     "PRXSeries": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "authentication_required",
+      "count": 0,
+      "date": "2026-09-06T17:24:54.771001+00:00",
+      "batch": "lot-01"
     },
     "PRXSeriesSearch": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "authentication_required",
+      "count": 0,
+      "date": "2026-09-06T17:25:01.452117+00:00",
+      "batch": "lot-01"
     },
     "PRXStoriesSearch": {
-      "status": "failed",
-      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+      "status": "authentication_required",
+      "count": 0,
+      "date": "2026-09-06T17:25:01.877576+00:00",
+      "batch": "lot-01"
     },
     "RedGifsSearch": {
       "status": "results_received",
-      "count": 2
+      "count": 3,
+      "date": "2026-09-06T17:25:37.171574+00:00",
+      "batch": "lot-01"
     },
     "Rokfin": {
       "status": "failed",
@@ -113,6 +149,47 @@
     "YoutubeSearch": {
       "status": "results_received",
       "count": 2
+    },
+    "PeerTube": {
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:25:08.439427+00:00",
+      "batch": "lot-01"
+    },
+    "PeerTubePlaylist": {
+      "status": "results_received",
+      "count": 3,
+      "date": "2026-09-06T17:25:14.594419+00:00",
+      "batch": "lot-01"
+    }
+  },
+  "batches": {
+    "lot-01": {
+      "date": "2026-09-06T17:26:34.642471+00:00",
+      "connector_version": "d311cba0679f3f9d",
+      "environment": "local-worktree-lot01",
+      "templates": [
+        "ArchiveOrg",
+        "BiliBili",
+        "BiliBiliSearch",
+        "Dailymotion",
+        "DailymotionSearch",
+        "GameJolt",
+        "GameJoltSearch",
+        "GoogleSearch",
+        "MailRuMusicSearch",
+        "Niconico",
+        "NicovideoSearch",
+        "NicovideoSearchDate",
+        "NicovideoSearchURL",
+        "PRXSeries",
+        "PRXSeriesSearch",
+        "PRXStoriesSearch",
+        "PRXStory",
+        "PeerTube",
+        "PeerTubePlaylist",
+        "RedGifsSearch"
+      ]
     }
   }
 }

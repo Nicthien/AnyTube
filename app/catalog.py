@@ -16,6 +16,24 @@ SEARCH = {
     'PRXSeries': ('PRX · séries', 'prxseries'),
 }
 
+# Reviewed display names and access notes for templates covered by an audited batch.
+REVIEWED = {
+    'ArchiveOrg': {'name': 'Internet Archive · vidéos'},
+    'GameJolt': {'name': 'Game Jolt · publications'},
+    'GameJoltSearch': {'name': 'Game Jolt · recherche de publications'},
+    'GoogleSearch': {'name': 'Google Vidéos'},
+    'MailRuMusicSearch': {'name': 'Mail.ru · musique'},
+    'Niconico': {'name': 'Niconico'},
+    'NicovideoSearch': {'name': 'Niconico · recherche'},
+    'NicovideoSearchDate': {'name': 'Niconico · recherche par date'},
+    'NicovideoSearchURL': {'name': 'Niconico · recherche avancée'},
+    'PRXSeries': {'name': 'PRX · séries', 'access_requirement': 'account'},
+    'PRXSeriesSearch': {'name': 'PRX · recherche de séries', 'access_requirement': 'account'},
+    'PRXStoriesSearch': {'name': 'PRX · recherche de podcasts', 'access_requirement': 'account'},
+    'PRXStory': {'name': 'PRX · podcasts', 'access_requirement': 'account'},
+    'RedGifsSearch': {'name': 'RedGifs · recherche'},
+}
+
 # Search pages explicitly implemented by the installed yt-dlp extractors.
 URL_SEARCH = {
     'YoutubeMusicSearchURL': ('YouTube Music', 'https://music.youtube.com/search?q={query}', 'Youtube'),
@@ -64,13 +82,14 @@ def catalog():
         items['DailymotionSearch']['search'] = True
     for item in items.values():
         item.update(identities()[item['id']])
-        if item['id'] == 'ArchiveOrg':
-            item.update(name='Internet Archive · vidéos', search=True)
+        if item['id'] in REVIEWED:
+            item.update(REVIEWED[item['id']], search=True)
         if item['id'] in ('PeerTube','PeerTubePlaylist'):
             item.update(name='PeerTube · Framatube' + (' · collections' if item['id']=='PeerTubePlaylist' else ''),search=True)
         if item['id'] == 'Vimeo':
             item.update(name='Vimeo',search=True,access_requirement='api_token')
         item['template_status'] = 'search' if item['search'] else 'url_only'
         if checks.get('yt_dlp') == __version__ and item['id'] in checks.get('entries', {}):
-            item['last_check'] = {**checks['entries'][item['id']], 'date': checks['generated_at']}
+            # A batch may re-probe part of the catalogue; an entry keeps its own date when it has one.
+            item['last_check'] = {'date': checks['generated_at'], **checks['entries'][item['id']]}
     return sorted(items.values(), key=lambda item: (not item['search'], item['name'].casefold()))
