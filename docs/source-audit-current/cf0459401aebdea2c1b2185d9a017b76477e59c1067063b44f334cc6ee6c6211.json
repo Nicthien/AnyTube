@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06T16:06:59.049018+00:00",
+  "environment": "docker-validation",
+  "platform": "bilibili",
+  "extractors": [
+    "BiliBili",
+    "BiliBiliSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "3d1b314d8bcf9c20d331a0d3fc4d0a5537d7ff78a5899be2adf1f6bc1b3d6a6b",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T16:07:06.095842+00:00",
+  "environment": "docker-validation",
+  "platform": "dailymotion",
+  "extractors": [
+    "Dailymotion",
+    "DailymotionSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "0c6fb932b177307fc66e8bdcd8156bfaa10e95b4e7ebc079eec1a58b71a9f829",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Mercedes-AMG CLA 45 4Matic plus (Design)",
+        "#cars_car_video"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Babies",
+        "Bulletin météo Île-de-France du lundi 07 septembre 2026"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

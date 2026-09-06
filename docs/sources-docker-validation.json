@@ -1,0 +1,42 @@
+{
+  "environment": "docker-validation",
+  "base": "http://127.0.0.1:18089",
+  "checks": {
+    "vault_ready": true,
+    "dailymotion_pages": [
+      2,
+      2
+    ],
+    "dailymotion_distinct": true,
+    "resolved_formats": 53,
+    "stream": {
+      "status": 200,
+      "bytes": 5482,
+      "mime": "application/vnd.apple.mpegurl"
+    },
+    "video": {
+      "status": "ready",
+      "id": "e696e55381334188a74d89a3a9b9eb67",
+      "size": 161192091,
+      "error": null,
+      "range": 206
+    },
+    "audio": {
+      "status": "ready",
+      "id": "d9e604ec3fea4800b3b8abc8858fc378",
+      "size": 10402101,
+      "error": null,
+      "range": 206
+    }
+  },
+  "health": {
+    "status": "ok",
+    "version": "0.3.0-preview",
+    "yt_dlp": "2026.08.19",
+    "dependencies": {
+      "ffmpeg": true,
+      "ffprobe": true,
+      "node": true
+    }
+  }
+}

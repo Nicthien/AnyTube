@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:54:06.720433+00:00",
+  "environment": "docker-validation",
+  "platform": "mailru",
+  "extractors": [
+    "MailRuMusicSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "37ac6ba7f50f346eebdaf9706bcf84ffb016343398f1157ee8072391be762163",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 1,
+      "titles": [
+        "Piano Bar, Essential Jazz, Jazz Background Music, Mellow Jazz Mood, Lounge Music Café, The All-Star ",
+        "Piano Bar, Coffee Shop Jazz, Jazz Background Music, Mellow Jazz Mood, Jazz Songs, Instrumental Jazz "
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 0,
+      "titles": [
+        "Piano Bar, The Jazz Zone, Essential Jazz, Restaurant Music, Instrumental Jazz Ambiance, Jazz Relaxat",
+        "Piano Bar, Essential Jazz, Restaurant Music, Coffee Shop Jazz, Mellow Jazz Mood, Jazz Songs, Coffee "
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

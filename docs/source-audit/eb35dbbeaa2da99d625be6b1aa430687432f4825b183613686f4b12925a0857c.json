@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:43.184112+00:00",
+  "environment": "docker-validation",
+  "platform": "mailru",
+  "extractors": [
+    "MailRuMusicSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "37ac6ba7f50f346eebdaf9706bcf84ffb016343398f1157ee8072391be762163",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 1,
+      "titles": [
+        "Engelbert Humperdinck - Nature Boy",
+        "Roger Williams - Nature Boy"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 0,
+      "titles": [
+        "Jamie Christopherson - Rules of Nature (Platinum Mix)",
+        "The Sounds Of Nature - дуэт с кукушкой"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

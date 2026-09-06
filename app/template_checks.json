@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-09-06T10:52:37.034305+00:00",
+  "yt_dlp": "2026.08.19",
+  "entries": {
+    "BiliBili": {
+      "status": "results_received",
+      "count": 2
+    },
+    "BiliBiliSearch": {
+      "status": "results_received",
+      "count": 2
+    },
+    "Dailymotion": {
+      "status": "results_received",
+      "count": 2
+    },
+    "DailymotionSearch": {
+      "status": "results_received",
+      "count": 2
+    },
+    "GameJolt": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "GameJoltSearch": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "GoogleSearch": {
+      "status": "empty",
+      "count": 0
+    },
+    "ArchiveOrg": {
+      "status": "results_received",
+      "count": 2
+    },
+    "MailRuMusicSearch": {
+      "status": "results_received",
+      "count": 2
+    },
+    "Niconico": {
+      "status": "empty",
+      "count": 0
+    },
+    "NicovideoSearchURL": {
+      "status": "empty",
+      "count": 0
+    },
+    "NicovideoSearch": {
+      "status": "empty",
+      "count": 0
+    },
+    "NicovideoSearchDate": {
+      "status": "empty",
+      "count": 0
+    },
+    "PRXStory": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "PRXSeries": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "PRXSeriesSearch": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "PRXStoriesSearch": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "RedGifsSearch": {
+      "status": "results_received",
+      "count": 2
+    },
+    "Rokfin": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "RokfinSearch": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "Soundcloud": {
+      "status": "results_received",
+      "count": 2
+    },
+    "SoundcloudSearch": {
+      "status": "results_received",
+      "count": 2
+    },
+    "VrSquareSearch": {
+      "status": "empty",
+      "count": 0
+    },
+    "YahooSearch": {
+      "status": "failed",
+      "error": "La plateforme est indisponible, limite l’accès ou ne propose pas de format compatible."
+    },
+    "Youtube": {
+      "status": "results_received",
+      "count": 2
+    },
+    "YoutubeMusicSearchURL": {
+      "status": "results_received",
+      "count": 2
+    },
+    "YoutubeSearchURL": {
+      "status": "results_received",
+      "count": 2
+    },
+    "YoutubeSearch": {
+      "status": "results_received",
+      "count": 2
+    }
+  }
+}

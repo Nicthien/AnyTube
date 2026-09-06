@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-06T16:08:03.584092+00:00",
+  "environment": "docker-validation",
+  "platform": "mailru",
+  "extractors": [
+    "MailRuMusicSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "fc494191545c433a7951044300085b1eaa8e5f47844cca9463fcfe2937601144",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 1,
+      "new_urls": 1,
+      "titles": [
+        "Hamid El Kasri[www.StounAmi.Net] Musique, clips, Vidéos/ Chaabi, Rai, Gnawa, - Tourkoulila"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

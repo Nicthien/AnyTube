@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-06T15:53:40.739479+00:00",
+  "environment": "docker-validation",
+  "platform": "googlesearch",
+  "extractors": [
+    "GoogleSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "bbf78c6ce7bb654ab809c0e9504bdbdde8650a507d815ef65ed6d6b274407dc2",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "empty"
+}

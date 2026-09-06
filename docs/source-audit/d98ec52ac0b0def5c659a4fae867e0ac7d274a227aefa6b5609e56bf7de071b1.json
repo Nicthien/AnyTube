@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-06T15:54:23.128147+00:00",
+  "environment": "docker-validation",
+  "platform": "vrsquare",
+  "extractors": [
+    "VrSquareSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "0fba654dc7903d35aaa6e1a61a7595a6b7df62aa64b57f469e13f1ae122b02d1",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "empty"
+}

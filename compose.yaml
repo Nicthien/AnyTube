@@ -1,0 +1,20 @@
+services:
+  anytube:
+    build: .
+    image: anytube:local
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${ANYTUBE_BIND:-127.0.0.1}:${ANYTUBE_PORT:-8088}:8000"
+    volumes:
+      - anytube-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  anytube-data:

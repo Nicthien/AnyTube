@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:21.084152+00:00",
+  "environment": "docker-validation",
+  "platform": "bilibili",
+  "extractors": [
+    "BiliBili",
+    "BiliBiliSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "569f2b12f6beeb13a4b237d1ed8bcf154ebf294aa914846dc0207d1d56e88b4f",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "“这旋律太洗脑了！”—《Booty Music》",
+        "music list❤️｜经典热歌｜神仙打架的年代｜一小时纯享版｜日推歌单"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 1,
+      "new_urls": 1,
+      "titles": [
+        "【Playlist ·Music】2026年爆红流行歌曲翻唱 🎙 热门音乐播放列表"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

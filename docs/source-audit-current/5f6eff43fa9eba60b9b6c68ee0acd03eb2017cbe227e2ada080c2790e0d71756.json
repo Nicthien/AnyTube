@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T16:09:03.663656+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "YoutubeSearchURL"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "d0146867719841e57dd9f9572cc54828d75b5da69e7df6f57c1271420d846fe6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Armin van Buuren live at Touquet Music Beach Festival 2026",
+        "lofi hip hop radio 📚 beats to relax/study to"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Top Hits 2026 ~ Trending Songs 2026 ~ Top Songs 2026 Top Music 🎶🎧",
+        "summer lofi radio ☀️ music to put you in a better mood"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

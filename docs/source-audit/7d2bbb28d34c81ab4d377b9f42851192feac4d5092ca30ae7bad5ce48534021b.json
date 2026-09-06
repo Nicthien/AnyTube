@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-06T15:54:59.805545+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "YoutubeMusicSearchURL"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "4285a49eb3795687597d5aa7abade2cb2da7513908b1f280169415f6f30c1f6d",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

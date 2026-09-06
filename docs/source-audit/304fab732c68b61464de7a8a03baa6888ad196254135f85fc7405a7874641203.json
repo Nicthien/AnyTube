@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:54:12.558558+00:00",
+  "environment": "docker-validation",
+  "platform": "soundcloud",
+  "extractors": [
+    "Soundcloud",
+    "SoundcloudSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "6b80f02590985561c1971f36eba9ed626a6a3c63f27ecea949f71052fbc9f6ca",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "TUL8TE feat. Saint Levant - Nano توليت و سانت ليفانت - نانو",
+        "Nabil - Tayeh Fel Amaken | نبيل - تايه في الأماكن"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "VILLIAN, madk1d — ДИНАСТИЯ",
+        "Lil Poppa - Oxy Fever (Official Music Video)"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

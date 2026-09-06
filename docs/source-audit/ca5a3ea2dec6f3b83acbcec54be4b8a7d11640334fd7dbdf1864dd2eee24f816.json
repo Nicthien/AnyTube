@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:55:25.993888+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "YoutubeSearchURL"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "f75f772f151ee0666949a22df72a8c2a2d700eb970fb1380eb8e95ff07d73abd",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Les Vidéos Qui Ont Complètement Cassé Mon Cerveau",
+        "Funniest and most hilarious videos in Africa 😂"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "À Contre Sens 2 – Teaser | Prime Video",
+        "Destroy the Indestructible Cube, WIN $1,000!"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T16:07:37.846293+00:00",
+  "environment": "docker-validation",
+  "platform": "peertube",
+  "extractors": [
+    "PeerTube",
+    "PeerTubePlaylist"
+  ],
+  "feature": "home",
+  "query": "views",
+  "revision": "dd6042eee2012dffe32d4a1e5ea3f4543ba4dd0a1e9fe8ffdb29e1116f96b987",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "What is PeerTube?",
+        "LibreOffice – The free and private office suite"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "What is PeerTube? (english subtitles)",
+        "Maja Göpel lässt sich Herbert Diess bei Journalismusdarsteller Markus Lanz nicht die Butter vom Brot"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

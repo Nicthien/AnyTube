@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:54:20.800589+00:00",
+  "environment": "docker-validation",
+  "platform": "soundcloud",
+  "extractors": [
+    "Soundcloud",
+    "SoundcloudSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "6b80f02590985561c1971f36eba9ed626a6a3c63f27ecea949f71052fbc9f6ca",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Nabil - Tayeh Fel Amaken | نبيل - تايه في الأماكن",
+        "Colicky Baby Sleep Sound (75 Minutes)"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "مهرجان عصام صاصا الجديد 2024 عيني بتبكي ماللي فيا كنتي عيني لكن عمتها اغاني مهرجانات الجديده كلها",
+        "Nabil - W Olt Salam | نبيل - وقولت سلام"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

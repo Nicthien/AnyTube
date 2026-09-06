@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:54:06.033734+00:00",
+  "environment": "docker-validation",
+  "platform": "soundcloud",
+  "extractors": [
+    "Soundcloud",
+    "SoundcloudSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "6b80f02590985561c1971f36eba9ed626a6a3c63f27ecea949f71052fbc9f6ca",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Human Nature- Michael Jackson",
+        "Human Nature"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Thunderstorm Sounds(Long Recording) Relaxing Rain & Thunder Sounds for Sleep, Insomnia or Study 🌧️",
+        "Human Nature (Loop)"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

@@ -1,0 +1,4 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+yt-dlp[default]>=2026.1.1
+argon2-cffi>=25.1,<26

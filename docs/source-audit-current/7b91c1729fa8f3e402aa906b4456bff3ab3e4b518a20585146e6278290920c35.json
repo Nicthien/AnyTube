@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T16:07:41.026792+00:00",
+  "environment": "docker-validation",
+  "platform": "peertube",
+  "extractors": [
+    "PeerTube",
+    "PeerTubePlaylist"
+  ],
+  "feature": "home",
+  "query": "recent",
+  "revision": "dd6042eee2012dffe32d4a1e5ea3f4543ba4dd0a1e9fe8ffdb29e1116f96b987",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "First Date Tour nach Ostenfelde mit @Darksider_on_Tour  -  0039",
+        "\"Lille Norge\" – Heide, Naturwald & gruselige Begegnungen?"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Bien_Etre_Militant_video_campagne_Colibris",
+        "Erfahrung"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

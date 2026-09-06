@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06T16:07:51.370199+00:00",
+  "environment": "docker-validation",
+  "platform": "rokfin",
+  "extractors": [
+    "Rokfin",
+    "RokfinSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "87273d2fe2e5a4757bb369115d60c3ec5eb84d6446198b9afccd154816b311f8",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

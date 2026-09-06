@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:53:26.128801+00:00",
+  "environment": "docker-validation",
+  "platform": "dailymotion",
+  "extractors": [
+    "Dailymotion",
+    "DailymotionSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "c576fe46135ff5f7a904240f6d62ea377fda792ed995f6e9b9a7b29abb84c079",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "STAR WARS™ Battlefront™ II_Affrontement héroïque sur Takodana, match retour",
+        "UNE LIVREE MAGNIFIQUE !"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "La Mercedes-AMG CLA 45 établit un record dans sa catégorie sur la Nürburgring-Nordschleife 7 min 32 ",
+        "Vous êtes obligé de ❤️ il est magnifique 😱 #imprimante3d #impression3d #dragonball #piccolo"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

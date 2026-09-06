@@ -1,0 +1,302 @@
+"""Declarative search connectors. No executable expressions or user scripts."""
+import ipaddress
+import json
+import math
+import re
+import os
+from string import Formatter
+from typing import Literal
+from urllib.parse import quote, urlsplit, parse_qsl, urlencode, urlunsplit, urljoin
+from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
+
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+from yt_dlp.utils import clean_html
+from app.catalog import SEARCH, URL_SEARCH, search_prefixes
+
+PREFIXES = sorted(({value[1] for value in SEARCH.values()} | set(search_prefixes().values())) - {'dailymotion'})
+
+
+def public_url(url):
+    parts = urlsplit(url)
+    if parts.scheme not in ('http', 'https') or not parts.hostname or parts.username or parts.password or parts.port not in (None, 80, 443):
+        raise ValueError('URL HTTP(S) publique sans identifiants, sur un port standard, requise.')
+    host = parts.hostname.lower()
+    if host == 'localhost' or host.endswith(('.localhost', '.local')):
+        raise ValueError('Les adresses locales ne sont pas autorisées.')
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return url
+    if not address.is_global:
+        raise ValueError('Les adresses privées ne sont pas autorisées.')
+    return url
+
+
+def template(value, allowed):
+    names = set()
+    for _, name, spec, conversion in Formatter().parse(value):
+        if name is not None and (name not in allowed or spec or conversion):
+            raise ValueError('Variable de modèle invalide.')
+        if name is not None:
+            names.add(name)
+    rendered = value.format(**{key: 'example' for key in allowed})
+    public_url(rendered)
+    if '{' in urlsplit(value).netloc or '}' in urlsplit(value).netloc:
+        raise ValueError('Le domaine doit être fixe, sans variable.')
+    return names
+
+
+class Mapping(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    id: str = '/id'
+    title: str = '/title'
+    url: str = '/url'
+    thumbnail: str = '/thumbnail'
+    description: str = '/description'
+    channel: str = '/channel'
+    duration: str = '/duration'
+    views: str = '/views'
+    published: str = ''
+
+    @model_validator(mode='after')
+    def paths(self):
+        for value in self.model_dump().values():
+            if len(value) > 300 or (value and not value.startswith('/')) or re.search(r'~(?![01])', value):
+                raise ValueError('Les chemins JSON doivent commencer par / (exemple : /owner/name).')
+        return self
+
+
+class Pagination(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    mode: Literal['prefix', 'page', 'offset'] = 'prefix'
+    parameter: str = Field(default='page', max_length=100, pattern=r'^[A-Za-z_][A-Za-z0-9_]*$')
+    has_more_path: str = Field(default='', max_length=300)
+
+    @model_validator(mode='after')
+    def check(self):
+        if self.has_more_path and (not self.has_more_path.startswith('/') or re.search(r'~(?![01])', self.has_more_path)):
+            raise ValueError('Chemin de pagination JSON Pointer invalide.')
+        return self
+
+
+class Connector(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    kind: Literal['url', 'ytdlp', 'json'] = 'url'
+    credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
+    media_credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
+    method: Literal['GET', 'POST'] = 'GET'
+    body: dict[str, str | int | bool] = Field(default_factory=dict, max_length=30)
+    pagination: Pagination = Field(default_factory=Pagination)
+    extractor: str = Field(default='', max_length=150)
+    prefix: str = Field(default='ytsearch', max_length=50)
+    search_url: str = Field(default='', max_length=2000)
+    results_path: str = Field(default='/list', max_length=300)
+    video_url: str = Field(default='', max_length=2000)
+    thumbnail_url: str = Field(default='', max_length=2000)
+    home_query: str = Field(default='vidéos', max_length=200)
+    home_url: str = Field(default='', max_length=2000)
+    home_trending_url: str = Field(default='', max_length=2000)
+    home_views_url: str = Field(default='', max_length=2000)
+    home_recent_url: str = Field(default='', max_length=2000)
+    mapping: Mapping = Field(default_factory=Mapping)
+
+    @model_validator(mode='after')
+    def check(self):
+        if self.kind != 'json' and (self.method != 'GET' or self.body or self.pagination.mode != 'prefix'):
+            raise ValueError('POST et pagination native nécessitent un connecteur JSON.')
+        if self.method == 'GET' and self.body:
+            raise ValueError('Un corps JSON nécessite la méthode POST.')
+        body_query = False
+        for value in self.body.values():
+            if isinstance(value, str):
+                if len(value) > 2000:
+                    raise ValueError('Valeur JSON trop longue.')
+                for _, name, spec, conversion in Formatter().parse(value):
+                    if name is not None and (name not in ('query', 'limit') or spec or conversion):
+                        raise ValueError('Variable de corps JSON invalide.')
+                    body_query |= name == 'query'
+        for url in (self.home_url, self.home_trending_url, self.home_views_url, self.home_recent_url):
+            if not url:
+                continue
+            if self.kind not in ('json', 'ytdlp'):
+                raise ValueError('Un connecteur de recherche est requis pour un flux d’accueil.')
+            template(url, {'query', 'limit'})
+        if self.kind == 'ytdlp' and self.prefix not in PREFIXES:
+            raise ValueError('Préfixe de recherche yt-dlp non pris en charge.')
+        if self.kind == 'ytdlp' and self.search_url:
+            if 'query' not in template(self.search_url, {'query', 'limit'}):
+                raise ValueError('L’URL de recherche doit contenir {query}.')
+        if self.kind == 'json':
+            if self.thumbnail_url:
+                template(self.thumbnail_url, {'id'})
+                if not self.mapping.id:
+                    raise ValueError('Un identifiant est requis pour le modèle de vignette.')
+            names = template(self.search_url, {'query', 'limit'})
+            if 'query' not in names and not body_query:
+                raise ValueError('L’URL de recherche doit contenir {query}.')
+            if self.results_path and not self.results_path.startswith('/'):
+                raise ValueError('Le chemin des résultats doit commencer par /.')
+            if re.search(r'~(?![01])', self.results_path):
+                raise ValueError('Échappement JSON Pointer invalide.')
+            if not self.mapping.title or not (self.mapping.url or self.video_url):
+                raise ValueError('Le titre et une URL vidéo sont requis.')
+            if self.video_url:
+                template(self.video_url, {'id'})
+                if not self.mapping.id:
+                    raise ValueError('Le champ identifiant est requis pour le modèle d’URL vidéo.')
+        return self
+
+
+def default_connector(source_id):
+    if source_id in ('PeerTube', 'PeerTubePlaylist'):
+        base = 'https://framatube.org/api/v1/'
+        feed = base + 'videos?count={limit}'
+        return Connector(kind='json', extractor='PeerTube', home_query='peertube',
+            search_url=base+'search/videos?search={query}&count={limit}',
+            home_url=feed+'&sort=-publishedAt', home_recent_url=feed+'&sort=-publishedAt',
+            home_views_url=feed+'&sort=-views', home_trending_url=feed+'&sort=-trending',
+            pagination=Pagination(mode='offset',parameter='start'), results_path='/data',
+            mapping=Mapping(id='/uuid',title='/name',thumbnail='/thumbnailPath',channel='/channel/displayName',published='/publishedAt')).model_dump()
+    if source_id == 'Vimeo':
+        base = 'https://api.vimeo.com/videos?query={query}&per_page={limit}'
+        return Connector(kind='json',extractor='Vimeo',search_url=base,home_url=base,
+            home_recent_url=base+'&sort=date&direction=desc',home_views_url=base+'&sort=plays&direction=desc',
+            pagination=Pagination(mode='page'),results_path='/data',
+            mapping=Mapping(id='/uri',title='/name',url='/link',thumbnail='/pictures/sizes/2/link',channel='/user/name',views='/stats/plays',published='/created_time')).model_dump()
+    if source_id == 'ArchiveOrg':
+        base = 'https://archive.org/advancedsearch.php?output=json&rows={limit}&fl[]=identifier&fl[]=title&fl[]=description&fl[]=creator'
+        recent = base + '&q=mediatype%3Amovies&sort[]=publicdate+desc'
+        return Connector(kind='json', extractor='ArchiveOrg',
+            pagination=Pagination(mode='page'),
+            search_url=base + '&q=mediatype%3Amovies%20AND%20({query})',
+            home_url=recent, home_recent_url=recent,
+            results_path='/response/docs', video_url='https://archive.org/details/{id}',
+            thumbnail_url='https://archive.org/services/img/{id}',
+            mapping=Mapping(id='/identifier', url='', thumbnail='', channel='/creator', duration='', views='')).model_dump()
+    if source_id in ('Dailymotion', 'DailymotionSearch'):
+        feed = 'https://api.dailymotion.com/videos?sort={sort}&limit={{limit}}&fields=id,title,description,thumbnail_480_url,duration,views_total,owner.screenname,created_time'
+        return Connector(kind='json', extractor='Dailymotion',
+            pagination=Pagination(mode='page', has_more_path='/has_more'),
+            search_url='https://api.dailymotion.com/videos?search={query}&sort=relevance&limit={limit}&fields=id,title,description,thumbnail_480_url,duration,views_total,owner.screenname,created_time',
+            home_url='https://api.dailymotion.com/videos?sort=recent&limit={limit}&fields=id,title,description,thumbnail_480_url,duration,views_total,owner.screenname,created_time',
+            home_trending_url=feed.format(sort='trending'), home_views_url=feed.format(sort='visited'), home_recent_url=feed.format(sort='recent'),
+            video_url='https://www.dailymotion.com/video/{id}',
+            mapping=Mapping(url='', thumbnail='/thumbnail_480_url', channel='/owner.screenname', views='/views_total', published='/created_time')).model_dump()
+    prefix = SEARCH[source_id][1] if source_id in SEARCH else search_prefixes().get(source_id)
+    extractor = source_id
+    aliases = {'YoutubeSearch':'Youtube', 'BiliBiliSearch':'BiliBili', 'SoundcloudSearch':'Soundcloud', 'NicovideoSearch':'Niconico', 'NicovideoSearchDate':'Niconico', 'RokfinSearch':'Rokfin', 'PRXStoriesSearch':'PRXStory', 'PRXSeriesSearch':'PRXSeries'}
+    extractor = aliases.get(source_id, extractor)
+    search_url = ''
+    if source_id in URL_SEARCH:
+        _, search_url, extractor = URL_SEARCH[source_id]
+    config = Connector(kind='ytdlp' if prefix or search_url else 'url', extractor=extractor,
+                       prefix=prefix or 'ytsearch', search_url=search_url)
+    if config.kind == 'ytdlp' and extractor == 'Youtube' and source_id != 'YoutubeMusicSearchURL':
+        config.home_views_url = 'https://www.youtube.com/results?search_query={query}&sp=CAMSAhAB'
+    return config.model_dump()
+
+
+def pointer(data, path):
+    if path == '':
+        return data
+    for key in path[1:].split('/'):
+        key = key.replace('~1', '/').replace('~0', '~')
+        if isinstance(data, dict):
+            data = data.get(key)
+        elif isinstance(data, list) and key.isdigit() and int(key) < len(data):
+            data = data[int(key)]
+        else:
+            return None
+    return data
+
+
+class PublicRedirect(HTTPRedirectHandler):
+    def __init__(self, credential=None):
+        super().__init__()
+        self.credential = credential
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        public_url(newurl)
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected:
+            from app.vault import scoped_headers
+            sensitive = {'authorization', 'cookie', 'proxy-authorization'}
+            if self.credential:
+                sensitive.add(self.credential.get('header', '').lower())
+            for name in list(redirected.headers):
+                if name.lower() in sensitive:
+                    redirected.remove_header(name)
+            for name, value in scoped_headers(self.credential, newurl).items():
+                redirected.add_header(name, value)
+        return redirected
+
+
+def search_json(config, query, limit, home=False, *, offset=None, credential=None, return_page=False):
+    config = Connector.model_validate(config)
+    pattern = config.home_url if home and config.home_url else config.search_url
+    url = pattern.format(query=quote(query, safe=''), limit=limit)
+    body = {key: value.format(query=query, limit=limit) if isinstance(value, str) else value for key, value in config.body.items()}
+    native = offset is not None and config.pagination.mode != 'prefix'
+    if native:
+        value = offset // limit + 1 if config.pagination.mode == 'page' else offset
+        if config.method == 'POST':
+            body[config.pagination.parameter] = value
+        else:
+            parts = urlsplit(url)
+            params = [(k, v) for k, v in parse_qsl(parts.query) if k != config.pagination.parameter]
+            url = urlunsplit(parts._replace(query=urlencode(params + [(config.pagination.parameter, value)])))
+    public_url(url)
+    # DNS and secondary requests are additionally checked by the worker network guard.
+    proxy=os.environ.get('ANYTUBE_PROXY')
+    from app.vault import scoped_headers
+    request_headers = {'Accept': 'application/json', **scoped_headers(credential, url)}
+    if config.method == 'POST':
+        request_headers['Content-Type'] = 'application/json'
+    with build_opener(ProxyHandler({'http':proxy,'https':proxy} if proxy else {}), PublicRedirect(credential)).open(Request(url, headers=request_headers,
+            data=json.dumps(body).encode() if config.method == 'POST' else None, method=config.method), timeout=12) as response:
+        raw = response.read(2 * 1024 * 1024 + 1)
+    if len(raw) > 2 * 1024 * 1024:
+        raise ValueError('La réponse dépasse 2 Mo.')
+    data = json.loads(raw)
+    entries = pointer(data, config.results_path)
+    if not isinstance(entries, list):
+        raise ValueError('Le chemin des résultats ne désigne pas une liste JSON.')
+    items = []
+    for entry in entries[:limit]:
+        values = {name: pointer(entry, path) if path else None for name, path in config.mapping.model_dump().items()}
+        if not isinstance(values['title'], str) or not values['title'].strip():
+            raise ValueError('Le champ titre est absent ou invalide dans les résultats.')
+        if config.video_url:
+            if not isinstance(values['id'], (str, int)) or isinstance(values['id'], bool):
+                raise ValueError('Identifiant vidéo absent ou invalide.')
+            values['url'] = config.video_url.format(id=quote(str(values['id']), safe=''))
+        if not isinstance(values['url'], str):
+            raise ValueError('Le champ URL vidéo est absent ou invalide.')
+        if values['url'].startswith('/'):
+            values['url'] = urljoin(url, values['url'])
+        public_url(values['url'])
+        if isinstance(values['thumbnail'], str) and values['thumbnail'].startswith('/'):
+            values['thumbnail'] = urljoin(url, values['thumbnail'])
+        if config.thumbnail_url:
+            if not isinstance(values['id'], (str, int)) or isinstance(values['id'], bool):
+                raise ValueError('Identifiant requis pour la vignette.')
+            values['thumbnail'] = config.thumbnail_url.format(id=quote(str(values['id']), safe=''))
+        for field in ('duration', 'views'):
+            value = values[field]
+            try:
+                values[field] = float(value) if value is not None else None
+                if values[field] is not None and (not math.isfinite(values[field]) or values[field] < 0):
+                    values[field] = None
+            except (ValueError, TypeError):
+                values[field] = None
+        items.append({'id': str(values['id'] or ''), 'title': values['title'][:500], 'webpage_url': values['url'],
+            'thumbnail': values['thumbnail'] if isinstance(values['thumbnail'], str) else None,
+            'description': clean_html(values['description'])[:3000] if isinstance(values['description'], str) else '',
+            'uploader': values['channel'][:300] if isinstance(values['channel'], str) else '',
+            'duration': values['duration'], 'view_count': values['views'], 'upload_date': values['published']})
+    if return_page:
+        has_more = pointer(data, config.pagination.has_more_path) if config.pagination.has_more_path else len(entries) >= limit
+        if config.pagination.has_more_path and type(has_more) is not bool:
+            raise ValueError('Le champ de pagination doit être booléen.')
+        return {'items': items, 'native_page': native, 'has_more': bool(has_more and items)}
+    return items

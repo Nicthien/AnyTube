@@ -1,0 +1,15 @@
+{
+  "lan": "blocked",
+  "metadata": "blocked",
+  "public_direct": "blocked",
+  "local_api": "blocked",
+  "private_proxy": 403,
+  "ipv6_proxy": 403,
+  "metadata_proxy": 403,
+  "public_https": 200,
+  "search_count": 10,
+  "Uid": "10001\t10001\t10001\t10001",
+  "CapEff": "0000000000000000",
+  "CapBnd": "0000000000000000",
+  "NoNewPrivs": "1"
+}

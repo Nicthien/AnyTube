@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-06T15:53:48.020808+00:00",
+  "environment": "docker-validation",
+  "platform": "niconico",
+  "extractors": [
+    "Niconico",
+    "NicovideoSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "71ef70c336c3cb58fe437736b665b12c71fac3ba40985e528b47e8aefdf33084",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "empty"
+}

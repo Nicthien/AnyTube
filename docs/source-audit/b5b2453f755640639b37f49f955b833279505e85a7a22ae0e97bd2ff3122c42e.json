@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:30.846446+00:00",
+  "environment": "docker-validation",
+  "platform": "archiveorg",
+  "extractors": [
+    "ArchiveOrg"
+  ],
+  "feature": "home",
+  "query": "recent",
+  "revision": "84b01ecfd99106d5c82f6f9d4eea44c03df20ef5cf74af5ad03c25a80d6b1ad2",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "TBC1_20260906_150000",
+        "ALMAGHRIBIA_20260906_150000"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "SUDAN_20260906_150000",
+        "TELECONGO_20260906_150000"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

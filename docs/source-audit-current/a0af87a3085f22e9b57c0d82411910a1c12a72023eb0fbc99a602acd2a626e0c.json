@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06T16:07:04.121271+00:00",
+  "environment": "docker-validation",
+  "platform": "gamejolt",
+  "extractors": [
+    "GameJolt",
+    "GameJoltSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "14a6bdeaf71243563891a8fd0e4d2c03e5968d1edabaf3873387a79f3536975e",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-06T15:54:02.040446+00:00",
+  "environment": "docker-validation",
+  "platform": "niconico",
+  "extractors": [
+    "NicovideoSearchDate"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "1dbd379701857f72b3889b240b5695b6debcd7e09b46e91d6687d1ebdb554466",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

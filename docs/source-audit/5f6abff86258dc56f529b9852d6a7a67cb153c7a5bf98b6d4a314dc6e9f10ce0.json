@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06T15:54:16.933787+00:00",
+  "environment": "docker-validation",
+  "platform": "rokfin",
+  "extractors": [
+    "Rokfin",
+    "RokfinSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "3a5ff064c91e2e3ab338f1d30c08062ee03076e8e2aef0bb2193eab0f3789776",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:23.296089+00:00",
+  "environment": "docker-validation",
+  "platform": "archiveorg",
+  "extractors": [
+    "ArchiveOrg"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "84b01ecfd99106d5c82f6f9d4eea44c03df20ef5cf74af5ad03c25a80d6b1ad2",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "infinity.girl (YAMI @ infinity portal 4/22/23)",
+        "Tech music.com_1724087158410(480p)"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "9convert.com 주말엔 나랑놀아 1080p",
+        "İnsan Kılığında Dolaşan Hayvan"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

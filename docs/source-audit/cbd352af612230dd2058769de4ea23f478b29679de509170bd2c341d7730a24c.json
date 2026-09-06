@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:54:44.534594+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "Youtube",
+    "YoutubeSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "2cc626212cdf6b087556e3b763611b438e7e832e4d4225e5daf47d33e6435f98",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Les Vidéos Qui Ont Complètement Cassé Mon Cerveau",
+        "À Contre Sens 2 – Teaser | Prime Video"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 1,
+      "titles": [
+        "Funniest and Most Hilarious Videos in Africa / Part 16",
+        "À Contre Sens 2 – Teaser | Prime Video"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

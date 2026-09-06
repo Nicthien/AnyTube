@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T15:53:28.545133+00:00",
+  "environment": "docker-validation",
+  "platform": "dailymotion",
+  "extractors": [
+    "Dailymotion",
+    "DailymotionSearch"
+  ],
+  "feature": "home",
+  "query": "trending",
+  "revision": "c576fe46135ff5f7a904240f6d62ea377fda792ed995f6e9b9a7b29abb84c079",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Crash en plein show aérien : un avion de chasse s'écrase en Grèce",
+        "Miraculés du Népal : dix jours après la catastrophe, deux ouvriers extraits vivants d'un tunnel"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Il retrouve un téléphone et décide de le rendre",
+        "Pierre Gasly surprend les favoris et partira en pole position du Grand Prix d'Italie devant Russell "
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

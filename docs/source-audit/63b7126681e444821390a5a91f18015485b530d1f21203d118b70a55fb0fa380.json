@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-06T15:53:38.141889+00:00",
+  "environment": "docker-validation",
+  "platform": "gamejolt",
+  "extractors": [
+    "GameJolt",
+    "GameJoltSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "e8e8ad6549d51f4a6d5b62a14bcc5c6a5975b40ce70f970c5d63ba9fd00f7498",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Can FNAF Fan Game Devs Beat Their Own Games?",
+        "test player 1 (jumping, running, falling down, sliding on objects, and crouching) the scene shown in"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

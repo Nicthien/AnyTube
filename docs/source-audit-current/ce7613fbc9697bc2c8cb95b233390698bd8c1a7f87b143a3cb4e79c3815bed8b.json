@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-06T16:07:17.274290+00:00",
+  "environment": "docker-validation",
+  "platform": "googlesearch",
+  "extractors": [
+    "GoogleSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "60beaf0f26ae8d026200162d7f00111f6bfbedbaf43ae12b11945e7701f37597",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "empty"
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T16:07:07.049040+00:00",
+  "environment": "docker-validation",
+  "platform": "archiveorg",
+  "extractors": [
+    "ArchiveOrg"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "912cb3be886657993e95e2b2e97ff2dfd2c9234a32a053197cd77d0f2922c04d",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Tokyo Revengers - Saison 2 ├ëpisode 04 VF",
+        "Sacramento County Board of Supervisors Special Meeting: General Plan Annual Report and Housing Infil"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "το τ ελληνικό ελινικό σπίτι",
+        "Every Mario Friends, Pacman, and Mr. Game & Watch Sayings in DBEFB Effects."
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

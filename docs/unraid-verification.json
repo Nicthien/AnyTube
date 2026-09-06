@@ -1,0 +1,24 @@
+{
+  "yt_dlp": "2026.08.19",
+  "connector_version": "df964649a234cc39",
+  "searches": [
+    {
+      "source": "Dailymotion",
+      "query": "chat",
+      "count": 10,
+      "ok": true
+    },
+    {
+      "source": "Dailymotion",
+      "query": "nature",
+      "count": 10,
+      "ok": true
+    }
+  ],
+  "private_proxy": 403,
+  "metadata_proxy": 403,
+  "private_direct": "blocked",
+  "integrity": "ok",
+  "source_count": 2,
+  "account_count": 0
+}

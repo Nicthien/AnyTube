@@ -1,0 +1,6 @@
+{
+  "name": "anytube-browser-dependencies",
+  "private": true,
+  "scripts": {"vendor": "node scripts/vendor-player.cjs"},
+  "dependencies": {"shaka-player": "5.2.9"}
+}

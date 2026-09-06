@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-06T15:53:39.282374+00:00",
+  "environment": "docker-validation",
+  "platform": "bilibili",
+  "extractors": [
+    "BiliBili",
+    "BiliBiliSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "569f2b12f6beeb13a4b237d1ed8bcf154ebf294aa914846dc0207d1d56e88b4f",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "VID_280",
+        "Vídeo mostrando gerações de IAs: 001"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

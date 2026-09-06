@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-06T16:07:38.265476+00:00",
+  "environment": "docker-validation",
+  "platform": "prx",
+  "extractors": [
+    "PRXStory",
+    "PRXStoriesSearch"
+  ],
+  "feature": "home",
+  "query": "default",
+  "revision": "e51a3f2b956e681d5ff88fe1c75160b664336c29bbe03860e05e0e5f7c13aafb",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "temporarily_unavailable"
+}

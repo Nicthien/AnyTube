@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:19.617171+00:00",
+  "environment": "docker-validation",
+  "platform": "archiveorg",
+  "extractors": [
+    "ArchiveOrg"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "84b01ecfd99106d5c82f6f9d4eea44c03df20ef5cf74af5ad03c25a80d6b1ad2",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "The Nature of Things : CBCNEWS : November 22, 2025 10:00pm-11:01pm EST",
+        "jokes, gags, things of that nature ＊＊＊ [Lifesteal SMP] !plushie"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "SUPER MOON RISING OVER KERRVILLE, TEXAS",
+        "Water Reuse Project Update - January to February 2017"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-06T16:08:05.830444+00:00",
+  "environment": "docker-validation",
+  "platform": "vimeo",
+  "extractors": [
+    "Vimeo"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "d9b5b944b475cf4ab38559ee0793455315c43f970f98b24381c20477067e59ad",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "authentication_required"
+}

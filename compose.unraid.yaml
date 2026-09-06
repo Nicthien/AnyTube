@@ -1,0 +1,32 @@
+services:
+  anytube:
+    build: .
+    image: anytube:family
+    restart: unless-stopped
+    user: '0:0'
+    command: [python, -m, app.container]
+    ports: ['${ANYTUBE_BIND:-127.0.0.1}:${ANYTUBE_PORT:-8088}:8000']
+    environment:
+      ANYTUBE_DATA: /data
+      ANYTUBE_MEDIA: /media
+      ANYTUBE_CONFIG: /configuration
+      ANYTUBE_PUBLIC_URL: ${ANYTUBE_PUBLIC_URL:-}
+      ANYTUBE_VAULT_KEY_FILE: /secrets/vault.key
+      ANYTUBE_ENVIRONMENT: ${ANYTUBE_ENVIRONMENT:-unraid}
+    volumes:
+      - ${ANYTUBE_APPDATA:-/mnt/user/appdata/anytube}/data:/data
+      - ${ANYTUBE_APPDATA:-/mnt/user/appdata/anytube}/backups:/backups
+      - ${ANYTUBE_STORAGE:-/mnt/user/anytube}:/media
+      - ${ANYTUBE_SECRETS:-/mnt/user/appdata/anytube-secrets}:/secrets
+      - .:/configuration:ro
+    read_only: true
+    tmpfs: ['/tmp:size=128m,mode=1777', '/run:size=8m']
+    cap_drop: [ALL]
+    cap_add: [NET_ADMIN, CHOWN, FOWNER, DAC_OVERRIDE, SETUID, SETGID, SETPCAP, KILL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, setpriv, '--reuid', '10003', '--regid', '10003', '--clear-groups', python, -c, 'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/api/health", timeout=3)']
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3

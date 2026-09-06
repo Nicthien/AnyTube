@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T16:07:44.301680+00:00",
+  "environment": "docker-validation",
+  "platform": "redgifs",
+  "extractors": [
+    "RedGifsSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "8941c40a76e09fbffb4df7acedd41bd2aa4574721d8a48262fa479b7c6835fd1",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "RedGifs",
+        "RedGifs"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Amateur Big Dick Homemade NSFW",
+        "RedGifs"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

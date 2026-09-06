@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>AnyTube — Toutes vos sources, un seul espace</title><link rel="stylesheet" href="/static/style.css"><script src="/static/vendor/shaka-player.js" defer></script><script src="/static/app.js" defer></script><script src="/static/connectors.js" defer></script><script src="/static/access.js" defer></script><script src="/static/playback.js" defer></script><script src="/static/home.js" defer></script><script src="/static/accounts.js" defer></script></head>
+<body>
+<div class="shell" hidden>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="AnyTube, accueil"><span class="logo">▷</span>Any<small>Tube</small></a>
+  <nav class="nav" aria-label="Navigation principale">
+    <button data-page="explore" class="active"><span aria-hidden="true">◈</span> Explorer</button>
+    <button data-page="sources"><span aria-hidden="true">▦</span> Mes sources</button>
+    <button data-page="downloads"><span aria-hidden="true">↓</span> Téléchargements</button>
+    <button data-page="privacy"><span aria-hidden="true">◇</span> Confidentialité</button>
+  </nav>
+  <div class="side-bottom"><div class="privacy">◇ Aucun lecteur publicitaire</div><p>Votre bibliothèque, sur votre serveur.</p></div>
+</aside>
+<div class="workspace">
+  <header class="topbar">
+    <form id="search-form" class="search-form" role="search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg><input id="query" aria-label="Rechercher des vidéos" placeholder="Rechercher parmi vos sources…" maxlength="200" required autocomplete="off"><button class="primary" id="search-button">Rechercher</button></form>
+    <button class="icon-button theme" id="theme" aria-label="Changer de thème" title="Changer de thème">◐</button>
+  </header>
+  <main>
+    <section id="page-explore" class="page">
+      <div class="heading"><div><div class="eyebrow">VOTRE FENÊTRE SUR LE WEB</div><h1>Toutes vos sources.<br>Un seul espace.</h1><p>Explorez, regardez et gardez ce qui vous plaît.</p></div><button class="secondary" id="open-url">＋ Ouvrir une URL</button></div>
+      <div id="filters" class="filters" aria-label="Sources de la recherche"></div><p class="hint" id="filter-hint"></p>
+      <div id="search-notices" aria-live="polite"></div>
+      <div id="home-feed"></div>
+      <div class="results-header"><h2 id="results-title">À vous d’explorer</h2><span class="count" id="result-count"></span></div>
+      <div id="results" class="grid"></div>
+      <div id="empty" class="empty"><div class="empty-icon" aria-hidden="true">⌕</div><h2>Une envie, plusieurs horizons.</h2><p>Recherchez un sujet sur toutes vos sources ou choisissez celles qui vous intéressent.</p><div class="suggestions"><button class="chip" data-query="documentaire nature">Documentaires nature</button><button class="chip" data-query="musique libre de droits">Musique libre</button><button class="chip" data-query="exploration spatiale">Exploration spatiale</button></div></div>
+    </section>
+    <section id="page-sources" class="page" hidden><div class="heading"><div><div class="eyebrow">VOTRE SÉLECTION</div><h1>Mes sources</h1><p>Choisissez les plateformes qui composent votre AnyTube.</p></div><button id="add-source" class="primary">＋ Ajouter une source</button></div><div class="notice">La recherche dépend de chaque plateforme. Les sources « URL uniquement » permettent d’ouvrir un lien vidéo, mais ne participent pas à la recherche.</div><div id="source-list" class="source-list"></div></section>
+    <section id="page-downloads" class="page" hidden><div class="heading"><div><div class="eyebrow">À GARDER</div><h1>Téléchargements</h1><p>Vidéos préparées sur votre serveur, prêtes à lire ou à enregistrer.</p></div><button class="secondary" id="refresh-downloads">Actualiser</button></div><p class="notice">Les vidéos de votre bibliothèque restent conservées après redémarrage. Le cache de lecture est séparé et expire automatiquement. Les limites et quotas sont gérés par l’administrateur ; les valeurs initiales sont 500 Mo et 720p, modifiables dans Mon compte.</p><div id="download-list"></div></section>
+    <section id="page-privacy" class="page" hidden><div class="eyebrow">UNE EXPÉRIENCE PLUS CALME</div><h1>Lecture & confidentialité</h1><p>Vous gardez la main sur ce qui se charge et ce qui se lit.</p><div class="settings-card"><h2>Un lecteur à vous</h2><p>AnyTube ne charge ni lecteur intégré des plateformes, ni script publicitaire tiers. Les vidéos compatibles sont préparées sur le serveur et lues dans le lecteur local. Les publicités déjà intégrées au flux peuvent rester présentes.</p></div><div class="settings-card"><label><input type="checkbox" id="sponsor-setting"> Passer les segments sponsorisés sur YouTube</label><p>Utilise les signalements communautaires de <a href="https://sponsor.ajay.app" target="_blank" rel="noreferrer">SponsorBlock</a> (données sous <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">CC BY-NC-SA 4.0</a>). La recherche des segments utilise un préfixe de hachage de l’identifiant vidéo. Aucun segment trouvé ne signifie pas une absence de publicité. Ce réglage est enregistré dans votre compte et synchronisé entre vos appareils.</p></div><div class="settings-card"><h2>Connexions aux sources</h2><p>Les recherches et les fichiers vidéo passent par votre serveur. Les vignettes sont chargées directement depuis leurs hébergeurs et peuvent leur transmettre votre adresse IP. Les accès que vous importez explicitement sont chiffrés et privés par compte. Les données de chaque membre sont privées. L’accès distant utilise HTTPS et les comptes sur invitation.</p></div></section>
+  </main>
+</div></div>
+<dialog id="catalog-dialog" aria-labelledby="catalog-title"><div class="dialog-header"><h2 id="catalog-title">Ajouter une source</h2><button class="icon-button" data-close aria-label="Fermer">✕</button></div><p>Choisissez un extracteur du catalogue yt-dlp. Sa présence ne garantit pas sa disponibilité actuelle.</p><input id="catalog-query" class="full" aria-label="Filtrer le catalogue" placeholder="YouTube, Vimeo, Arte…"><div id="catalog-status" class="hint" aria-live="polite"></div><div id="catalog-results" class="catalog-results"></div></dialog>
+<dialog id="delete-dialog" aria-labelledby="delete-title"><h2 id="delete-title">Supprimer cette source ?</h2><p id="delete-text"></p><p id="delete-error" class="danger" aria-live="polite"></p><div class="dialog-actions"><button class="secondary" data-close>Annuler</button><button class="primary" id="delete-source">Supprimer</button></div></dialog>
+<dialog id="url-dialog" aria-labelledby="url-title"><div class="dialog-header"><h2 id="url-title">Ouvrir une vidéo</h2><button class="icon-button" data-close aria-label="Fermer">✕</button></div><p>Collez un lien provenant d’une source ajoutée et activée. Les formats disponibles dépendent de la source. La préparation locale reste accessible depuis le lecteur.</p><form id="url-form"><input type="url" id="video-url" class="full" placeholder="https://…" aria-label="URL de la vidéo" required><div class="dialog-actions"><button class="primary">Ouvrir le média</button></div></form></dialog>
+<dialog id="player-dialog" class="player-dialog" aria-labelledby="player-title"><div class="dialog-header"><h2 id="player-title">Préparation de la vidéo</h2><button class="icon-button" data-close aria-label="Fermer le lecteur">✕</button></div><p id="player-status" aria-live="polite"></p><video id="player" controls playsinline preload="metadata" hidden></video><p class="hint" id="sponsor-status" aria-live="polite"></p><p id="player-description" class="player-description"></p><a class="primary" id="download-file" hidden>Télécharger sur mon appareil</a></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+</body></html>

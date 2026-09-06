@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-06T16:07:22.111210+00:00",
+  "environment": "docker-validation",
+  "platform": "peertube",
+  "extractors": [
+    "PeerTube",
+    "PeerTubePlaylist"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "dd6042eee2012dffe32d4a1e5ea3f4543ba4dd0a1e9fe8ffdb29e1116f96b987",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "La nature ne peut pas faire ça ! Deï Mian à Sacsayhuamán",
+        "La nature ne peut pas faire ça : Deï Mian et les dalles du Lac Shira"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "❓ CE TEST QUI RÉVÈLE LA NATURE DE LA FOI • Le Petit Point d'? - 13 fév 2020",
+        "La part de la nature dans le changement climatique MaP#12"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

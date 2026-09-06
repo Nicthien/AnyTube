@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:55:15.244545+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "YoutubeSearchURL"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "f75f772f151ee0666949a22df72a8c2a2d700eb970fb1380eb8e95ff07d73abd",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "ADÉLA - Nicole Kidman (Official Music Video)",
+        "lofi hip hop radio 📚 beats to relax/study to"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Fresh Morning Vibes 🌤️ Best Acoustic Pop 2026 🎧 Trending English Songs for Good Mood 💚",
+        "summer lofi radio ☀️ music to put you in a better mood"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

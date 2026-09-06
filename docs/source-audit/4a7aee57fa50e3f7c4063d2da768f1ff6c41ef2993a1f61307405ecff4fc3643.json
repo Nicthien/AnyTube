@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:55:09.919786+00:00",
+  "environment": "docker-validation",
+  "platform": "youtube",
+  "extractors": [
+    "YoutubeSearchURL"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "f75f772f151ee0666949a22df72a8c2a2d700eb970fb1380eb8e95ff07d73abd",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "3 Hours of Incredible 4K Nature Footage | BBC Earth",
+        "Incredible Natural World Wonders - Narrated by Sir David Attenborough | BBC Earth"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Forest River Nature Sounds - Gentle Stream with Birdsong | 4K Relaxing Nature Ambience for Sleep",
+        "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by Tim Janis"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

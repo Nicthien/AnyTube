@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T16:06:59.046691+00:00",
+  "environment": "docker-validation",
+  "platform": "archiveorg",
+  "extractors": [
+    "ArchiveOrg"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "912cb3be886657993e95e2b2e97ff2dfd2c9234a32a053197cd77d0f2922c04d",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Mohiniyattam",
+        "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Jordan With Water Purity : JORDANTV : December 26, 2025 9:45am-10:00am +03",
+        "Jordan With Water Purity : JORDANTV : January 25, 2026 9:45am-10:01am +03"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}

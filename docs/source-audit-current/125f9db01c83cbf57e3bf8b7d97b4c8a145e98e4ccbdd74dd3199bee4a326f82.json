@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-06T16:07:17.656044+00:00",
+  "environment": "docker-validation",
+  "platform": "niconico",
+  "extractors": [
+    "Niconico",
+    "NicovideoSearch"
+  ],
+  "feature": "search",
+  "query": "nature",
+  "revision": "34f98bb8ef7768993f0855f3fde9f321cab04370ce13086eec889902716e3029",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "159bd06af220c5ff",
+  "pages": [
+    {
+      "count": 0,
+      "new_urls": 0,
+      "titles": [],
+      "status": "empty"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "empty"
+}

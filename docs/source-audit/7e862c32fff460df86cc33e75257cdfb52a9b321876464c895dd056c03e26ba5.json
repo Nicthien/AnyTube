@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T15:53:59.709398+00:00",
+  "environment": "docker-validation",
+  "platform": "redgifs",
+  "extractors": [
+    "RedGifsSearch"
+  ],
+  "feature": "search",
+  "query": "music",
+  "revision": "8f24f2cbf70fd501f9073b4f4db62eb0f59b8ea069e5ac6bdf1afd1be28564a0",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "70c914b1644b41cb",
+  "pages": [
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "Babe Booty Brunette Tease",
+        "RedGifs"
+      ],
+      "status": "results_received"
+    },
+    {
+      "count": 2,
+      "new_urls": 2,
+      "titles": [
+        "RedGifs",
+        "RedGifs"
+      ],
+      "status": "results_received"
+    }
+  ],
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "results_received"
+}
