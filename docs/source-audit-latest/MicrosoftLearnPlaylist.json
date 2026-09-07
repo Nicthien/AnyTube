@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "MicrosoftLearnPlaylist",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "MicrosoftLearnPlaylist",
+  "template_revision": "64cf279bda0b3e8ae26f3d843f7a5f1eb732520f20e872f6aecc72b420b53361",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:35:57.059587+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "python": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.63,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Python for Beginners",
+            "More Python for Beginners"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/intro-to-python-development/",
+            "https://learn.microsoft.com/shows/more-python-for-beginners/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.555,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Azure Developers Python Day 2023",
+            "Azure Developers - Python Day 2024"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/azure-developers-python-day/",
+            "https://learn.microsoft.com/shows/azure-developers-python-day-2024/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:35:48.737223+00:00"
+    },
+    "azure": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.684,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Azure Developers",
+            "Inside Azure for IT"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/azure-developers/",
+            "https://learn.microsoft.com/shows/inside-azure-for-it/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.701,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Azure",
+            "Azure API Management"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/azure/",
+            "https://learn.microsoft.com/shows/azureapimgmt/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:35:52.122978+00:00"
+    },
+    "sql": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.291,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SQL Workshops",
+            "Azure SQL for Beginners"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/sql-workshops/",
+            "https://learn.microsoft.com/shows/azure-sql-for-beginners/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.316,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Learn Together for SQL on Fabric",
+            "Programming Databases with T-SQL for Beginners"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/learn-together-for-sql-on-fabric/",
+            "https://learn.microsoft.com/shows/programming-databases-with-t-sql-for-beginners/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:35:54.730532+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "python",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.164,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Python for Beginners",
+            "More Python for Beginners"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/intro-to-python-development/",
+            "https://learn.microsoft.com/shows/more-python-for-beginners/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.164,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Azure Developers Python Day 2023",
+            "Azure Developers - Python Day 2024"
+          ],
+          "samples": [
+            "https://learn.microsoft.com/shows/azure-developers-python-day/",
+            "https://learn.microsoft.com/shows/azure-developers-python-day-2024/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:35:57.059587+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "python": "results_received",
+    "azure": "results_received",
+    "sql": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:35:48.737223+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

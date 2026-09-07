@@ -1,0 +1,25 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T19:35:57.060934+00:00",
+  "elapsed_seconds": 12.286,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-03",
+  "templates": 1,
+  "results": {
+    "MicrosoftLearnPlaylist": {
+      "search": "results_received",
+      "per_query": {
+        "python": "results_received",
+        "azure": "results_received",
+        "sql": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

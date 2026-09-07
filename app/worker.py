@@ -6,6 +6,7 @@ import shutil
 import sys
 import time
 import os
+import re
 import subprocess
 from pathlib import Path
 from datetime import datetime, timezone
@@ -45,6 +46,10 @@ def web_url(value):
 
 
 def normalize(info):
+    target = info.get('webpage_url') or info.get('url')
+    # Flat NRK collections contain internal yt-dlp locators, not browser URLs.
+    if isinstance(target, str) and re.fullmatch(r'nrk:[A-Za-z]{4}\d{8}', target):
+        target = 'https://tv.nrk.no/program/' + target[4:]
     thumbs = info.get('thumbnails') or []
     published = info.get('upload_date') or info.get('timestamp')
     try:
@@ -59,12 +64,14 @@ def normalize(info):
     return {
         'id': str(info.get('id', '')),
         'title': info.get('title') or 'Sans titre',
-        'url': web_url(info.get('webpage_url') or info.get('url')),
+        'url': web_url(target),
         'thumbnail': web_url(info.get('thumbnail') or (thumbs[-1].get('url') if thumbs else None)),
         'description': (info.get('description') or '')[:3000],
         'channel': info.get('channel') or info.get('uploader') or '',
         'duration': info.get('duration'), 'views': info.get('view_count'),
         'published': published,
+        'non_media': info.get('anytube_non_media') is True,
+        'access_required': info.get('anytube_access_required') is True,
     }
 
 
@@ -136,7 +143,27 @@ def run(payload):
                         ignore_no_formats_error=True)
         with YoutubeDL(opts) as ydl:
             attach_access(ydl, credential)
-            info = ydl.extract_info(target, download=False, ie_key=payload.get('extractor_key'))
+            from app.toongoggles import register_episode
+            from app.tubetugraz import register_episode as register_tugraz
+            extractor_key = register_tugraz(ydl, target, register_episode(ydl, target, payload.get('extractor_key')))
+            if payload['mode'] == 'collection':
+                from app.microsoft import AnyTubeMicrosoftLearnPlaylistIE
+                from app.arte import AnyTubeArteTVPlaylistIE
+                from app.patreon import AnyTubePatreonCampaignIE
+                from app.toongoggles import AnyTubeToonGogglesShowIE
+                if AnyTubeMicrosoftLearnPlaylistIE.suitable(target):
+                    ydl.add_info_extractor(AnyTubeMicrosoftLearnPlaylistIE())
+                    extractor_key = AnyTubeMicrosoftLearnPlaylistIE.ie_key()
+                elif AnyTubeArteTVPlaylistIE.suitable(target):
+                    ydl.add_info_extractor(AnyTubeArteTVPlaylistIE())
+                    extractor_key = AnyTubeArteTVPlaylistIE.ie_key()
+                elif AnyTubePatreonCampaignIE.suitable(target):
+                    ydl.add_info_extractor(AnyTubePatreonCampaignIE())
+                    extractor_key = AnyTubePatreonCampaignIE.ie_key()
+                elif AnyTubeToonGogglesShowIE.suitable(target):
+                    ydl.add_info_extractor(AnyTubeToonGogglesShowIE())
+                    extractor_key = AnyTubeToonGogglesShowIE.ie_key()
+            info = ydl.extract_info(target, download=False, ie_key=extractor_key)
         if not info:
             raise SourceFailure('invalid_response')
         if payload['mode'] == 'collection':
@@ -214,7 +241,10 @@ def run(payload):
         opts['match_filter'] = reject_live
         with YoutubeDL(opts) as ydl:
             attach_access(ydl, credential)
-            info = ydl.extract_info(target, download=True, ie_key=payload.get('extractor_key'))
+            from app.toongoggles import register_episode
+            from app.tubetugraz import register_episode as register_tugraz
+            info = ydl.extract_info(target, download=True,
+                                    ie_key=register_tugraz(ydl, target, register_episode(ydl, target, payload.get('extractor_key'))))
         filename = 'audio.m4a' if audio_only else 'video.mp4'
         if not (folder / filename).is_file():
             raise SourceFailure('unavailable_format')

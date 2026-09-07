@@ -1,0 +1,194 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "YoutubeMusicSearchURL",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "Youtube",
+  "template_revision": "6c67ed282f1e28d652421e406141ec696a500400288b5b57265d67b60f163720",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:33:31.856011+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 7.468,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Birds & Streams",
+            "Zen Meditation Music, Nature Sounds, Relaxing Music, Calming Music, Healing Musi"
+          ],
+          "samples": [
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_mbiV5Yf70rsze2fxgIqK9k2Gi1sl-MOGM",
+            "https://music.youtube.com/watch?v=Xbjzkbi4OcA"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 10.831,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Rain Sound (Pure White Noise for Natural Deep Sleep Inducing)",
+            "Amazon Jungle (Nature Sounds Only)"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=13EL6Mgeocc",
+            "https://music.youtube.com/watch?v=0PAAlv1y2Yc"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:31:46.459615+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 10.304,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Relaxing Piano Music",
+            "Soothing Relaxation: Relaxing Piano Music"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=szWX1HhMZvI",
+            "https://music.youtube.com/watch?v=m1MYLge2zqc"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "timeout",
+          "detail": "La plateforme a dépassé le délai de réponse.",
+          "elapsed_seconds": 32.355
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 3,
+      "date": "2026-09-06T19:32:29.119453+00:00"
+    },
+    "jazz": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 18.478,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Cool Jazz Moods",
+            "Traditional Jazz"
+          ],
+          "samples": [
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_l3Iir9QZmCUPLjUqyR9PmYIKkkY7YEJZA",
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_n8797v38N8JhZdT2JJtlM0OfIpgkJ3Mkk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "timeout",
+          "detail": "La plateforme a dépassé le délai de réponse.",
+          "elapsed_seconds": 30.21
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 3,
+      "date": "2026-09-06T19:33:17.808323+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.295,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Kamasutra",
+            "👽 NEW \"SKINNY BOB\" VIDEOS 😱 15 YEARS LATER, THE MYSTERY IS BACK! 🎥 🛸"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=fNmc56cbBS8",
+            "https://music.youtube.com/watch?v=7lZyo67muh4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 11.752,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 2,
+          "repeated_urls": 1,
+          "titles": [
+            "Kamasutra",
+            "Fucks Up Bishops Credit"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=fNmc56cbBS8",
+            "https://music.youtube.com/watch?v=cGeWEqtfo4o"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T19:33:31.856011+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "jazz": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:31:46.459615+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

@@ -1,0 +1,119 @@
+{
+  "source": "https://telequebec.tv/recherche?keywords=nature",
+  "endpoint": "https://api.pc-cms.tele.quebec/graphql",
+  "query": "query { searchPage(keywords: \"nature\", resultDefinitions: [{resultsType: PLAYABLE_EPISODES, size: 3}]) { id slug blocks { id blockType } } }",
+  "response": {
+    "data": {
+      "searchPage": {
+        "blocks": [
+          {
+            "blockType": "PAGE_META_DATA",
+            "id": "18"
+          },
+          {
+            "blockType": "SEARCH_RESULTS",
+            "id": "22"
+          },
+          {
+            "blockType": "DYNAMIC_ADS",
+            "id": "a2909ac3-4686-456a-aac1-ba91d391f0e5"
+          },
+          {
+            "blockType": "SEARCH_RESULTS",
+            "id": "30"
+          }
+        ],
+        "id": "10",
+        "slug": "/recherche"
+      }
+    }
+  },
+  "scope": "Episode search fields verified; new playback URL failed to resolve with installed worker. Pagination not yet verified.",
+  "date": "2026-09-06T21:00:46.904445+00:00",
+  "video_response": {
+    "data": {
+      "searchPage": {
+        "blocks": [
+          {
+            "blockType": "PAGE_META_DATA"
+          },
+          {
+            "blockConfiguration": {
+              "entries": [],
+              "metadata": {
+                "totalEntries": 0
+              }
+            },
+            "blockType": "SEARCH_RESULTS"
+          },
+          {
+            "blockType": "DYNAMIC_ADS"
+          },
+          {
+            "blockConfiguration": {
+              "entries": [
+                {
+                  "collection": {
+                    "slug": "leon-terreur-de-la-savane"
+                  },
+                  "duration": 180,
+                  "episodeNumber": 47,
+                  "id": "9746",
+                  "productType": "EPISODE",
+                  "seasonNumber": 1,
+                  "slug": null,
+                  "title": "Réserve naturelle"
+                },
+                {
+                  "collection": {
+                    "slug": "cochon-dingue"
+                  },
+                  "duration": 1495,
+                  "episodeNumber": 29,
+                  "id": "2315",
+                  "productType": "EPISODE",
+                  "seasonNumber": 6,
+                  "slug": null,
+                  "title": "Nature"
+                },
+                {
+                  "collection": {
+                    "slug": "les-argonautes"
+                  },
+                  "duration": 1495,
+                  "episodeNumber": 8,
+                  "id": "16864",
+                  "productType": "EPISODE",
+                  "seasonNumber": 6,
+                  "slug": null,
+                  "title": "C’est tout naturel!"
+                }
+              ],
+              "metadata": {
+                "totalEntries": 180
+              }
+            },
+            "blockType": "SEARCH_RESULTS"
+          }
+        ]
+      }
+    }
+  },
+  "resolve_probe": {
+    "url": "https://telequebec.tv/regarder/cochon-dingue/6/29",
+    "result": {
+      "error": "La plateforme est indisponible ou a refusé la requête.",
+      "code": "temporarily_unavailable",
+      "retry_after": null
+    }
+  },
+  "page_extractor_error": "TeleQuebecEmission: Unable to extract media id",
+  "brightcove_probe": {
+    "url": "https://players.brightcove.net/6150020952001/ja7RtbSne_default/index.html?videoId=ref:100620910",
+    "error": "La plateforme est indisponible ou a refusé la requête.",
+    "code": "temporarily_unavailable",
+    "title": null,
+    "formats": 0,
+    "upstream_error": "Access to this resource is forbidden by access policy."
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "NicovideoSearch",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "Niconico",
+  "template_revision": "eb8ae2346d82641337c82f464cb1c2b59dc55d3477bdb0627c3fcf19eea0f652",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": 1600,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T23:34:19.435069+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.93,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "初音ミク オリジナル曲　『 Strangers 』",
+            "【二年目】狩猟生活（その３４）"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm18307409",
+            "https://www.nicovideo.jp/watch/sm26127545"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.11,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "二年目狩猟生活（その５４）",
+            "二年目狩猟生活（その３５）"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm27620668",
+            "https://www.nicovideo.jp/watch/sm26623758"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:58.445138+00:00"
+    },
+    "音楽": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.204,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【東方】Bad Apple!!　ＰＶ【影絵】",
+            "新・豪血寺一族 -煩悩解放 - レッツゴー！陰陽師"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm8628149",
+            "https://www.nicovideo.jp/watch/sm9"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.472,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【初音ミク】みくみくにしてあげる♪【してやんよ】",
+            "初音ミク　が　オリジナル曲を歌ってくれたよ「メルト」"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm1097445",
+            "https://www.nicovideo.jp/watch/sm1715919"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:02.122610+00:00"
+    },
+    "風景": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.512,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【作業用BGM】 音楽レイプ！ NONA REEVES feat.野獣と化した先輩.mp4",
+            "【初音ミク】THE WORLDS【オリジナルジェットコースターPV】"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm21746571",
+            "https://www.nicovideo.jp/watch/sm19856000"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.463,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "決闘者の皆さんが艦これに興味を持ったようです",
+            "ドアラ グッドウィルドームに立つ!"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm22930803",
+            "https://www.nicovideo.jp/watch/sm354359"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:05.099155+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.392,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "鍋（トリッカル）メイキング：音ハメが大変って話",
+            "ずんだもんと見る土木ニュース　2026.9.7号"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/ss46771684",
+            "https://www.nicovideo.jp/watch/ss46771367"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.404,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【サクラ大戦３】第6話 その1 ※ネタバレあり",
+            "MINERVA どまつり2026"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm46771605",
+            "https://www.nicovideo.jp/watch/sm46771599"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:07.896459+00:00"
+    }
+  },
+  "rankings": {
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.415,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【東方】Bad Apple!!　ＰＶ【影絵】",
+            "M.C.ドナルドはダンスに夢中なのか？最終鬼畜道化師ドナルド・Ｍ"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm8628149",
+            "https://www.nicovideo.jp/watch/sm2057168"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.412,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【おにべろす】出会いから今までまとめ 百鬼あやめ(鬼)と戌亥とこ（ベロス）",
+            "『初音ミク』千本桜『オリジナル曲PV』"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm35919998",
+            "https://www.nicovideo.jp/watch/sm15630734"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:10.724728+00:00"
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.919,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "鍋（トリッカル）メイキング：音ハメが大変って話",
+            "ずんだもんと見る土木ニュース　2026.9.7号"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/ss46771684",
+            "https://www.nicovideo.jp/watch/ss46771367"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.498,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【サクラ大戦３】第6話 その1 ※ネタバレあり",
+            "MINERVA どまつり2026"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm46771605",
+            "https://www.nicovideo.jp/watch/sm46771599"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:15.142790+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.93,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "初音ミク オリジナル曲　『 Strangers 』",
+            "【二年目】狩猟生活（その３４）"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm18307409",
+            "https://www.nicovideo.jp/watch/sm26127545"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.11,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "二年目狩猟生活（その５４）",
+            "二年目狩猟生活（その３５）"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm27620668",
+            "https://www.nicovideo.jp/watch/sm26623758"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:58.445138+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.527,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "May The World Be Peaceful 01　世界が平和でありますように　英語版01",
+            "【初音ミク】Warm Snow/La'cryma Christi【VOCALOIDカバー】"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/sm46731250",
+            "https://www.nicovideo.jp/watch/sm46768050"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.763,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "野鳥界トップクラスに仲良しなキジバト夫婦のイチャイチャが尊すぎる… #shorts　",
+            "ザリガニ釣ってエビマヨにしましょう【きりたんのテキトークッキング】"
+          ],
+          "samples": [
+            "https://www.nicovideo.jp/watch/ss46747159",
+            "https://www.nicovideo.jp/watch/sm46729681"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:34:19.435069+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "音楽": "results_received",
+    "風景": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:33:58.445138+00:00",
+  "scenarios_reused": 7,
+  "scenarios_executed": 0
+}

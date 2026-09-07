@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-06T21:53:21.865896+00:00",
+  "image": "sha256:9c82822f3271034a9bfa13d408e129b752b46c786d6439c20c87c6613c7299f0",
+  "exit_code": 0,
+  "items": [
+    {
+      "title": "Research Need involving Lasers",
+      "non_media": false,
+      "access_required": true
+    },
+    {
+      "title": "The PROBLEM with Capitalism - Smarter Every Day 316",
+      "non_media": false,
+      "access_required": false
+    },
+    {
+      "title": "Thanks..... the scientific paper you helped me write was just published...",
+      "non_media": true,
+      "access_required": true
+    }
+  ],
+  "scope": "Docker collection flags, not browser playback"
+}

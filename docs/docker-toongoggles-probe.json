@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06T23:10:13.091290+00:00",
+  "image": "sha256:3e20be538fd37c2d722480b83cf6d6195c982086ed62d4740370cdf0dca2d836",
+  "engine": "5d9480adb516619a",
+  "observations": [
+    {
+      "mode": "search",
+      "exit_code": 0,
+      "count": 3,
+      "titles": [
+        "Rookie Robot",
+        "Incredible Record Breakers: Rockets and Robots",
+        "Lucky Fred"
+      ],
+      "formats": 0,
+      "error": null
+    },
+    {
+      "mode": "collection",
+      "exit_code": 0,
+      "count": 3,
+      "titles": [
+        "Table Tennis",
+        "Aerobics",
+        "Swimming"
+      ],
+      "formats": 0,
+      "error": null
+    },
+    {
+      "mode": "resolve",
+      "exit_code": 0,
+      "count": 0,
+      "titles": [],
+      "formats": 5,
+      "error": null
+    }
+  ],
+  "scope": "Docker worker; not browser playback"
+}

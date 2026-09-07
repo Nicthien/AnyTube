@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "ARDBetaMediathek",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "ARDBetaMediathek",
+  "template_revision": "73ea011f179b0a7f2d687e3633b295d56384ea78dc8a470ee36dbf342884eb73",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:37:20.716683+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "natur": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.393,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Kikaninchen und die tierisch tolle Natur",
+            "Sardinien · Arche aus Stein"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.459,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Dolomiten · Im Garten der Helden",
+            "Flussgiganten · Der Sambesi"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEwMjY1QTA",
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTQ3QTA"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:12.146845+00:00"
+    },
+    "musik": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.504,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Unheilig gewinnen Goldene Henne in der Kategorie Musik ",
+            "Take That wird mit dem Ehrenpreis Musik International überrascht "
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy82OWRhMDk0MS03MzMzLTQyY2YtYTFmOS03OTc3ZDUyYTg5Zjk",
+            "https://www.ardmediathek.de/video/Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy8xODcyYzAzYi1hODczLTQzZWQtYjZlZS05OGU1ZWY5MGY0ZDE"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.365,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Musik bei Inas Nacht: Annette und Carolin Frier singen \"Unsere Stammbaum\"",
+            "Musik bei Inas Nacht: Asaf Avidan mit \"Call of the Flow\""
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL25kci5kZS8zOTM5OGQ5Yi00NzhkLTQyZTgtOGE0ZC0zZGMxZmVjMWJmMWY",
+            "https://www.ardmediathek.de/video/Y3JpZDovL25kci5kZS83NTI2NDU4Ni05N2JjLTQ3YjktOWMzMS00N2RiOGY1Y2ViODM"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:15.016860+00:00"
+    },
+    "geschichte": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.6,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Die Geschichte des Zölibats",
+            "Zehn Fehler - Katastrophen, die Geschichte schrieben (1/5)"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL3pkZi5kZS9QUk9EMS9TQ01TX2I2ZGUwNjIzLWQ0NzUtNGJhYi1iYmM0LTUxNjYxZjkzZjdkYw",
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNFdPMDIwMDE1QTAvc2VjdGlvbi82OThmYmIzNy02Mzk0LTQ3YjgtYTg3My04OTVkNmQyYzIwYTA"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.359,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "\"Frost\" – die Geschichte einer Eisbärenmutter",
+            "Faszination Techno - Mehr als nur Party?"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL3JiYl9iMWI3NGQ3Mi1lMmZlLTRiNGYtYjEwYi1mYTgzYTNiNmZkNzhfcHVibGljYXRpb24",
+            "https://www.ardmediathek.de/video/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtMmNhMzg4ZjgtOWI4Yy00YjA1LWE3NTgtYWJmZWY1NDRiMTI2"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:17.977429+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "natur",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.393,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Kikaninchen und die tierisch tolle Natur",
+            "Sardinien · Arche aus Stein"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.345,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Dolomiten · Im Garten der Helden",
+            "Flussgiganten · Der Sambesi"
+          ],
+          "samples": [
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEwMjY1QTA",
+            "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTQ3QTA"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:20.716683+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "natur": "results_received",
+    "musik": "results_received",
+    "geschichte": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:37:12.146845+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

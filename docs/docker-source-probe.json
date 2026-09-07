@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-06T21:21:29.382422+00:00",
+  "image": "sha256:36c312e04b1bf65d54517c76ec0ddc6df31b8aa2454a6ac0cc23a74145045694",
+  "observations": [
+    {
+      "mode": "search",
+      "exit_code": 0,
+      "count": 3,
+      "formats": 0,
+      "error": null,
+      "titles": [
+        "Nature: Newfoundland",
+        "Longwood Gardens' jewel of nature",
+        "Nature: Chanticleer Garden"
+      ]
+    },
+    {
+      "mode": "resolve",
+      "exit_code": 1,
+      "count": 0,
+      "formats": 0,
+      "error": "temporarily_unavailable",
+      "titles": [],
+      "upstream_error": "CBS webpage HTTP 406 Not Acceptable in Docker; same URL succeeds in contemporaneous Windows yt-dlp probe."
+    },
+    {
+      "mode": "resolve",
+      "source": "ARTE",
+      "url": "https://www.arte.tv/fr/videos/112214-001-A/canada-la-force-de-la-nature/",
+      "exit_code": 0,
+      "formats": 11,
+      "error": null
+    }
+  ],
+  "scope": "Linux Docker worker search and extraction; not browser playback through deployed server.",
+  "follow_up": [
+    {
+      "date": "2026-09-06T21:27:04.582199+00:00",
+      "source": "CBSNews",
+      "url": "https://www.cbsnews.com/video/nature-newfoundland/",
+      "same_image": true,
+      "plain_http_status": {
+        "Windows": 200,
+        "Docker": 200
+      },
+      "raw_ytdlp_formats": 6,
+      "worker": {
+        "exit_code": 0,
+        "keys": [
+          "video",
+          "formats",
+          "subtitles",
+          "is_live",
+          "live_status",
+          "http_headers"
+        ],
+        "formats": 6,
+        "error": null
+      },
+      "conclusion": "Earlier HTTP 406 not reproduced; intermittent upstream behavior, no corrective code change. Browser playback through Docker remains unverified.",
+      "runtime": {
+        "Windows": {
+          "python": "3.14.6",
+          "openssl": "3.5.7"
+        },
+        "Docker": {
+          "python": "3.14.7",
+          "openssl": "3.0.20"
+        },
+        "yt_dlp": "2026.08.19",
+        "curl_cffi": false
+      }
+    }
+  ]
+}

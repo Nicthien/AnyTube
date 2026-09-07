@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-06T21:52:33.294707+00:00",
+  "engine": "5ab317d48c4eff9d",
+  "environment": "Windows local server 127.0.0.1:18090, IAB",
+  "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893",
+  "entry_path": "Patreon campaign collection, first public media Lire button",
+  "observations": [
+    {
+      "time": 6.457733,
+      "paused": false,
+      "ready": 4,
+      "width": 426,
+      "height": 240
+    },
+    {
+      "time": 21.252894,
+      "paused": false,
+      "ready": 4,
+      "width": 256,
+      "height": 144
+    }
+  ],
+  "scope": "One embedded public video; adaptive low resolution observed. Not entire Patreon compatibility or Docker browser playback."
+}

@@ -1,0 +1,753 @@
+{
+  "endpoint": "https://api.arte.tv/api/emac/v4/fr/web/pages/SEARCH/",
+  "date": "2026-09-06",
+  "observations": [
+    {
+      "query": "nature",
+      "page": 1,
+      "zone_code": "listing_SEARCH",
+      "pagination": {
+        "links": {
+          "first": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=1&query=nature",
+          "last": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=20&query=nature",
+          "next": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=2&query=nature"
+        },
+        "page": 1,
+        "pages": 20,
+        "totalCount": 400,
+        "maxPages": 20
+      },
+      "items": [
+        {
+          "id": "RC-025777",
+          "title": "Canada, la force de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-025777/canada-la-force-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027312",
+          "title": "Le grand show de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-027312/le-grand-show-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027083",
+          "title": "Destination nature : La Floride",
+          "url": "https://www.arte.tv/fr/videos/RC-027083/destination-nature-la-floride/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-023178",
+          "title": "Natura Europa",
+          "url": "https://www.arte.tv/fr/videos/RC-023178/natura-europa/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-020684",
+          "title": "Les parcs naturels portugais",
+          "url": "https://www.arte.tv/fr/videos/RC-020684/les-parcs-naturels-portugais/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-021773",
+          "title": "Merveilles de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-021773/merveilles-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028100",
+          "title": "Colombie",
+          "url": "https://www.arte.tv/fr/videos/RC-028100/colombie/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-025449",
+          "title": "Belgique sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-025449/belgique-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028181",
+          "title": "Les animaux guérisseurs",
+          "url": "https://www.arte.tv/fr/videos/RC-028181/les-animaux-guerisseurs/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028238",
+          "title": "Taïwan et ses îles",
+          "url": "https://www.arte.tv/fr/videos/RC-028238/taiwan-et-ses-iles/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028061",
+          "title": "Les joyaux du Pacifique Sud",
+          "url": "https://www.arte.tv/fr/videos/RC-028061/les-joyaux-du-pacifique-sud/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-024533",
+          "title": "Les îles irlandaises",
+          "url": "https://www.arte.tv/fr/videos/RC-024533/les-iles-irlandaises/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027533",
+          "title": "Le Paraguay sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-027533/le-paraguay-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027952",
+          "title": "La Tasmanie sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-027952/la-tasmanie-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-024183",
+          "title": "Empires sauvages",
+          "url": "https://www.arte.tv/fr/videos/RC-024183/empires-sauvages/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028186",
+          "title": "Fuck la planète",
+          "url": "https://www.arte.tv/fr/videos/RC-028186/fuck-la-planete/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028190",
+          "title": "Piège à marée basse",
+          "url": "https://www.arte.tv/fr/videos/RC-028190/piege-a-maree-basse/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-021068",
+          "title": "Les parcs nationaux canadiens",
+          "url": "https://www.arte.tv/fr/videos/RC-021068/les-parcs-nationaux-canadiens/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-026891",
+          "title": "Terroirs d'Europe",
+          "url": "https://www.arte.tv/fr/videos/RC-026891/terroirs-d-europe/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-023640",
+          "title": "L'Argentine sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-023640/l-argentine-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        }
+      ]
+    },
+    {
+      "query": "nature",
+      "page": 2,
+      "zone_code": "listing_SEARCH",
+      "pagination": {
+        "links": {
+          "first": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=1&query=nature",
+          "last": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=20&query=nature",
+          "next": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=2&query=nature"
+        },
+        "page": 1,
+        "pages": 20,
+        "totalCount": 400,
+        "maxPages": 20
+      },
+      "items": [
+        {
+          "id": "RC-025777",
+          "title": "Canada, la force de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-025777/canada-la-force-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027312",
+          "title": "Le grand show de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-027312/le-grand-show-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027083",
+          "title": "Destination nature : La Floride",
+          "url": "https://www.arte.tv/fr/videos/RC-027083/destination-nature-la-floride/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-023178",
+          "title": "Natura Europa",
+          "url": "https://www.arte.tv/fr/videos/RC-023178/natura-europa/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-020684",
+          "title": "Les parcs naturels portugais",
+          "url": "https://www.arte.tv/fr/videos/RC-020684/les-parcs-naturels-portugais/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-021773",
+          "title": "Merveilles de la nature",
+          "url": "https://www.arte.tv/fr/videos/RC-021773/merveilles-de-la-nature/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028100",
+          "title": "Colombie",
+          "url": "https://www.arte.tv/fr/videos/RC-028100/colombie/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-025449",
+          "title": "Belgique sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-025449/belgique-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028181",
+          "title": "Les animaux guérisseurs",
+          "url": "https://www.arte.tv/fr/videos/RC-028181/les-animaux-guerisseurs/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028238",
+          "title": "Taïwan et ses îles",
+          "url": "https://www.arte.tv/fr/videos/RC-028238/taiwan-et-ses-iles/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028061",
+          "title": "Les joyaux du Pacifique Sud",
+          "url": "https://www.arte.tv/fr/videos/RC-028061/les-joyaux-du-pacifique-sud/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-024533",
+          "title": "Les îles irlandaises",
+          "url": "https://www.arte.tv/fr/videos/RC-024533/les-iles-irlandaises/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027533",
+          "title": "Le Paraguay sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-027533/le-paraguay-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027952",
+          "title": "La Tasmanie sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-027952/la-tasmanie-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-024183",
+          "title": "Empires sauvages",
+          "url": "https://www.arte.tv/fr/videos/RC-024183/empires-sauvages/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028186",
+          "title": "Fuck la planète",
+          "url": "https://www.arte.tv/fr/videos/RC-028186/fuck-la-planete/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-028190",
+          "title": "Piège à marée basse",
+          "url": "https://www.arte.tv/fr/videos/RC-028190/piege-a-maree-basse/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-021068",
+          "title": "Les parcs nationaux canadiens",
+          "url": "https://www.arte.tv/fr/videos/RC-021068/les-parcs-nationaux-canadiens/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-026891",
+          "title": "Terroirs d'Europe",
+          "url": "https://www.arte.tv/fr/videos/RC-026891/terroirs-d-europe/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-023640",
+          "title": "L'Argentine sauvage",
+          "url": "https://www.arte.tv/fr/videos/RC-023640/l-argentine-sauvage/",
+          "kind": {
+            "code": "TV_SERIES",
+            "isCollection": true,
+            "label": "Série"
+          },
+          "duration": null
+        }
+      ]
+    },
+    {
+      "query": "piano",
+      "page": 1,
+      "zone_code": "listing_SEARCH",
+      "pagination": {
+        "links": {
+          "first": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=1&query=piano",
+          "last": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=6&query=piano",
+          "next": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=2&query=piano"
+        },
+        "page": 1,
+        "pages": 6,
+        "totalCount": 114,
+        "maxPages": 20
+      },
+      "items": [
+        {
+          "id": "RC-025076",
+          "title": "Piano classique",
+          "url": "https://www.arte.tv/fr/videos/RC-025076/piano-classique/",
+          "kind": {
+            "code": "TOPIC",
+            "isCollection": true,
+            "label": "Collection"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-025079",
+          "title": "Piano fusion",
+          "url": "https://www.arte.tv/fr/videos/RC-025079/piano-fusion/",
+          "kind": {
+            "code": "TOPIC",
+            "isCollection": true,
+            "label": "Collection"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-019295",
+          "title": "Le Piano Day d'ARTE Concert",
+          "url": "https://www.arte.tv/fr/videos/RC-019295/le-piano-day-d-arte-concert/",
+          "kind": {
+            "code": "TOPIC",
+            "isCollection": true,
+            "label": "Collection"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-027978",
+          "title": "europiano",
+          "url": "https://www.arte.tv/fr/videos/RC-027978/europiano/",
+          "kind": {
+            "code": "EVENT",
+            "isCollection": true,
+            "label": "Festival"
+          },
+          "duration": null
+        },
+        {
+          "id": "RC-026581",
+          "title": "Le classique par ses instruments",
+          "url": "https://www.arte.tv/fr/videos/RC-026581/le-classique-par-ses-instruments/",
+          "kind": {
+            "code": "TOPIC",
+            "isCollection": true,
+            "label": "Collection"
+          },
+          "duration": null
+        },
+        {
+          "id": "131550-001-A",
+          "title": "Brahms : Concerto pour piano n° 1",
+          "url": "https://www.arte.tv/fr/videos/131550-001-A/brahms-concerto-pour-piano-n-1/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 3057
+        },
+        {
+          "id": "131561-000-A",
+          "title": "Grieg : Concerto pour piano en la mineur",
+          "url": "https://www.arte.tv/fr/videos/131561-000-A/grieg-concerto-pour-piano-en-la-mineur/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 1842
+        },
+        {
+          "id": "131510-001-A",
+          "title": "Beethoven : Concerto pour piano n° 1",
+          "url": "https://www.arte.tv/fr/videos/131510-001-A/beethoven-concerto-pour-piano-n-1/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2173
+        },
+        {
+          "id": "RC-015166",
+          "title": "Le piano dans tous ses états",
+          "url": "https://www.arte.tv/fr/videos/RC-015166/le-piano-dans-tous-ses-etats/",
+          "kind": {
+            "code": "TOPIC",
+            "isCollection": true,
+            "label": "Collection"
+          },
+          "duration": null
+        },
+        {
+          "id": "131557-000-A",
+          "title": "Beethoven : Concerto pour piano n° 3",
+          "url": "https://www.arte.tv/fr/videos/131557-000-A/beethoven-concerto-pour-piano-n-3/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2280
+        },
+        {
+          "id": "130483-001-A",
+          "title": "Beethoven : Concerto pour piano n° 5",
+          "url": "https://www.arte.tv/fr/videos/130483-001-A/beethoven-concerto-pour-piano-n-5/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2394
+        },
+        {
+          "id": "128104-000-A",
+          "title": "Mozart : Concerto pour piano n° 21",
+          "url": "https://www.arte.tv/fr/videos/128104-000-A/mozart-concerto-pour-piano-n-21/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 1972
+        },
+        {
+          "id": "131558-001-A",
+          "title": "Rachmaninov : Concerto pour piano n° 2",
+          "url": "https://www.arte.tv/fr/videos/131558-001-A/rachmaninov-concerto-pour-piano-n-2/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2195
+        },
+        {
+          "id": "130091-000-A",
+          "title": "Chopin : Concerto pour piano n° 1",
+          "url": "https://www.arte.tv/fr/videos/130091-000-A/chopin-concerto-pour-piano-n-1/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2591
+        },
+        {
+          "id": "130482-001-A",
+          "title": "Tchaïkovski : Concerto pour piano n° 1",
+          "url": "https://www.arte.tv/fr/videos/130482-001-A/tchaikovski-concerto-pour-piano-n-1/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2322
+        },
+        {
+          "id": "115042-000-A",
+          "title": "Lang Lang interprète Camille Saint-Saëns",
+          "url": "https://www.arte.tv/fr/videos/115042-000-A/lang-lang-interprete-camille-saint-saens/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2577
+        },
+        {
+          "id": "133734-000-A",
+          "title": "Schumann : Concerto pour piano en la mineur",
+          "url": "https://www.arte.tv/fr/videos/133734-000-A/schumann-concerto-pour-piano-en-la-mineur/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 1994
+        },
+        {
+          "id": "133193-000-A",
+          "title": "Concerto per Milano 2026",
+          "url": "https://www.arte.tv/fr/videos/133193-000-A/concerto-per-milano-2026/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2524
+        },
+        {
+          "id": "107064-002-A",
+          "title": "Hania Rani",
+          "url": "https://www.arte.tv/fr/videos/107064-002-A/hania-rani/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 2863
+        },
+        {
+          "id": "132751-001-A",
+          "title": "europiano - Version intégrale",
+          "url": "https://www.arte.tv/fr/videos/132751-001-A/europiano-version-integrale/",
+          "kind": {
+            "code": "SHOW",
+            "isCollection": false,
+            "label": "Programme"
+          },
+          "duration": 27719
+        }
+      ]
+    },
+    {
+      "query": "anytube_no_result_742913",
+      "page": 1,
+      "zone_code": "listing_SEARCH",
+      "pagination": null,
+      "items": []
+    }
+  ],
+  "next_link_probe": {
+    "url": "https://api.arte.tv/api/emac/v4/fr/web/zones/167d478a-b668-42a3-b88a-f01a436c7394/content?authorizedCountry=FR&page=2&query=nature",
+    "new_ids": 20,
+    "ids": [
+      "RC-028232",
+      "RC-026271",
+      "RC-026881",
+      "RC-023243",
+      "RC-022883",
+      "RC-026185",
+      "RC-023861",
+      "RC-026358",
+      "RC-025737",
+      "RC-026020",
+      "RC-028078",
+      "RC-023845",
+      "RC-023813",
+      "RC-027951",
+      "RC-015760",
+      "RC-027933",
+      "RC-024865",
+      "RC-023556",
+      "RC-021851",
+      "RC-027874"
+    ]
+  }
+}

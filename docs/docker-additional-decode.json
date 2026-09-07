@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-06T23:34:36.762671+00:00",
+  "engine": "b3239e93083da870",
+  "image": "sha256:647b6dc46aa1f64567ef90a602ab15ac9313d0c7f98a724e83b8351027d2b198",
+  "observations": [
+    {
+      "source": "Wikimedia",
+      "url": "https://commons.wikimedia.org/wiki/File:Nature_montage_around_Aberfeldy.webm",
+      "formats": 6,
+      "stream": "0:v:0",
+      "elapsed_seconds": 2.209,
+      "worker_exit": 0,
+      "ffmpeg_exit": 0,
+      "ffmpeg_error": "",
+      "decoded_seconds": 2
+    },
+    {
+      "source": "ApplePodcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/sex-reversing-frogs-and-europes-rising-rates-of/id120329020?i=1000787700919&uo=4",
+      "formats": 1,
+      "stream": "0:a:0",
+      "elapsed_seconds": 3.689,
+      "worker_exit": 0,
+      "ffmpeg_exit": 0,
+      "ffmpeg_error": "",
+      "decoded_seconds": 2
+    }
+  ],
+  "scope": "Bounded decode only; no browser playback claim"
+}

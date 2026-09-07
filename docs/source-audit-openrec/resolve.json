@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-06T20:08:30.147727+00:00",
+  "environment": "local",
+  "query": "minecraft",
+  "results": [
+    {
+      "id": "4ofqfwqodtm",
+      "status": "no_formats"
+    },
+    {
+      "id": "lv81xpp57z9",
+      "status": "subscription_required"
+    },
+    {
+      "id": "e5rk9q3k1zv",
+      "status": "subscription_required"
+    }
+  ],
+  "browser_playback_verified": false
+}

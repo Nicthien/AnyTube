@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-06T20:49:50.369683+00:00",
+  "connector_version": "74baee235650dc00",
+  "url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA",
+  "environment": "isolated local browser 127.0.0.1:18090",
+  "observations": [
+    {
+      "time": 8.587567,
+      "paused": false,
+      "readyState": 4,
+      "width": 480,
+      "height": 270
+    },
+    {
+      "time": 19.631232,
+      "paused": false,
+      "readyState": 4,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "scope": "One video searched and played; not whole-platform verification.",
+  "pending": "Repeated HEAD 502 before GET success delayed startup; German subtitles resolved but absent from player selector."
+}

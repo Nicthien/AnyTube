@@ -1,0 +1,223 @@
+{
+  "date": "2026-09-06T21:05:58.422240+00:00",
+  "source": "https://www.cbsnews.com/fly/bundles/cbsnewscore/js-build/managers/adapter-search-queryly.js",
+  "observations": [
+    {
+      "query": "nature",
+      "offset": 0,
+      "metadata": {
+        "query": "nature",
+        "total": 645,
+        "endindex": 3,
+        "correction": "",
+        "suggest": "nature",
+        "filters": [
+          {
+            "key": "contenttype",
+            "value": "video"
+          }
+        ],
+        "popular": [
+          "lindsay clancy",
+          "trump",
+          "lindsay",
+          "china",
+          "nepal",
+          "sunday morning",
+          "48 hours",
+          "pomona"
+        ]
+      },
+      "items": [
+        {
+          "_id": 4047142,
+          "index": 0,
+          "title": "Nature: Newfoundland",
+          "link": "https://www.cbsnews.com/video/nature-newfoundland/",
+          "description": "We leave you this Sunday morning on the coast of Newfoundland. Videographer: Mike Hernandez.",
+          "pubdate": "Sep 06, 2026",
+          "pubdateunix": 1788705019,
+          "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/09/06/c689f283-1dc0-40a1-b4e2-f0c619295bd7/thumbnail/1200x630/b5b3861ec3505bc67916403a2ef40acf/nature-newfoundland-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "157"
+        },
+        {
+          "_id": 4043241,
+          "index": 1,
+          "title": "Longwood Gardens' jewel of nature",
+          "link": "https://www.cbsnews.com/video/longwood-gardens-jewel-of-nature/",
+          "description": "After industrialist Pierre S. du Pont bought a small farm outside Philadelphia to save its trees from being sold for lumber, he spent the rest of his life creating his dream oasis. Today, the 1,700-ac",
+          "pubdate": "Aug 30, 2026",
+          "pubdateunix": 1788097740,
+          "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/30/0c234667-0f41-416e-a39a-373df563b72a/thumbnail/1200x630/5e8d5fcacf2430fe17f0f98b219d573a/longwood-gardens-a-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "221"
+        },
+        {
+          "_id": 4043258,
+          "index": 2,
+          "title": "Nature: Chanticleer Garden",
+          "link": "https://www.cbsnews.com/video/nature-chanticleer-garden-083026/",
+          "description": "We leave you this Sunday at Chanticleer Garden just outside Philadelphia. Videographer: Jim Zurich. [Original air date: May 17, 2026.]",
+          "pubdate": "Aug 30, 2026",
+          "pubdateunix": 1788100213,
+          "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/30/57358685-86ae-4279-95a7-7c64eed00e62/thumbnail/1200x630/bb5e981b274ebd3096cb0347a706f7c4/nature-chanticleer-garden-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "111"
+        }
+      ]
+    },
+    {
+      "query": "nature",
+      "offset": 3,
+      "metadata": {
+        "query": "nature",
+        "total": 645,
+        "endindex": 6,
+        "correction": "",
+        "suggest": "nature",
+        "filters": [
+          {
+            "key": "contenttype",
+            "value": "video"
+          }
+        ],
+        "popular": [
+          "lindsay clancy",
+          "trump",
+          "lindsay",
+          "china",
+          "nepal",
+          "sunday morning",
+          "48 hours",
+          "pomona"
+        ]
+      },
+      "items": [
+        {
+          "_id": 4039264,
+          "index": 3,
+          "title": "Robin Wall Kimmerer on the wonders of nature",
+          "link": "https://www.cbsnews.com/video/robin-wall-kimmerer-on-the-wonders-of-nature/",
+          "description": "Botanist Robin Wall Kimmerer, a member of the Citizen Potawatomi Nation, is author of the New York Times bestsellers \"Braiding Sweetgrass\" and \"The Serviceberry\" &ndash; books that advocate for living",
+          "pubdate": "Aug 23, 2026",
+          "pubdateunix": 1787495058,
+          "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/08/22/39530b99-5946-4c0b-87f8-462b44becdf3/thumbnail/1200x630/f5c0d8d0c44d86e4a12bec3211e15544/robin-wall-kimmerer-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "467"
+        },
+        {
+          "_id": 4039271,
+          "index": 4,
+          "title": "Nature: Harbor seals in Oregon",
+          "link": "https://www.cbsnews.com/video/nature-harbor-seals-in-oregon/",
+          "description": "We leave you this Sunday morning with harbor seals in Netarts Bay on the Oregon coast. Videographer: Charles Schultz.",
+          "pubdate": "Aug 23, 2026",
+          "pubdateunix": 1787495406,
+          "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/22/e7ca2112-8bef-4fb5-8d62-45ed8a40ecfb/thumbnail/1200x630/b3500a7ce8083e1e06fd7301ded15eac/nature-harbor-seals-oregon-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "169"
+        },
+        {
+          "_id": 4035269,
+          "index": 5,
+          "title": "Nature: Sunflowers in South Dakota",
+          "link": "https://www.cbsnews.com/video/nature-sunflowers-in-south-dakota-081626/",
+          "description": "We leave you this Sunday lost in a field of sunflowers in South Dakota's Lyman County. Videographer: Kevin Kjergaard.",
+          "pubdate": "Aug 16, 2026",
+          "pubdateunix": 1786890616,
+          "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/08/15/bd563f41-415d-4013-9b70-48794a029227/thumbnail/1200x630/f88a777d1dc87bac751638c525add63f/nature-sunflowers-081626-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "148"
+        }
+      ]
+    },
+    {
+      "query": "science",
+      "offset": 0,
+      "metadata": {
+        "query": "science",
+        "total": 844,
+        "endindex": 3,
+        "correction": "",
+        "suggest": "science",
+        "filters": [
+          {
+            "key": "contenttype",
+            "value": "video"
+          }
+        ],
+        "popular": [
+          "lindsay clancy",
+          "trump",
+          "lindsay",
+          "china",
+          "nepal",
+          "sunday morning",
+          "48 hours",
+          "pomona"
+        ]
+      },
+      "items": [
+        {
+          "_id": 4031281,
+          "index": 0,
+          "title": "NIH Director Dr. Jay Bhattacharya says \"I trust the science\" on childhood vaccines",
+          "link": "https://www.cbsnews.com/video/nih-director-dr-jay-bhattacharya-says-i-trust-the-science-on-childhood-vaccines/",
+          "description": "Dr. Jay Bhattacharya, the director of the National Institutes of Health, told \"Face the Nation with Margaret Brennan\" that \"I trust the science on vaccines,\" despite previous comments from Health and ",
+          "pubdate": "Aug 09, 2026",
+          "pubdateunix": 1786298271,
+          "image": "https://assets2.cbsnewsstatic.com/hub/i/r/2026/08/09/e0bbfb8b-159f-4238-b5cb-95ce8845532d/thumbnail/1200x630/d3177c86a2e78e1812309f32313666db/cbsn-fusion-nih-director-dr-jay-bhattacharya-says-i-trust-the-science-on-childhood-vaccines-thumbnail.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "858"
+        },
+        {
+          "_id": 4035273,
+          "index": 1,
+          "title": "The iNaturalist app – Mixing science with fun",
+          "link": "https://www.cbsnews.com/video/the-inaturalist-app-mixing-science-with-fun/",
+          "description": "The iNaturalist cellphone app not only helps users identify plant, animal and insect species; it also provides invaluable data to scientists studying biodiversity, species decline, and habitat loss. I",
+          "pubdate": "Aug 16, 2026",
+          "pubdateunix": 1786890000,
+          "image": "https://assets1.cbsnewsstatic.com/hub/i/r/2026/08/15/162b45f6-b19d-4540-a2fc-c1c932d1afa3/thumbnail/1200x630/2581ec5174996987ace11d8f9560abea/inaturalist-app-1920.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": "353"
+        },
+        {
+          "_id": 3945533,
+          "index": 2,
+          "title": "Bill Nye on making the leap from Boeing engineer to science guy",
+          "link": "https://www.cbsnews.com/video/bill-nye-making-leap-boeing-engineer-science-guy/",
+          "description": "Bill Nye the Science Guy sits down with CBS News chief Washington correspondent Major Garrett to talk about his life and career.",
+          "pubdate": "Mar 13, 2026",
+          "pubdateunix": 1773440940,
+          "image": "https://assets3.cbsnewsstatic.com/hub/i/r/2026/03/13/1f689193-59b7-4762-8b52-1e7a4ee9e1d0/thumbnail/1200x630/3000d8d0b203a9d49ab8b64f3859ff1f/cbsn-fusion-bill-nye-making-leap-boeing-engineer-science-guy-thumbnail.jpg",
+          "_type": 0,
+          "feedname": "us",
+          "duration": ""
+        }
+      ]
+    },
+    {
+      "query": "zzzzcodexinexistant987654",
+      "offset": 0,
+      "metadata": {
+        "query": "zzzzcodexinexistant987654",
+        "total": 0,
+        "endindex": 0,
+        "correction": "",
+        "suggest": "",
+        "filters": []
+      },
+      "items": []
+    }
+  ]
+}

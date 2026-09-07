@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-06T19:20:50.206999+00:00",
+  "connector_version": "8c7c7cee02c9866c",
+  "url": "https://podcasts.apple.com/fr/podcast/sex-reversing-frogs-and-europes-rising-rates-of/id120329020?i=1000787700919&uo=4",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "status": "resolved",
+  "title": "Sex-reversing frogs, and Europe’s rising rates of a deadly tick-borne disease",
+  "formats": 1,
+  "protocols": [
+    "https"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "YahooSearch",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "YahooSearch",
+  "template_revision": "76d94c3be5ad5b079b96d484632fd847fd581e47668afae600945c226163c3eb",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:31:31.463336+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 1.604
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:26.829951+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 1.559
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:28.390041+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 1.539
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:29.929732+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 1.533
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:31.463336+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "temporarily_unavailable",
+  "per_query_status": {
+    "nature": "temporarily_unavailable",
+    "piano": "temporarily_unavailable",
+    "documentaire": "temporarily_unavailable"
+  },
+  "oldest_scenario_date": "2026-09-06T19:31:26.829951+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

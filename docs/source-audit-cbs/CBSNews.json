@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "694f559bfd8be29e",
+  "proxy_configured": false,
+  "template": "CBSNews",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "CBSNews",
+  "template_revision": "f323ef3ecfc14715dbe15516f3c1bfa5994f97087e2144c8d11ea8211ffb04ca",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T21:06:47.406572+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.599,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature: Newfoundland",
+            "Longwood Gardens' jewel of nature"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/nature-newfoundland/",
+            "https://www.cbsnews.com/video/longwood-gardens-jewel-of-nature/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.523,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Robin Wall Kimmerer on the wonders of nature",
+            "Nature: Harbor seals in Oregon"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/robin-wall-kimmerer-on-the-wonders-of-nature/",
+            "https://www.cbsnews.com/video/nature-harbor-seals-in-oregon/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T21:06:37.995185+00:00"
+    },
+    "science": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.583,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "NIH Director Dr. Jay Bhattacharya says \"I trust the science\" on childhood vaccin",
+            "The iNaturalist app – Mixing science with fun"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/nih-director-dr-jay-bhattacharya-says-i-trust-the-science-on-childhood-vaccines/",
+            "https://www.cbsnews.com/video/the-inaturalist-app-mixing-science-with-fun/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.565,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Full interview: Bill Nye reflects on being the science guy and what's next",
+            "More than 10,000 Ph.D. science experts left U.S. government jobs last year"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/full-interview-bill-nye-the-science-guy-whats-next/",
+            "https://www.cbsnews.com/video/more-than-10000-phd-science-experts-left-government-jobs-last-year/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T21:06:41.145143+00:00"
+    },
+    "music": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.552,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Jason Isbell, other artists sue Suno over AI-generated music",
+            "Dolly Parton's lasting impact on country music"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/jason-isbell-other-artists-sue-suno-over-ai-generated-music/",
+            "https://www.cbsnews.com/video/dolly-parton-country-music-legacy/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.554,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Rock legend, naturalist team up to turn field recordings of animals into music",
+            "Dolly Parton: Her music, personality and fan tributes"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/turning-animal-recordings-into-music-60-minutes-video-2026-08-23/",
+            "https://www.cbsnews.com/video/dolly-parton-her-music-personality-fan-tributes/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T21:06:44.252645+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "nature",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.596,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature: Newfoundland",
+            "Longwood Gardens' jewel of nature"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/nature-newfoundland/",
+            "https://www.cbsnews.com/video/longwood-gardens-jewel-of-nature/"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.557,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Robin Wall Kimmerer on the wonders of nature",
+            "Nature: Harbor seals in Oregon"
+          ],
+          "samples": [
+            "https://www.cbsnews.com/video/robin-wall-kimmerer-on-the-wonders-of-nature/",
+            "https://www.cbsnews.com/video/nature-harbor-seals-in-oregon/"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T21:06:47.406572+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "science": "results_received",
+    "music": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T21:06:37.995185+00:00",
+  "scenarios_reused": 0,
+  "scenarios_executed": 4
+}

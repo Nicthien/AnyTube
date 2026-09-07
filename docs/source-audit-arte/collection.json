@@ -1,0 +1,39 @@
+{
+  "title": "Canada, la force de la nature",
+  "items": [
+    {
+      "id": "112214-001-A",
+      "title": "Canada, la force de la nature — Le Québec boréal",
+      "url": "https://www.arte.tv/fr/videos/112214-001-A/canada-la-force-de-la-nature/",
+      "thumbnail": "https://api-cdn.arte.tv/img/v2/image/ei6F8LFtdgHdb3kppKQ65m/940x530",
+      "description": "Territoire immense, le Canada abrite une nature encore puissante mais malmenée par l’activité humaine. L’écosystème boréal, qui recouvre près de 60 % du territoire, abrite un quart des dernières forêts primaires du globe. La majorité des communautés autochtones du pays vivent dans cet espace fortement marqué par la présence de l’eau et de zones humides.",
+      "channel": "",
+      "duration": 2589,
+      "views": null,
+      "published": "2024-10-07"
+    },
+    {
+      "id": "112214-002-A",
+      "title": "Canada, la force de la nature — Les prairies de l’Ouest",
+      "url": "https://www.arte.tv/fr/videos/112214-002-A/canada-la-force-de-la-nature/",
+      "thumbnail": "https://api-cdn.arte.tv/img/v2/image/Coa5rfzHNwp8xqgLmBe2r6/940x530",
+      "description": "Originellement étendues sur quelque 600.000 kilomètres carrés, les prairies naturelles du Canada ont été largement converties en terres cultivées au cours des cinquante dernières années. Les 80.000 kilomètres carrés restants sont aujourd’hui grignotés par l’exploitation des hydrocarbures, pétrole et gaz de schiste.",
+      "channel": "",
+      "duration": 2595,
+      "views": null,
+      "published": "2024-10-08"
+    },
+    {
+      "id": "112214-003-A",
+      "title": "Canada, la force de la nature — La forêt côtière du Pacifique",
+      "url": "https://www.arte.tv/fr/videos/112214-003-A/canada-la-force-de-la-nature/",
+      "thumbnail": "https://api-cdn.arte.tv/img/v2/image/CFEqAG2k9aaTLaEDcGGSi3/940x530",
+      "description": "Baignée par le Pacifique, la côte de la Colombie-Britannique se caractérise par la grande richesse de ses écosystèmes forestiers : s’y dresse l’une des plus grandes forêts humides tempérées au monde, qui recouvre encore largement l’île de Vancouver.",
+      "channel": "",
+      "duration": 2591,
+      "views": null,
+      "published": "2024-10-09"
+    }
+  ],
+  "has_more": false
+}

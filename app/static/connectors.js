@@ -41,12 +41,16 @@ option(pageSelect, 'prefix', 'Rechargement limité à 100 résultats'); option(p
 field(jsonFields, 'pagination_parameter', 'Paramètre de page ou de position', 'page');
 field(jsonFields, 'pagination_more', 'Chemin du booléen « page suivante » (facultatif)', '/has_more');
 field(jsonFields, 'results_path', 'Chemin de la liste des résultats', '/list');
+field(jsonFields, 'results_total_path', 'Chemin du nombre total de résultats (facultatif)', '/count');
+field(jsonFields, 'result_base_url', 'Adresse de base des liens relatifs (facultatif)', 'https://exemple.org/');
+const durationUnit = field(jsonFields, 'duration_unit', 'Unité des durées renvoyées', '', 'select');
+option(durationUnit, 'seconds', 'Secondes'); option(durationUnit, 'milliseconds', 'Millisecondes');
 jsonFields.append(node('p', 'hint', 'Chemins JSON Pointer : /data/videos pour un tableau imbriqué ; vide si la réponse est directement un tableau. /owner.screenname désigne une clé contenant un point. Utilise ~1 pour un / dans une clé, ~0 pour un ~.'));
 field(jsonFields, 'video_url', 'Modèle d’URL vidéo (facultatif)', 'https://exemple.org/video/{id}');
 field(jsonFields, 'thumbnail_url', 'Modèle d’URL vignette (facultatif)', 'https://exemple.org/image/{id}');
 jsonFields.append(node('p', 'hint', 'Si renseigné, ce modèle utilise l’identifiant et remplace le champ URL vidéo ci-dessous.'));
 const mappingFields = node('div', 'connector-grid');
-const mappingLabels = {id:'Identifiant', title:'Titre', url:'URL vidéo', thumbnail:'Vignette', description:'Description', channel:'Auteur / chaîne', duration:'Durée (secondes)', views:'Nombre de vues', published:'Date de publication (ISO ou secondes Unix)'};
+const mappingLabels = {id:'Identifiant', title:'Titre', url:'URL vidéo', thumbnail:'Vignette', description:'Description', channel:'Auteur / chaîne', duration:'Durée', views:'Nombre de vues', published:'Date de publication (ISO ou secondes Unix)'};
 for (const [key, label] of Object.entries(mappingLabels)) field(mappingFields, `map-${key}`, label, `/${key}`);
 jsonFields.append(node('h3', '', 'Champs dans chaque résultat'), mappingFields, node('p', 'hint', 'Laisse vide un champ facultatif absent de l’API. Le titre et une URL vidéo sont obligatoires.')); editorFields.append(jsonFields);
 const homeFields = node('div'); homeFields.append(node('h3', '', 'Vidéos de la page d’accueil'));
@@ -74,7 +78,8 @@ function connectorDraft() {
   let body = {}; if(kind.value === 'json' && methodSelect.value === 'POST') body = JSON.parse(bodyInput.value || '{}');
   return {...editorBaseConfig, kind:kind.value, extractor:extractor.value.trim(), prefix:prefix.value || 'ytsearch', credential_id:credentialSelect.value, media_credential_id:mediaCredentialSelect.value,
     method:kind.value === 'json' ? methodSelect.value : 'GET', body,
-    pagination:kind.value === 'json' ? {mode:pageSelect.value,parameter:inputs.pagination_parameter.value.trim() || 'page',has_more_path:inputs.pagination_more.value.trim()} : {mode:'prefix'},
+    pagination:kind.value === 'json' ? {...editorBaseConfig.pagination,mode:pageSelect.value,parameter:inputs.pagination_parameter.value.trim() || 'page',has_more_path:inputs.pagination_more.value.trim()} : {mode:'prefix'},
+    results_total_path:inputs.results_total_path.value.trim(), result_base_url:inputs.result_base_url.value.trim(), duration_unit:durationUnit.value || 'seconds',
     search_url:inputs.search_url.value.trim(), results_path:inputs.results_path.value.trim(), video_url:inputs.video_url.value.trim(), thumbnail_url:inputs.thumbnail_url.value.trim(), home_query:inputs.home_query.value.trim(), home_url:kind.value !== 'url' ? inputs.home_url.value.trim() : '',
     ...Object.fromEntries(['trending','views','recent'].map(key => [`home_${key}_url`, kind.value !== 'url' ? inputs[`home_${key}_url`].value.trim() : ''])), mapping};
 }
@@ -137,7 +142,8 @@ async function openSourceEditor(source = null, preset = null) {
     methodSelect.value = config.method || 'GET'; bodyInput.value = JSON.stringify(config.body || {},null,2);
     pageSelect.value = config.pagination?.mode || 'prefix'; inputs.pagination_parameter.value = config.pagination?.parameter || 'page'; inputs.pagination_more.value = config.pagination?.has_more_path || '';
     inputs.name.value = source?.name || ''; kind.value = config.kind; extractor.value = config.extractor; prefix.value = config.prefix;
-    for (const key of ['search_url','results_path','video_url','thumbnail_url']) inputs[key].value = config[key] || '';
+    for (const key of ['search_url','results_path','results_total_path','result_base_url','video_url','thumbnail_url']) inputs[key].value = config[key] || '';
+    durationUnit.value = config.duration_unit || 'seconds';
     inputs.home_query.value = config.home_query ?? 'vidéos'; inputs.home_url.value = config.home_url || '';
     for (const key of ['trending','views','recent']) inputs[`home_${key}_url`].value = config[`home_${key}_url`] || '';
     for (const key of Object.keys(mappingLabels)) inputs[`map-${key}`].value = config.mapping[key] ?? `/${key}`;

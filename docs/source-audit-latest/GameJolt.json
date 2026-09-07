@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "GameJolt",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "GameJolt",
+  "template_revision": "cc06e2e428cd0a12efc2429f37e4ed1c57f5e89125f770dbbf679f83c535f20f",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:29:19.560776+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 3.149,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Antoher incredible level I played on Kirby Squeak Squad, this is the first one o",
+            "Greenlit AU Update"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/antoher-incredible-level-i-played-on-kirby-squeak-squad-this-is-th-d4mrbqqd",
+            "https://gamejolt.com/p/greenlit-au-update-mtmddetu"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 3.325,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Random fun facts abt ocs in article for sillies 😛",
+            "Guys, why ruin nature??? Don't ruin nature! on the contrary, take care if you ha"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/random-fun-facts-abt-ocs-in-article-for-sillies-h5gtunce",
+            "https://gamejolt.com/p/guys-why-ruin-nature-don-t-ruin-nature-on-the-contrary-take-c-nrxwypmi"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:55.878836+00:00"
+    },
+    "pixel": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.701,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Seth - Deltarune Chapter 5 Character! 🙇🎨📱📘🟣\n#Sprite #Pixel #Character",
+            "Vannnyyyyy #fnaf #pixel #3d"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/seth-deltarune-chapter-5-character-sprite-u4biajac",
+            "https://gamejolt.com/p/vannnyyyyy-fnaf-pixel-3d-awyhs7rm"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.962,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Here is something I’d like to show regarding a piece of pixel art I replicatedI ",
+            "RAVENGER ZONE: important update"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/here-is-something-i-d-like-to-show-regarding-a-piece-of-pixel-art-jygixspu",
+            "https://gamejolt.com/p/ravenger-zone-important-update-wzuwpuwx"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:01.542698+00:00"
+    },
+    "horror": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 3.075,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Obsessive Shadow: Former Residents on STEAM!!",
+            "Room\nFNAF 4 Reworked\n#fnaf #fangame #horror #art #3D"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/the-obsessive-shadow-former-residents-on-steam-aat3rifi",
+            "https://gamejolt.com/p/room-fnaf-4-reworked-fnaf-fangame-horror-art-3d-ghdfderp"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 3.674,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Bro they're rebooting Act 1, should i port that too :pensive:\n#fnaf #poll #no #f",
+            "First look at Ziggy (Model V1) - The Lazy Studio\n#TheLazyStudio #AnalogHorror #F"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/bro-they-re-rebooting-act-1-should-i-port-that-too-pensive-fnaf-vcee7y5w",
+            "https://gamejolt.com/p/first-look-at-ziggy-model-v1-the-lazy-studio-thelazystudio-an-v4zq8xsf"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:08.293103+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 4.67,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "TWO NEW SONGS!! (September 2026 update)",
+            "25/20 COMPLETED!:gj/fire:/25/20 ПРОЙДЕН!:gj/fire:"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/two-new-songs-september-2026-update-4jyiqe6c",
+            "https://gamejolt.com/p/25-20-completed-gj-fire-25-20-proyden-gj-fire-fr3zbx4i"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 6.596,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "🎞️ Крупнейшая ретроспектива игр СККФII от Tunesmith Bird",
+            "test player 1 (jumping, running, falling down, sliding on objects, and crouching"
+          ],
+          "samples": [
+            "https://gamejolt.com/p/krupneyshaya-retrospektiva-igr-sk-siuegbrj",
+            "https://gamejolt.com/p/test-player-1-jumping-running-falling-down-sliding-on-objects-gf6yhpeu"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:19.560776+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "pixel": "results_received",
+    "horror": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:28:55.878836+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

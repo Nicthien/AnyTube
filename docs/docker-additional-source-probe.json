@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-06T21:27:58.166141+00:00",
+  "image": "anytube:sources-check",
+  "scope": "One media per source; Docker protected worker extraction, not browser playback",
+  "observations": [
+    {
+      "source": "Wikimedia",
+      "url": "https://commons.wikimedia.org/wiki/File:Nature_montage_around_Aberfeldy.webm",
+      "exit_code": 0,
+      "formats": 6,
+      "subtitles": 0,
+      "error": null,
+      "elapsed_seconds": 2.203
+    },
+    {
+      "source": "NRKTV",
+      "url": "https://tv.nrk.no/program/KOID30001224",
+      "exit_code": 1,
+      "formats": 0,
+      "subtitles": 0,
+      "error": "La plateforme est indisponible ou a refusé la requête.",
+      "elapsed_seconds": 2.015,
+      "upstream_error": "NRK said: Ikke tilgjengelig utenfor Norge",
+      "interpretation": "This media is unavailable outside Norway; search availability does not imply playback availability."
+    },
+    {
+      "source": "ApplePodcasts",
+      "url": "https://podcasts.apple.com/fr/podcast/sex-reversing-frogs-and-europes-rising-rates-of/id120329020?i=1000787700919&uo=4",
+      "exit_code": 0,
+      "formats": 1,
+      "subtitles": 0,
+      "error": null,
+      "elapsed_seconds": 2.35
+    }
+  ]
+}

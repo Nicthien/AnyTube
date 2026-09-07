@@ -287,10 +287,19 @@ def delete_source(source_id: str):
     return {'ok': True}
 
 
-async def run_worker(payload, timeout=55):
+def worker_platform(config):
+    """Extractor aliases share a provider budget; independent JSON hosts do not."""
     from urllib.parse import urlsplit
+    if config.get('kind') == 'json':
+        return urlsplit(config.get('search_url', '')).hostname or 'unknown'
+    from app.registry import identities
+    extractor = config.get('extractor', '')
+    return identities().get(extractor, {}).get('platform_id') or extractor or 'unknown'
+
+
+async def run_worker(payload, timeout=55):
     config = payload.get('connector') or {}
-    platform = config.get('extractor') or urlsplit(config.get('search_url', '')).hostname or 'unknown'
+    platform = worker_platform(config)
     if payload.get('mode') == 'fetch':
         return await _run_worker(payload, timeout)
     lock = platform_locks.setdefault(platform, asyncio.Semaphore(2))

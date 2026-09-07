@@ -1,0 +1,12 @@
+{
+  "search_page": "https://tube.tugraz.at/portal/search?q=science",
+  "status": 200,
+  "sample_links": [
+    "/portal/watch/dad66c6b-5876-412e-97ad-d6f4ef20cde7",
+    "/portal/watch/2dcd3b8c-e522-4c0b-ac44-de7921d01c22",
+    "/portal/watch/1aa08c75-bfdb-480f-a512-dfae7258f2ac",
+    "/portal/watch/524865f7-56b4-4e02-9f41-4f3c993a666c",
+    "/portal/watch/fab95493-5ee7-4dca-80a2-59a6f9af30d9"
+  ],
+  "note": "Public search form observed; API keyword semantics and playback not yet verified."
+}

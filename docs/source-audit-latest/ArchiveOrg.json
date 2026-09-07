@@ -1,0 +1,472 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "ArchiveOrg",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "ArchiveOrg",
+  "template_revision": "024b6fc6057bdf8c2d532c4b3a84988ec6b4d60a2068b874b93ee1c634b64f4e",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T19:29:37.998702+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.665,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Mohiniyattam",
+            "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
+          ],
+          "samples": [
+            "https://archive.org/details/pli.ccrt.Mohiniyattam",
+            "https://archive.org/details/JORDANTV_20250921_064500_Jordan_With_Water_Purity"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.971,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Jordan With Water Purity : JORDANTV : January 25, 2026 9:45am-10:01am +03",
+            "Jordan With Water Purity : JORDANTV : February 1, 2026 8:45am-9:01am +03"
+          ],
+          "samples": [
+            "https://archive.org/details/JORDANTV_20260125_064500_Jordan_With_Water_Purity",
+            "https://archive.org/details/JORDANTV_20260201_054500_Jordan_With_Water_Purity"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:52.387905+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.927,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Tubebuddy Tutorial Italiano - Tool per Crescere su Youtube",
+            "Jadoo 5/5S OST - You Don’t Belong In Kabul (Piracy Check Piano)"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-Z-5xL6Ng4O8",
+            "https://archive.org/details/youtube-X9NySWWiYhs"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.871,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Lubbock ISD Inspire - Talkington School for Young Women Leaders Spirio System",
+            "Piano Starts Swarming With Girls....Survival Mode"
+          ],
+          "samples": [
+            "https://archive.org/details/lubisdtx-Lubbock_ISD_Inspire_-_Talkington_School_for_Young_Women_Leaders_Spirio_System",
+            "https://archive.org/details/youtube-nixH11UCFTE"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:56.186791+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 3.622,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Truth in Numbers: Everything, According to Wikipedia",
+            "QUI - a Striké cette Vidéo ? Voir la Description"
+          ],
+          "samples": [
+            "https://archive.org/details/20100000-documentaire-truth-in-numbers-everything-according-to-wikipedia",
+            "https://archive.org/details/youtube-mnvfTzWC4Ys"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.893,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Pascal Ory nous parle de l’Ayatollah Khomeini - Toute L'Histoire",
+            "Military intel /// Police intel /// L'expert policier Rock Larochelle définit co"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-LfaSDnjbuS0",
+            "https://archive.org/details/military-intel-111_202205"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:02.702822+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.792,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "TELEARUBA_20260906_183000",
+            "Atlanta Greek Orthodox Cathedral Sunday Of The Canaanite Woman ( 2023 01 29)"
+          ],
+          "samples": [
+            "https://archive.org/details/TELEARUBA_20260906_183000",
+            "https://archive.org/details/atlanta-greek-orthodox-cathedral-sunday-of-the-canaanite-woman-2023-01-29"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.896,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SQUEEZE IS BACK (COPS)",
+            "TELESUR_20260906_183000"
+          ],
+          "samples": [
+            "https://archive.org/details/squeeze-is-back-cops",
+            "https://archive.org/details/TELESUR_20260906_183000"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:08.392387+00:00"
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 3.133,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Egybest V 20.0.4",
+            "h40"
+          ],
+          "samples": [
+            "https://archive.org/details/egybest-v-20.0.4",
+            "https://archive.org/details/videos_horizontal"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.647,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "[군체] 인터내셔널 예고편 (청소년 관람불가 ver) | 5월 21일 극장 대개봉",
+            "Alter Ego"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-sfvEWaihvWQ",
+            "https://archive.org/details/youtube-k-M45W_iWMs"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:14.174462+00:00"
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.919,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "graphics",
+            "test file mp4"
+          ],
+          "samples": [
+            "https://archive.org/details/dobba_graphics",
+            "https://archive.org/details/Pbtestfilemp4videotestmp4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 3.768,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "ical-capcut-template-1",
+            "Vietnam Travel Guide Hanoi, Ha Long Bay, Ho Chi Minh 1"
+          ],
+          "samples": [
+            "https://archive.org/details/ical-capcut-template-1",
+            "https://archive.org/details/vietnam-travel-guide-hanoi-ha-long-bay-ho-chi-minh-1_202101"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:20.862295+00:00"
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.717,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "TELEARUBA_20260906_183000",
+            "Atlanta Greek Orthodox Cathedral Sunday Of The Canaanite Woman ( 2023 01 29)"
+          ],
+          "samples": [
+            "https://archive.org/details/TELEARUBA_20260906_183000",
+            "https://archive.org/details/atlanta-greek-orthodox-cathedral-sunday-of-the-canaanite-woman-2023-01-29"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.669,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SQUEEZE IS BACK (COPS)",
+            "TELESUR_20260906_183000"
+          ],
+          "samples": [
+            "https://archive.org/details/squeeze-is-back-cops",
+            "https://archive.org/details/TELESUR_20260906_183000"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:24.249352+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.193,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "From the Ground Up",
+            "Final Fantasy II (SNES) - 3:56 - Kevin Juang"
+          ],
+          "samples": [
+            "https://archive.org/details/FromtheG1954",
+            "https://archive.org/details/FinalFantasy2_356"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.365,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Park Conscious",
+            "Have I Told You Lately That I Love You?"
+          ],
+          "samples": [
+            "https://archive.org/details/ParkCons1938",
+            "https://archive.org/details/HaveITol1958"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:28.808259+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.936,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SC CC U25 'Bestsellers of 1776 - \"The History of the Decline and Fall of the Rom",
+            "Elk Grove Planning Commission Approves New Zoo at Elk Grove, April 4, 2024"
+          ],
+          "samples": [
+            "https://archive.org/details/CSPAN2_20260906_173300_SC_CC_U25_Bestsellers_of_1776_-_The_History_of_the_Decline_and_Fall_of...",
+            "https://archive.org/details/openpublica-elkgrove-california-65f968e7-c2b7-4f14-85c9-f2cf53f88ac2"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.813,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "San Francisco Planning Commission Meeting - April 4, 2024",
+            "Saturday, 6th September 1913: Grand Jury Adjourns To Go To Ball Game, The Atlant"
+          ],
+          "samples": [
+            "https://archive.org/details/openpublica-san_francisco-california-59c97201-aa1e-4b89-801c-d4b09ee120c2",
+            "https://archive.org/details/1913-09-06-grand-jury-adjourns-to-go-to-ball-game-the-atlanta-constitution"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:33.557950+00:00"
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.035,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "LOGAN PAUL SUICIDE FOREST VIDEO",
+            "HentaiHaven-Dump-v1"
+          ],
+          "samples": [
+            "https://archive.org/details/logan-paul-suicide-forest-reupload",
+            "https://archive.org/details/hentai-haven-archive-2018"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.404,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Cosmos: A Personal Voyage ★ Collected PBS Science Series with Bonus Features - a",
+            "All Animated Videos and DVD"
+          ],
+          "samples": [
+            "https://archive.org/details/cosmos_1980",
+            "https://archive.org/details/the-three-caballeros-1996-vhs_202205"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:37.998702+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:28:52.387905+00:00",
+  "scenarios_reused": 10,
+  "scenarios_executed": 0
+}

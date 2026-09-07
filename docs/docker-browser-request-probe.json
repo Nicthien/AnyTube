@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-06T22:53:27.804381+00:00",
+  "environment": "Docker local 127.0.0.1:18091",
+  "collection": "https://www.patreon.com/smartereveryday",
+  "direct_api": {
+    "status": 200,
+    "seconds": 2.674,
+    "items": 20
+  },
+  "browser": "Collection remains loading; no worker observed in docker top, no browser console errors captured. Playback not validated.",
+  "next": "Inspect browser request lifecycle before changing extraction code."
+}

@@ -64,6 +64,14 @@ class FailureClassificationTests(unittest.TestCase):
         self.assertEqual(classify(TimeoutError()).code, 'timeout')
         self.assertEqual(classify(ValueError('other')).code, 'temporarily_unavailable')
 
+    def test_nrk_explicit_regional_refusal_survives_download_wrapper(self):
+        from yt_dlp.utils import ExtractorError, DownloadError
+        regional = ExtractorError('NRK said: Ikke tilgjengelig utenfor Norge', expected=True)
+        wrapped = DownloadError('download failed', exc_info=(type(regional), regional, None))
+        self.assertEqual(classify(wrapped).code, 'geo_restricted')
+        self.assertEqual(classify(ExtractorError('NRK said: Ikke tilgjengelig')).code,
+                         'temporarily_unavailable')
+
 
 class BatchTemplateTests(unittest.TestCase):
     def test_every_batch_template_is_a_valid_search_connector(self):

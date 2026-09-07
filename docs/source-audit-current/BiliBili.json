@@ -1,0 +1,121 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "BiliBili",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "BiliBili",
+  "template_revision": "ea49a512f465b71e2c5d3f2e1e8f48cb148e0ff3e809cdf2e3183099eba7bd8a",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:33:26.622678+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 13.201,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature morning",
+            "Divine signs of nature #nature"
+          ],
+          "samples": [
+            "http://www.bilibili.com/video/av117221871325475",
+            "http://www.bilibili.com/video/av117223196727069"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 3,
+      "date": "2026-09-06T23:33:26.619698+00:00"
+    },
+    "音乐": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:26.620777+00:00"
+    },
+    "风景": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:26.621730+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:26.622678+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "音乐": "rate_limited",
+    "风景": "rate_limited"
+  },
+  "oldest_scenario_date": "2026-09-06T23:33:26.619698+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

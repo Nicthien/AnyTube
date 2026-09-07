@@ -1,0 +1,164 @@
+[
+  {
+    "query": "natur",
+    "offset": 0,
+    "result": {
+      "items": [
+        {
+          "id": "Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+          "title": "Kikaninchen und die tierisch tolle Natur",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:cf38ef6753ce983f?w=480&ch=1f902c24b97843a7",
+          "description": "",
+          "uploader": "KiKA",
+          "duration": 625.0,
+          "view_count": null,
+          "upload_date": "2026-09-03T22:00:08.75Z"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA",
+          "title": "Sardinien · Arche aus Stein",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:4617ed9f608e9d7e?w=480&ch=bb9c7c9baff197d5",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2610.0,
+          "view_count": null,
+          "upload_date": "2026-09-05T14:30:00Z"
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy80ZGM3NWMyMS02OTliLTRhOTItYmRmNi03NDQxNGVjZDhmMTQ",
+          "title": "Als Rätselranger raus in die Natur",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy80ZGM3NWMyMS02OTliLTRhOTItYmRmNi03NDQxNGVjZDhmMTQ",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:ce0d1c4165aaf754?w=480&ch=28881859cb9ef9eb",
+          "description": "",
+          "uploader": "MDR",
+          "duration": 143.0,
+          "view_count": null,
+          "upload_date": "2026-08-30T17:00:00Z"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEwMjY1QTA",
+          "title": "Dolomiten · Im Garten der Helden",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEwMjY1QTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:012cfa7d8e14cb7f?w=480&ch=ab2c9d32ede97e44",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2602.0,
+          "view_count": null,
+          "upload_date": "2026-09-01T09:05:00Z"
+        }
+      ],
+      "native_page": true,
+      "has_more": true
+    }
+  },
+  {
+    "query": "natur",
+    "offset": 22,
+    "result": {
+      "items": [
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDEyNDkwQTA",
+          "title": "Das Graue Langohr · Winzling im Kitzinger Land",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDEyNDkwQTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:108af35fe858c576?w=480&ch=ae90d7d8a634be0c",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2579.0,
+          "view_count": null,
+          "upload_date": "2026-08-03T09:05:00Z"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDA4OTA5QTA",
+          "title": "Rettet die Artenvielfalt!",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDA4OTA5QTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:6b1b3dd8adb946b2?w=480&ch=8ab365dab6ed7299",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2590.0,
+          "view_count": null,
+          "upload_date": "2026-08-01T14:30:00Z"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA0MTc5QTA",
+          "title": "Wildes Bayern · Der Nationalpark Bayerischer Wald",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA0MTc5QTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:75e6d3bb6b2b5c6d?w=480&ch=8e482b4dc3bfcd4c",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2618.0,
+          "view_count": null,
+          "upload_date": "2026-07-30T09:05:00Z"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA2NTIwQTA",
+          "title": "Wilde Slowakei",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA2NTIwQTA",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:4f208ee442913c69?w=480&ch=04ebdce77a0076d4",
+          "description": "",
+          "uploader": "BR",
+          "duration": 2630.0,
+          "view_count": null,
+          "upload_date": "2026-07-22T09:05:00Z"
+        }
+      ],
+      "native_page": true,
+      "has_more": true
+    }
+  },
+  {
+    "query": "musik",
+    "offset": 0,
+    "result": {
+      "items": [
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy82OWRhMDk0MS03MzMzLTQyY2YtYTFmOS03OTc3ZDUyYTg5Zjk",
+          "title": "Unheilig gewinnen Goldene Henne in der Kategorie Musik ",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy82OWRhMDk0MS03MzMzLTQyY2YtYTFmOS03OTc3ZDUyYTg5Zjk",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:f258d7a8335164a3?w=480&ch=8b3bb49b9049e591",
+          "description": "",
+          "uploader": "MDR",
+          "duration": 484.0,
+          "view_count": null,
+          "upload_date": "2026-09-04T18:15:00Z"
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy8xODcyYzAzYi1hODczLTQzZWQtYjZlZS05OGU1ZWY5MGY0ZDE",
+          "title": "Take That wird mit dem Ehrenpreis Musik International überrascht ",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy8xODcyYzAzYi1hODczLTQzZWQtYjZlZS05OGU1ZWY5MGY0ZDE",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:27ba6c791b2f15c6?w=480&ch=7433edd0cd41925c",
+          "description": "",
+          "uploader": "MDR",
+          "duration": 89.0,
+          "view_count": null,
+          "upload_date": "2026-09-04T18:15:00Z"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS9kYjdhZmJlOC00MjY0LTRjZGQtODM4ZS0zNTc5MTQwMDQ1M2E",
+          "title": "Neuer Ort für Kultur, Kunst und Musik: Kulturschule Demmin",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL25kci5kZS9kYjdhZmJlOC00MjY0LTRjZGQtODM4ZS0zNTc5MTQwMDQ1M2E",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:84be662a7670b828?w=480&ch=3c0b8eea72d2a910",
+          "description": "",
+          "uploader": "NDR",
+          "duration": 41.0,
+          "view_count": null,
+          "upload_date": "2026-09-04T17:30:00Z"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS8zOTM5OGQ5Yi00NzhkLTQyZTgtOGE0ZC0zZGMxZmVjMWJmMWY",
+          "title": "Musik bei Inas Nacht: Annette und Carolin Frier singen \"Unsere Stammbaum\"",
+          "webpage_url": "https://www.ardmediathek.de/video/Y3JpZDovL25kci5kZS8zOTM5OGQ5Yi00NzhkLTQyZTgtOGE0ZC0zZGMxZmVjMWJmMWY",
+          "thumbnail": "https://api.ardmediathek.de/image-service/images/urn:ard:image:f84c61a2817d25d7?w=480&ch=df1fc4a80f55586b",
+          "description": "",
+          "uploader": "NDR",
+          "duration": 227.0,
+          "view_count": null,
+          "upload_date": "2026-09-05T21:40:00Z"
+        }
+      ],
+      "native_page": true,
+      "has_more": true
+    }
+  }
+]

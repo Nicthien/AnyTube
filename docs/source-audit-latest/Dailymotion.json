@@ -1,0 +1,472 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "Dailymotion",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "Dailymotion",
+  "template_revision": "3e609634337f98554d5805d1db75233c3a2eae899cf16d07feb1ccde82bf07f5",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": true,
+    "date": true,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T19:29:18.474372+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.142,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature, nature, nature!",
+            "nature nature"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x51xwf",
+            "https://www.dailymotion.com/video/x55nrl"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.677,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature #nature",
+            "NATURE NATURE"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x9n9s0w",
+            "https://www.dailymotion.com/video/x6eh5n1"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:51.581761+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.758,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piano Piano",
+            "Piano Piano"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xbv6yq",
+            "https://www.dailymotion.com/video/xbv26h"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.588,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "toby \"piano piano\"",
+            "Régions - Piano piano…"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x3xf0k",
+            "https://www.dailymotion.com/video/x7kx6lo"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:54.928672+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.631,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Documentaire",
+            "Documentaire"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x1hi7d",
+            "https://www.dailymotion.com/video/x4dkkx"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.694,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Documentaire",
+            "Documentaire"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xo6ie",
+            "https://www.dailymotion.com/video/xrz2ei"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:28:58.254401+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.263,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Quel ADC est meilleur que Jinx ? 😍",
+            "Il \"semble\" que la guerre va se poursuivre cet hiver, estime Volodymyr Zelensky"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4kkiu",
+            "https://www.dailymotion.com/video/xb4hifi"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.519,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Tyler, The Creator à fond à Rock en Seine",
+            "صفحة (401)"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4kjii",
+            "https://www.dailymotion.com/video/xb4kj4q"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:01.037709+00:00"
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.303,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Crash en plein show aérien : un avion de chasse s'écrase en Grèce",
+            "Miraculés du Népal : dix jours après la catastrophe, deux ouvriers extraits viva"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb471q6",
+            "https://www.dailymotion.com/video/xb3tx8u"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.294,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Indonésie : les images de l'éruption qui paralyse le trafic aérien",
+            "Antoine Griezmann poursuit sa série en MLS, déjà auteur de quatre buts - Foot - "
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4gov2",
+            "https://www.dailymotion.com/video/xb4fcle"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:03.635655+00:00"
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.255,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Live CNEWS",
+            "Couple taking a walk at the shore beach"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x3b68jn",
+            "https://www.dailymotion.com/video/x87d4ev"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.341,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Millenium TV LoL",
+            "Drone view of beautiful green landscape"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xj7bck",
+            "https://www.dailymotion.com/video/x87bn71"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:06.233049+00:00"
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.272,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Quel ADC est meilleur que Jinx ? 😍",
+            "Il \"semble\" que la guerre va se poursuivre cet hiver, estime Volodymyr Zelensky"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4kkiu",
+            "https://www.dailymotion.com/video/xb4hifi"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.286,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Tyler, The Creator à fond à Rock en Seine",
+            "صفحة (401)"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4kjii",
+            "https://www.dailymotion.com/video/xb4kj4q"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:08.791648+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.574,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SHARJAH",
+            "Un sanctuaire pour les éléphants unique en Europe"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x9y7zwo",
+            "https://www.dailymotion.com/video/x8lpe9m"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.566,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Gilles promène sa vache en centre-ville",
+            "Las 10 ciudades más verdes del mundo"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/x9dmo9w",
+            "https://www.dailymotion.com/video/x80ay18"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:11.933055+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.665,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Rack the Table: His Comeback Starts Now",
+            "IANS Exclusive: Amrapali Dubey opens up on Bigg Boss entry, shares excitement fo"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4k9we",
+            "https://www.dailymotion.com/video/xb4ka6m"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.647,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "La novia maldita del padrino",
+            "Orcas: Wave Wizards! 🌊"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb4j6ai",
+            "https://www.dailymotion.com/video/xb4i18a"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:15.246424+00:00"
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.6,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Crue soudaine au Grand Canyon : plus de 20 personnes seraient portées disparues",
+            "« Une force de la nature » et « un gars qui ne se limite pas trop » : pourquoi l"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb2o5y2",
+            "https://www.dailymotion.com/video/xb45292"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.627,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "'Never the animal's fault': unearthed footage reveals the real Steve Irwin",
+            "Proximité avec la nature, dépassement de soi… Le trail séduit de plus en plus de"
+          ],
+          "samples": [
+            "https://www.dailymotion.com/video/xb3ouy2",
+            "https://www.dailymotion.com/video/xb4doh6"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:29:18.474372+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:28:51.581761+00:00",
+  "scenarios_reused": 10,
+  "scenarios_executed": 0
+}

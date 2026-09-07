@@ -1,0 +1,12 @@
+{
+  "connector_version": "5d9480adb516619a",
+  "note": "Durées cumulées des pages observées, pas le temps mural ; scénarios réutilisés comptés une fois.",
+  "templates": [
+    {
+      "template": "ToonGoggles",
+      "observed_worker_seconds": 9.655,
+      "page_probes": 7,
+      "status": "results_received"
+    }
+  ]
+}

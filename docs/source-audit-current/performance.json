@@ -1,0 +1,258 @@
+{
+  "connector_version": "b3239e93083da870",
+  "note": "Durées cumulées des pages observées, pas le temps mural ; scénarios réutilisés comptés une fois.",
+  "templates": [
+    {
+      "template": "YoutubeMusicSearchURL",
+      "observed_worker_seconds": 139.42,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "MailRuMusicSearch",
+      "observed_worker_seconds": 69.899,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "YoutubeSearch",
+      "observed_worker_seconds": 62.438,
+      "page_probes": 12,
+      "status": "results_received"
+    },
+    {
+      "template": "YoutubeSearchURL",
+      "observed_worker_seconds": 61.179,
+      "page_probes": 12,
+      "status": "results_received"
+    },
+    {
+      "template": "Youtube",
+      "observed_worker_seconds": 54.393,
+      "page_probes": 12,
+      "status": "results_received"
+    },
+    {
+      "template": "ArchiveOrg",
+      "observed_worker_seconds": 40.977,
+      "page_probes": 20,
+      "status": "results_received"
+    },
+    {
+      "template": "Soundcloud",
+      "observed_worker_seconds": 30.755,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "Dailymotion",
+      "observed_worker_seconds": 30.049,
+      "page_probes": 20,
+      "status": "results_received"
+    },
+    {
+      "template": "DailymotionSearch",
+      "observed_worker_seconds": 29.547,
+      "page_probes": 20,
+      "status": "results_received"
+    },
+    {
+      "template": "PeerTubePlaylist",
+      "observed_worker_seconds": 28.816,
+      "page_probes": 18,
+      "status": "results_received"
+    },
+    {
+      "template": "Rokfin",
+      "observed_worker_seconds": 28.793,
+      "page_probes": 4,
+      "status": "temporarily_unavailable"
+    },
+    {
+      "template": "RokfinSearch",
+      "observed_worker_seconds": 28.504,
+      "page_probes": 4,
+      "status": "temporarily_unavailable"
+    },
+    {
+      "template": "PeerTube",
+      "observed_worker_seconds": 28.391,
+      "page_probes": 18,
+      "status": "results_received"
+    },
+    {
+      "template": "SoundcloudSearch",
+      "observed_worker_seconds": 28.146,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "GameJolt",
+      "observed_worker_seconds": 26.654,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "Niconico",
+      "observed_worker_seconds": 26.591,
+      "page_probes": 14,
+      "status": "results_received"
+    },
+    {
+      "template": "GameJoltSearch",
+      "observed_worker_seconds": 26.213,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "NicovideoSearch",
+      "observed_worker_seconds": 25.021,
+      "page_probes": 14,
+      "status": "results_received"
+    },
+    {
+      "template": "NicovideoSearchDate",
+      "observed_worker_seconds": 24.934,
+      "page_probes": 14,
+      "status": "results_received"
+    },
+    {
+      "template": "RedGifsSearch",
+      "observed_worker_seconds": 24.468,
+      "page_probes": 12,
+      "status": "results_received"
+    },
+    {
+      "template": "NicovideoSearchURL",
+      "observed_worker_seconds": 21.975,
+      "page_probes": 14,
+      "status": "results_received"
+    },
+    {
+      "template": "VrSquareSearch",
+      "observed_worker_seconds": 20.475,
+      "page_probes": 4,
+      "status": "unsupported_media"
+    },
+    {
+      "template": "ArteTV",
+      "observed_worker_seconds": 14.86,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "OpenRec",
+      "observed_worker_seconds": 14.196,
+      "page_probes": 7,
+      "status": "results_received"
+    },
+    {
+      "template": "Wikimedia",
+      "observed_worker_seconds": 13.609,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "MicrosoftLearnPlaylist",
+      "observed_worker_seconds": 13.358,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "BiliBili",
+      "observed_worker_seconds": 13.201,
+      "page_probes": 5,
+      "status": "results_received"
+    },
+    {
+      "template": "CBSNews",
+      "observed_worker_seconds": 12.945,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "TubeTuGraz",
+      "observed_worker_seconds": 11.524,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "ARDBetaMediathek",
+      "observed_worker_seconds": 11.418,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "ApplePodcasts",
+      "observed_worker_seconds": 11.411,
+      "page_probes": 7,
+      "status": "results_received"
+    },
+    {
+      "template": "ToonGoggles",
+      "observed_worker_seconds": 11.387,
+      "page_probes": 7,
+      "status": "results_received"
+    },
+    {
+      "template": "Vimeo",
+      "observed_worker_seconds": 11.215,
+      "page_probes": 8,
+      "status": "authentication_required"
+    },
+    {
+      "template": "PatreonCampaign",
+      "observed_worker_seconds": 11.196,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "NRKTV",
+      "observed_worker_seconds": 10.405,
+      "page_probes": 8,
+      "status": "results_received"
+    },
+    {
+      "template": "GoogleSearch",
+      "observed_worker_seconds": 9.288,
+      "page_probes": 4,
+      "status": "empty"
+    },
+    {
+      "template": "YahooSearch",
+      "observed_worker_seconds": 6.952,
+      "page_probes": 4,
+      "status": "temporarily_unavailable"
+    },
+    {
+      "template": "PRXSeries",
+      "observed_worker_seconds": 5.89,
+      "page_probes": 4,
+      "status": "authentication_required"
+    },
+    {
+      "template": "PRXStory",
+      "observed_worker_seconds": 5.857,
+      "page_probes": 4,
+      "status": "authentication_required"
+    },
+    {
+      "template": "PRXStoriesSearch",
+      "observed_worker_seconds": 5.811,
+      "page_probes": 4,
+      "status": "authentication_required"
+    },
+    {
+      "template": "PRXSeriesSearch",
+      "observed_worker_seconds": 5.76,
+      "page_probes": 4,
+      "status": "authentication_required"
+    },
+    {
+      "template": "BiliBiliSearch",
+      "observed_worker_seconds": 1.977,
+      "page_probes": 4,
+      "status": "rate_limited"
+    }
+  ]
+}

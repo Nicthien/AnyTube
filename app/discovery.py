@@ -29,12 +29,17 @@ def select_source(url, source_id=None):
         raise HTTPException(400, 'Utilisez une URL HTTP(S) publique sur un port standard.')
     candidates = [cls for cls in gen_extractor_classes() if cls.ie_key() != 'Generic' and cls.suitable(url)]
     mapping = identities()
+    from app.toongoggles import AnyTubeToonGogglesEpisodeIE, AnyTubeToonGogglesShowIE
+    modern_toon = AnyTubeToonGogglesEpisodeIE.suitable(url) or AnyTubeToonGogglesShowIE.suitable(url)
     for source in saved_sources():
         if not source['enabled'] or (source_id is not None and source['id'] != source_id):
             continue
         extractor = source['connector'].get('extractor')
         if not extractor or extractor not in mapping:
             continue
+        if extractor == 'ToonGoggles' and modern_toon:
+            # The worker registers the modern adapters under this enabled source.
+            return source, extractor
         matched = next((cls for cls in candidates if cls.ie_key() == extractor), None)
         if not matched:
             matched = next((cls for cls in candidates if mapping[cls.ie_key()]['platform_id'] == mapping[extractor]['platform_id']), None)

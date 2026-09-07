@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-06T19:14:52.268982+00:00",
+  "connector_version": "c46e1a78e5980cac",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "collection": {
+    "title": "Natur i endring",
+    "items": [
+      {
+        "id": "DVNA25000118",
+        "title": "Sans titre",
+        "url": "https://tv.nrk.no/program/DVNA25000118",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      },
+      {
+        "id": "DVNA25000218",
+        "title": "Sans titre",
+        "url": "https://tv.nrk.no/program/DVNA25000218",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      },
+      {
+        "id": "DVNA25000318",
+        "title": "Sans titre",
+        "url": "https://tv.nrk.no/program/DVNA25000318",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      }
+    ],
+    "has_more": true
+  }
+}

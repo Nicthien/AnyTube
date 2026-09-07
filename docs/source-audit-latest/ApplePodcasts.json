@@ -1,0 +1,185 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "ApplePodcasts",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "ApplePodcasts",
+  "template_revision": "251b1e854d4bd9c52c840068a8f050ed4ffab485b02e1342aa33b1b9030f737b",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:32:54.716685+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "science": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.35,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Sex-reversing frogs, and Europe’s rising rates of a deadly tick-borne disease"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/sex-reversing-frogs-and-europes-rising-rates-of/id120329020?i=1000787700919&uo=4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.343,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Making drugs in space, the man who fed India, and what narwhals can teach us abo"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/making-drugs-in-space-the-man-who-fed-india-and/id120329020?i=1000786325867&uo=4"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 2,
+      "date": "2026-09-06T19:32:48.296741+00:00"
+    },
+    "histoire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.315,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "INÉDIT - Homère, Vasco de Gama, Alys Robi... Le programme à venir",
+            "Al Capone, le roi du crime"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/in%C3%A9dit-hom%C3%A8re-vasco-de-gama-alys-robi-le-programme-%C3%A0-venir/id1583548883?i=1000788069144&uo=4",
+            "https://podcasts.apple.com/fr/podcast/al-capone-le-roi-du-crime/id1583548883?i=1000788067469&uo=4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.257,
+          "count": 2,
+          "distinct_urls": 2,
+          "new_urls": 2,
+          "repeated_urls": 0,
+          "titles": [
+            "1666 : le Grand incendie de Londres ravage la ville en quatre jours",
+            "[Ep 22] Ibrahim face à son peuple [Les Histoires des Prophètes]"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/1666-le-grand-incendie-de-londres-ravage-la-ville-en/id1546886269?i=1000788089352&uo=4",
+            "https://podcasts.apple.com/fr/podcast/ep-22-ibrahim-face-%C3%A0-son-peuple-les-histoires-des-proph%C3%A8tes/id1764441718?i=1000788130414&uo=4"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T19:32:50.869598+00:00"
+    },
+    "musique": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 1.221,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:32:52.092816+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "science",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.314,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Sex-reversing frogs, and Europe’s rising rates of a deadly tick-borne disease"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/sex-reversing-frogs-and-europes-rising-rates-of/id120329020?i=1000787700919&uo=4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.309,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Making drugs in space, the man who fed India, and what narwhals can teach us abo"
+          ],
+          "samples": [
+            "https://podcasts.apple.com/fr/podcast/making-drugs-in-space-the-man-who-fed-india-and/id120329020?i=1000786325867&uo=4"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 2,
+      "date": "2026-09-06T19:32:54.716685+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "science": "results_received",
+    "histoire": "results_received",
+    "musique": "empty"
+  },
+  "oldest_scenario_date": "2026-09-06T19:32:48.296741+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

@@ -64,6 +64,14 @@ async function streamVideo(url, title, sourceId = null) {
         player.addEventListener('error', () => { if(version === streamVersion) $('player-status').textContent = 'Lecture interrompue. Le flux a expiré ou la source est indisponible. Rouvrez le média ou préparez un fichier local.'; });
         await player.load(choice.url, undefined, choice.mime);
         if(version !== streamVersion || selectedVersion !== choiceVersion) return;
+        for(const entry of result.subtitles) {
+          try {
+            await player.addTextTrackAsync(entry.url, entry.language, 'subtitles', 'text/vtt');
+          } catch(error) {
+            console.warn('Impossible de charger une piste de sous-titres externe.', error);
+          }
+          if(version !== streamVersion || selectedVersion !== choiceVersion) return;
+        }
         option(quality, 'auto', 'Automatique');
         const variants = player.getVariantTracks();
         for(const track of variants) option(quality, String(track.id), `${track.height ? track.height+'p' : 'Audio'} · ${track.language || ''}`);
@@ -100,20 +108,23 @@ async function streamVideo(url, title, sourceId = null) {
 }
 
 const collectionDialog=node('dialog','connector-dialog');collectionDialog.setAttribute('aria-labelledby','collection-heading');document.body.append(collectionDialog);
-const openCollection=button('Parcourir une chaîne ou playlist','secondary',()=>{
+function browseCollection(initialUrl = '', initialSourceId = null) {
   collectionDialog.replaceChildren();const heading=node('h2','','Chaîne ou playlist');heading.id='collection-heading';collectionDialog.append(heading,button('Fermer','secondary',()=>collectionDialog.close()));
   const form=node('form'),label=node('label','connector-field','URL de la collection'),input=node('input');input.type='url';input.required=true;label.append(input);form.append(label);
   const submit=node('button','primary','Parcourir');form.append(submit);collectionDialog.append(form);
   const status=node('p','hint');status.setAttribute('aria-live','polite');const list=node('div');collectionDialog.append(status,list);
-  let cursor=null, collectionUrl='', collectionId=null; const seen=new Set();
+  input.value=initialUrl;
+  let cursor=null, collectionUrl='', collectionId=initialSourceId; const seen=new Set();
   const more=button('Charger davantage','secondary',()=>load(true));more.hidden=true;collectionDialog.append(more);
   async function load(append){submit.disabled=more.disabled=true;status.textContent='Chargement…';try{if(!append){cursor=null;collectionUrl=input.value.trim();seen.clear();list.replaceChildren();}
     const result=await api('/api/collections',{method:'POST',signal:AbortSignal.timeout(70000),body:JSON.stringify({url:collectionUrl,cursor,source_id:collectionId})});
     collectionId=result.source_id;cursor=result.next_cursor;more.hidden=!cursor;status.textContent=result.title;
-    for(const item of result.items){if(seen.has(item.url))continue;seen.add(item.url);const row=node('div','catalog-row');row.append(node('span','',item.title),button('Lire','secondary',()=>streamVideo(item.url,item.title,collectionId)),button('Ajouter à la file','secondary',()=>{playQueue.push({...item,source_id:collectionId});toast(`${playQueue.length} média(s) dans la file.`);}),button('Conserver','secondary',async()=>{try{await api('/api/media',{method:'POST',body:JSON.stringify({url:item.url,source_id:collectionId,destination:'library'})});toast('Préparation démarrée.');}catch(e){toast(e.message);}}));list.append(row);}
+    for(const item of result.items){if(seen.has(item.url))continue;seen.add(item.url);const row=node('div','catalog-row');if(item.non_media || item.access_required){row.append(node('span','',item.title),node('span','hint',item.non_media?'Publication sans média audio ou vidéo':'Accès requis sur Patreon'));const link=node('a','secondary','Ouvrir la publication');link.href=safeUrl(item.url)||'#';link.target='_blank';link.rel='noopener noreferrer';row.append(link);list.append(row);continue;}row.append(node('span','',item.title),button('Lire','secondary',()=>streamVideo(item.url,item.title,collectionId)),button('Ajouter à la file','secondary',()=>{playQueue.push({...item,source_id:collectionId});toast(`${playQueue.length} média(s) dans la file.`);}),button('Conserver','secondary',async()=>{try{await api('/api/media',{method:'POST',body:JSON.stringify({url:item.url,source_id:collectionId,destination:'library'})});toast('Préparation démarrée.');}catch(e){toast(e.message);}}));list.append(row);}
   }catch(e){status.textContent=e.message;}finally{submit.disabled=more.disabled=false;}}
   form.addEventListener('submit',event=>{event.preventDefault();collectionId=null;load(false);});collectionDialog.showModal();input.focus();
-});$('open-url').after(openCollection);
+  if(initialUrl) load(false);
+}
+const openCollection=button('Parcourir une chaîne ou playlist','secondary',()=>browseCollection());$('open-url').after(openCollection);
 const playQueue=[];
 const nextQueued=button('Lire le prochain de la file','secondary',()=>{const item=playQueue.shift();if(item)streamVideo(item.url,item.title,item.source_id);else toast('La file de lecture est vide.');});$('open-url').after(nextQueued);
 $('player').addEventListener('ended',()=>{if(playQueue.length){const item=playQueue.shift();streamVideo(item.url,item.title,item.source_id);}});

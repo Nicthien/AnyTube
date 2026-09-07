@@ -1,0 +1,199 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "OpenRec",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "OpenRec",
+  "template_revision": "5c61cfeac3d106e8ec862a657cb505f06a989f78aedfe6bdaec8a2b082488867",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:37:10.281180+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "minecraft": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.412,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "佐々木佑紀の秘密基地 #235",
+            "【よく☆ぱら】雨栗＆米将軍 登場！！　人狼マイクラと釣りウォチパ！？？　#27"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/4ofqfwqodtm",
+            "https://www.mellow-fan.com/live/lv81xpp57z9"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 3,
+      "date": "2026-09-06T23:36:58.493627+00:00"
+    },
+    "佐々木": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.961,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "佐々木佑紀の秘密基地 #237(サブスク限定配信)",
+            "佐々木佑紀の秘密基地 #237"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/cafftya8as2",
+            "https://www.mellow-fan.com/live/mt0e08jn2g8"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.466,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "佐々木佑紀の秘密基地#236",
+            "佐々木佑紀の秘密基地#236"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/qs43lxsnozd",
+            "https://www.mellow-fan.com/live/zxl0u2qvl4r"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:02.921407+00:00"
+    },
+    "ゲーム": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 3.129,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【ラジオ無料放送】スタッフさんおすすめゲームやるよ【天使さん以外も視聴できます】",
+            "【後半はサブスク放送】GAME STATION 運転士さんが駅長さんとゲームで楽しむ【前半の生放送は無料】"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/e5rk9wyp1zv",
+            "https://www.mellow-fan.com/live/1o8qm5g2nzk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.447,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【全編無料放送】お顔出しなしゲーム配信 Vol.7【お顔出しなし】",
+            "【無料放送】HITOMAKASEラボゲーム部vol.13"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/2k8m4jwv386",
+            "https://www.mellow-fan.com/live/ovrdvplk6rj"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:07.498816+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "ゲーム",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.394,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【ラジオ無料放送】スタッフさんおすすめゲームやるよ【天使さん以外も視聴できます】",
+            "【後半はサブスク放送】GAME STATION 運転士さんが駅長さんとゲームで楽しむ【前半の生放送は無料】"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/e5rk9wyp1zv",
+            "https://www.mellow-fan.com/live/1o8qm5g2nzk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.387,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "【全編無料放送】お顔出しなしゲーム配信 Vol.7【お顔出しなし】",
+            "【無料放送】HITOMAKASEラボゲーム部vol.13"
+          ],
+          "samples": [
+            "https://www.mellow-fan.com/live/2k8m4jwv386",
+            "https://www.mellow-fan.com/live/ovrdvplk6rj"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:37:10.281180+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "minecraft": "results_received",
+    "佐々木": "results_received",
+    "ゲーム": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:36:58.493627+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

@@ -1,0 +1,117 @@
+{
+  "date": "2026-09-06T23:00:41.885423+00:00",
+  "source": "https://api.toongoggles.com/javascriptLib?version=11.0",
+  "configuration_search": {
+    "search_non_episode": {
+      "method": "GET",
+      "style": "table",
+      "title": "Videos",
+      "endpoint": "search",
+      "type": "search",
+      "parameters": {
+        "image_width": "366",
+        "object_type": "video",
+        "video_type": "non_episode"
+      }
+    },
+    "search_show": {
+      "method": "GET",
+      "style": "table",
+      "title": "Shows",
+      "endpoint": "search",
+      "type": "search",
+      "parameters": {
+        "image_width": "366",
+        "object_type": "show"
+      }
+    }
+  },
+  "scope": "Official public JS specifies keyword key and pagination start; no live keyword results or playback verified.",
+  "show_search_probes": [
+    {
+      "probe": "toongoggles-search-anytubexyz987654321-0",
+      "total": "0",
+      "count": "0",
+      "items": []
+    },
+    {
+      "probe": "toongoggles-search-bernard-0",
+      "total": "1",
+      "count": "1",
+      "items": [
+        {
+          "id": "67280",
+          "name": "Bernard",
+          "url": "/shows/bernard",
+          "type": "show"
+        }
+      ]
+    },
+    {
+      "probe": "toongoggles-search-bernard-3",
+      "total": "1",
+      "count": "0",
+      "items": []
+    },
+    {
+      "probe": "toongoggles-search-robot-0",
+      "total": "9",
+      "count": "3",
+      "items": [
+        {
+          "id": "285551",
+          "name": "Rookie Robot",
+          "url": "/shows/rookie-robot",
+          "type": "show"
+        },
+        {
+          "id": "266914",
+          "name": "Incredible Record Breakers: Rockets and Robots",
+          "url": "/shows/incredible-record-breakers-rockets-and-robots",
+          "type": "show"
+        },
+        {
+          "id": "256788",
+          "name": "Lucky Fred",
+          "url": "/shows/lucky-fred",
+          "type": "show"
+        }
+      ]
+    }
+  ],
+  "collection_probe": {
+    "url": "https://www.toongoggles.com/shows/bernard",
+    "exit_code": 1,
+    "result": {
+      "error": "Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire.",
+      "code": "unsupported_media",
+      "retry_after": null
+    }
+  },
+  "modern_routes": {
+    "show": "https://www.toongoggles.com/shows/bernard",
+    "episode": "https://www.toongoggles.com/shows/bernard/season/1/episode/1",
+    "episode_http_status": 200,
+    "public_player_id": "257914",
+    "show_id": "67280",
+    "evidence": "Public HTML data-ottera-id and data-ottera-parent-id; official setupEmbeddedPlayers calls loadEmbeddedPlayer with this ID. Installed extractor requires numeric /shows/{id} routes and old Kaltura metadata.",
+    "next": "Inspect official embedded player contract; do not substitute guessed old numeric routes."
+  },
+  "official_player_probe": {
+    "date": "2026-09-06T23:03:47.572035+00:00",
+    "episode_id": "257914",
+    "player_http_status": 200,
+    "manifest_http_status": 200,
+    "hls_header": "#EXTM3U",
+    "variants": 5,
+    "media_url": "https://cdnapisec.kaltura.com/p/513551/sp/51355100/playManifest/entryId/0_1c8j2dnw/format/applehttp/protocol/https/flavorIds/1_1kaee899,1_80li4bhh,1_61hu9r7i,1_qh6p2xs3,1_sdpcznx3,1_pf7ltphb/preferredBitrate/1500/maxBitrate/2500/a.m3u8",
+    "scope": "Public official player and HLS master accessible; no decoded playback tested."
+  },
+  "decode_probe": {
+    "environment": "Docker ffmpeg",
+    "seconds_requested": 2,
+    "exit_code": 0,
+    "stderr": "",
+    "scope": "Two seconds of first video stream decoded to null; no browser playback."
+  }
+}

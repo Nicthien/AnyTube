@@ -1,0 +1,100 @@
+{
+  "query": "佐々木",
+  "offset": 38,
+  "limit": 8,
+  "note": "Pagination only; provisional live URLs do not validate routing or playback.",
+  "result": {
+    "items": [
+      {
+        "id": "1zmxjtc4eay",
+        "title": "佐々木佑紀の秘密基地 #220(サブスク会員限定配信)",
+        "webpage_url": "https://www.mellow-fan.com/live/1zmxjtc4eay",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "r81h0l3145c",
+        "title": "佐々木佑紀の秘密基地 #220(サブスク会員限定配信)",
+        "webpage_url": "https://www.mellow-fan.com/live/r81h0l3145c",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "9hshz7qi9bz",
+        "title": "佐々木佑紀の秘密基地 #220(サブスク会員限定配信)",
+        "webpage_url": "https://www.mellow-fan.com/live/9hshz7qi9bz",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "l21slkr5p6a",
+        "title": "佐々木佑紀の秘密基地 #220",
+        "webpage_url": "https://www.mellow-fan.com/live/l21slkr5p6a",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "xrwg39jz71x",
+        "title": "佐々木佑紀の秘密基地 #218",
+        "webpage_url": "https://www.mellow-fan.com/live/xrwg39jz71x",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "nqr6ndxdl86",
+        "title": "ゆかるんのMMH！#48 一狩り行こうぜ！！",
+        "webpage_url": "https://www.mellow-fan.com/live/nqr6ndxdl86",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "b0ci9sv93a2",
+        "title": "佐々木佑紀の秘密基地 #218",
+        "webpage_url": "https://www.mellow-fan.com/live/b0ci9sv93a2",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      },
+      {
+        "id": "zrrmg97i6f6",
+        "title": "佐々木佑紀の秘密基地 #218",
+        "webpage_url": "https://www.mellow-fan.com/live/zrrmg97i6f6",
+        "thumbnail": null,
+        "description": "",
+        "uploader": "",
+        "duration": null,
+        "view_count": null,
+        "upload_date": null
+      }
+    ],
+    "native_page": true,
+    "has_more": true
+  }
+}

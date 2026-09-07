@@ -1,0 +1,82 @@
+{
+  "simplecast": {
+    "status": "lookup_only",
+    "date": "2026-09-06",
+    "reason": "L'appel search observé dans l'extracteur installé reçoit une URL exacte, pas des mots-clés. Aucune recherche textuelle identifiée."
+  },
+  "rutube": {
+    "status": "blocked",
+    "date": "2026-09-06",
+    "reason": "Sondage de recherche HTTP 403 depuis le poste local."
+  },
+  "radiofrance": {
+    "status": "access_required",
+    "date": "2026-09-06",
+    "reason": "API GraphQL officielle avec clé de compte requise."
+  },
+  "orf": {
+    "status": "access_required",
+    "date": "2026-09-06",
+    "reason": "Recherche search-partial/episodes : HTTP 401 en accès anonyme."
+  },
+  "nhk": {
+    "status": "access_required",
+    "date": "2026-09-06",
+    "reason": "Le catalogue GET ignore q ; recherche POST SDK nécessitant un contrat ou une clé."
+  },
+  "rtve": {
+    "status": "lookup_only",
+    "date": "2026-09-06",
+    "reason": "L'API vidéos essayée ignore les paramètres text et title ; résultats identiques avec une requête inexistante."
+  },
+  "audius": {
+    "status": "blocked",
+    "date": "2026-09-06",
+    "reason": "Recherche publique HTTP 403 depuis le poste local."
+  },
+  "gronkh": {
+    "status": "blocked",
+    "date": "2026-09-06",
+    "reason": "Échec de validation TLS de l'API depuis Python ; certificat auto-signé signalé."
+  },
+  "cpac": {
+    "status": "blocked",
+    "date": "2026-09-06",
+    "reason": "Ancien endpoint de recherche de l'extracteur installé : HTTP 404."
+  },
+  "rumble": {
+    "status": "blocked",
+    "date": "2026-09-06",
+    "reason": "Recherche nature via le worker réel : HTTP 403, contrôle Cloudflare anti-bot signalé par yt-dlp."
+  },
+  "tv2hu": {
+    "status": "lookup_only",
+    "date": "2026-09-06",
+    "reason": "La route /api/search/{video_id} de l’extracteur charge une fiche vidéo ou émission par identifiant ; aucune recherche textuelle identifiée."
+  },
+  "adultswim": {
+    "status": "lookup_only",
+    "date": "2026-09-06",
+    "reason": "Le POST /api/search observé transporte une requête GraphQL getShowBySlug/getVideoBySlug ; aucune recherche textuelle identifiée."
+  },
+  "ciscolive": {
+    "date": "2026-09-06",
+    "status": "blocked",
+    "reason": "Sondage via CiscoLiveSearch installé : appel API Rainfocus HTTP 400. Paramètre textuel à reconfirmer avant intégration."
+  },
+  "telequebec": {
+    "status": "access_required",
+    "date": "2026-09-06",
+    "reason": "Nouvelle page non reconnue par TeleQuebecEmission. Sur Cochon dingue S6E29, le lecteur Brightcove officiel identifié refuse le flux par access policy depuis le poste local. Recherche GraphQL accessible ; portée limitée à ce média."
+  },
+  "newgrounds": {
+    "date": "2026-09-06",
+    "status": "blocked",
+    "reason": "Recherche audio via NewgroundsPlaylistIE : HTTP 403 pour piano et orchestra depuis ce poste. Aucun modèle ajouté ; refus limité à ces sondages."
+  },
+  "parlview": {
+    "date": "2026-09-06",
+    "status": "lookup_only",
+    "reason": "La route search/parlview/{video_id} identifie une fiche vidéo, pas une recherche textuelle. La page publique ParlView répond 403 depuis ce poste ; contrat de recherche non identifié."
+  }
+}

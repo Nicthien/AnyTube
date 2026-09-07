@@ -1,0 +1,45 @@
+{
+  "connector_version": "f7bebe34cd6b27db",
+  "query": "azure",
+  "offset": 120,
+  "page_size": 3,
+  "result": {
+    "items": [
+      {
+        "id": "generative-ai-with-dotnet-for-beginners",
+        "title": "Generative AI with .NET for Beginners",
+        "url": "https://learn.microsoft.com/shows/generative-ai-with-dotnet-for-beginners/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2024-09-24"
+      },
+      {
+        "id": "student-summit-2022",
+        "title": "Student Summit 2022",
+        "url": "https://learn.microsoft.com/shows/student-summit-2022/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2024-05-21"
+      },
+      {
+        "id": "connect-microsoft-connect--2018",
+        "title": "Microsoft Connect(); 2018",
+        "url": "https://learn.microsoft.com/shows/connect-microsoft-connect--2018/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2024-05-21"
+      }
+    ],
+    "native_page": true,
+    "has_more": true
+  }
+}

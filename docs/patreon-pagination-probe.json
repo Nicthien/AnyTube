@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-06T21:47:29.748134+00:00",
+  "engine": "073b19bf737e0138",
+  "pages": [
+    {
+      "offset": 0,
+      "exit_code": 0,
+      "items": [
+        {
+          "id": "165652653",
+          "title": "Research Need involving Lasers",
+          "url": "https://www.patreon.com/smartereveryday/posts/research-need-165652653",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-08-03"
+        },
+        {
+          "id": "164887893",
+          "title": "The PROBLEM with Capitalism - Smarter Every Day 316",
+          "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-07-26"
+        },
+        {
+          "id": "164612614",
+          "title": "Thanks..... the scientific paper you helped me write was just published...",
+          "url": "https://www.patreon.com/smartereveryday/posts/thanks-paper-you-164612614",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-07-23"
+        }
+      ],
+      "has_more": true,
+      "error": null
+    },
+    {
+      "offset": 3,
+      "exit_code": 0,
+      "items": [
+        {
+          "id": "161389838",
+          "title": "TIME SENSITIVE Video Request: Smarter Scrubber Reviews/Comments",
+          "url": "https://www.patreon.com/smartereveryday/posts/time-sensitive-161389838",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-06-18"
+        },
+        {
+          "id": "159835914",
+          "title": " They Call it \"The Taco Turn\" and it's Genius - Smarter Every Day 315",
+          "url": "https://www.patreon.com/smartereveryday/posts/they-call-it-and-159835914",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-06-01"
+        },
+        {
+          "id": "155355065",
+          "title": "Printable Johari Window PDF",
+          "url": "https://www.patreon.com/smartereveryday/posts/printable-johari-155355065",
+          "thumbnail": null,
+          "description": "",
+          "channel": "",
+          "duration": null,
+          "views": null,
+          "published": "2026-04-11"
+        }
+      ],
+      "has_more": true,
+      "error": null
+    }
+  ],
+  "repeated_urls": 0,
+  "scope": "Worker collection pagination, not browser playback"
+}

@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-09-07T15:41:14.245251+00:00",
+  "source": "ToonGoggles",
+  "url": "https://www.toongoggles.com/shows/bernard/season/1/episode/1",
+  "title": "Table Tennis",
+  "environment": "IAB browser through local Docker AnyTube at 127.0.0.1:18091",
+  "image": "sha256:e7e758f50bc929986b8daa0a58de8c850b82fef5117a96902313d62baa1edb33",
+  "engine": "daf113d8ef41153b",
+  "path": [
+    "search bernard",
+    "browse episodes",
+    "play first episode",
+    "start loaded video"
+  ],
+  "observations": [
+    {
+      "current_time": 14.236448,
+      "paused": false,
+      "ready_state": 4,
+      "width": 640,
+      "height": 360
+    },
+    {
+      "current_time": 22.742722,
+      "paused": false,
+      "ready_state": 4,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "visual_image_confirmed": true,
+  "playback_stopped": true,
+  "iab_tab_closed": true,
+  "limitations": [
+    "Search and collection browser delays persisted; cause not established.",
+    "Single episode only, on the recorded image, not a full platform certification."
+  ],
+  "cleanup": "Docker API unavailable when attempting container cleanup; removal not confirmed."
+}

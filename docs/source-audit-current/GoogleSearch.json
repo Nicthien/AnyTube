@@ -1,0 +1,124 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "GoogleSearch",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "GoogleSearch",
+  "template_revision": "8ed7a852d0de983674e9e0d882e6857dcb0e928125cad19fca2f6fe7f28a7c8a",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:33:54.257145+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 2.432,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:47.398673+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 2.231,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:49.630411+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 2.17,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:51.801535+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 2.455,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:33:54.257145+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "empty",
+  "per_query_status": {
+    "nature": "empty",
+    "piano": "empty",
+    "documentaire": "empty"
+  },
+  "oldest_scenario_date": "2026-09-06T23:33:47.398673+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

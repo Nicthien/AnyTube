@@ -1,0 +1,9 @@
+{
+  "engine": "aa42302df4b5b431",
+  "date": "2026-09-06T21:36:48.045218+00:00",
+  "templates": 39,
+  "elapsed_seconds": 0.924,
+  "scenarios_executed": 0,
+  "scenarios_reused": 208,
+  "scope": "Audit resume; not new network verification. Fresh campaign retained in summary-network.json."
+}

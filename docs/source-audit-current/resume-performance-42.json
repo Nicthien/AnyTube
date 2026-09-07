@@ -1,0 +1,11 @@
+{
+  "engine": "b3239e93083da870",
+  "seconds": 0.985,
+  "execution": {
+    "mode": "resume",
+    "scenarios_executed": 0,
+    "scenarios_reused": 220,
+    "proofs_aggregated": 0
+  },
+  "matched_revisions_and_published_statuses": 42
+}

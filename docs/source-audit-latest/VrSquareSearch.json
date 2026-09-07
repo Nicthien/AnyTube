@@ -1,0 +1,109 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "VrSquareSearch",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "VrSquare",
+  "template_revision": "846df5701c9b725b4a46ced6184424d1ec6b62f2de68e472c26e81190aa9a3a4",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:31:43.310432+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "VR": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "unsupported_media",
+          "detail": "Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire.",
+          "elapsed_seconds": 8.18
+        }
+      ],
+      "status": "unsupported_media",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:30.231638+00:00"
+    },
+    "ライブ": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 4.912
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:35.145007+00:00"
+    },
+    "櫻坂": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "empty",
+          "elapsed_seconds": 1.852,
+          "count": 0,
+          "distinct_urls": 0,
+          "new_urls": 0,
+          "repeated_urls": 0,
+          "titles": [],
+          "samples": []
+        }
+      ],
+      "status": "empty",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:36.997901+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "VR",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "unsupported_media",
+          "detail": "Ce média n’est diffusé que sous une forme qu’AnyTube ne sait pas lire.",
+          "elapsed_seconds": 6.312
+        }
+      ],
+      "status": "unsupported_media",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:43.310432+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "unsupported_media",
+  "per_query_status": {
+    "VR": "unsupported_media",
+    "ライブ": "temporarily_unavailable",
+    "櫻坂": "empty"
+  },
+  "oldest_scenario_date": "2026-09-06T19:31:30.231638+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

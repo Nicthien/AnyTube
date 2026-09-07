@@ -57,8 +57,13 @@ def inspect(modules):
                                for part in sorted((root / name).glob('*.py')))
         hosts = {url.split('/')[2] for url in API_CALL.findall(source) if url.count('/') >= 2}
         entry['api_hosts'] = sorted(host for host in hosts
-                                    if not any(word in host for word in INFRASTRUCTURE))
+                                    if '.' in host and not host.endswith('.')
+                                    and not any(word in host for word in INFRASTRUCTURE))
         entry['mentions_search'] = bool(re.search(r'search', source, re.I))
+        # Helpers such as _search_regex are used by nearly every extractor and do
+        # not imply a provider search interface. Prefer a literal route hint.
+        entry['search_route_hint'] = bool(re.search(
+            r'''[/'"](?:search|suche|recherche|buscar)(?:[/?.'"-])''', source, re.I))
         entry['login_required'] = '_perform_login' in source or '_NETRC_MACHINE' in source
     return modules
 
@@ -66,6 +71,7 @@ def inspect(modules):
 def score(entry):
     """Cheap first: a visible API, a search hint, several extractors to benefit, no login."""
     return (bool(entry['api_hosts']) * 4 + entry['mentions_search'] * 3
+            + entry.get('search_route_hint', False) * 4
             + entry['search_class'] * 3 + min(entry['extractors'], 5)
             - entry['login_required'] * 2)
 
@@ -73,15 +79,23 @@ def score(entry):
 def main(arguments):
     modules = inspect(families())
     pending = [entry for entry in modules.values() if not entry['covered']]
+    status_path = Path(__file__).resolve().parents[1] / 'docs' / 'source-candidate-status.json'
+    known = json.loads(status_path.read_text(encoding='utf-8')) if status_path.exists() else {}
     for entry in pending:
         entry['score'] = score(entry)
-    ranked = sorted(pending, key=lambda entry: (-entry['score'], entry['family']))
+        if entry['family'] in known:
+            entry['last_investigation'] = known[entry['family']]
+    held = [entry for entry in pending if entry['family'] in known]
+    eligible = pending if arguments.include_held else [entry for entry in pending if entry['family'] not in known]
+    ranked = sorted(eligible, key=lambda entry: (-entry['score'], entry['family']))
     with_api = [entry for entry in pending if entry['api_hosts']]
     report = {'yt_dlp': __version__, 'families': len(modules),
               'families_with_a_search_template': len(modules) - len(pending),
               'families_pending': len(pending),
               'pending_with_a_visible_json_api': len(with_api),
               'pending_with_api_and_search_hint': sum(e['mentions_search'] for e in with_api),
+              'pending_with_api_and_search_route_hint': sum(e['search_route_hint'] for e in with_api),
+              'held_candidates': held,
               'note': 'Un tri de candidats, pas une revue : chaque famille reste à lire, '
                       'implémenter et sonder.',
               'candidates': ranked[:arguments.limit]}
@@ -104,4 +118,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--limit', type=int, default=25)
     parser.add_argument('--output', type=Path, default=None)
+    parser.add_argument('--include-held', action='store_true', help='Réexaminer aussi les pistes déjà bloquées ou sans recherche textuelle identifiée.')
     main(parser.parse_args())

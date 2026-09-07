@@ -1,0 +1,853 @@
+{
+  "yt_dlp": "2026.08.19",
+  "families": 927,
+  "families_with_a_search_template": 27,
+  "families_pending": 900,
+  "pending_with_a_visible_json_api": 389,
+  "pending_with_api_and_search_hint": 217,
+  "pending_with_api_and_search_route_hint": 9,
+  "held_candidates": [
+    {
+      "family": "adultswim",
+      "extractors": 1,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.adultswim.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "lookup_only",
+        "date": "2026-09-06",
+        "reason": "Le POST /api/search observé transporte une requête GraphQL getShowBySlug/getVideoBySlug ; aucune recherche textuelle identifiée."
+      }
+    },
+    {
+      "family": "audius",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.audius.co"
+      ],
+      "mentions_search": false,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 8,
+      "last_investigation": {
+        "status": "blocked",
+        "date": "2026-09-06",
+        "reason": "Recherche publique HTTP 403 depuis le poste local."
+      }
+    },
+    {
+      "family": "cpac",
+      "extractors": 2,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.cpac.ca"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 13,
+      "last_investigation": {
+        "status": "blocked",
+        "date": "2026-09-06",
+        "reason": "Ancien endpoint de recherche de l'extracteur installé : HTTP 404."
+      }
+    },
+    {
+      "family": "ciscolive",
+      "extractors": 2,
+      "search_class": true,
+      "covered": false,
+      "api_hosts": [],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "date": "2026-09-06",
+        "status": "blocked",
+        "reason": "Sondage via CiscoLiveSearch installé : appel API Rainfocus HTTP 400. Paramètre textuel à reconfirmer avant intégration."
+      }
+    },
+    {
+      "family": "radiofrance",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.radiofrance.fr"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "access_required",
+        "date": "2026-09-06",
+        "reason": "API GraphQL officielle avec clé de compte requise."
+      }
+    },
+    {
+      "family": "gronkh",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.gronkh.tv"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 14,
+      "last_investigation": {
+        "status": "blocked",
+        "date": "2026-09-06",
+        "reason": "Échec de validation TLS de l'API depuis Python ; certificat auto-signé signalé."
+      }
+    },
+    {
+      "family": "newgrounds",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.newgrounds.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": true,
+      "score": 12,
+      "last_investigation": {
+        "date": "2026-09-06",
+        "status": "blocked",
+        "reason": "Recherche audio via NewgroundsPlaylistIE : HTTP 403 pour piano et orchestra depuis ce poste. Aucun modèle ajouté ; refus limité à ces sondages."
+      }
+    },
+    {
+      "family": "nhk",
+      "extractors": 8,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.nhk.or.jp"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "access_required",
+        "date": "2026-09-06",
+        "reason": "Le catalogue GET ignore q ; recherche POST SDK nécessitant un contrat ou une clé."
+      }
+    },
+    {
+      "family": "orf",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-tvthek.orf.at",
+        "audioapi.orf.at",
+        "bits.orf.at"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "access_required",
+        "date": "2026-09-06",
+        "reason": "Recherche search-partial/episodes : HTTP 401 en accès anonyme."
+      }
+    },
+    {
+      "family": "parlview",
+      "extractors": 1,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "vodapi.aph.gov.au"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "date": "2026-09-06",
+        "status": "lookup_only",
+        "reason": "La route search/parlview/{video_id} identifie une fiche vidéo, pas une recherche textuelle. La page publique ParlView répond 403 depuis ce poste ; contrat de recherche non identifié."
+      }
+    },
+    {
+      "family": "rtve",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api2.rtve.es",
+        "www.rtve.es"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "lookup_only",
+        "date": "2026-09-06",
+        "reason": "L'API vidéos essayée ignore les paramètres text et title ; résultats identiques avec une requête inexistante."
+      }
+    },
+    {
+      "family": "rumble",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "rumble.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 14,
+      "last_investigation": {
+        "status": "blocked",
+        "date": "2026-09-06",
+        "reason": "Recherche nature via le worker réel : HTTP 403, contrôle Cloudflare anti-bot signalé par yt-dlp."
+      }
+    },
+    {
+      "family": "rutube",
+      "extractors": 7,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "rutube.ru"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "blocked",
+        "date": "2026-09-06",
+        "reason": "Sondage de recherche HTTP 403 depuis le poste local."
+      }
+    },
+    {
+      "family": "simplecast",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.simplecast.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 14,
+      "last_investigation": {
+        "status": "lookup_only",
+        "date": "2026-09-06",
+        "reason": "L'appel search observé dans l'extracteur installé reçoit une URL exacte, pas des mots-clés. Aucune recherche textuelle identifiée."
+      }
+    },
+    {
+      "family": "tv2hu",
+      "extractors": 2,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "tv2play.hu"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 13,
+      "last_investigation": {
+        "status": "lookup_only",
+        "date": "2026-09-06",
+        "reason": "La route /api/search/{video_id} de l’extracteur charge une fiche vidéo ou émission par identifiant ; aucune recherche textuelle identifiée."
+      }
+    },
+    {
+      "family": "telequebec",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "beacon.playback.api.brightcove.com",
+        "mnmedias.api.telequebec.tv",
+        "squat.api.telequebec.tv"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12,
+      "last_investigation": {
+        "status": "access_required",
+        "date": "2026-09-06",
+        "reason": "Nouvelle page non reconnue par TeleQuebecEmission. Sur Cochon dingue S6E29, le lecteur Brightcove officiel identifié refuse le flux par access policy depuis le poste local. Recherche GraphQL accessible ; portée limitée à ce média."
+      }
+    }
+  ],
+  "note": "Un tri de candidats, pas une revue : chaque famille reste à lire, implémenter et sonder.",
+  "candidates": [
+    {
+      "family": "aenetworks",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "yoga.appsvcs.aetnd.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "espn",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-app.espn.com",
+        "espn.api.edge.bamgrid.com",
+        "hs-consumer-api.espncricinfo.com",
+        "registerdisney.go.com",
+        "watch-cdn.product.api.espn.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "instagram",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.instagram.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nba",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.nba.net",
+        "content-api-prod.nba.com",
+        "neulionscnbav2-a.akamaihd.net",
+        "watch.nba.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "nbc",
+      "extractors": 10,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api-leap.nbcsports.com",
+        "friendship.nbc.co",
+        "stream.nbcolympics.com",
+        "stream.nbcsports.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "ndr",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.ndr.de"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "npo",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "start-player.npo.nl",
+        "www.npostart.nl",
+        "www.ntr.nl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "polskieradio",
+      "extractors": 7,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "lp3test.polskieradio.pl",
+        "www.polskieradio.pl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "pornovoisines",
+      "extractors": 1,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.pornovoisines.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "qqmusic",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "i.y.qq.com",
+        "u.y.qq.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rai",
+      "extractors": 10,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.rai.tv"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "rtlnl",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.rtl.nl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "skyit",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "apid.sky.it",
+        "tv8.it"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "tiktok",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.douyin.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "twitter",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "cdn.syndication.twimg.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 12
+    },
+    {
+      "family": "agora",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.podcast.radioagora.pl",
+        "audycje.tokfm.pl",
+        "wyborcza.pl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "bandcamp",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "bandcamp.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "drtv",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "isl.dr-massive.com",
+        "production-cdn.dr-massive.com",
+        "production.dr-massive.com",
+        "www.dr.dk"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "mxplayer",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "seo.mxplayer.in"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "nfl",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.nfl.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "onet",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "qi.ckm.onetapi.pl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "smotrim",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "player.smotrim.ru"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "tv2",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.mtvuutiset.fi",
+        "api.sumo.tv2.no",
+        "sumo.tv2.no"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "wykop",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "wykop.pl"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "yandexvideo",
+      "extractors": 4,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "frontend.vh.yandex.ru"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 11
+    },
+    {
+      "family": "abc",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "iview.abc.net.au"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "bbc",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "graph.ibl.api.bbc.co.uk",
+        "ibl.api.bbc.co.uk",
+        "www.bbc.co.uk"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": true,
+      "score": 10
+    },
+    {
+      "family": "brainpop",
+      "extractors": 6,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.brainpop.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": true,
+      "score": 10
+    },
+    {
+      "family": "cbc",
+      "extractors": 9,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "feed.theplatform.com",
+        "services.radio-canada.ca",
+        "tpfeed.cbc.ca",
+        "www.cbc.ca"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": true,
+      "score": 10
+    },
+    {
+      "family": "cbssports",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.cbssports.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "francetv",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "k7.ftven.fr"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "ign",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "apis.ign.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "imgur",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.imgur.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "iqiyi",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "cache.m.iqiyi.com",
+        "pcw-api.iq.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "kick",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "kick.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "lbry",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.lbry.tv",
+        "api.odysee.live"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "lrt",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "www.lrt.lt"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "pornhub",
+      "extractors": 5,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [],
+      "mentions_search": true,
+      "search_route_hint": true,
+      "login_required": true,
+      "score": 10
+    },
+    {
+      "family": "radlive",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "content.mhq.12core.net"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    },
+    {
+      "family": "rcti",
+      "extractors": 3,
+      "search_class": false,
+      "covered": false,
+      "api_hosts": [
+        "api.rctiplus.com",
+        "ff84ae928c3b33064b76dec08f12500465e59a6f.cws.conviva.com"
+      ],
+      "mentions_search": true,
+      "search_route_hint": false,
+      "login_required": false,
+      "score": 10
+    }
+  ]
+}

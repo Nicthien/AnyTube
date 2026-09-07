@@ -63,6 +63,10 @@ def classify(exc, login_hint=False, unsupported_hint=False):
         return exc
     if isinstance(exc, GeoRestrictedError):
         return SourceFailure('geo_restricted')
+    # NRK sometimes omits its structured geo flag and supplies only this explicit
+    # regional refusal. Do not classify its generic "Ikke tilgjengelig" as geo.
+    if isinstance(exc, ExtractorError) and 'nrk said: ikke tilgjengelig utenfor norge' in message_of(exc):
+        return SourceFailure('geo_restricted')
     login_hint = login_hint or mentions_login(exc)
     unsupported_hint = unsupported_hint or mentions_unsupported(exc)
     status, headers = http_status(exc)

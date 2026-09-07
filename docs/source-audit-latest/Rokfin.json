@@ -1,0 +1,104 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "Rokfin",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "Rokfin",
+  "template_revision": "2a89e34bf32dce32b21e71ab7739931f22340ad3df29c45e6a835fed0ef9fefd",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:31:22.050372+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "news": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 6.365
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:30:52.477599+00:00"
+    },
+    "music": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 16.658
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:09.136683+00:00"
+    },
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 6.651
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:15.789152+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "temporarily_unavailable",
+          "detail": "La plateforme est indisponible ou a refusé la requête.",
+          "elapsed_seconds": 6.26
+        }
+      ],
+      "status": "temporarily_unavailable",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:31:22.050372+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "temporarily_unavailable",
+  "per_query_status": {
+    "news": "temporarily_unavailable",
+    "music": "temporarily_unavailable",
+    "nature": "temporarily_unavailable"
+  },
+  "oldest_scenario_date": "2026-09-06T19:30:52.477599+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

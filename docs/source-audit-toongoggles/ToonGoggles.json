@@ -1,0 +1,197 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "5d9480adb516619a",
+  "proxy_configured": false,
+  "template": "ToonGoggles",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "ToonGoggles",
+  "template_revision": "b4bd885fd47d652f63dbd36cb85e848b8bb692aae79545682de54d5cf4fe7980",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:09:27.371883+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "robot": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.364,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Rookie Robot",
+            "Incredible Record Breakers: Rockets and Robots"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/rookie-robot",
+            "https://www.toongoggles.com/shows/incredible-record-breakers-rockets-and-robots"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.354,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Karim & Noor",
+            "Argo's World"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/karim-noor",
+            "https://www.toongoggles.com/shows/argos-world"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:09:20.432414+00:00"
+    },
+    "bernard": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.494,
+          "count": 1,
+          "distinct_urls": 1,
+          "new_urls": 1,
+          "repeated_urls": 0,
+          "titles": [
+            "Bernard"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/bernard"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 1,
+      "date": "2026-09-06T23:09:21.927099+00:00"
+    },
+    "adventure": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.333,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Talking Tom and Friends Minis",
+            "El Mundo de Luna"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/es/shows/talking-tom-and-friends-minis",
+            "https://www.toongoggles.com/es/shows/el-mundo-de-luna"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.404,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "ZooMoo Groove",
+            "Leo the Wildlife Ranger"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/zoomoo-groove",
+            "https://www.toongoggles.com/shows/leo-wildlife-ranger"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:09:24.665222+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "robot",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.356,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Rookie Robot",
+            "Incredible Record Breakers: Rockets and Robots"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/rookie-robot",
+            "https://www.toongoggles.com/shows/incredible-record-breakers-rockets-and-robots"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.35,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Karim & Noor",
+            "Argo's World"
+          ],
+          "samples": [
+            "https://www.toongoggles.com/shows/karim-noor",
+            "https://www.toongoggles.com/shows/argos-world"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:09:27.371883+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "robot": "results_received",
+    "bernard": "results_received",
+    "adventure": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:09:20.432414+00:00",
+  "scenarios_reused": 0,
+  "scenarios_executed": 4
+}

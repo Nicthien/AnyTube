@@ -193,15 +193,32 @@ function renderCatalog() {
 }
 function duration(value) { if (!Number.isFinite(value)) return ''; const seconds = Math.floor(value); return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`; }
 function safeUrl(value) { try { const u = new URL(value); return ['http:', 'https:'].includes(u.protocol) ? u.href : null; } catch { return null; } }
+function collectionResult(value) {
+  try {
+    const url = new URL(value);
+    if (!['http:', 'https:'].includes(url.protocol)) return false;
+    if (url.hostname === 'www.toongoggles.com' || url.hostname === 'toongoggles.com') return /^\/shows\/[a-zA-Z][a-zA-Z0-9-]*\/?$/.test(url.pathname);
+    if (url.hostname === 'www.patreon.com' || url.hostname === 'patreon.com') return /^\/(?:c\/|cw\/)?[^/]+\/?$/.test(url.pathname);
+    if (url.hostname === 'learn.microsoft.com') return /^\/(?:[a-z]{2}-[a-z]{2}\/)?(?:shows|events)\/[^/]+\/?$/.test(url.pathname);
+    if (url.hostname === 'www.arte.tv' || url.hostname === 'arte.tv') return /^\/[a-z]{2}\/videos\/RC-\d{6}(?:\/[^/]+)?\/?$/.test(url.pathname);
+    if (url.hostname === 'tv.nrk.no' || url.hostname === 'radio.nrk.no') return /^\/(?:serie|podkast|podcast)\/[^/]+(?:\/sesong\/[^/]+)?\/?$/.test(url.pathname);
+  } catch { /* Invalid URLs are handled by the media endpoint. */ }
+  return false;
+}
 function renderCard(item) {
-  const card = node('article', 'card'); const thumb = button('', 'thumbnail', () => streamVideo(item.url, item.title, item.source_id)); thumb.setAttribute('aria-label', `Regarder ${item.title}`);
+  const collection = collectionResult(item.url);
+  const open = () => collection ? browseCollection(item.url, item.source_id) : streamVideo(item.url, item.title, item.source_id);
+  const card = node('article', 'card'); const thumb = button('', 'thumbnail', open); thumb.setAttribute('aria-label', `${collection ? 'Parcourir' : 'Regarder'} ${item.title}`);
   const placeholder = node('span', 'placeholder', '▷'); thumb.append(placeholder);
   if (safeUrl(item.thumbnail)) { const img = node('img'); img.src = item.thumbnail; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; img.addEventListener('error', () => img.remove()); thumb.append(img); placeholder.hidden = true; img.addEventListener('error', () => { placeholder.hidden = false; }); }
   if (duration(item.duration)) thumb.append(node('span', 'duration', duration(item.duration)));
-  const content = node('div', 'card-content'); const title = node('h3'); title.append(button(item.title, 'title-button', () => streamVideo(item.url, item.title, item.source_id)));
+  const content = node('div', 'card-content'); const title = node('h3'); title.append(button(item.title, 'title-button', open));
   content.append(node('span', 'source-badge', item.source), title, node('div', 'metadata', [item.channel, item.published ? new Date(item.published).toLocaleDateString('fr') : '', Number.isFinite(item.views) ? `${new Intl.NumberFormat('fr', { notation: 'compact' }).format(item.views)} vues` : ''].filter(Boolean).join(' · ')), node('p', 'description', item.description || 'Description non fournie par cette source.'));
   const actions=node('div','dialog-actions');
+  if (collection) actions.append(button('Parcourir les épisodes', 'secondary', open));
+  else {
   actions.append(button('Conserver','secondary',async()=>{try{await api('/api/media',{method:'POST',body:JSON.stringify({url:item.url,source_id:item.source_id,destination:'library'})});toast('Préparation dans votre bibliothèque.');}catch(e){toast(e.message);}}),button('☆ Favori','secondary',async()=>{try{await api('/api/personal',{method:'PUT',body:JSON.stringify({url:item.url,title:item.title,favorite:true})});toast('Ajouté à vos favoris.');}catch(e){toast(e.message);}}));
+  }
   content.append(actions);card.append(thumb, content); return card;
 }
 $('search-form').addEventListener('submit', event => {

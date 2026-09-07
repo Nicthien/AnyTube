@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-06T19:36:09.111862+00:00",
+  "connector_version": "a6eb4c62bd8afe07",
+  "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "status": "results_received",
+  "collection": {
+    "title": "Python for Beginners",
+    "items": [
+      {
+        "id": "",
+        "title": "Sans titre",
+        "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/python-for-beginners-9-of-44-string-concepts/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      },
+      {
+        "id": "",
+        "title": "Sans titre",
+        "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/python-for-beginners-14-of-44-demo-numbers/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      },
+      {
+        "id": "",
+        "title": "Sans titre",
+        "url": "https://learn.microsoft.com/en-us/shows/intro-to-python-development/python-for-beginners-27-of-44-loops/",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": null
+      }
+    ],
+    "has_more": true
+  }
+}

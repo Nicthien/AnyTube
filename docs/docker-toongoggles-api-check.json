@@ -1,0 +1,24 @@
+{
+  "engine": "daf113d8ef41153b",
+  "checks": [
+    {
+      "path": "/api/collections",
+      "status": 200,
+      "seconds": 1.479,
+      "titles": [
+        "Table Tennis",
+        "Aerobics",
+        "Swimming"
+      ],
+      "formats": 0
+    },
+    {
+      "path": "/api/media/resolve",
+      "status": 200,
+      "seconds": 2.163,
+      "titles": [],
+      "formats": 5
+    }
+  ],
+  "browser_playback_verified": false
+}

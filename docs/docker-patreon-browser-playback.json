@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-06T22:55:01.251208+00:00",
+  "engine": "5ab317d48c4eff9d",
+  "image": "sha256:9c82822f3271034a9bfa13d408e129b752b46c786d6439c20c87c6613c7299f0",
+  "environment": "IAB browser through Docker 127.0.0.1:18091",
+  "source": "PatreonCampaign",
+  "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893",
+  "samples": [
+    {
+      "time": 14.027713,
+      "paused": false,
+      "ready": 2,
+      "width": 426,
+      "height": 240
+    },
+    {
+      "time": 25.663736,
+      "paused": false,
+      "ready": 4,
+      "width": 426,
+      "height": 240
+    }
+  ],
+  "scope": "One public embedded video; 240p observed. Initial collection delays remain unexplained; no platform-wide certification."
+}

@@ -1,0 +1,25 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "74baee235650dc00",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T20:44:12.487505+00:00",
+  "elapsed_seconds": 11.907,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-01",
+  "templates": 1,
+  "results": {
+    "ARDBetaMediathek": {
+      "search": "results_received",
+      "per_query": {
+        "natur": "results_received",
+        "musik": "results_received",
+        "geschichte": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

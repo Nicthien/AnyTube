@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-06T20:32:12.218361+00:00",
+  "connector_version": "835b7fae944a894a",
+  "environment": "local isolated test account, 127.0.0.1:18090",
+  "url": "https://www.arte.tv/fr/videos/112214-001-A/canada-la-force-de-la-nature/",
+  "browser_observations": [
+    {
+      "current_time": 7.854387,
+      "paused": false,
+      "ready_state": 4,
+      "width": 384,
+      "height": 216
+    },
+    {
+      "current_time": 28.438101,
+      "paused": false,
+      "ready_state": 4,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "french_subtitles_selected": true,
+  "scope": "One episode, search to collection to browser playback; not whole-platform certification."
+}

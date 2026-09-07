@@ -1,0 +1,12 @@
+{
+  "engine": "b3239e93083da870",
+  "image": "sha256:647b6dc46aa1f64567ef90a602ab15ac9313d0c7f98a724e83b8351027d2b198",
+  "url": "https://tube.tugraz.at/portal/watch/5dd8e81e-7c83-4d76-844b-67b2401d8701",
+  "worker_exit": 0,
+  "formats": 1,
+  "ffmpeg_exit": 0,
+  "ffmpeg_error": "",
+  "decoded_video_seconds": 2,
+  "elapsed_seconds": 3.633,
+  "browser_playback_verified": false
+}

@@ -1,0 +1,43 @@
+{
+  "engine": "ac51a04831929f15",
+  "exit_code": 0,
+  "result": {
+    "title": "Smarter Every Day",
+    "items": [
+      {
+        "id": "165652653",
+        "title": "Research Need involving Lasers",
+        "url": "https://www.patreon.com/smartereveryday/posts/research-need-165652653",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2026-08-03"
+      },
+      {
+        "id": "164887893",
+        "title": "The PROBLEM with Capitalism - Smarter Every Day 316",
+        "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2026-07-26"
+      },
+      {
+        "id": "164612614",
+        "title": "Thanks..... the scientific paper you helped me write was just published...",
+        "url": "https://www.patreon.com/smartereveryday/posts/thanks-paper-you-164612614",
+        "thumbnail": null,
+        "description": "",
+        "channel": "",
+        "duration": null,
+        "views": null,
+        "published": "2026-07-23"
+      }
+    ],
+    "has_more": true
+  }
+}

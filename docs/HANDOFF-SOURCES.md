@@ -1,5 +1,11 @@
 # Passation — extension des sources AnyTube
 
+> Suite du chantier : voir `SOURCES-NEXT.md`. Les onze modèles ajoutés depuis cette
+> passation sont dans `app/search_templates.json` ; leurs données sont séparées du
+> hash du moteur, tandis que leur configuration effective reste signée. L'audit dispose
+> désormais de reprises par scénario, de durées et d'une concurrence configurable.
+> Les chiffres et commandes détaillés ci-dessous décrivent l'état de la passation initiale.
+
 Note de reprise pour un agent qui continue le chantier des sources. Écrite le 6 septembre 2026,
 dépôt `C:\DEV\Projects\AnyTube`, branche `main`, rien n'est poussé.
 

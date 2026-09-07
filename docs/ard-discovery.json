@@ -1,0 +1,396 @@
+{
+  "date": "2026-09-06T20:41:10.945526+00:00",
+  "source": "https://www.ardmediathek.de/suche/natur",
+  "observations": [
+    {
+      "url": "https://api.ardmediathek.de/search-system/search/vods/ard?query=natur&pageNumber=0&pageSize=24&platform=MEDIA_THEK&sortingCriteria=SCORE_DESC",
+      "query": "natur",
+      "page": 0,
+      "pagination": {
+        "pageNumber": 0,
+        "pageSize": 24,
+        "totalElements": 180
+      },
+      "count": 24,
+      "items": [
+        {
+          "id": "Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+          "title": "Kikaninchen und die tierisch tolle Natur"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA",
+          "title": "Sardinien · Arche aus Stein"
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy80ZGM3NWMyMS02OTliLTRhOTItYmRmNi03NDQxNGVjZDhmMTQ",
+          "title": "Als Rätselranger raus in die Natur"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEwMjY1QTA",
+          "title": "Dolomiten · Im Garten der Helden"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTQ3QTA",
+          "title": "Flussgiganten · Der Sambesi"
+        },
+        {
+          "id": "Y3JpZDovL2FyZC5kZS9wbGFuQVJEXzdjZmQwNmU4LTRhZmUtNDAyZC1iZmUwLWM0Nzg0NzcyMTQ0Ml9nYW56ZVNlbmR1bmc",
+          "title": "Rettet das Riff – Korallen in Gefahr!"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNVdPMDE2NTU2QTAvc2VjdGlvbi9iNmFkYmNjYy00ZmNmLTRmYmYtOWJhMS0wZDczZTQ5MTMwNGE",
+          "title": "Natur Hobbach"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDAwNjkxQTA",
+          "title": "Die letzten Krokodile Venezuelas"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNVdPMDI0NzM5QTAvc2VjdGlvbi8yMjhiYzM2Yy00MTZmLTRiNWItYjY5Mi03NWNiOWEyOTg2YjA",
+          "title": "Heilung durch Natur"
+        },
+        {
+          "id": "Y3JpZDovL3dkci5kZS9CZWl0cmFnLTEyNzM1MDAyLTIyZWMtNGExMi1iNzc0LTdjN2Y5MjM5NDk5OA",
+          "title": "Ein Quadratmeter Natur"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDA1NDQzQTAvc2VjdGlvbi82MDRhY2U1YS0xZTUxLTRhMTEtOTEyZi0wNzU0Y2Q1NjA2MjY",
+          "title": "Bayern · Land der Gams"
+        },
+        {
+          "id": "Y3JpZDovL3NyLW9ubGluZS5kZS9TTlRHXzE0MjI0MQ",
+          "title": "Wunderbare Gartenvielfalt: Vom Schottergarten zum Naturgarten"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDcyQTA",
+          "title": "Wasser für die wilde Isar"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTQ1QTA",
+          "title": "Flussgiganten · Der Yukon"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNFdPMDExNTAzQTAvc2VjdGlvbi9hYTkzNWM2ZC05YjU5LTQwNTktODk2Ny1kY2Y1MGJmNWQ5YzA",
+          "title": "Singende Natur: Pistolenkrebs"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNVdPMDE1ODM4QTAvc2VjdGlvbi9lNDE3NTU5MC04MDE0LTRhZTgtYWVjMy02MTk3Yjc3MWY0NjI",
+          "title": "Natur pur im Ackerkindergarten"
+        },
+        {
+          "id": "Y3JpZDovL3JiYl82OWFiNTQ3ZS0xZjU4LTRlNTAtOWFiZC00YmU4NzNmODIwNzdfcHVibGljYXRpb24",
+          "title": "Johannisthal: Natur, Nachbarschaft, Neubau"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDA2ODMwQTA",
+          "title": "Das andere Spanien · Im Reich der Vögel"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyM1dPMDIyNDc0QTA",
+          "title": "Im Zeitalter des Feuers - Asche und Wiedergeburt in Spaniens Wäldern"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDEyNDgyQTA",
+          "title": "Kleine Katze · Große Freiheit"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA0MTA0QTE",
+          "title": "Der halbwilde Wald · Unterwegs im Nationalpark Bayerischer Wald"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOFdPMDA5MDQxQTA",
+          "title": "Die bayerische Toskana"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDEyNDkwQTA",
+          "title": "Das Graue Langohr · Winzling im Kitzinger Land"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDA4OTA5QTA",
+          "title": "Rettet die Artenvielfalt!"
+        }
+      ]
+    },
+    {
+      "url": "https://api.ardmediathek.de/search-system/search/vods/ard?query=natur&pageNumber=1&pageSize=24&platform=MEDIA_THEK&sortingCriteria=SCORE_DESC",
+      "query": "natur",
+      "page": 1,
+      "pagination": {
+        "pageNumber": 1,
+        "pageSize": 24,
+        "totalElements": 180
+      },
+      "count": 24,
+      "items": [
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA0MTc5QTA",
+          "title": "Wildes Bayern · Der Nationalpark Bayerischer Wald"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA2NTIwQTA",
+          "title": "Wilde Slowakei"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA5MDM2QTA",
+          "title": "Partner mit Supernase · Hunde im Einsatz für den Menschen"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTY0QTA",
+          "title": "Der Bläuling und die neue Wildnis · Das Mangfallgebirge"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOFdPMDA4NzEyQTA",
+          "title": "Artisten im Wind · Milane und Weihen"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDA1NDQyQTA",
+          "title": "Huhn ist hip · Wolken über dem Hühnerparadies"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDA1NDQwQTA",
+          "title": "Huhn ist hip - Ein Hahn kommt selten allein"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDgzQTA",
+          "title": "Raupe auf Reisen"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA0MTc2QTA",
+          "title": "Wildes Bayern · Geburt eines Urwaldes"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTc4QTE",
+          "title": "Artenschutz 2.0 · Mit Hightech gegen das Artensterben"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOFdPMDA4OTg4QTA",
+          "title": "Kormorane · Fischdieb oder Sündenbock?"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOFdPMDEwNDYwQTA",
+          "title": "Das Moor"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA2NTI5QTA",
+          "title": "Biene Majas wilde Schwestern"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDA1NDQ3QTA",
+          "title": "Verrückt nach Schafen · Der Schäfer aus dem Pfaffenwinkel"
+        },
+        {
+          "id": "Y3JpZDovL3JiYl83MGZjMDA1Zi05NGY4LTRjZTAtYmJmMC1lNTk5NjQyN2I3YmVfcHVibGljYXRpb24",
+          "title": "Natur in Neonfarben"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDA5MDM3QTA",
+          "title": "Ente auf Abwegen"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDAwNzEyQTA",
+          "title": "Achtung Kreuzottern!"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDIyOTQwQTA",
+          "title": "Die Sennerin"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDE5MjcwQTA",
+          "title": "Maikäfer, flieg!"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxOVdPMDA4MzE5QTA",
+          "title": "Igel unter uns"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDEzMTQ2QTA",
+          "title": "Die Almretter"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAxN1dPMDEyMzE2QTA",
+          "title": "Spessart · Natur nach Plan"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMVdPMDE5MzQ2QTA",
+          "title": "Bayerische Naturgeschichten"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMldPMDE0Mzc2QTA",
+          "title": "Im Zaubertal der Kröten"
+        }
+      ]
+    },
+    {
+      "url": "https://api.ardmediathek.de/search-system/search/vods/ard?query=musik&pageNumber=0&pageSize=24&platform=MEDIA_THEK&sortingCriteria=SCORE_DESC",
+      "query": "musik",
+      "page": 0,
+      "pagination": {
+        "pageNumber": 0,
+        "pageSize": 24,
+        "totalElements": 180
+      },
+      "count": 24,
+      "items": [
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy82OWRhMDk0MS03MzMzLTQyY2YtYTFmOS03OTc3ZDUyYTg5Zjk",
+          "title": "Unheilig gewinnen Goldene Henne in der Kategorie Musik "
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy8xODcyYzAzYi1hODczLTQzZWQtYjZlZS05OGU1ZWY5MGY0ZDE",
+          "title": "Take That wird mit dem Ehrenpreis Musik International überrascht "
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS9kYjdhZmJlOC00MjY0LTRjZGQtODM4ZS0zNTc5MTQwMDQ1M2E",
+          "title": "Neuer Ort für Kultur, Kunst und Musik: Kulturschule Demmin"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS8zOTM5OGQ5Yi00NzhkLTQyZTgtOGE0ZC0zZGMxZmVjMWJmMWY",
+          "title": "Musik bei Inas Nacht: Annette und Carolin Frier singen \"Unsere Stammbaum\""
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS83NTI2NDU4Ni05N2JjLTQ3YjktOWMzMS00N2RiOGY1Y2ViODM",
+          "title": "Musik bei Inas Nacht: Asaf Avidan mit \"Call of the Flow\""
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy9hNWI0MmNiZi1iNTdjLTQ4ZjYtOWFhNC05N2JmODA0ZDdhMGQ",
+          "title": "Gewandhaus zu Leipzig: Musik in der Tram und Worte für die Demokratie"
+        },
+        {
+          "id": "Y3JpZDovL3NyLW9ubGluZS5kZS9NVUtfMTczMzk5",
+          "title": "\"Hot like hell\" - die Mardi Gras Band Louisiana Avenue"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS8yZjQ1ZWY2Ni1iZTUzLTQxNDAtODdjYS0zZWJmMGE2ZjkzMDM",
+          "title": "Musik bei Inas Nacht: Danger Dan spielt \"Dass es hier so schön ist\""
+        },
+        {
+          "id": "Y3JpZDovL3NyLW9ubGluZS5kZS9NVUtfMTczNDcz",
+          "title": "Trailer: \"Hot like hell\" - Die Mardi Gras Band Louisiana Avenue "
+        },
+        {
+          "id": "Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvZTM2ODNhOGEtZGM5Yi00NTRlLWJjZWUtY2I0MjllZjczOTM0",
+          "title": "2025 Musik-Serie bei KiKA"
+        },
+        {
+          "id": "Y2FiZDk1OWYtMTUxNy00YThlLWFhNTctODRmY2RlMDAwMjM0",
+          "title": "Der bittere Klang der Musik"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS9mZDA4ZDk4MC00YjYxLTQyMjMtOTc5ZC0zYzg2MzM5YjI2NDU",
+          "title": "Schlager, die Sie kennen sollten  "
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS9lOGMxMDRiYS1lODYzLTQ3NDYtODNkOS0xODQxNWEwNmUzMmI",
+          "title": "Musik bei Inas Nacht: \"Ein Schiff wird kommen\""
+        },
+        {
+          "id": "Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtM2UwMWY3MTEtMDNjZS00MmYyLWI1ZTEtZWZhMDUxOGYzZmMw",
+          "title": "Hope on the Road · Daniel Hope und die Musik Südafrikas"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS84N2FmODk5Ni1lMjFiLTRmMjQtOWQ5YS05MzFjZTdmOTYzZDI",
+          "title": "Musik bei Inas Nacht: Pamela. mit \"Better Than Before\""
+        },
+        {
+          "id": "Y3JpZDovL2tpa2EuZGUvcHVibGlrYXRpb24vY29udGVudC02OTYwNF8xNzg4MjU3NzAwMDAw",
+          "title": "Musik geht durch den Magen"
+        },
+        {
+          "id": "Y3JpZDovL21kci5kZS9iZWl0cmFnL2Ntcy8zNzE2MzkzMS1jNzc0LTRkMzQtYjg4NC04ZmYxMDQ0ZTNhOGE",
+          "title": "Schumann: Klavierkonzert a-Moll –Bach-Wettbewerb 2025"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS9mNjNkMzhlYS0zMDIzLTRkZTEtYmIxMC1mYmVkYjc0ZWRmMTU",
+          "title": "Musik bei Inas Nacht: Christian Ehring singt \"Seid nett zu Boomern\""
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNFdPMDA1NDk0QTA",
+          "title": "Obstwiesenfestival 2023 - Far Caspian"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNFdPMDA1NDkzQTA",
+          "title": "Obstwiesenfestival 2023 - Donkey Kid"
+        },
+        {
+          "id": "Y3JpZDovL25kci5kZS80NDI1XzIwMjQtMTItMjAtMjEtMDA",
+          "title": "Vivi Vassileva & Lucas Campara Diniz beim Überschlag Festival"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyNFdPMDA2MjE3QTA",
+          "title": "Alli Neumann"
+        },
+        {
+          "id": "Y3JpZDovL3NyLW9ubGluZS5kZS9NVUtfMTU4Njcx",
+          "title": "Rocco del Schlacko 2025 – Ein letzter Blick hinter die Kulissen"
+        },
+        {
+          "id": "Y3JpZDovLzNzYXQuZGUvU0NNU18zYzM2Y2YwNy02Y2UyLTRjNDctOTgyYS1mOTZlNmIzNThhMTM",
+          "title": "3satFestival: Gustav Peter Wöhler"
+        }
+      ]
+    },
+    {
+      "url": "https://api.ardmediathek.de/search-system/search/vods/ard?query=codexzzzzinexistant987654&pageNumber=0&pageSize=24&platform=MEDIA_THEK&sortingCriteria=SCORE_DESC",
+      "query": "codexzzzzinexistant987654",
+      "page": 0,
+      "pagination": {
+        "pageNumber": 0,
+        "pageSize": 24,
+        "totalElements": 14
+      },
+      "count": 12,
+      "items": [
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzExMzg0L3ZpZGVvLzE5OTg4MDMvc2VuZHVuZw",
+          "title": "Pädokriminelles Forum: So agierte Andreas G. | STRG_F"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzkxOS92aWRlby8xODQxMDk",
+          "title": "Liebe... | janasdiary"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzkxOS92aWRlby8yMzI4MDg",
+          "title": "Wir haben uns getrennt | janasdiary"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzkxOS92aWRlby8xMTI0MzY",
+          "title": "TYPISCH ELTERN mit meiner MUTTER | janasdiary"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzkxOS92aWRlby8xMjcyNjI",
+          "title": "HEIRATEN IN LAS VEGAS"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzgxNC92aWRlby8yMTEzNTk0L3NlbmR1bmc",
+          "title": "."
+        },
+        {
+          "id": "Y3JpZDovL3N3ci5kZS9hZXgvbzE1MjE3NzM",
+          "title": "Sendung 19:45 Uhr vom 29.8.2021"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL3ZpZGVvL2ViZWUyZDQ3LTI0MGMtNDhhNS1iNzg1LWVmYzQyNTFmNTIzMA",
+          "title": "Eichmanns geheimer Komplize"
+        },
+        {
+          "id": "Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtMmQ0ZjgxMmYtYTZlZS00NTE3LWFlYzctOWRkY2Y3MzQwMGVm",
+          "title": "Igelhilfen am Limit: Tiere müssen ausgewildert werden"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL3ZpZGVvLzhlYTZmNTA3LTVmMDItNDA3OC1hNzVlLTJmYWUwMmYyOTM5YQ",
+          "title": "Mandoki Soulmates feat. Tony Carey, Mike Stern und weitere"
+        },
+        {
+          "id": "Y3JpZDovL2Z1bmsubmV0LzEwOTQvdmlkZW8vOTI5MzE1",
+          "title": "#scheisswerbung synchro"
+        },
+        {
+          "id": "Y3JpZDovL2JyLmRlL3ZpZGVvL2RhZDQzOTZmLTVjMmQtNGYzYS05ODcwLWMxYzgyYjg5MGM1NA",
+          "title": "ARD-Hauptstadtstudio | Iris Sayram"
+        }
+      ]
+    }
+  ],
+  "page_overlap": 0,
+  "scope": "Public search discovery only; no connector or browser playback verified."
+}

@@ -1,0 +1,31 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "5d9480adb516619a",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T23:09:27.373239+00:00",
+  "elapsed_seconds": 10.455,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-03",
+  "templates": 1,
+  "execution": {
+    "mode": "network",
+    "scenarios_executed": 4,
+    "scenarios_reused": 0,
+    "proofs_aggregated": 0
+  },
+  "results": {
+    "ToonGoggles": {
+      "search": "results_received",
+      "per_query": {
+        "robot": "results_received",
+        "bernard": "results_received",
+        "adventure": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-06T21:12:32.544944+00:00",
+  "source": "https://npo.nl/start/zoeken",
+  "endpoint": "https://npo.nl/start/api/domain/search-collection-items?searchQuery=natuur&searchType=program",
+  "status": 404,
+  "response": "\"404 page not found\\n\"",
+  "scope": "Preliminary anonymous request; parameter mapping remains to verify from client module 71220.",
+  "client_serializer": "URLSearchParams: partyId, searchQuery, searchType, subscriptionType, includePremiumContent; optional targetGroup, ageRestriction, profileGuid, searchFilters",
+  "followup_probe": {
+    "url": "https://npo.nl/start/api/domain/search-collection-items?searchQuery=natuur&searchType=PROGRAM&subscriptionType=ANONYMOUS&includePremiumContent=false",
+    "status": 404,
+    "body": "404 page not found",
+    "limitation": "Anonymous profile partyId not established; not proof of authentication requirement."
+  },
+  "browser_observation": {
+    "date": "2026-09-06T21:15:20.770586+00:00",
+    "url": "https://npo.nl/start/zoeken?zoekTerm=natuur",
+    "authenticated": false,
+    "series_visible": [
+      "Natuur in de Cariben",
+      "Natuur op 2"
+    ],
+    "episode_links": [
+      "https://npo.nl/start/afspelen/natuur-in-de-cariben",
+      "https://npo.nl/start/afspelen/natuur-in-de-cariben_2"
+    ],
+    "load_more_button": "Toon meer afleveringen",
+    "scope": "Search works anonymously in official browser; direct API request context remains unresolved."
+  },
+  "confirmed_request": {
+    "url": "https://npo.nl/start/api/domain/search-collection-items?searchQuery=muziek&searchType=broadcasts&subscriptionType=anonymous&includePremiumContent=true",
+    "status": 200,
+    "profile_identifier_required": false,
+    "item_count": 50,
+    "response_keys": [
+      "collectionId",
+      "displayType",
+      "images",
+      "items",
+      "pageCount",
+      "pageSize",
+      "recommendationContext",
+      "title",
+      "type"
+    ],
+    "sample": {
+      "productId": "AT_300027272",
+      "slug": "muziekfeest-op-het-plein_15",
+      "title": "Zwolle",
+      "durationInSeconds": 3033
+    }
+  }
+}

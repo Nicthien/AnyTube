@@ -1,0 +1,12 @@
+{
+  "connector_version": "073b19bf737e0138",
+  "note": "Durées cumulées des pages observées, pas le temps mural ; scénarios réutilisés comptés une fois.",
+  "templates": [
+    {
+      "template": "PatreonCampaign",
+      "observed_worker_seconds": 11.074,
+      "page_probes": 8,
+      "status": "results_received"
+    }
+  ]
+}

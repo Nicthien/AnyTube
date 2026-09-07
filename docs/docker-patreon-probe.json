@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-06T21:46:43.552945+00:00",
+  "image": "sha256:74ceb70e4de3ee4b9645bd5acee70b414f03c687e9327543e7ff7b5523f0f62c",
+  "engine": "073b19bf737e0138",
+  "scope": "Docker worker checks; browser playback not tested",
+  "observations": [
+    {
+      "mode": "search",
+      "exit_code": 0,
+      "count": 3,
+      "titles": [
+        "Physics Girl",
+        "Smarter Every Day",
+        "Benn Jordan"
+      ],
+      "formats": 0,
+      "error": null,
+      "code": null
+    },
+    {
+      "mode": "collection",
+      "exit_code": 0,
+      "count": 3,
+      "titles": [
+        "Research Need involving Lasers",
+        "The PROBLEM with Capitalism - Smarter Every Day 316",
+        "Thanks..... the scientific paper you helped me write was just published..."
+      ],
+      "formats": 0,
+      "error": null,
+      "code": null
+    },
+    {
+      "mode": "resolve",
+      "exit_code": 0,
+      "count": 0,
+      "titles": [],
+      "formats": 53,
+      "error": null,
+      "code": null
+    }
+  ]
+}

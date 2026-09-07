@@ -11,9 +11,13 @@ MAX_CHUNK = 8 * 1024 * 1024
 
 
 def media_mime(data, original):
-    """Identify packed HLS audio even when the upstream sends octet-stream."""
+    """Identify HLS media even when the upstream sends octet-stream."""
     if original.split(';')[0].lower() != 'application/octet-stream':
         return original
+    # Some CDNs label fragmented MP4 as octet-stream. Without this hint,
+    # Shaka probes the entire opaque relay URL instead of the HLS byte ranges.
+    if len(data) >= 12 and data[4:8] in (b'ftyp', b'styp'):
+        return 'video/mp4'
     offset = 0
     if data.startswith(b'ID3') and len(data) >= 10:
         offset = 10 + sum((value & 127) << shift for value, shift in zip(data[6:10], (21, 14, 7, 0)))

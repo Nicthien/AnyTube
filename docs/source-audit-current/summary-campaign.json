@@ -1,0 +1,466 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "694f559bfd8be29e",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T21:01:31.937688+00:00",
+  "elapsed_seconds": 302.635,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "all",
+  "templates": 38,
+  "results": {
+    "ArchiveOrg": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "BiliBili": {
+      "search": "rate_limited",
+      "per_query": {
+        "nature": "rate_limited",
+        "音乐": "rate_limited",
+        "风景": "rate_limited"
+      },
+      "home": "rate_limited",
+      "rankings": {}
+    },
+    "BiliBiliSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音乐": "rate_limited",
+        "风景": "rate_limited"
+      },
+      "home": "rate_limited",
+      "rankings": {}
+    },
+    "Dailymotion": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "DailymotionSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "GameJolt": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "pixel": "results_received",
+        "horror": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "GameJoltSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "pixel": "results_received",
+        "horror": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "GoogleSearch": {
+      "search": "empty",
+      "per_query": {
+        "nature": "empty",
+        "piano": "empty",
+        "documentaire": "empty"
+      },
+      "home": "empty",
+      "rankings": {}
+    },
+    "MailRuMusicSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "пианино": "results_received",
+        "рок": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Niconico": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearchDate": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "NicovideoSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "音楽": "results_received",
+        "風景": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "PRXSeries": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXSeriesSearch": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXStoriesSearch": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PRXStory": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "climate": "authentication_required",
+        "music": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {}
+    },
+    "PeerTube": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "PeerTubePlaylist": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:trending": "results_received",
+        "home:views": "results_received",
+        "home:recent": "results_received",
+        "search:views": "results_received",
+        "search:recent": "results_received"
+      }
+    },
+    "RedGifsSearch": {
+      "search": "results_received",
+      "per_query": {
+        "massage": "results_received",
+        "dance": "results_received",
+        "yoga": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "search:views": "results_received",
+        "search:recent": "results_received",
+        "search:trending": "results_received"
+      }
+    },
+    "Rokfin": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "news": "temporarily_unavailable",
+        "music": "temporarily_unavailable",
+        "nature": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "RokfinSearch": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "news": "temporarily_unavailable",
+        "music": "temporarily_unavailable",
+        "nature": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "Soundcloud": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "lofi": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "SoundcloudSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "lofi": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Vimeo": {
+      "search": "authentication_required",
+      "per_query": {
+        "nature": "authentication_required",
+        "piano": "authentication_required",
+        "documentaire": "authentication_required"
+      },
+      "home": "authentication_required",
+      "rankings": {
+        "home:views": "authentication_required",
+        "home:recent": "authentication_required",
+        "search:views": "authentication_required",
+        "search:recent": "authentication_required"
+      }
+    },
+    "VrSquareSearch": {
+      "search": "unsupported_media",
+      "per_query": {
+        "VR": "unsupported_media",
+        "ライブ": "temporarily_unavailable",
+        "櫻坂": "empty"
+      },
+      "home": "unsupported_media",
+      "rankings": {}
+    },
+    "YahooSearch": {
+      "search": "temporarily_unavailable",
+      "per_query": {
+        "nature": "temporarily_unavailable",
+        "piano": "temporarily_unavailable",
+        "documentaire": "temporarily_unavailable"
+      },
+      "home": "temporarily_unavailable",
+      "rankings": {}
+    },
+    "Youtube": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    },
+    "YoutubeMusicSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "jazz": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "YoutubeSearch": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    },
+    "YoutubeSearchURL": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "documentaire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {
+        "home:views": "results_received",
+        "search:views": "results_received"
+      }
+    },
+    "NRKTV": {
+      "search": "results_received",
+      "per_query": {
+        "natur": "results_received",
+        "musikk": "results_received",
+        "nyheter": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Wikimedia": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "science": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "ApplePodcasts": {
+      "search": "results_received",
+      "per_query": {
+        "science": "results_received",
+        "histoire": "results_received",
+        "musique": "empty"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "MicrosoftLearnPlaylist": {
+      "search": "results_received",
+      "per_query": {
+        "python": "results_received",
+        "azure": "results_received",
+        "sql": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "OpenRec": {
+      "search": "results_received",
+      "per_query": {
+        "minecraft": "results_received",
+        "佐々木": "results_received",
+        "ゲーム": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "ArteTV": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "histoire": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "ARDBetaMediathek": {
+      "search": "results_received",
+      "per_query": {
+        "natur": "results_received",
+        "musik": "results_received",
+        "geschichte": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

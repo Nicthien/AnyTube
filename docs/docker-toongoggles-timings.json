@@ -1,0 +1,24 @@
+{
+  "engine": "daf113d8ef41153b",
+  "environment": "local Docker HTTP direct",
+  "checks": [
+    {
+      "path": "/api/search",
+      "seconds": 1.731,
+      "status": 200,
+      "items": 1
+    },
+    {
+      "path": "/api/home/ToonGoggles",
+      "seconds": 1.444,
+      "status": 200,
+      "items": 9
+    },
+    {
+      "path": "/api/home/ToonGoggles",
+      "seconds": 0.006,
+      "status": 200,
+      "items": 9
+    }
+  ]
+}

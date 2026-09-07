@@ -69,13 +69,25 @@ class Mapping(BaseModel):
 class Pagination(BaseModel):
     model_config = ConfigDict(extra='forbid')
     mode: Literal['prefix', 'page', 'offset'] = 'prefix'
-    parameter: str = Field(default='page', max_length=100, pattern=r'^[A-Za-z_][A-Za-z0-9_]*$')
+    parameter: str = Field(default='page', max_length=100, pattern=r'^\$?[A-Za-z_][A-Za-z0-9_]*(?:\[[A-Za-z_][A-Za-z0-9_]*\])?$')
     has_more_path: str = Field(default='', max_length=300)
     # Documented ceiling of the provider window; 0 means the provider states no limit.
     maximum_results: int = Field(default=0, ge=0, le=100000)
+    fixed_page_size: int = Field(default=0, ge=0, le=1000)
+    first_page: int = Field(default=1, ge=0, le=1)
+    page_url_path: str = Field(default='', max_length=300)
+    initial_results_path: str = Field(default='', max_length=300)
 
     @model_validator(mode='after')
     def check(self):
+        if self.fixed_page_size and self.mode != 'page':
+            raise ValueError('La taille fixe nécessite une pagination par numéro de page.')
+        if self.page_url_path:
+            if self.mode != 'page' or not self.initial_results_path:
+                raise ValueError('Un lien de pagination nécessite le mode page et la liste initiale.')
+            for path in (self.page_url_path, self.initial_results_path):
+                if not path.startswith('/') or re.search(r'~(?![01])', path):
+                    raise ValueError('Chemin de découverte de pagination invalide.')
         if self.has_more_path and (not self.has_more_path.startswith('/') or re.search(r'~(?![01])', self.has_more_path)):
             raise ValueError('Chemin de pagination JSON Pointer invalide.')
         return self
@@ -98,8 +110,14 @@ class Connector(BaseModel):
     search_recent_url: str = Field(default='', max_length=2000)
     item_url: str = Field(default='', max_length=2000)
     results_path: str = Field(default='/list', max_length=300)
+    results_total_path: str = Field(default='', max_length=300)
+    duration_unit: Literal['seconds', 'milliseconds'] = 'seconds'
     video_url: str = Field(default='', max_length=2000)
+    video_url_boolean_path: str = Field(default='', max_length=300)
+    video_url_false: str = Field(default='', max_length=2000)
+    result_base_url: str = Field(default='', max_length=2000)
     thumbnail_url: str = Field(default='', max_length=2000)
+    thumbnail_substitutions: dict[str, str] = Field(default_factory=dict, max_length=8)
     home_query: str = Field(default='vidéos', max_length=200)
     home_kind: Literal['feed', 'search'] = 'feed'
     home_url: str = Field(default='', max_length=2000)
@@ -110,10 +128,25 @@ class Connector(BaseModel):
 
     @model_validator(mode='after')
     def check(self):
+        if self.video_url_boolean_path or self.video_url_false:
+            if self.kind != 'json' or not self.video_url or not self.video_url_false:
+                raise ValueError('Deux modèles JSON sont requis pour les URL conditionnelles.')
+            if not self.video_url_boolean_path.startswith('/') or re.search(r'~(?![01])', self.video_url_boolean_path):
+                raise ValueError('Chemin du booléen de sélection URL invalide.')
+            template(self.video_url_false, {'id'})
+        if self.result_base_url:
+            if self.kind != 'json':
+                raise ValueError('La base des URL de résultats nécessite un connecteur JSON.')
+            template(self.result_base_url, set())
+        for key, value in self.thumbnail_substitutions.items():
+            if not key or len(key) > 100 or len(value) > 200:
+                raise ValueError('Substitution de vignette invalide.')
         if self.kind != 'json' and (self.method != 'GET' or self.body or self.pagination.mode != 'prefix'):
             raise ValueError('POST et pagination native nécessitent un connecteur JSON.')
         if self.method == 'GET' and self.body:
             raise ValueError('Un corps JSON nécessite la méthode POST.')
+        if self.pagination.page_url_path and self.method != 'GET':
+            raise ValueError('La découverte de pagination nécessite GET.')
         body_query = False
         for value in self.body.values():
             if isinstance(value, str):
@@ -148,6 +181,8 @@ class Connector(BaseModel):
             if 'query' not in template(self.search_url, {'query', 'limit'}):
                 raise ValueError('L’URL de recherche doit contenir {query}.')
         if self.kind == 'json':
+            if self.results_total_path and (not self.results_total_path.startswith('/') or re.search(r'~(?![01])', self.results_total_path)):
+                raise ValueError('Le chemin du total doit être un JSON Pointer valide.')
             if self.thumbnail_url:
                 template(self.thumbnail_url, {'id'})
                 if not self.mapping.id:
@@ -183,6 +218,10 @@ def instance_host(value, fallback=''):
 
 
 def default_connector(source_id, instance=''):
+    from app.catalog import declarative_templates
+    delivered = declarative_templates().get(source_id)
+    if delivered:
+        return Connector.model_validate(delivered['connector']).model_dump()
     if source_id in ('PeerTube', 'PeerTubePlaylist'):
         base = 'https://' + instance_host(instance, 'framatube.org') + '/api/v1/'
         feed = base + 'videos?count={limit}'
@@ -342,13 +381,37 @@ class PublicRedirect(HTTPRedirectHandler):
 
 def search_json(config, query, limit, home=False, *, offset=None, credential=None, return_page=False):
     config = Connector.model_validate(config)
+    if config.pagination.fixed_page_size:
+        size = config.pagination.fixed_page_size
+        start = offset or 0
+        if start < 0 or not 1 <= limit <= 100:
+            raise ValueError('Fenêtre de pagination invalide.')
+        # Fetch only provider pages intersecting the requested window. Recursive
+        # calls use the provider's size and the ordinary page-number machinery.
+        inner = config.model_dump()
+        inner['pagination']['fixed_page_size'] = 0
+        items, position, more = [], start, False
+        while len(items) < limit:
+            page_start = position // size * size
+            page = search_json(inner, query, size, home, offset=page_start,
+                               credential=credential, return_page=True)
+            within = position - page_start
+            available = page['items'][within:]
+            take = min(limit - len(items), len(available))
+            items.extend(available[:take])
+            more = take < len(available) or page['has_more']
+            if len(items) == limit or not page['has_more'] or not take:
+                break
+            position = page_start + size
+        result = {'items': items, 'native_page': True, 'has_more': bool(items and more)}
+        return result if return_page else items
     pattern = config.home_url if home and config.home_url else config.search_url
     query = neutralize_query(query, config.query_escape)
     url = pattern.format(query=quote(query, safe=''), limit=limit)
     body = {key: value.format(query=query, limit=limit) if isinstance(value, str) else value for key, value in config.body.items()}
     native = offset is not None and config.pagination.mode != 'prefix'
     if native:
-        value = offset // limit + 1 if config.pagination.mode == 'page' else offset
+        value = offset // limit + config.pagination.first_page if config.pagination.mode == 'page' else offset
         if config.method == 'POST':
             body[config.pagination.parameter] = value
         else:
@@ -360,7 +423,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
     # DNS and secondary requests are additionally checked by the worker network guard.
     proxy=os.environ.get('ANYTUBE_PROXY')
     from app.vault import scoped_headers
-    request_headers = {'Accept': 'application/json', **scoped_headers(credential, url)}
+    request_headers = {'Accept': 'application/json', 'User-Agent': 'AnyTube/0.3 (self-hosted media catalog)',
+                       **scoped_headers(credential, url)}
     if config.method == 'POST':
         request_headers['Content-Type'] = 'application/json'
     with build_opener(ProxyHandler({'http':proxy,'https':proxy} if proxy else {}), PublicRedirect(credential)).open(Request(url, headers=request_headers,
@@ -369,7 +433,35 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
     if len(raw) > 2 * 1024 * 1024:
         raise ValueError('La réponse dépasse 2 Mo.')
     data = json.loads(raw)
+    if config.pagination.page_url_path:
+        target = pointer(data, config.pagination.page_url_path)
+        if not target and pointer(data, config.pagination.initial_results_path) == []:
+            return {'items': [], 'native_page': True, 'has_more': False} if return_page else []
+        if not isinstance(target, str):
+            raise ValueError('Le lien de pagination est absent ou invalide.')
+        # The provider supplies a discovery URL, not permission to send credentials
+        # elsewhere. Validate it and scope headers again for this exact destination.
+        target = public_url(urljoin(url, target))
+        parts = urlsplit(target)
+        params = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+                  if k != config.pagination.parameter]
+        url = urlunsplit(parts._replace(query=urlencode(params + [
+            (config.pagination.parameter, (offset or 0) // limit + 1)])))
+        request_headers = {'Accept': 'application/json', 'User-Agent': 'AnyTube/0.3 (self-hosted media catalog)',
+                           **scoped_headers(credential, url)}
+        with build_opener(ProxyHandler({'http':proxy,'https':proxy} if proxy else {}), PublicRedirect(credential)).open(
+                Request(url, headers=request_headers), timeout=12) as response:
+            raw = response.read(2 * 1024 * 1024 + 1)
+        if len(raw) > 2 * 1024 * 1024:
+            raise ValueError('La réponse dépasse 2 Mo.')
+        data = json.loads(raw)
     entries = pointer(data, config.results_path)
+    total = pointer(data, config.results_total_path) if config.results_total_path else None
+    if config.results_total_path:
+        if type(total) is not int or total < 0:
+            raise ValueError('Le total des résultats doit être un entier positif ou nul.')
+        if entries is None and total == 0:
+            entries = []
     if not isinstance(entries, list):
         raise ValueError('Le chemin des résultats ne désigne pas une liste JSON.')
     items = []
@@ -380,11 +472,17 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
         if config.video_url:
             if not isinstance(values['id'], (str, int)) or isinstance(values['id'], bool):
                 raise ValueError('Identifiant vidéo absent ou invalide.')
-            values['url'] = config.video_url.format(id=quote(str(values['id']), safe=''))
+            url_template = config.video_url
+            if config.video_url_boolean_path:
+                flag = pointer(entry, config.video_url_boolean_path)
+                if type(flag) is not bool:
+                    raise ValueError('Le champ de sélection URL doit être booléen.')
+                url_template = config.video_url if flag else config.video_url_false
+            values['url'] = url_template.format(id=quote(str(values['id']), safe=''))
         if not isinstance(values['url'], str):
             raise ValueError('Le champ URL vidéo est absent ou invalide.')
-        if values['url'].startswith('/'):
-            values['url'] = urljoin(url, values['url'])
+        if config.result_base_url or values['url'].startswith('/'):
+            values['url'] = urljoin(config.result_base_url or url, values['url'])
         public_url(values['url'])
         if isinstance(values['thumbnail'], str) and values['thumbnail'].startswith('/'):
             values['thumbnail'] = urljoin(url, values['thumbnail'])
@@ -392,6 +490,10 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
             if not isinstance(values['id'], (str, int)) or isinstance(values['id'], bool):
                 raise ValueError('Identifiant requis pour la vignette.')
             values['thumbnail'] = config.thumbnail_url.format(id=quote(str(values['id']), safe=''))
+        if isinstance(values['thumbnail'], str) and config.thumbnail_substitutions:
+            for key, value in config.thumbnail_substitutions.items():
+                values['thumbnail'] = values['thumbnail'].replace(key, value)
+            public_url(values['thumbnail'])
         for field in ('duration', 'views'):
             value = values[field]
             try:
@@ -400,6 +502,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
                     values[field] = None
             except (ValueError, TypeError):
                 values[field] = None
+        if values['duration'] is not None and config.duration_unit == 'milliseconds':
+            values['duration'] /= 1000
         items.append({'id': str(values['id'] or ''), 'title': values['title'][:500], 'webpage_url': values['url'],
             'thumbnail': values['thumbnail'] if isinstance(values['thumbnail'], str) else None,
             'description': clean_html(values['description'])[:3000] if isinstance(values['description'], str) else '',
@@ -407,6 +511,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
             'duration': values['duration'], 'view_count': values['views'], 'upload_date': values['published']})
     if return_page:
         has_more = pointer(data, config.pagination.has_more_path) if config.pagination.has_more_path else len(entries) >= limit
+        if total is not None and not config.pagination.has_more_path:
+            has_more = (offset or 0) + len(entries) < total
         if config.pagination.has_more_path and type(has_more) is not bool:
             raise ValueError('Le champ de pagination doit être booléen.')
         return {'items': items, 'native_page': native, 'has_more': bool(has_more and items)}

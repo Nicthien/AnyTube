@@ -1,0 +1,163 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "Vimeo",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "Vimeo",
+  "template_revision": "c8953b1aae4bbe2306b5fe09d93d337a0ff52dea66aec2c523fc1e7a25b95677",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "views",
+      "recent"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:35:43.211166+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.42
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:33.407637+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.467
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:34.876275+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.438
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:36.315335+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.426
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:37.742381+00:00"
+    }
+  },
+  "rankings": {
+    "home:views": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.419
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:39.162625+00:00"
+    },
+    "home:recent": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.401
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:40.564806+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.297
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:41.862957+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "authentication_required",
+          "detail": "La source demande une connexion. Vérifiez ses accès dans Mes sources.",
+          "elapsed_seconds": 1.347
+        }
+      ],
+      "status": "authentication_required",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T23:35:43.211166+00:00"
+    }
+  },
+  "status": "authentication_required",
+  "per_query_status": {
+    "nature": "authentication_required",
+    "piano": "authentication_required",
+    "documentaire": "authentication_required"
+  },
+  "oldest_scenario_date": "2026-09-06T23:35:33.407637+00:00",
+  "scenarios_reused": 8,
+  "scenarios_executed": 0
+}

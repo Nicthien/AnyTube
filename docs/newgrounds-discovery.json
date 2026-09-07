@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-06T21:32:47.095607+00:00",
+  "evidence": "Installed yt-dlp 2026.08.19 extractor/newgrounds.py, NewgroundsPlaylistIE",
+  "search_url": "https://www.newgrounds.com/audio/search/title/{query}",
+  "implementation_observed": "Extracts matching audio/listen and portal/view links from one HTML page; no next-page traversal in this extractor.",
+  "upstream_test_scope": "Search URL test is only_matching, not a live search result test.",
+  "status": "candidate_unverified",
+  "next_checks": [
+    "Public endpoint response and query filtering",
+    "Result titles and playable audio",
+    "Pagination limits before connector publication"
+  ],
+  "probes": {
+    "date": "2026-09-06T21:33:22.695619+00:00",
+    "observations": [
+      {
+        "query": "piano",
+        "error": "ERROR: [Newgrounds:playlist] piano: Unable to download webpage: HTTP Error 403: Forbidden (caused by <HTTPError 403: Forbidden>)"
+      },
+      {
+        "query": "orchestra",
+        "error": "ERROR: [Newgrounds:playlist] orchestra: Unable to download webpage: HTTP Error 403: Forbidden (caused by <HTTPError 403: Forbidden>)"
+      }
+    ]
+  }
+}

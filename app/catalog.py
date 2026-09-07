@@ -3,6 +3,12 @@ import json
 from pathlib import Path
 from yt_dlp.extractor import gen_extractor_classes
 
+
+@lru_cache(maxsize=1)
+def declarative_templates():
+    """Data only. Effective connector configuration is included in every evidence revision."""
+    return json.loads(Path(__file__).with_name('search_templates.json').read_text(encoding='utf-8'))
+
 # Explicitly reviewed same-service families. Never merge unrelated services merely
 # because yt-dlp implements them in the same Python module.
 SOURCE_FAMILIES = {
@@ -160,6 +166,9 @@ def catalog():
         items['DailymotionSearch']['search'] = True
     for item in items.values():
         item.update(identities()[item['id']])
+        delivered = declarative_templates().get(item['id'])
+        if delivered:
+            item.update(name=delivered['name'], search=True, limitation=delivered.get('limitation', ''))
         if item['id'] in REVIEWED:
             item.update(REVIEWED[item['id']], search=True)
         if item['id'] in ('PeerTube','PeerTubePlaylist'):

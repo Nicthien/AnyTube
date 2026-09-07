@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-06T21:38:12.140701+00:00",
+  "extractor_evidence": "yt-dlp 2026.08.19 ParlviewIE: /api/search/parlview/{video_id} returns videoDetails for an exact ID, not keyword results.",
+  "homepage_probe": {
+    "url": "https://www.aph.gov.au/News_and_Events/Watch_Read_Listen/ParlView",
+    "status": 403
+  },
+  "detail_probe": {
+    "url": "https://vodapi.aph.gov.au/api/search/parlview/3406614",
+    "status": 200,
+    "keys": [
+      "videoDetails",
+      "httpStatusCode",
+      "wasSuccessful",
+      "validationErrors"
+    ],
+    "title": "26/03/2025"
+  },
+  "status": "lookup_only",
+  "scope": "No keyword search contract identified; no connector added."
+}

@@ -1,0 +1,472 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "ArchiveOrg",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "ArchiveOrg",
+  "template_revision": "f49d0d41898d5a4f55465335b9cb26fe9608049e7c425ba20fd4ae0ab76e84a0",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent",
+      "trending"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T23:33:54.401745+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.079,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Mohiniyattam",
+            "Jordan With Water Purity : JORDANTV : September 21, 2025 9:45am-10:01am +03"
+          ],
+          "samples": [
+            "https://archive.org/details/pli.ccrt.Mohiniyattam",
+            "https://archive.org/details/JORDANTV_20250921_064500_Jordan_With_Water_Purity"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.93,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Jordan With Water Purity : JORDANTV : January 25, 2026 9:45am-10:01am +03",
+            "Jordan With Water Purity : JORDANTV : February 1, 2026 8:45am-9:01am +03"
+          ],
+          "samples": [
+            "https://archive.org/details/JORDANTV_20260125_064500_Jordan_With_Water_Purity",
+            "https://archive.org/details/JORDANTV_20260201_054500_Jordan_With_Water_Purity"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:17.419302+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.814,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Tubebuddy Tutorial Italiano - Tool per Crescere su Youtube",
+            "Jadoo 5/5S OST - You Don’t Belong In Kabul (Piracy Check Piano)"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-Z-5xL6Ng4O8",
+            "https://archive.org/details/youtube-X9NySWWiYhs"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.837,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Lubbock ISD Inspire - Talkington School for Young Women Leaders Spirio System",
+            "Piano Starts Swarming With Girls....Survival Mode"
+          ],
+          "samples": [
+            "https://archive.org/details/lubisdtx-Lubbock_ISD_Inspire_-_Talkington_School_for_Young_Women_Leaders_Spirio_System",
+            "https://archive.org/details/youtube-nixH11UCFTE"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:21.071565+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.785,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Truth in Numbers: Everything, According to Wikipedia",
+            "QUI - a Striké cette Vidéo ? Voir la Description"
+          ],
+          "samples": [
+            "https://archive.org/details/20100000-documentaire-truth-in-numbers-everything-according-to-wikipedia",
+            "https://archive.org/details/youtube-mnvfTzWC4Ys"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.043,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Pascal Ory nous parle de l’Ayatollah Khomeini - Toute L'Histoire",
+            "Military intel /// Police intel /// L'expert policier Rock Larochelle définit co"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-LfaSDnjbuS0",
+            "https://archive.org/details/military-intel-111_202205"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:24.901039+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.168,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piedra%20papel%20o%20tijeras",
+            "Metro TV"
+          ],
+          "samples": [
+            "https://archive.org/details/nimeon-ad-1788737236580-86f410af",
+            "https://archive.org/details/METROTV_20260906_230000_Metro_TV"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.09,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Alvin And The Chipmunks Meet Frankenstein",
+            "DIESEL Y EL BRAGADO"
+          ],
+          "samples": [
+            "https://archive.org/details/alvin-and-the-chipmunks-meet-frankenstein.theatrical",
+            "https://archive.org/details/yt-archive-qbwpfj-ogfa"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:29.160986+00:00"
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.289,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Egybest V 20.0.4",
+            "h40"
+          ],
+          "samples": [
+            "https://archive.org/details/egybest-v-20.0.4",
+            "https://archive.org/details/videos_horizontal"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.156,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "[군체] 인터내셔널 예고편 (청소년 관람불가 ver) | 5월 21일 극장 대개봉",
+            "Alter Ego"
+          ],
+          "samples": [
+            "https://archive.org/details/youtube-sfvEWaihvWQ",
+            "https://archive.org/details/youtube-k-M45W_iWMs"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:33.607301+00:00"
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.446,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "graphics",
+            "test file mp4"
+          ],
+          "samples": [
+            "https://archive.org/details/dobba_graphics",
+            "https://archive.org/details/Pbtestfilemp4videotestmp4"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.25,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "ical-capcut-template-1",
+            "Vietnam Travel Guide Hanoi, Ha Long Bay, Ho Chi Minh 1"
+          ],
+          "samples": [
+            "https://archive.org/details/ical-capcut-template-1",
+            "https://archive.org/details/vietnam-travel-guide-hanoi-ha-long-bay-ho-chi-minh-1_202101"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:38.304553+00:00"
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.721,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Piedra%20papel%20o%20tijeras",
+            "Metro TV"
+          ],
+          "samples": [
+            "https://archive.org/details/nimeon-ad-1788737236580-86f410af",
+            "https://archive.org/details/METROTV_20260906_230000_Metro_TV"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.774,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Alvin And The Chipmunks Meet Frankenstein",
+            "DIESEL Y EL BRAGADO"
+          ],
+          "samples": [
+            "https://archive.org/details/alvin-and-the-chipmunks-meet-frankenstein.theatrical",
+            "https://archive.org/details/yt-archive-qbwpfj-ogfa"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:41.800956+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.248,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "From the Ground Up",
+            "Final Fantasy II (SNES) - 3:56 - Kevin Juang"
+          ],
+          "samples": [
+            "https://archive.org/details/FromtheG1954",
+            "https://archive.org/details/FinalFantasy2_356"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.954,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Park Conscious",
+            "Have I Told You Lately That I Love You?"
+          ],
+          "samples": [
+            "https://archive.org/details/ParkCons1938",
+            "https://archive.org/details/HaveITol1958"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:46.005091+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.206,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature Boy (2000 TV Drama series)",
+            "Mercronspi 188 - Nature Généreuse, 2024 05 08"
+          ],
+          "samples": [
+            "https://archive.org/details/nature-boy-2000-episode-1",
+            "https://archive.org/details/mercronspi-188-nature-genereuse-2024-05-08"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.279,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Frederick Planning Commission Workshop Summary – March 18, 2024",
+            "Santa Rosa Cultural Heritage Board Regular Meeting - March 20, 2024"
+          ],
+          "samples": [
+            "https://archive.org/details/openpublica-frederick-maryland-bd51d1ef-6a4d-4849-bb70-67edc945c389",
+            "https://archive.org/details/openpublica-santa_rosa-california-7368388f-b23f-488d-9a65-e1d01484a450"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:50.492129+00:00"
+    },
+    "search:trending": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.066,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "LOGAN PAUL SUICIDE FOREST VIDEO",
+            "HentaiHaven-Dump-v1"
+          ],
+          "samples": [
+            "https://archive.org/details/logan-paul-suicide-forest-reupload",
+            "https://archive.org/details/hentai-haven-archive-2018"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.842,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Super Why! - Full Series",
+            "WordWorld - TV Series (2007 - 2011)"
+          ],
+          "samples": [
+            "https://archive.org/details/super-why-s-01-e-03-the-tortoise-and-the-hare",
+            "https://archive.org/details/WWTVSeries20072011"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:33:54.401745+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:33:17.419302+00:00",
+  "scenarios_reused": 10,
+  "scenarios_executed": 0
+}

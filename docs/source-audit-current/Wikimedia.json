@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "Wikimedia",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "Wikimedia",
+  "template_revision": "dbe82e6cc7fc401b121b4398af91323b40ad3f0d5fad1db97142cd16f729ff5b",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:36:55.928348+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.626,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Nature montage around Aberfeldy.webm",
+            "File:Карельская природа летом (видео на вепсском языке). Karjalašt londust kezal"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Nature_montage_around_Aberfeldy.webm",
+            "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D1%80%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B0_%D0%BB%D0%B5%D1%82%D0%BE%D0%BC_(%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE_%D0%BD%D0%B0_%D0%B2%D0%B5%D0%BF%D1%81%D1%81%D0%BA%D0%BE%D0%BC_%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5)._Karjala%C5%A1t_londust_kezal_(veps%C3%A4ks)._Karelian_nature_in_summer_(in_the_Vepsian_language)._1.webm"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.642,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Science Copies Natures Secrets - Biomimicry (National Institute of Fundamen",
+            "File:Kodak 16mm film (nature documentary) - Nature of Australia.webm"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Science_Copies_Natures_Secrets_-_Biomimicry_(National_Institute_of_Fundamental_Studies_(NIFS).ogv",
+            "https://commons.wikimedia.org/wiki/File:Kodak_16mm_film_(nature_documentary)_-_Nature_of_Australia.webm"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:36:45.583511+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.656,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Brian Silas playing piano during a concert in Bhopal 01.webm",
+            "File:Spectacles Piano Lens.webm"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Brian_Silas_playing_piano_during_a_concert_in_Bhopal_01.webm",
+            "https://commons.wikimedia.org/wiki/File:Spectacles_Piano_Lens.webm"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.544,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:The performance of Debussy's Clair De Lune During Library Presentation.webm",
+            "File:Imanuel - piano.webm"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:The_performance_of_Debussy%27s_Clair_De_Lune_During_Library_Presentation.webm",
+            "https://commons.wikimedia.org/wiki/File:Imanuel_-_piano.webm"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:36:48.784003+00:00"
+    },
+    "science": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.715,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Science in Wales - a video by the Welsh Government.webm",
+            "File:MammalWeb citizen science project (short).webm"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Science_in_Wales_-_a_video_by_the_Welsh_Government.webm",
+            "https://commons.wikimedia.org/wiki/File:MammalWeb_citizen_science_project_(short).webm"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.612,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Science Copies Natures Secrets - Biomimicry (National Institute of Fundamen",
+            "File:New Science from Jupiter (NASA ScienceCasts).ogv"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Science_Copies_Natures_Secrets_-_Biomimicry_(National_Institute_of_Fundamental_Studies_(NIFS).ogv",
+            "https://commons.wikimedia.org/wiki/File:New_Science_from_Jupiter_(NASA_ScienceCasts).ogv"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:36:52.112662+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "nature",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.646,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Nature montage around Aberfeldy.webm",
+            "File:Карельская природа летом (видео на вепсском языке). Karjalašt londust kezal"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Nature_montage_around_Aberfeldy.webm",
+            "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D1%80%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F_%D0%BF%D1%80%D0%B8%D1%80%D0%BE%D0%B4%D0%B0_%D0%BB%D0%B5%D1%82%D0%BE%D0%BC_(%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE_%D0%BD%D0%B0_%D0%B2%D0%B5%D0%BF%D1%81%D1%81%D0%BA%D0%BE%D0%BC_%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5)._Karjala%C5%A1t_londust_kezal_(veps%C3%A4ks)._Karelian_nature_in_summer_(in_the_Vepsian_language)._1.webm"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.168,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "File:Science Copies Natures Secrets - Biomimicry (National Institute of Fundamen",
+            "File:Kodak 16mm film (nature documentary) - Nature of Australia.webm"
+          ],
+          "samples": [
+            "https://commons.wikimedia.org/wiki/File:Science_Copies_Natures_Secrets_-_Biomimicry_(National_Institute_of_Fundamental_Studies_(NIFS).ogv",
+            "https://commons.wikimedia.org/wiki/File:Kodak_16mm_film_(nature_documentary)_-_Nature_of_Australia.webm"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:36:55.928348+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "science": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:36:45.583511+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

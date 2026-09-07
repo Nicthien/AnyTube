@@ -1,0 +1,25 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "18e124bea5abf917",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T20:07:50.171966+00:00",
+  "elapsed_seconds": 12.231,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-03",
+  "templates": 1,
+  "results": {
+    "OpenRec": {
+      "search": "results_received",
+      "per_query": {
+        "minecraft": "results_received",
+        "佐々木": "results_received",
+        "ゲーム": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

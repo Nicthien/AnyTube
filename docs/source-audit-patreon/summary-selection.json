@@ -1,0 +1,25 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "073b19bf737e0138",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T21:45:26.130431+00:00",
+  "elapsed_seconds": 11.847,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-03",
+  "templates": 1,
+  "results": {
+    "PatreonCampaign": {
+      "search": "results_received",
+      "per_query": {
+        "science": "results_received",
+        "piano": "results_received",
+        "history": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

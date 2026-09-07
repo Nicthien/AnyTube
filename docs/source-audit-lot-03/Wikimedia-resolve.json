@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-06T19:20:14.823902+00:00",
+  "connector_version": "8c7c7cee02c9866c",
+  "url": "https://commons.wikimedia.org/wiki/File:Nature_montage_around_Aberfeldy.webm",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "download"
+  ],
+  "status": "resolved",
+  "title": "Nature montage around Aberfeldy",
+  "formats": 6,
+  "protocols": [
+    "https"
+  ],
+  "subtitle_languages": []
+}

@@ -1,0 +1,302 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "Youtube",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "Youtube",
+  "template_revision": "46d01ac8015edec5be637210c2e958e35a8b3159b1254533928906dcd008f440",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default",
+      "views"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "views"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:32:31.762906+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.682,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "3 Hours of Incredible 4K Nature Footage | BBC Earth",
+            "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief."
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=5PQYM_KSXag",
+            "https://www.youtube.com/watch?v=BHACKCNDMW8"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.69,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
+            "Forest River Nature Sounds - Gentle Stream with Birdsong | 4K Relaxing Nature Am"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
+            "https://www.youtube.com/watch?v=29XymHesxa0"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:31:30.903619+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.164,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Strangers LAUGH At Garbage Man...Until He Plays CRAZY Piano!",
+            "most beautiful piano pieces"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=kpzJDdYFsx8",
+            "https://www.youtube.com/watch?v=ssN7_u08HFY"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 4.66,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Ludovico Einaudi [relax, study, sleep, soft, calm, inspired piano medley]",
+            "4 Beautiful Soundtracks | Relaxing Piano [10min]"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=DIvewN35QT4",
+            "https://www.youtube.com/watch?v=t_Kd_G7p6ZQ"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:31:37.728062+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 6.449,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "La Terre en mouvements | Documentaire | ARTE",
+            "Anthropocène, l’implacable enquête | Documentaire | ARTE"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=Qpw1Ru3xBds",
+            "https://www.youtube.com/watch?v=CxpehklhvJo"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 4.702,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 1,
+          "repeated_urls": 2,
+          "titles": [
+            "La Terre en mouvements | Documentaire | ARTE",
+            "Dans les coulisses de l'École de Guerre française | Épisode 2 | Documentaire Com"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=Qpw1Ru3xBds",
+            "https://www.youtube.com/watch?v=09k7ZiPyq-k"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 4,
+      "date": "2026-09-06T19:31:48.879898+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 5.172,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Les Vidéos Qui Ont Complètement Cassé Mon Cerveau",
+            "Funniest and most hilarious videos in Africa 😂"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=BSa6fJWAFFo",
+            "https://www.youtube.com/watch?v=lu2tzGqjsQk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 7.36,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 2,
+          "repeated_urls": 1,
+          "titles": [
+            "I REACT to Shayvise's VIDEOS!",
+            "I'm reacting to LA.SWEETY's videos"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=TMJ2fc39EXE",
+            "https://www.youtube.com/watch?v=0eDzDR2RFjI"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T19:32:01.412462+00:00"
+    }
+  },
+  "rankings": {
+    "home:views": {
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 7.093,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Bébé Requin Danse | Chante et danse! | Animal Songs | PINKFONG Chansons pour les",
+            "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=XqZsoesa55w",
+            "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 7.927,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Adele - Rolling in the Deep (Official Music Video)",
+            "Ariana Grande ft. Nicki Minaj - Side To Side (Official Video) ft. Nicki Minaj"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=rYEDA3JcQqw",
+            "https://www.youtube.com/watch?v=SXiSVQZLje8"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:32:16.433330+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 7.425,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Sunny Mornings: Beautiful Relaxing Music with Piano, Guitar & Bird Sounds by Ped",
+            "Musique Douce: Relaxante, Calme - Nature Relaxation"
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=hlWiI4xVXKY",
+            "https://www.youtube.com/watch?v=9TGlc0Fufgk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 7.903,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 2,
+          "repeated_urls": 1,
+          "titles": [
+            "The Alps, AMAZING Beautiful Nature with Soothing Relaxing Music, 4k Ultra HD by ",
+            "Cute Animal Families 4K • Relaxation Film with Peaceful Music | Nature 4K Ultra "
+          ],
+          "samples": [
+            "https://www.youtube.com/watch?v=sz6-F1wYFkw",
+            "https://www.youtube.com/watch?v=ZPyQh7jjbpE"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T19:32:31.762906+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:31:30.903619+00:00",
+  "scenarios_reused": 6,
+  "scenarios_executed": 0
+}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-06T21:10:42.634448+00:00",
+  "connector_version": "694f559bfd8be29e",
+  "url": "https://www.cbsnews.com/video/nature-newfoundland/",
+  "environment": "isolated local browser 127.0.0.1:18090",
+  "observations": [
+    {
+      "time": 3.065643,
+      "paused": false,
+      "readyState": 4,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "time": 14.856978,
+      "paused": false,
+      "readyState": 4,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "scope": "One video opened by URL and played in 720p; not whole-platform certification."
+}

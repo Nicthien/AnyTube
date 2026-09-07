@@ -1,0 +1,55 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "f7bebe34cd6b27db",
+  "proxy_configured": false,
+  "generated_at": "2026-09-06T19:53:49.553046+00:00",
+  "elapsed_seconds": 14.729,
+  "aggregation": "un modèle est déclaré au meilleur état observé sur ses requêtes",
+  "batch": "lot-03",
+  "templates": 4,
+  "results": {
+    "NRKTV": {
+      "search": "results_received",
+      "per_query": {
+        "natur": "results_received",
+        "musikk": "results_received",
+        "nyheter": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "Wikimedia": {
+      "search": "results_received",
+      "per_query": {
+        "nature": "results_received",
+        "piano": "results_received",
+        "science": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "ApplePodcasts": {
+      "search": "results_received",
+      "per_query": {
+        "science": "results_received",
+        "histoire": "results_received",
+        "musique": "empty"
+      },
+      "home": "results_received",
+      "rankings": {}
+    },
+    "MicrosoftLearnPlaylist": {
+      "search": "results_received",
+      "per_query": {
+        "python": "results_received",
+        "azure": "results_received",
+        "sql": "results_received"
+      },
+      "home": "results_received",
+      "rankings": {}
+    }
+  }
+}

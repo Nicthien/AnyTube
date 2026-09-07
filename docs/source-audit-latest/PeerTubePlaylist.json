@@ -1,0 +1,430 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "PeerTubePlaylist",
+  "instance": "",
+  "connector_kind": "json",
+  "extractor": "PeerTube",
+  "template_revision": "e5153b43983003ada9897c668ffd3b120de4a28310c7c7ae94ea78e1e78a0168",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "native",
+    "max_results": null,
+    "search_rankings": [
+      "default",
+      "views",
+      "recent"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default",
+      "trending",
+      "views",
+      "recent"
+    ],
+    "home_kind": "feed"
+  },
+  "date": "2026-09-06T19:30:51.698262+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.422,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "La nature ne peut pas faire ça ! Deï Mian à Sacsayhuamán",
+            "La nature ne peut pas faire ça : Deï Mian et les dalles du Lac Shira"
+          ],
+          "samples": [
+            "https://skeptikon.fr/videos/watch/aa35647a-d84f-485f-9de9-591491a35081",
+            "https://skeptikon.fr/videos/watch/fdda690d-291e-4389-b914-9a2623474afc"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.431,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "La part de la nature dans le changement climatique MaP#12",
+            "The Repeated Refrains of Nature - Interactive Digital Artwork (full sequence"
+          ],
+          "samples": [
+            "https://skeptikon.fr/videos/watch/e1a5b009-de9e-4aff-924e-07e55f86b279",
+            "https://tube.tchncs.de/videos/watch/484bc70d-6ddf-4da5-87e8-e8e1e164072e"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:23.710369+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.473,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "piano in the bar",
+            "Le Piano Globe Trotter > épisode 2 : LE CHANT DU LIMONAIRE - Légende de Paris"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/a8313f59-b4c4-446b-a39b-cf4ae310347f",
+            "https://fontube.fr/videos/watch/aac0dd35-5c45-46f7-b0a2-42b381309138"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.183,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Le Piano Globe Trotter > épisode 4 : L'OISEAU D'ARGENT - Légende chinoise",
+            "Le Piano Globe Trotter > épisode 5 : IL N'Y A PAS QUE LES YEUX POUR VOIR - Légen"
+          ],
+          "samples": [
+            "https://fontube.fr/videos/watch/4b58e1bd-5fca-4e39-883b-dec3083d052b",
+            "https://fontube.fr/videos/watch/4e9c6367-9d44-4938-88ab-66437c5b55d2"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:27.368006+00:00"
+    },
+    "documentaire": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.051,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Copier n'est pas voler - Le documentaire de COAGUL﻿",
+            "UPLOAD/UTC #5 : Ingénierie documentaire"
+          ],
+          "samples": [
+            "https://framatube.org/videos/watch/27ee2ec5-2551-4c30-a09d-77d09951e9c4",
+            "https://aperi.tube/videos/watch/1cd7b2d0-e2e1-4956-88b7-b7998d25eeec"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.438,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Mon documentaire sur la suprématie blanche. White Right : rencontrer l'ennemi.",
+            "Aux origines du Trio Baladins, La compagnie Frêne-en-Ciel. Teaser du documentair"
+          ],
+          "samples": [
+            "https://tube.aquilenet.fr/videos/watch/e37672a4-8078-4f6f-9dab-580c6ebeb3b6",
+            "https://tube.aquilenet.fr/videos/watch/69996c8f-cc68-449c-bc72-398267c50fcd"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:30.857549+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "peertube",
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.538,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "First Date Tour nach Ostenfelde mit @Darksider_on_Tour  -  0039",
+            "\"Lille Norge\" – Heide, Naturwald & gruselige Begegnungen?"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/788e325a-7290-4e28-b078-66dbc13c784f",
+            "https://tube.tchncs.de/videos/watch/f17efa08-2b0b-495d-aa73-b6d01715a5c9"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.846,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Erfahrung",
+            "Overgrown 🤝 Cowboi - Blender Studio Log 31"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/1388dca3-c315-4f03-9271-4f963e8685b4",
+            "https://video.blender.org/videos/watch/f90e0f5c-4d0b-4ccf-8559-c9e590aec633"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:34.242743+00:00"
+    }
+  },
+  "rankings": {
+    "home:trending": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.742,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Learn JavaScript - Full Course for Beginners",
+            "Blender 5.3 is UNFAIR - Blender Today LIVE #288"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/3f6a4d43-4f6d-4f98-becd-b5aa629a0fe0",
+            "https://video.blender.org/videos/watch/c1c8d764-de9b-4800-9274-5a26ac7db66b"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 2.198,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "OVERGROWN: a feature film project by Blender Studio",
+            "LibreOffice 25.8: New features"
+          ],
+          "samples": [
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605",
+            "https://peertube.opencloud.lu/videos/watch/05df2ca2-7d0a-4bb5-a90a-fc0202930fef"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:39.183930+00:00"
+    },
+    "home:views": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.422,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "What is PeerTube?",
+            "LibreOffice – The free and private office suite"
+          ],
+          "samples": [
+            "https://framatube.org/videos/watch/9c9de5e8-0a1e-484a-b099-e80766180a6d",
+            "https://peertube.opencloud.lu/videos/watch/db2a63ae-76f8-4fdc-be6a-3a49bbc1f428"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.407,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Maja Göpel lässt sich Herbert Diess bei Journalismusdarsteller Markus Lanz nicht",
+            "PeerTube V6: storyboard"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/986f5e68-57b6-4b59-abb1-b2f816767b98",
+            "https://framatube.org/videos/watch/73556243-7a9b-496c-a740-f80e42ee0ad9"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:42.014337+00:00"
+    },
+    "home:recent": {
+      "served_by": "feed",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.452,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "First Date Tour nach Ostenfelde mit @Darksider_on_Tour  -  0039",
+            "\"Lille Norge\" – Heide, Naturwald & gruselige Begegnungen?"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/788e325a-7290-4e28-b078-66dbc13c784f",
+            "https://tube.tchncs.de/videos/watch/f17efa08-2b0b-495d-aa73-b6d01715a5c9"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.68,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Erfahrung",
+            "Overgrown 🤝 Cowboi - Blender Studio Log 31"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/1388dca3-c315-4f03-9271-4f963e8685b4",
+            "https://video.blender.org/videos/watch/f90e0f5c-4d0b-4ccf-8559-c9e590aec633"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:45.147442+00:00"
+    },
+    "search:views": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.664,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "LibreOffice 25.8: New features",
+            "OVERGROWN: a feature film project by Blender Studio"
+          ],
+          "samples": [
+            "https://peertube.opencloud.lu/videos/watch/05df2ca2-7d0a-4bb5-a90a-fc0202930fef",
+            "https://video.blender.org/videos/watch/b29290cc-dc51-4a12-bcb2-2aa5fece7605"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.574,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "SINGULARITY - Painterly Space Adventure",
+            "LibreOffice 7.3: New Features"
+          ],
+          "samples": [
+            "https://video.blender.org/videos/watch/1ba07bbb-1456-4293-99a6-833fa450eda0",
+            "https://peertube.opencloud.lu/videos/watch/90d026e5-fad0-45b6-80cb-d8b81fac0e4e"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:48.386593+00:00"
+    },
+    "search:recent": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.577,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "\"Lille Norge\" – Heide, Naturwald & gruselige Begegnungen?",
+            "Skandinavientour Tag 18 Färnebofjärdens Nationalpark - Urwald von Hådell"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/f17efa08-2b0b-495d-aa73-b6d01715a5c9",
+            "https://tube.tchncs.de/videos/watch/703da066-87b1-4119-9482-54a40bc33356"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 1.734,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Shane Finan Furze Pavilion performance (2026)",
+            "ÉchoHameau de la Servantie - Nature et vivre ensemble [CAP SUR LES OASIS #1 / Oc"
+          ],
+          "samples": [
+            "https://tube.tchncs.de/videos/watch/a6912545-f082-4469-8540-8b64e2c943da",
+            "https://video.colibris-outilslibres.org/videos/watch/abdfabd7-4c28-4bb3-8589-e7e5303b47f6"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T19:30:51.698262+00:00"
+    }
+  },
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "documentaire": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T19:30:23.710369+00:00",
+  "scenarios_reused": 9,
+  "scenarios_executed": 0
+}

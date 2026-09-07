@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-06T20:45:39.977021+00:00",
+  "connector_version": "74baee235650dc00",
+  "observations": [
+    {
+      "url": "https://www.ardmediathek.de/video/Y3JpZDovL2tpa2EuZGUvYmVpdHJhZy9jbXMvNjk3MDVmZmEtMjIxZS00ZTMyLWEzNmQtZjQzNzk0ZGFjODk3",
+      "title": "Kikaninchen und die tierisch tolle Natur",
+      "format_count": 8,
+      "protocols": [
+        "https",
+        "m3u8_native"
+      ],
+      "subtitles": [],
+      "error": null
+    },
+    {
+      "url": "https://www.ardmediathek.de/video/Y3JpZDovL2JyLmRlL2Jyb2FkY2FzdC9GMjAyMFdPMDA4NDc5QTA",
+      "title": "Sardinien · Arche aus Stein",
+      "format_count": 9,
+      "protocols": [
+        "https",
+        "m3u8_native"
+      ],
+      "subtitles": [
+        "deu"
+      ],
+      "error": null
+    }
+  ],
+  "scope": "URL extraction only; browser playback not verified."
+}

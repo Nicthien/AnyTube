@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-06T21:30:13.515219+00:00",
+  "image": "sha256:fbf3498d0a921907bbfc951cdb4485ed9ba975e6968ba062cc5dde0f51be7abd",
+  "engine": "aa42302df4b5b431",
+  "url": "https://tv.nrk.no/program/KOID30001224",
+  "exit_code": 1,
+  "result": {
+    "error": "Ce média est indisponible depuis la région du serveur.",
+    "code": "geo_restricted",
+    "retry_after": null
+  },
+  "scope": "Docker protected worker extraction error classification; no playback claimed"
+}

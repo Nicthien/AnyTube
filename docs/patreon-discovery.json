@@ -1,0 +1,388 @@
+{
+  "date": "2026-09-06T21:39:27.122554+00:00",
+  "endpoint": "https://www.patreon.com/api/search",
+  "scope": "Anonymous campaign search, not video search or media playback",
+  "observations": [
+    {
+      "query": "science",
+      "page": 1,
+      "meta": {
+        "hits_total": 58,
+        "page": 2,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "items": [
+        {
+          "id": "campaign_3050790",
+          "name": "Physics Girl",
+          "url": "https://www.patreon.com/physicsgirl"
+        },
+        {
+          "id": "campaign_75058",
+          "name": "Smarter Every Day",
+          "url": "https://www.patreon.com/smartereveryday"
+        },
+        {
+          "id": "campaign_2028698",
+          "name": "Benn Jordan",
+          "url": "https://www.patreon.com/bennjordan"
+        }
+      ]
+    },
+    {
+      "query": "science",
+      "page": 2,
+      "meta": {
+        "hits_total": 58,
+        "page": 3,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "items": [
+        {
+          "id": "campaign_73401",
+          "name": "Kurzgesagt – In a Nutshell",
+          "url": "https://www.patreon.com/Kurzgesagt"
+        },
+        {
+          "id": "campaign_1004268",
+          "name": "Math & Science Tutor",
+          "url": "https://www.patreon.com/MathScienceTutor"
+        },
+        {
+          "id": "campaign_819128",
+          "name": "The Skeptics' Guide To The Universe",
+          "url": "https://www.patreon.com/SkepticsGuide"
+        }
+      ]
+    },
+    {
+      "query": "piano",
+      "page": 1,
+      "meta": {
+        "hits_total": 59,
+        "page": 2,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "items": [
+        {
+          "id": "campaign_1552836",
+          "name": "Nacho Pozo - Tutoriales de piano",
+          "url": "https://www.patreon.com/nachopozo"
+        },
+        {
+          "id": "campaign_2123675",
+          "name": "Grim Cat Piano",
+          "url": "https://www.patreon.com/grimpiano"
+        },
+        {
+          "id": "campaign_3342865",
+          "name": "PianoSecrets",
+          "url": "https://www.patreon.com/PianoSecrets"
+        }
+      ]
+    },
+    {
+      "query": "anytubexyz987654321",
+      "page": 1,
+      "meta": {
+        "hits_total": 0,
+        "page": 2,
+        "pages_total": 0,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "items": []
+    }
+  ],
+  "collections": {
+    "date": "2026-09-06T21:40:06.105517+00:00",
+    "observations": [
+      {
+        "url": "https://www.patreon.com/physicsgirl",
+        "count": 3,
+        "has_more": true,
+        "titles_missing": true
+      },
+      {
+        "url": "https://www.patreon.com/smartereveryday",
+        "count": 3,
+        "has_more": true,
+        "titles_missing": true
+      }
+    ]
+  },
+  "media_probes": [
+    {
+      "url": "https://www.patreon.com/physicsgirl/posts/summer-2026-and-167977121",
+      "exit_code": 1,
+      "formats": 0,
+      "code": "temporarily_unavailable",
+      "error": "La plateforme est indisponible ou a refusé la requête."
+    },
+    {
+      "url": "https://www.patreon.com/smartereveryday/posts/research-need-165652653",
+      "exit_code": 1,
+      "formats": 0,
+      "code": "temporarily_unavailable",
+      "error": "La plateforme est indisponible ou a refusé la requête."
+    }
+  ],
+  "upstream_media_errors": [
+    {
+      "url": "https://www.patreon.com/physicsgirl/posts/summer-2026-and-167977121",
+      "error": "ERROR: [patreon] 167977121: You do not have access to this post"
+    },
+    {
+      "url": "https://www.patreon.com/smartereveryday/posts/research-need-165652653",
+      "error": "ERROR: [patreon] 165652653: You do not have access to this post"
+    }
+  ],
+  "next_steps": [
+    "Preserve post metadata from the campaign API without per-post extraction requests",
+    "Verify page zero before configuring pagination",
+    "Distinguish inaccessible posts from playable public audio/video",
+    "Recognize explicit post access refusal without treating every HTTP 403 as authentication"
+  ],
+  "metadata_probe": {
+    "date": "2026-09-06T21:41:26.054637+00:00",
+    "fields": [
+      "title",
+      "published_at",
+      "post_type",
+      "current_user_can_view",
+      "url"
+    ],
+    "physicsgirl_count": 5,
+    "observations": [
+      {
+        "campaign": "75058",
+        "count": 20,
+        "public_media": [
+          {
+            "id": "164887893",
+            "current_user_can_view": true,
+            "patreon_url": "/smartereveryday/posts/problem-with-day-164887893",
+            "post_type": "video_embed",
+            "published_at": "2026-07-26T14:01:24.000+00:00",
+            "title": "The PROBLEM with Capitalism - Smarter Every Day 316",
+            "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893"
+          },
+          {
+            "id": "159835914",
+            "current_user_can_view": true,
+            "patreon_url": "/smartereveryday/posts/they-call-it-and-159835914",
+            "post_type": "video_embed",
+            "published_at": "2026-06-01T15:50:35.000+00:00",
+            "title": " They Call it \"The Taco Turn\" and it's Genius - Smarter Every Day 315",
+            "url": "https://www.patreon.com/smartereveryday/posts/they-call-it-and-159835914"
+          },
+          {
+            "id": "155354876",
+            "current_user_can_view": true,
+            "patreon_url": "/smartereveryday/posts/what-other-are-155354876",
+            "post_type": "video_embed",
+            "published_at": "2026-04-11T14:16:13.000+00:00",
+            "title": "What Other People Are Not Telling You.... (Understanding The Johari Window) - Smarter Every Day 314",
+            "url": "https://www.patreon.com/smartereveryday/posts/what-other-are-155354876"
+          }
+        ]
+      },
+      {
+        "campaign": "73401",
+        "count": 20,
+        "public_media": [
+          {
+            "id": "167746222",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/most-terrifying-167746222",
+            "post_type": "video_embed",
+            "published_at": "2026-08-31T14:00:17.000+00:00",
+            "title": "The Most Terrifying Nuns of the Middle Ages - New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/most-terrifying-167746222"
+          },
+          {
+            "id": "167746214",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/when-burning-new-167746214",
+            "post_type": "video_embed",
+            "published_at": "2026-08-28T14:00:17.000+00:00",
+            "title": "When Burning People Became a Business - New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/when-burning-new-167746214"
+          },
+          {
+            "id": "165740172",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-us-in-165740172",
+            "post_type": "video_embed",
+            "published_at": "2026-08-04T14:00:21.000+00:00",
+            "title": "NEW VIDEO: The Impenetrable Barrier Trapping Us in the Solar System",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-us-in-165740172"
+          },
+          {
+            "id": "164425098",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/most-ridiculous-164425098",
+            "post_type": "video_embed",
+            "published_at": "2026-07-21T14:00:15.000+00:00",
+            "title": "The Most Ridiculous War Humans Ever Fought - New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/most-ridiculous-164425098"
+          },
+          {
+            "id": "163150263",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-3-most-163150263",
+            "post_type": "video_embed",
+            "published_at": "2026-07-07T14:00:14.000+00:00",
+            "title": "NEW VIDEO: The 3 Most Brutal Weapons in Nature",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-3-most-163150263"
+          },
+          {
+            "id": "162498135",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/why-being-queen-162498135",
+            "post_type": "video_embed",
+            "published_at": "2026-06-30T14:01:15.000+00:00",
+            "title": "Why Being a Renaissance Queen SUCKS - New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/why-being-queen-162498135"
+          },
+          {
+            "id": "160890294",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-what-160890294",
+            "post_type": "video_embed",
+            "published_at": "2026-06-16T14:00:18.000+00:00",
+            "title": "NEW VIDEO: What Exactly IS a Memory?",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-what-160890294"
+          },
+          {
+            "id": "160031755",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/her-visions-army-160031755",
+            "post_type": "video_embed",
+            "published_at": "2026-06-03T14:00:18.000+00:00",
+            "title": "Her Visions Defeated an Army – New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/her-visions-army-160031755"
+          },
+          {
+            "id": "159190993",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-we-to-159190993",
+            "post_type": "video_embed",
+            "published_at": "2026-05-26T14:00:16.000+00:00",
+            "title": "NEW VIDEO: We Used Science to Create the Perfect Super-Earth",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-we-to-159190993"
+          },
+          {
+            "id": "158148454",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/everything-you-158148454",
+            "post_type": "video_embed",
+            "published_at": "2026-05-13T14:00:23.000+00:00",
+            "title": "Everything You Know About Ninjas Is Wrong – New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/everything-you-158148454"
+          },
+          {
+            "id": "157506512",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-is-157506512",
+            "post_type": "video_embed",
+            "published_at": "2026-05-06T07:43:47.000+00:00",
+            "title": "NEW VIDEO: Germany is Over",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-is-157506512"
+          },
+          {
+            "id": "156352940",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/cleopatras-rise-156352940",
+            "post_type": "video_embed",
+            "published_at": "2026-04-23T14:03:48.000+00:00",
+            "title": "Cleopatra’s Brutal Rise to Power – New Nightshift Video",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/cleopatras-rise-156352940"
+          },
+          {
+            "id": "156157408",
+            "current_user_can_view": true,
+            "patreon_url": "/Kurzgesagt/posts/new-video-what-156157408",
+            "post_type": "video_embed",
+            "published_at": "2026-04-21T14:00:23.000+00:00",
+            "title": "NEW VIDEO: What Exactly Is YOUR Mind?",
+            "url": "https://www.patreon.com/Kurzgesagt/posts/new-video-what-156157408"
+          }
+        ]
+      }
+    ]
+  },
+  "public_media_probe": {
+    "date": "2026-09-06T21:41:40.640305+00:00",
+    "url": "https://www.patreon.com/smartereveryday/posts/problem-with-day-164887893",
+    "exit_code": 0,
+    "formats": 53,
+    "error": null,
+    "code": null
+  },
+  "initial_page_probe": [
+    {
+      "page": null,
+      "meta": {
+        "hits_total": 58,
+        "page": 2,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "ids": [
+        "campaign_3050790",
+        "campaign_75058",
+        "campaign_2028698"
+      ]
+    },
+    {
+      "page": 0,
+      "status": 400,
+      "body": "{\"errors\":[{\"id\":\"f6587a8a-52d3-47c2-989f-60214e7a9254\",\"code_name\":\"ParameterInvalid\",\"code\":3,\"title\":\"Invalid value for parameter 'page[number]'.\",\"detail\":\"Invalid parameter for 'page[number]': 0.\",\"status\":\"400\",\"challenge_metadata\":null,\"source\":{\"parameter\":\"page[number]\"}}]}"
+    },
+    {
+      "page": 1,
+      "meta": {
+        "hits_total": 58,
+        "page": 2,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "ids": [
+        "campaign_3050790",
+        "campaign_75058",
+        "campaign_2028698"
+      ]
+    },
+    {
+      "page": 2,
+      "meta": {
+        "hits_total": 58,
+        "page": 3,
+        "pages_total": 20,
+        "query_id": "",
+        "is_forbidden_query": false,
+        "is_nsfw_hidden": false
+      },
+      "ids": [
+        "campaign_73401",
+        "campaign_1004268",
+        "campaign_819128"
+      ]
+    }
+  ]
+}

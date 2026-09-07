@@ -1,0 +1,216 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "b3239e93083da870",
+  "proxy_configured": false,
+  "template": "YoutubeMusicSearchURL",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "Youtube",
+  "template_revision": "cdadecf7a0c11584ef2c5468ddf26bca682d9dba8da345c3dd85f796dd9eb938",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T23:38:02.637307+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 2.057,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Nature Europe 4K • Calm Horizon with Deep Relaxing Music | Relaxation Film",
+            "Violent Nature"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=SYyvx6GE2UI",
+            "https://music.youtube.com/watch?v=QA2ChHGHusw"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 15.393,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Uploads from Sounds of Nature for Deep Sleep and Relaxation - Topic",
+            "Birds & Streams"
+          ],
+          "samples": [
+            "https://www.youtube.com/playlist?list=UU6EU0ZpiKQbdODePSZlP7fw",
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_mbiV5Yf70rsze2fxgIqK9k2Gi1sl-MOGM"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:36:00.663025+00:00"
+    },
+    "piano": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 10.772,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Relaxing Piano Music",
+            "Uploads from Piano Covers - Topic"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=szWX1HhMZvI",
+            "https://www.youtube.com/playlist?list=UU5jQ8ZY76VZhkLPVROUcvog"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 28.53,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 2,
+          "repeated_urls": 1,
+          "titles": [
+            "Soothing Relaxation: Relaxing Piano Music",
+            "Uploads from Jacob's Piano - Topic"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=m1MYLge2zqc",
+            "https://www.youtube.com/playlist?list=UUHwgvUMe00uBYqzka6Yrl5w"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T23:36:39.966667+00:00"
+    },
+    "jazz": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 16.335,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Cool Jazz Moods",
+            "Traditional Jazz"
+          ],
+          "samples": [
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_l3Iir9QZmCUPLjUqyR9PmYIKkkY7YEJZA",
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_n8797v38N8JhZdT2JJtlM0OfIpgkJ3Mkk"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 34.776,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 2,
+          "repeated_urls": 1,
+          "titles": [
+            "Jazz Coffee Shop",
+            "Uploads from Cafe Jazz Music Relaxing Instrumental - Topic"
+          ],
+          "samples": [
+            "https://www.youtube.com/playlist?list=RDCLAK5uy_m6aBO70zO2mNRnBrz9vLCLyjMf8hsZKeE",
+            "https://www.youtube.com/playlist?list=UU3emNQQ2aiDJa11jW8zWgpw"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 5,
+      "date": "2026-09-06T23:37:31.079143+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "results_received",
+          "elapsed_seconds": 1.987,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Holo Horema",
+            "Kamasutra"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=J9EcT_HDXdY",
+            "https://music.youtube.com/watch?v=fNmc56cbBS8"
+          ]
+        },
+        {
+          "offset": 3,
+          "status": "results_received",
+          "elapsed_seconds": 29.57,
+          "count": 3,
+          "distinct_urls": 3,
+          "new_urls": 3,
+          "repeated_urls": 0,
+          "titles": [
+            "Laurent Gerra on RTL: the top 10 most viewed videos in 2025",
+            "GIMS - Clips Officiels 🕶"
+          ],
+          "samples": [
+            "https://music.youtube.com/watch?v=dK2obTuESu8",
+            "https://www.youtube.com/playlist?list=PLwMuWIGfMyJUxQiAHS-pJHff66uFpN5IT"
+          ]
+        }
+      ],
+      "status": "results_received",
+      "distinct_urls_over_two_pages": 6,
+      "date": "2026-09-06T23:38:02.637307+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "results_received",
+  "per_query_status": {
+    "nature": "results_received",
+    "piano": "results_received",
+    "jazz": "results_received"
+  },
+  "oldest_scenario_date": "2026-09-06T23:36:00.663025+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}

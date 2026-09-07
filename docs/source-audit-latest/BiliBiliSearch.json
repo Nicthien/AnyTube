@@ -1,0 +1,104 @@
+{
+  "environment": "local",
+  "host": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.6",
+  "yt_dlp": "2026.08.19",
+  "connector_version": "a6eb4c62bd8afe07",
+  "proxy_configured": false,
+  "template": "BiliBiliSearch",
+  "instance": "",
+  "connector_kind": "ytdlp",
+  "extractor": "BiliBili",
+  "template_revision": "a42363b2e926e939d6b84fe93a0a3c05035bb06ffab1f0778e8f4306af60bf57",
+  "capabilities": {
+    "search": true,
+    "pagination": true,
+    "pagination_mode": "prefix",
+    "max_results": 100,
+    "search_rankings": [
+      "default"
+    ],
+    "duration": false,
+    "date": false,
+    "home_rankings": [
+      "default"
+    ],
+    "home_kind": "search"
+  },
+  "date": "2026-09-06T19:28:49.403271+00:00",
+  "does_not_verify": [
+    "video",
+    "audio",
+    "live",
+    "subtitles",
+    "download"
+  ],
+  "search": {
+    "nature": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 1.64
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:28:49.400658+00:00"
+    },
+    "音乐": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:28:49.401598+00:00"
+    },
+    "风景": {
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:28:49.402435+00:00"
+    }
+  },
+  "home": {
+    "default": {
+      "query_used": "vidéos",
+      "served_by": "search",
+      "pages": [
+        {
+          "offset": 0,
+          "status": "rate_limited",
+          "detail": "La plateforme limite les requêtes. Réessayez plus tard.",
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "status": "rate_limited",
+      "distinct_urls_over_two_pages": 0,
+      "date": "2026-09-06T19:28:49.403271+00:00"
+    }
+  },
+  "rankings": {},
+  "status": "rate_limited",
+  "per_query_status": {
+    "nature": "rate_limited",
+    "音乐": "rate_limited",
+    "风景": "rate_limited"
+  },
+  "oldest_scenario_date": "2026-09-06T19:28:49.400658+00:00",
+  "scenarios_reused": 4,
+  "scenarios_executed": 0
+}
