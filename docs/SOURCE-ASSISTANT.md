@@ -149,3 +149,7 @@ avec un identifiant éphémère renouvelé à chaque démarrage et retiré de
 l’environnement des processus d’extraction. Aucun port supplémentaire n’est publié.
 Les redirections de ces services sont refusées et les identifiants du proxy
 ne sont pas transmis aux services cibles.
+
+Recette Docker sur le réseau Compose Unraid : Framatube ajoutée en 10,226 s,
+quatre contrôles de recherche, aucun appel IA. Une URL privée fournie comme
+cible de découverte est refusée. La base de recette est jetable et séparée.

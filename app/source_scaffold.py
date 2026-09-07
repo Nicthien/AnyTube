@@ -83,5 +83,3 @@ def scaffold(data, extractor, search_url, results_path=None, base_url=''):
                      results_path=path, result_base_url=base_url,
                      duration_unit='milliseconds' if mapping['duration'].endswith('/trackTimeMillis') else 'seconds',
                      mapping=Mapping(**mapping)).model_dump()
-
-
