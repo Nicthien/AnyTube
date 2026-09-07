@@ -4,7 +4,7 @@
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.4.0-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.4.1-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Support on Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/nthstudio)

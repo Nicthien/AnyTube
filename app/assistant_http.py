@@ -30,11 +30,12 @@ def fetch(payload):
         headers.setdefault('Content-Type', 'application/json')
     opener = build_opener(ProxyHandler({'http': proxy, 'https': proxy} if proxy else {}), NoRedirect() if payload.get('trusted') else PublicRedirect())
     request = Request(payload['url'], data=raw, headers=headers, method=payload.get('method', 'GET'))
-    with opener.open(request, timeout=15) as response:
+    with opener.open(request, timeout=max(1,min(float(payload.get('timeout',15)),120))) as response:
         data = response.read(2 * 1024 * 1024 + 1)
         if len(data) > 2 * 1024 * 1024:
             raise ValueError('Réponse supérieure à 2 Mo.')
         return {'url': response.url, 'text': data.decode('utf-8', errors='replace'),
+                'headers':{k:v for k,v in response.headers.items() if k.lower() in ('access-control-allow-origin','access-control-allow-methods','access-control-allow-headers','access-control-expose-headers','vary')},
                 **({'base64':base64.b64encode(data).decode()} if payload.get('binary') else {}),
                 'content_type': response.headers.get('Content-Type', '')}
 

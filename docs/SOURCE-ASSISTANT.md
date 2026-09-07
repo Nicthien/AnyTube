@@ -153,3 +153,33 @@ ne sont pas transmis aux services cibles.
 Recette Docker sur le réseau Compose Unraid : Framatube ajoutée en 10,226 s,
 quatre contrôles de recherche, aucun appel IA. Une URL privée fournie comme
 cible de découverte est refusée. La base de recette est jetable et séparée.
+## Browserless v2 (0.4.1-preview)
+
+Le champ navigateur attend la passerelle AnyTube, pas directement Browserless.
+Browserless expose un protocole CDP WebSocket ; il ne fournit pas les routes
+`/health` et `/observe` de l'assistant. La passerelle peut maintenant l'utiliser :
+
+```dotenv
+ANYTUBE_INSTALL_CHROMIUM=false
+ANYTUBE_BROWSER_CDP_URL=ws://browserless-v2:3000/chromium
+ANYTUBE_BROWSER_CDP_TOKEN=jeton-browserless
+ANYTUBE_BROWSER_TOKEN=jeton-prive-de-la-passerelle
+```
+
+Ces variables appartiennent au service `source-browser`. Dans l'interface AnyTube,
+conserver `http://source-browser:8010` et le jeton privé de la passerelle. Les deux
+services doivent être joignables sur leur réseau Docker. Le jeton Browserless reste
+côté serveur. Le test vérifie une connexion et la création d'un contexte isolé.
+Les délais incluent le démarrage à froid ; l'échéance globale reste prioritaire.
+
+Recette sur Unraid : Browserless a exécuté un formulaire JavaScript de test et la
+passerelle a capturé son appel JSON (deux requêtes, une réponse JSON). Le test utilise
+une page contrôlée et des réponses HTTP simulées, avec le vrai Chromium distant.
+La page publique Allociné a également été chargée ; la détection d'une recherche
+compatible sur ce site n'est pas validée. Un champ de localisation de salles est
+exclu de la sélection automatique de recherche générale.
+
+Une observation connectée sans API JSON exploitable ne rend pas le site compatible.
+Le générateur ne transforme pas encore une recherche HTML arbitraire en connecteur.
+Les bilans distinguent désormais connexion navigateur, absence de JSON, absence de
+candidat IA et contrôles de recherche échoués.

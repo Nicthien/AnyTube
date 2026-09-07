@@ -3,11 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.browser
+      args:
+        INSTALL_CHROMIUM: ${ANYTUBE_INSTALL_CHROMIUM:-true}
     profiles: [discovery]
     init: true
     restart: unless-stopped
     environment:
       ANYTUBE_BROWSER_TOKEN: ${ANYTUBE_BROWSER_TOKEN:?Set a private browser service token}
+      ANYTUBE_BROWSER_CDP_URL: ${ANYTUBE_BROWSER_CDP_URL:-}
+      ANYTUBE_BROWSER_CDP_TOKEN: ${ANYTUBE_BROWSER_CDP_TOKEN:-}
     read_only: true
     tmpfs:
       - /tmp:size=512m,mode=1777

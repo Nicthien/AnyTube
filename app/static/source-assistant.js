@@ -96,6 +96,7 @@ async function openAssistantSettings() {
     if(name==='search')f.kind=assistantSelect(section,'Protocole',[['searxng','SearXNG JSON'],['json','HTTP JSON adaptable']],s.kind);
     if(name==='ai')f.kind=assistantSelect(section,'Fournisseur',[['none','Sans IA'],['ollama','Ollama'],['openai','API compatible OpenAI']],s.kind);
     f.url=assistantField(section,name==='ai'?'URL du serveur (API compatible : inclure /v1)':'URL du service',s.url,'url');
+    if(name==='browser')section.append(node('p','hint','URL de la passerelle AnyTube (port 8010), pas celle de Browserless. La passerelle peut utiliser Chromium ou votre serveur Browserless v2 et contrôle les accès réseau.'));
     if(name==='ai') {f.model=assistantField(section,'Modèle',s.model);section.append(node('p','hint','Le fournisseur choisi est le seul utilisé. Aucun plafond financier ni basculement automatique.'));}
     if(name==='search') {
       f.method=assistantSelect(section,'Méthode',[['GET','GET'],['POST','POST']],s.method);

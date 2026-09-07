@@ -214,11 +214,11 @@ async def http(url, *, trusted=False, method='GET', body=None, headers=None, tim
         stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL,
         cwd=Path(__file__).resolve().parent.parent)
     try:
-        raw, _ = await asyncio.wait_for(process.communicate(json.dumps(dict(url=url, trusted=trusted, method=method, body=body, headers=headers or {})).encode()), timeout)
+        raw, _ = await asyncio.wait_for(process.communicate(json.dumps(dict(url=url, trusted=trusted, method=method, body=body, headers=headers or {},timeout=max(1,timeout-1))).encode()), timeout)
         value = json.loads(raw)
         if value.get('error'):
             raise DiscoveryError('access_required' if value.get('status') == 401 else 'unresolved',
-                                 'Accès refusé par le service.' if value.get('status') in (401,403) else 'Requête indisponible ou réponse invalide.')
+                                 f"Réponse HTTP {value['status']} du service." if value.get('status') else 'Connexion impossible ou réponse trop volumineuse.')
         return value
     finally:
         if process.returncode is None:
@@ -310,8 +310,14 @@ async def test_service(name: Literal['search','ai','browser']):
             return {'ok':True}
         if not config.browser.url:
             raise ValueError()
-        response = await http(config.browser.url.rstrip('/')+'/health', trusted=True, headers=service_headers('browser'))
-        return {'ok':json.loads(response['text']).get('ok') is True}
+        response = await http(config.browser.url.rstrip('/')+'/health', trusted=True, headers=service_headers('browser'),timeout=45)
+        result = json.loads(response['text'])
+        if result.get('ok') is not True:
+            raise ValueError()
+        return {'ok':True, 'engine':result.get('engine','chromium'), 'protocol':'anytube-observer-v1'}
+    except DiscoveryError as exc:
+        suffix = ' Ce champ attend la passerelle AnyTube ; Browserless seul ne fournit pas /health et /observe.' if name=='browser' else ''
+        raise HTTPException(422, exc.message+suffix)
     except Exception:
         raise HTTPException(422, 'Test échoué. Vérifiez URL, protocole, modèle et accès du service.')
 
@@ -622,14 +628,20 @@ async def discover(identifier, config):
         step(identifier, 'Observation des requêtes publiques dans le navigateur.')
         try:
             observation=json.loads((await http(config.browser.url.rstrip('/')+'/observe', trusted=True,
-                method='POST', body={'url':target,'query':job['queries'][0]},headers=service_headers('browser'),timeout=65))['text'])
+                method='POST', body={'url':target,'query':job['queries'][0]},headers=service_headers('browser'),timeout=95))['text'])
+            sample_count=len(observation.get('samples',[])[:4])
+            step(identifier,f"Navigateur connecté : {sample_count} réponse(s) JSON de recherche exploitable(s).")
+            if not sample_count:
+                step(identifier,'Aucune API JSON de recherche détectée : un moteur HTML ou un connecteur spécifique peut être nécessaire.')
             for item in observation.get('samples',[])[:4]:
                 endpoint=item.get('search_url','')
                 if '{query}' in endpoint:
                     endpoints.append(endpoint)
                     material.append({'url':endpoint,'sample':item.get('data')})
+        except DiscoveryError as exc:
+            step(identifier,'Navigateur indisponible : '+exc.message+' Vérifiez la passerelle AnyTube et son jeton (Browserless direct incompatible).')
         except Exception:
-            step(identifier,'Navigateur indisponible ou sans résultat exploitable ; poursuite HTTP.')
+            step(identifier,'Observation navigateur interrompue ou réponse non conforme au protocole AnyTube.')
     if config.ai.kind!='none':
         step(identifier,'Proposition structurée du fournisseur IA sélectionné.')
         try:
@@ -638,6 +650,7 @@ async def discover(identifier, config):
                 endpoints.extend(proposal.get('endpoints',[])[:3])
                 if proposal.get('connector'):
                     candidates.append(validate_candidate(proposal['connector']))
+                step(identifier,f"IA : {len(proposal.get('endpoints',[]))} endpoint(s) proposé(s), "+('un candidat.' if proposal.get('connector') else 'aucun candidat.'))
         except Exception:
             step(identifier,'Proposition IA invalide ou indisponible ; aucun basculement de fournisseur.')
     for endpoint in list(dict.fromkeys(e for e in endpoints if isinstance(e,str)))[:6]:
@@ -676,7 +689,8 @@ async def discover(identifier, config):
                 except Exception:
                     break
     has_candidate=bool(load(identifier).get('candidate'))
-    return update(identifier,'needs_input' if has_candidate else 'unresolved',message='Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.')
+    message = 'Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.' if candidates else 'Aucune recherche compatible trouvée. Le générateur actuel prend en charge les modèles existants et les API JSON publiques ; une recherche HTML ou une API spécifique peut nécessiter un connecteur dédié.'
+    return update(identifier,'needs_input' if has_candidate else 'unresolved',message=message)
 
 
 async def execute(identifier):
