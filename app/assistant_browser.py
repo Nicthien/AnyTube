@@ -18,6 +18,7 @@ slots = asyncio.Semaphore(2)
 class Observation(BaseModel):
     url: str = Field(max_length=2000)
     query: str = Field(min_length=1,max_length=100)
+    submit_search: bool = True
 
 
 def authorize(request):
@@ -147,7 +148,7 @@ async def observe(body):
                     priority=search_priority(attributes)
                     if priority>=0:
                         fields.append((priority,index))
-            for _,index in sorted(fields,reverse=True)[:2]:
+            for _,index in (sorted(fields,reverse=True)[:2] if body.submit_search else []):
                 field=search.nth(index)
                 try:
                     await field.fill(body.query,timeout=3000)
@@ -157,7 +158,14 @@ async def observe(body):
                     break
                 except Exception:
                     continue
-            return {'samples':samples,'requests':requests,'json_responses':json_responses,'search_submitted':search_submitted}
+            if not body.submit_search:
+                await page.wait_for_timeout(1500)
+            rendered = await page.content()
+            if len(rendered.encode('utf-8'))>2*1024*1024:
+                raise ValueError('Document rendu trop volumineux.')
+            public_url(page.url)
+            return {'samples':samples,'requests':requests,'json_responses':json_responses,
+                    'search_submitted':search_submitted,'html':rendered,'url':page.url}
         finally:
             await browser.close()
 

@@ -22,7 +22,7 @@ function assistantSelect(parent,label,options,value) {
   input.value=value;wrapper.append(input);parent.append(wrapper);return input;
 }
 function assistantError(error) {toast(error.message || 'Opération impossible.');}
-async function openSourceAssistant(source='') {
+async function openSourceAssistant(source='',previous=null) {
   clearTimeout(assistantTimer);assistantJob=null;assistantSource=source;
   assistantHeader('Configurer automatiquement une source');
   if(!assistantDialog.open)assistantDialog.showModal();
@@ -30,17 +30,28 @@ async function openSourceAssistant(source='') {
     const listing=await api('/api/source-assistant/jobs');
     const form=node('form'),target=assistantField(form,'Adresse du site ou nom de la plateforme');
     target.required=true;target.maxLength=2000;
+    if(previous)target.value=previous.resolved_target||previous.target;
     const minutes=assistantField(form,'Durée maximale (minutes)',String(listing.default_minutes),'number');minutes.min=1;minutes.max=60;minutes.required=true;
     const details=node('details');details.append(node('summary','','Recherches de contrôle'));
     const first=assistantField(details,'Première recherche','science'),second=assistantField(details,'Deuxième recherche','music');
     first.maxLength=100;second.maxLength=100;form.append(details);
+    if(previous){first.value=previous.queries[0];second.value=previous.queries[1];minutes.value=previous.minutes;}
+    const help=node('details');help.append(node('summary','','Aider la détection'));
+    const videoLabel=node('label','connector-field','Liens de vidéos (un par ligne, cinq maximum)'),examples=node('textarea');
+    examples.rows=3;examples.maxLength=10004;examples.value=(previous?.video_examples||[]).join('\n');videoLabel.append(examples);help.append(videoLabel);
+    help.append(node('p','hint','Deux ou trois vidéos du même site aident à reconnaître les résultats.'));
+    const searchExample=assistantField(help,'URL d’une recherche',previous?.search_example_url||'','url');searchExample.maxLength=2000;
+    const searchTerm=assistantField(help,'Terme utilisé dans cette recherche',previous?.search_example_query||'');searchTerm.maxLength=100;
+    form.append(help);if(previous)help.open=true;
     form.append(node('p','hint',source?'La mise à jour sera présentée avant application.':'Les nouvelles sources sont ajoutées automatiquement après contrôle de la recherche. La lecture vidéo reste à vérifier.'));
     const submit=node('button','primary','Découvrir la source');submit.type='submit';form.append(submit);
     form.addEventListener('submit',async event=>{event.preventDefault();submit.disabled=true;try {
-      const job=await api('/api/source-assistant/jobs',{method:'POST',body:JSON.stringify({target:target.value,minutes:Number(minutes.value),queries:[first.value,second.value],source_id:assistantSource})});
+      const hints={video_examples:examples.value.split(/\r?\n/).map(v=>v.trim()).filter(Boolean),search_example_url:searchExample.value.trim(),search_example_query:searchTerm.value.trim(),minutes:Number(minutes.value)};
+      const job=await api(previous?`/api/source-assistant/jobs/${previous.id}/resume`:'/api/source-assistant/jobs',{method:'POST',body:JSON.stringify(previous?hints:{...hints,target:target.value,queries:[first.value,second.value],source_id:assistantSource})});
       await showAssistantJob(job.id);
     }catch(error){assistantError(error);submit.disabled=false;}});
     assistantDialog.append(form);
+    if(previous){target.readOnly=true;first.readOnly=true;second.readOnly=true;submit.textContent='Reprendre avec ces exemples';}
     if(state.account?.admin)assistantDialog.append(button('Paramètres de découverte','secondary',()=>openAssistantSettings().catch(assistantError)));
     if(listing.items.length) {
       assistantDialog.append(node('h3','','Découvertes récentes'));
@@ -64,18 +75,20 @@ async function showAssistantJob(id) {
       const job=await api(`/api/source-assistant/jobs/${id}`);
       if(assistantJob!==id||!assistantDialog.open)return;
       const active=['queued','running'].includes(job.status);
-      status.textContent=`${assistantStatuses[job.status]||job.status} — ${job.target}${active&&job.deadline?' · '+Math.max(0,Math.ceil(job.deadline-Date.now()/1000))+' s restantes':''}`;
+      status.textContent=`${assistantStatuses[job.status]||job.status} — ${job.target}${active&&job.deadline?' · Budget restant : '+Math.max(0,Math.ceil(job.deadline-Date.now()/1000))+' s':''}`;
       stop.hidden=!active;
       progress.replaceChildren(...(job.steps||[]).map(step=>node('li','',step.message)));
       if(!active&&!terminalRendered) {
         terminalRendered=true;result.append(node('p','',job.message||''));
+        if(job.parent_job)result.append(button('Voir la tentative précédente','secondary',()=>showAssistantJob(job.parent_job).catch(assistantError)));
+        if(job.candidate?.html?.rendering==='chromium')result.append(node('p','notice','Navigateur requis pour utiliser cette source.'));
         if(job.elapsed_seconds!==undefined)result.append(node('p','hint',`Durée : ${job.elapsed_seconds} s · ${job.metrics?.search_checks||0} contrôles de recherche · ${job.metrics?.ai_calls||0} appels IA`));
         if(job.status==='choice') for(const choice of job.choices||[]) result.append(button(choice.url,'secondary full',async()=>{try {const next=await api(`/api/source-assistant/jobs/${id}/choose`,{method:'POST',body:JSON.stringify({url:choice.url})});await showAssistantJob(next.id);}catch(e){assistantError(e);}}));
         if(job.candidate||job.evidence) {const details=node('details');details.append(node('summary','','Configuration et preuves'),node('pre','connector-json',JSON.stringify({candidate:job.candidate,evidence:job.evidence,changes:job.changes},null,2)));result.append(details);}
         if(job.status==='ready')result.append(button('Appliquer la mise à jour','primary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/apply`,{method:'POST'});await loadSources();await showAssistantJob(id);}catch(e){assistantError(e);}}));
         if(job.status==='needs_input'&&job.candidate)result.append(button('Préciser la configuration','secondary',()=>{assistantDialog.close();openSourceEditor(null,job.candidate).catch(assistantError);}));
         if(['added','updated'].includes(job.status))await loadSources();
-        if(!['choice','ready'].includes(job.status))result.append(button('Relancer','secondary',async()=>{try {const next=await api('/api/source-assistant/jobs',{method:'POST',body:JSON.stringify({target:job.resolved_target||job.target,minutes:job.minutes,queries:job.queries,source_id:job.source_id})});await showAssistantJob(next.id);}catch(e){assistantError(e);}}));
+        if(job.status!=='choice')result.append(button('Ajouter des exemples et reprendre','secondary',()=>openSourceAssistant(job.source_id,job).catch(assistantError)));
       }
       if(active)assistantTimer=setTimeout(refresh,2000);
     }catch(e){status.textContent=e.message;}

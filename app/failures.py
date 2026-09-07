@@ -1,5 +1,6 @@
 """Public, bounded errors: provider output and credential values never leave workers."""
 MESSAGES = {
+    'browser_unavailable': 'Cette source nécessite le navigateur. Vérifiez la passerelle Chromium dans les paramètres de découverte.',
     'authentication_required': 'La source demande une connexion. Vérifiez ses accès dans Mes sources.',
     'geo_restricted': 'Ce média est indisponible depuis la région du serveur.',
     'drm_protected': 'Ce média est protégé par DRM et ne peut pas être préparé.',

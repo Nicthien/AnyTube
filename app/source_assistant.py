@@ -117,6 +117,8 @@ def load(identifier):
         raise HTTPException(404, 'Découverte introuvable.')
     result = dict(row)
     result.update(json.loads(result.pop('payload')))
+    for key, default in (('format_version',1),('video_examples',[]),('search_example_url',''),('search_example_query',''),('parent_job','')):
+        result.setdefault(key, default)
     return result
 
 
@@ -328,11 +330,22 @@ class Start(BaseModel):
     minutes: int | None = Field(default=None, ge=1, le=60)
     source_id: str = Field(default='', max_length=160)
     queries: list[str] = Field(default_factory=lambda:['science', 'music'], min_length=2, max_length=2)
+    video_examples: list[str] = Field(default_factory=list,max_length=5)
+    search_example_url: str = Field(default='',max_length=2000)
+    search_example_query: str = Field(default='',max_length=100)
 
     @model_validator(mode='after')
     def check(self):
         self.target = self.target.strip()
         self.queries = [q.strip() for q in self.queries]
+        from app.html_search import clean_url, template_from_example
+        self.video_examples = list(dict.fromkeys(clean_url(u,u) for u in self.video_examples))
+        if any(len(u)>2000 for u in self.video_examples):
+            raise ValueError('URL d’exemple trop longue.')
+        if bool(self.search_example_url) != bool(self.search_example_query.strip()):
+            raise ValueError('Indiquez l’URL de recherche et le terme utilisé ensemble.')
+        if self.search_example_url:
+            template_from_example(self.search_example_url,self.search_example_query.strip())
         if not self.target or any(not q or len(q)>100 for q in self.queries) or self.queries[0].casefold()==self.queries[1].casefold():
             raise ValueError('Site et deux recherches distinctes requis.')
         if self.target.startswith(('http://','https://')):
@@ -363,6 +376,10 @@ def launch(identifier):
 
 @router.post('/jobs', status_code=201)
 async def start(body: Start):
+    return create_job(body)
+
+
+def create_job(body, parent=None):
     baseline = None
     if body.source_id:
         with connect() as db:
@@ -371,7 +388,9 @@ async def start(body: Start):
             raise HTTPException(404, 'Source introuvable.')
         baseline = json.loads(row[0]) if row[0] else default_connector(body.source_id)
     identifier, now = uuid.uuid4().hex, time.time()
-    payload = {**body.model_dump(), 'minutes':body.minutes or settings().minutes, 'steps':[], 'baseline':baseline}
+    payload = {**body.model_dump(), 'minutes':body.minutes or settings().minutes, 'steps':[], 'baseline':baseline,
+               'format_version':2,'parent_job':parent['id'] if parent else '',
+               'previous_candidate':parent.get('candidate') if parent else None}
     with connect() as db:
         db.execute('BEGIN IMMEDIATE')
         rows = list(db.execute("SELECT owner FROM source_assistant_jobs WHERE status IN ('queued','running')"))
@@ -403,7 +422,31 @@ async def choose(identifier: str, body: Choice):
     job = load(identifier)
     if job['status'] != 'choice' or body.url not in [c['url'] for c in job.get('choices', [])]:
         raise HTTPException(409, 'Choix non disponible.')
-    return await start(Start(target=body.url, minutes=job['minutes'], source_id=job['source_id'], queries=job['queries']))
+    values={key:job[key] for key in Start.model_fields if key in job}
+    values['target']=body.url
+    return create_job(Start(**values),job)
+
+
+class Resume(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    video_examples: list[str] | None = Field(default=None,max_length=5)
+    search_example_url: str | None = Field(default=None,max_length=2000)
+    search_example_query: str | None = Field(default=None,max_length=100)
+    minutes: int | None = Field(default=None,ge=1,le=60)
+
+
+@router.post('/jobs/{identifier}/resume',status_code=201)
+async def resume(identifier: str, body: Resume):
+    job=load(identifier)
+    if job['status'] in ACTIVE or job['status']=='choice':
+        raise HTTPException(409,'Terminez ou arrêtez la découverte avant de la reprendre.')
+    values={key:job[key] for key in Start.model_fields if key in job}
+    values['target']=job.get('resolved_target') or job['target']
+    values.update(body.model_dump(exclude_none=True))
+    try:
+        return create_job(Start(**values),job)
+    except ValueError:
+        raise HTTPException(422,'Exemples ou paramètres de reprise invalides.')
 
 
 class Page(HTMLParser):
@@ -462,11 +505,14 @@ def checked_urls(items):
 async def verify(candidate, queries):
     from app.main import run_worker
     evidence, sets = [], []
+    first_page_size=3
     for query in [*queries, 'anytube-no-result-'+uuid.uuid4().hex]:
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
-        result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3}, timeout=25)
+        result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3}, timeout=90 if candidate['kind']=='html' else 25)
         items = result.get('items', [])
+        if not sets:
+            first_page_size=max(3,result.get('source_page_size',3))
         urls = checked_urls(items)
         sets.append(urls)
         evidence.append({'query':query, 'count':len(urls), 'urls':sorted(urls)})
@@ -494,12 +540,21 @@ async def verify(candidate, queries):
     if candidate['pagination']['mode'] not in ('prefix', 'single'):
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
-        result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':3,'page_size':3,'offset':3}, timeout=25)
+        result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':3,'page_size':3,'offset':first_page_size}, timeout=90 if candidate['kind']=='html' else 25)
         urls = checked_urls(result.get('items', []))
         if not urls-sets[0]:
             raise ValueError('Seconde page non distincte : pagination non validée.')
-        evidence.append({'query':queries[0], 'offset':3, 'count':len(urls), 'urls':sorted(urls)})
+        evidence.append({'query':queries[0], 'offset':first_page_size, 'count':len(urls), 'urls':sorted(urls)})
         pagination='verified'
+    if candidate['kind']=='html':
+        from app.html_search import document
+        for url in sorted(sets[0]|sets[1]):
+            response=await http(url)
+            soup=document(response['text'])
+            video=soup.select_one('video, meta[property="og:video"], meta[property="og:video:url"], meta[property="og:video:secure_url"]')
+            structured=any(re.search(r'"@type"\s*:\s*(?:\[\s*)?"VideoObject"',script.get_text()) for script in soup.select('script[type="application/ld+json"]'))
+            if video is None and not structured:
+                raise ValueError('Pages vidéo non confirmées par leurs métadonnées : ajoutez des exemples ou précisez le candidat.')
     return {'search':'verified', 'pagination':pagination, 'checks':evidence,
             'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
             'engine':engine_version(), 'date':time.time()}
@@ -516,6 +571,10 @@ def commit_candidate(identifier, candidate, evidence):
         db.execute('BEGIN IMMEDIATE')
         for row in db.execute('SELECT id,connector FROM sources WHERE owner=?', (owner(),)):
             config = json.loads(row['connector']) if row['connector'] else default_connector(row['id'])
+            try:
+                config=Connector.model_validate(config).model_dump()
+            except ValueError:
+                continue
             if signature(config)==signature(candidate):
                 source_id=row['id']
                 break
@@ -604,6 +663,24 @@ async def discover(identifier, config):
     parser = Page(target)
     parser.feed(page['text'])
     endpoints.extend(parser.forms[:3])
+    candidates=[]
+    from app.html_search import infer, template_from_example
+    if job.get('search_example_url'):
+        endpoint=template_from_example(job['search_example_url'],job['search_example_query'])
+        if urlsplit(endpoint).hostname==host:
+            endpoints.insert(0,endpoint)
+        else:
+            step(identifier,'Exemple de recherche externe : indice conservé, domaine non autorisé automatiquement.')
+    for example in job.get('video_examples',[]):
+        if urlsplit(example).hostname!=host:
+            step(identifier,'Exemple vidéo externe conservé comme indice uniquement.')
+            continue
+        try:
+            sample=await public_fetch(example)
+            example_page=Page(example);example_page.feed(sample['text'])
+            material.append({'video_example':example,'text':safe_text(' '.join(example_page.text),1000)})
+        except (DiscoveryError,ValueError):
+            step(identifier,'Une page vidéo d’exemple est inaccessible.')
     material.append({'url':target, 'text':safe_text(' '.join(parser.text)), 'links':parser.links[:15]})
     for link in parser.links:
         if len(material)>=5:
@@ -624,25 +701,28 @@ async def discover(identifier, config):
                 material.append({'url':result['url'],'text':safe_text(response['text'],4000)})
         except (DiscoveryError, ValueError):
             step(identifier, 'Recherche documentaire indisponible ; poursuite avec le site.')
-    if config.browser.url:
-        step(identifier, 'Observation des requêtes publiques dans le navigateur.')
-        try:
-            observation=json.loads((await http(config.browser.url.rstrip('/')+'/observe', trusted=True,
-                method='POST', body={'url':target,'query':job['queries'][0]},headers=service_headers('browser'),timeout=95))['text'])
-            sample_count=len(observation.get('samples',[])[:4])
-            step(identifier,f"Navigateur connecté : {sample_count} réponse(s) JSON de recherche exploitable(s).")
-            if not sample_count:
-                step(identifier,'Aucune API JSON de recherche détectée : un moteur HTML ou un connecteur spécifique peut être nécessaire.')
-            for item in observation.get('samples',[])[:4]:
-                endpoint=item.get('search_url','')
-                if '{query}' in endpoint:
-                    endpoints.append(endpoint)
-                    material.append({'url':endpoint,'sample':item.get('data')})
-        except DiscoveryError as exc:
-            step(identifier,'Navigateur indisponible : '+exc.message+' Vérifiez la passerelle AnyTube et son jeton (Browserless direct incompatible).')
-        except Exception:
-            step(identifier,'Observation navigateur interrompue ou réponse non conforme au protocole AnyTube.')
-    if config.ai.kind!='none':
+    visited_endpoints=set()
+    async def infer_endpoints():
+        for endpoint in list(dict.fromkeys(e for e in endpoints if isinstance(e,str)))[:6]:
+            if len(candidates)>=3:
+                break
+            if endpoint in visited_endpoints:
+                continue
+            visited_endpoints.add(endpoint)
+            try:
+                response=await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3))
+                material.append({'url':endpoint,'html_or_json':safe_text(response['text'],5000)})
+                try:
+                    sample=json.loads(response['text'])
+                    inferred=scaffold(sample,'',endpoint,base_url=target)
+                    inferred['pagination']['mode']='single'
+                    candidates.append(inferred)
+                except ValueError:
+                    candidates.extend(infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)])
+            except (ValueError, KeyError, DiscoveryError):
+                continue
+    await infer_endpoints()
+    if not candidates and config.ai.kind!='none':
         step(identifier,'Proposition structurée du fournisseur IA sélectionné.')
         try:
             proposal=await ai_proposal(config,material)
@@ -653,43 +733,87 @@ async def discover(identifier, config):
                 step(identifier,f"IA : {len(proposal.get('endpoints',[]))} endpoint(s) proposé(s), "+('un candidat.' if proposal.get('connector') else 'aucun candidat.'))
         except Exception:
             step(identifier,'Proposition IA invalide ou indisponible ; aucun basculement de fournisseur.')
-    for endpoint in list(dict.fromkeys(e for e in endpoints if isinstance(e,str)))[:6]:
-        try:
-            response=await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3))
-            sample=json.loads(response['text'])
-            inferred=scaffold(sample,'',endpoint,base_url=target)
-            inferred['pagination']['mode']='single'
-            candidates.append(inferred)
-        except (ValueError, KeyError, DiscoveryError):
-            continue
+    await infer_endpoints()
     seen=set()
-    for raw in candidates[:10]:
-        try:
-            candidate=validate_candidate(raw)
-        except ValueError:
-            continue
-        if signature(candidate) in seen:
-            continue
-        seen.add(signature(candidate))
-        for attempt in range(3):
-            step(identifier, 'Contrôle de deux recherches, du témoin et de la pagination.')
+    corrections=0
+    async def check_candidates():
+        nonlocal corrections
+        for raw in sorted(candidates,key=lambda c: (c.get('html') or {}).get('rendering')=='chromium'):
             try:
-                evidence=await verify(candidate,job['queries'])
-                evidence['discovery_requests']=requests
-                return commit_candidate(identifier,candidate,evidence)
-            except Exception as exc:
-                error = str(exc) if isinstance(exc,ValueError) else 'Contrôle réseau non concluant.'
-                update(identifier,candidate=candidate,message=safe_text(error,300))
-                if attempt==2 or config.ai.kind=='none':
-                    break
-                step(identifier, 'Correction déclarative du candidat ('+str(attempt+1)+'/2).')
+                candidate=validate_candidate(raw)
+                if candidate['kind']=='html' and urlsplit(candidate['search_url']).hostname!=host:
+                    raise ValueError('Candidat HTML sur un domaine externe refusé.')
+            except ValueError:
+                continue
+            if signature(candidate) in seen:
+                continue
+            if len(seen)>=3:
+                return False
+            seen.add(signature(candidate))
+            for attempt in range(3):
+                step(identifier, 'Contrôle de deux recherches, du témoin et de la pagination.')
                 try:
-                    proposal=await ai_proposal(config,{'candidate':candidate,'error':safe_text(error,300),'material':material[:2]})
-                    candidate=validate_candidate(proposal['connector'])
-                except Exception:
-                    break
+                    evidence=await verify(candidate,job['queries'])
+                    evidence['discovery_requests']=requests
+                    commit_candidate(identifier,candidate,evidence)
+                    return True
+                except Exception as exc:
+                    error = str(exc) if isinstance(exc,ValueError) else 'Contrôle réseau non concluant.'
+                    update(identifier,candidate=candidate,message=safe_text(error,300),last_error=safe_text(error,300))
+                    step(identifier,safe_text(error,300))
+                    if corrections>=2 or config.ai.kind=='none':
+                        break
+                    corrections+=1
+                    step(identifier, 'Correction déclarative du candidat ('+str(corrections)+'/2).')
+                    try:
+                        proposal=await ai_proposal(config,{'candidate':candidate,'error':safe_text(error,300),'material':material[:2]})
+                        candidate=validate_candidate(proposal['connector'])
+                        if candidate['kind']=='html' and urlsplit(candidate['search_url']).hostname!=host:
+                            raise ValueError('Domaine externe refusé pour la correction HTML.')
+                    except Exception:
+                        break
+        return False
+    if await check_candidates():
+        return
+    if len(seen)<3 and config.browser.url:
+        step(identifier, 'Observation des requêtes publiques dans le navigateur.')
+        try:
+            observation=json.loads((await http(config.browser.url.rstrip('/')+'/observe', trusted=True,
+                method='POST', body={'url':endpoints[0].format(query=quote(job['queries'][0]),limit=3) if endpoints else target,'query':job['queries'][0],'submit_search':not bool(endpoints)},headers=service_headers('browser'),timeout=95))['text'])
+            sample_count=len(observation.get('samples',[])[:4])
+            if metrics.get() is not None:
+                metrics.get()['browser_requests']=metrics.get().get('browser_requests',0)+observation.get('requests',0)
+            step(identifier,f"Navigateur connecté : {sample_count} réponse(s) JSON de recherche exploitable(s).")
+            if not sample_count:
+                step(identifier,'Aucune API JSON détectée ; analyse des résultats HTML rendus.')
+            for item in observation.get('samples',[])[:4]:
+                endpoint=item.get('search_url','')
+                if '{query}' in endpoint:
+                    endpoints.append(endpoint)
+                    material.append({'url':endpoint,'sample':item.get('data')})
+                    try:
+                        data=json.loads((await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3)))['text'])
+                        c=scaffold(data,'',endpoint,base_url=target)
+                        c['pagination']['mode']='single'
+                        candidates.append(c)
+                    except ValueError:
+                        pass
+            rendered_url=observation.get('url',target)
+            try:
+                rendered_template=template_from_example(rendered_url,job['queries'][0])
+                candidates.extend(infer(observation.get('html',''),rendered_url,rendered_template,job.get('video_examples',[]),'chromium'))
+            except ValueError:
+                step(identifier,'Aucune URL GET de recherche reproductible reconnue dans le navigateur.')
+        except DiscoveryError as exc:
+            step(identifier,'Navigateur indisponible : '+exc.message+' Vérifiez la passerelle AnyTube et son jeton (Browserless direct incompatible).')
+        except Exception:
+            step(identifier,'Observation navigateur interrompue ou réponse non conforme au protocole AnyTube.')
+    if job.get('previous_candidate'):
+        candidates.append(job['previous_candidate'])
+    if await check_candidates():
+        return
     has_candidate=bool(load(identifier).get('candidate'))
-    message = 'Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.' if candidates else 'Aucune recherche compatible trouvée. Le générateur actuel prend en charge les modèles existants et les API JSON publiques ; une recherche HTML ou une API spécifique peut nécessiter un connecteur dédié.'
+    message = 'Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.' if candidates else 'Aucune recherche compatible trouvée. Aucun modèle, JSON ou sélecteur HTML fiable n’a été identifié ; ajoutez deux liens vidéo et une URL de recherche avec son terme. Les formulaires POST et interactions spécifiques nécessitent un connecteur dédié.'
     return update(identifier,'needs_input' if has_candidate else 'unresolved',message=message)
 
 

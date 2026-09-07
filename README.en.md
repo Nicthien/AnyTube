@@ -4,7 +4,21 @@
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.4.1-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.5.0-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+
+Source discovery now accepts up to five video examples and a search URL with its
+query. It can infer declarative HTML searches using HTTP or isolated Chromium,
+then resume a previous attempt with additional examples. Supported public GET
+searches must pass distinct-query, negative-control, pagination and video-page
+checks before automatic addition. Playback is not implicitly verified.
+
+HTML connectors support simple CSS selectors, relative links and textual durations.
+They are limited to 100 results and ten pages. POST forms, infinite scrolling,
+authentication and CAPTCHA are outside automatic HTML discovery. Sources marked
+“Navigateur requis” need the configured AnyTube observer during ordinary searches
+too; keep its internal URL (`http://source-browser:8010`), not Browserless directly.
+Service credentials remain server-side. Retry history is private and retained for
+30 days; previous evidence is never reused without fresh checks.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Support on Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/nthstudio)

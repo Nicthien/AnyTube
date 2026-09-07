@@ -18,6 +18,7 @@ const general = node('div', 'connector-grid');
 field(general, 'name', 'Nom de la source', 'Ma plateforme').required = true;
 const kind = field(general, 'kind', 'Type de recherche', '', 'select');
 option(kind, 'json', 'API JSON'); option(kind, 'ytdlp', 'Recherche intégrée à yt-dlp'); option(kind, 'url', 'URL vidéo uniquement');
+option(kind, 'html', 'Recherche HTML publique');
 editorFields.append(general);
 const credentialSelect = field(editorFields, 'credential_id', 'Accès privé à utiliser', '', 'select');
 const mediaCredentialSelect = field(editorFields, 'media_credential_id', 'Cookies pour la lecture (facultatif)', '', 'select');
@@ -29,6 +30,12 @@ const ytFields = node('div'); const prefix = field(ytFields, 'prefix', 'Préfixe
 ytFields.append(node('p', 'hint', 'yt-dlp gère les appels au site et ses métadonnées dans son propre code. Pour définir toi-même une URL et ses champs, choisis API JSON.'));
 editorFields.append(ytFields);
 const jsonFields = node('div');
+const htmlFields=node('div');
+const htmlSpec=field(htmlFields,'html_spec','Sélecteurs HTML (configuration déclarative)','','textarea');htmlSpec.rows=8;
+const htmlPage=field(htmlFields,'html_page','Pagination HTML','','select');option(htmlPage,'single','Première page uniquement');option(htmlPage,'page','Page suivante');
+const htmlParameter=field(htmlFields,'html_parameter','Paramètre de page (sans sélecteur suivant)','page');
+htmlFields.append(node('p','hint','rendering : http ou chromium. Aucun code JavaScript ni pseudo-classe CSS.'));
+editorFields.append(htmlFields);
 const searchUrlFields = node('div');
 field(searchUrlFields, 'search_url', 'URL de recherche (facultative avec yt-dlp)', 'https://exemple.org/api/videos?q={query}&limit={limit}');
 searchUrlFields.append(node('p', 'hint', 'Avec yt-dlp, une URL de recherche reconnue par son extracteur remplace le préfixe. Les vignettes et métadonnées sont extraites automatiquement.'));
@@ -75,9 +82,14 @@ const manual = button('Créer manuellement', 'secondary', () => openSourceEditor
 const manualCatalog = button('Créer une source manuellement', 'secondary full', () => { $('catalog-dialog').close(); openSourceEditor(); }); $('catalog-query').before(manualCatalog);
 
 function connectorDraft() {
+  if(kind.value==='html')return {...editorBaseConfig,kind:'html',html:JSON.parse(htmlSpec.value||'{}'),
+    extractor:extractor.value.trim(),search_url:inputs.search_url.value.trim(),home_query:inputs.home_query.value.trim(),
+    credential_id:'',media_credential_id:'',method:'GET',body:{},home_url:'',home_trending_url:'',home_views_url:'',home_recent_url:'',
+    result_base_url:'',video_url:'',video_url_false:'',video_url_boolean_path:'',item_url:'',
+    pagination:{mode:htmlPage.value,parameter:htmlParameter.value.trim()||'page'}};
   const mapping = {}; for (const key of Object.keys(mappingLabels)) mapping[key] = inputs[`map-${key}`].value.trim();
   let body = {}; if(kind.value === 'json' && methodSelect.value === 'POST') body = JSON.parse(bodyInput.value || '{}');
-  return {...editorBaseConfig, kind:kind.value, extractor:extractor.value.trim(), prefix:prefix.value || 'ytsearch', credential_id:credentialSelect.value, media_credential_id:mediaCredentialSelect.value,
+  return {...editorBaseConfig, html:null, kind:kind.value, extractor:extractor.value.trim(), prefix:prefix.value || 'ytsearch', credential_id:credentialSelect.value, media_credential_id:mediaCredentialSelect.value,
     method:kind.value === 'json' ? methodSelect.value : 'GET', body,
     pagination:kind.value === 'json' ? {...editorBaseConfig.pagination,mode:pageSelect.value,parameter:inputs.pagination_parameter.value.trim() || 'page',has_more_path:inputs.pagination_more.value.trim()} : {mode:'prefix'},
     results_total_path:inputs.results_total_path.value.trim(), result_base_url:inputs.result_base_url.value.trim(), duration_unit:durationUnit.value || 'seconds',
@@ -85,8 +97,9 @@ function connectorDraft() {
     ...Object.fromEntries(['trending','views','recent'].map(key => [`home_${key}_url`, kind.value !== 'url' ? inputs[`home_${key}_url`].value.trim() : ''])), mapping};
 }
 function editorChanged() {
+  htmlFields.hidden=kind.value!=='html';
   ytFields.hidden = kind.value !== 'ytdlp'; jsonFields.hidden = kind.value !== 'json'; testRow.hidden = kind.value === 'url';
-  homeFields.hidden = kind.value === 'url'; searchUrlFields.hidden = kind.value === 'url';
+  homeFields.hidden = ['url','html'].includes(kind.value); searchUrlFields.hidden = kind.value === 'url';
   try { rawConfig.textContent = JSON.stringify(connectorDraft(), null, 2); editorError.textContent = ''; }
   catch { rawConfig.textContent = 'Le corps JSON est incomplet ou invalide.'; }
   bodyInput.parentElement.hidden = methodSelect.value !== 'POST';
@@ -142,6 +155,8 @@ async function openSourceEditor(source = null, preset = null) {
     mediaCredentialSelect.value=config.media_credential_id||'';
     methodSelect.value = config.method || 'GET'; bodyInput.value = JSON.stringify(config.body || {},null,2);
     pageSelect.value = config.pagination?.mode || 'prefix'; inputs.pagination_parameter.value = config.pagination?.parameter || 'page'; inputs.pagination_more.value = config.pagination?.has_more_path || '';
+    htmlSpec.value=JSON.stringify(config.html||{rendering:'http',items:'article',title:{selector:'a'},link:{selector:'a',attribute:'href'}},null,2);
+    htmlPage.value=config.pagination?.mode==='page'?'page':'single';htmlParameter.value=config.pagination?.parameter||'page';
     inputs.name.value = source?.name || ''; kind.value = config.kind; extractor.value = config.extractor; prefix.value = config.prefix;
     for (const key of ['search_url','results_path','results_total_path','result_base_url','video_url','thumbnail_url']) inputs[key].value = config[key] || '';
     durationUnit.value = config.duration_unit || 'seconds';

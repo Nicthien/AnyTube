@@ -53,7 +53,7 @@ def capabilities(config):
     legacy=['views','recent','trending'] if dm else ['views'] if yt else []
     return {'search':kind!='url','pagination':kind!='url' and config.get('pagination',{}).get('mode')!='single',
             'pagination_mode': 'native' if native_pagination(config) else 'prefix',
-            'max_results':(config.get('pagination',{}).get('maximum_results') or None) if native_pagination(config) else MAX_RESULTS,
+            'max_results':100 if kind=='html' else (config.get('pagination',{}).get('maximum_results') or None) if native_pagination(config) else MAX_RESULTS,
             'search_rankings':['default']+[r for r in ('views','recent','trending') if r in legacy or config.get(f'search_{r}_url')],
             'duration':dm,'date':dm,
             'home_rankings':['default']+[r for r in ('trending','views','recent') if config.get(f'home_{r}_url') or dm or (yt and r=='views')],

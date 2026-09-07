@@ -12,6 +12,7 @@ from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_ope
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from yt_dlp.utils import clean_html
 from app.catalog import SEARCH, URL_SEARCH, search_prefixes
+from app.html_search import HtmlSpec
 
 PREFIXES = sorted(({value[1] for value in SEARCH.values()} | set(search_prefixes().values())) - {'dailymotion'})
 
@@ -95,7 +96,8 @@ class Pagination(BaseModel):
 
 class Connector(BaseModel):
     model_config = ConfigDict(extra='forbid')
-    kind: Literal['url', 'ytdlp', 'json'] = 'url'
+    kind: Literal['url', 'ytdlp', 'json', 'html'] = 'url'
+    html: HtmlSpec | None = None
     query_escape: Literal['none', 'plain'] = 'none'
     credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
     media_credential_id: str = Field(default='', max_length=64, pattern=r'^[a-zA-Z0-9-]*$')
@@ -128,6 +130,15 @@ class Connector(BaseModel):
 
     @model_validator(mode='after')
     def check(self):
+        if self.kind == 'html':
+            if self.html is None or self.method != 'GET' or self.body or self.credential_id or self.media_credential_id:
+                raise ValueError('Recherche HTML publique GET sans identifiants requise.')
+            if self.pagination.mode not in ('page','single'):
+                raise ValueError('Pagination HTML : page ou single.')
+            if 'query' not in template(self.search_url, {'query','limit'}):
+                raise ValueError('URL de recherche HTML avec {query} requise.')
+        elif self.html is not None:
+            raise ValueError('Les sélecteurs HTML nécessitent le type html.')
         if self.video_url_boolean_path or self.video_url_false:
             if self.kind != 'json' or not self.video_url or not self.video_url_false:
                 raise ValueError('Deux modèles JSON sont requis pour les URL conditionnelles.')
@@ -141,7 +152,7 @@ class Connector(BaseModel):
         for key, value in self.thumbnail_substitutions.items():
             if not key or len(key) > 100 or len(value) > 200:
                 raise ValueError('Substitution de vignette invalide.')
-        if self.kind != 'json' and (self.method != 'GET' or self.body or self.pagination.mode != 'prefix'):
+        if self.kind not in ('json','html') and (self.method != 'GET' or self.body or self.pagination.mode != 'prefix'):
             raise ValueError('POST et pagination native nécessitent un connecteur JSON.')
         if self.method == 'GET' and self.body:
             raise ValueError('Un corps JSON nécessite la méthode POST.')

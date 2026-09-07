@@ -4,7 +4,13 @@
 
 Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher des vidéos, les lire et conserver ses médias dans une bibliothèque privée.
 
-**Statut : version de développement · 0.4.1-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+**Statut : version de développement · 0.5.0-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+
+L’assistant accepte désormais des exemples de vidéos et de recherche, peut créer
+des connecteurs HTML (HTTP ou Chromium) et reprendre une découverte avec des
+indices supplémentaires. Les recherches GET prises en charge sont testées avant
+ajout ; les sites spécifiques, protégés ou non résolus restent signalés comme tels.
+Voir [les capacités et la configuration](docs/SOURCE-ASSISTANT.md).
 
 [![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)](LICENSE)
 [![Soutenir sur Ko-fi](https://img.shields.io/badge/Soutenir-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/nthstudio)

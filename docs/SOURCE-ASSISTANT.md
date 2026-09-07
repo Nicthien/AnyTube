@@ -1,5 +1,54 @@
 # Assistant de découverte des sources
 
+## Recherche HTML et exemples (0.5.0-preview)
+
+« Aider la détection » accepte jusqu’à cinq URL de vidéos et une URL de recherche
+avec son terme. Deux exemples du même site aident à distinguer les pages vidéo.
+Les exemples externes restent des indices et n’autorisent pas un autre domaine.
+Les deux recherches de contrôle sont indépendantes de ces exemples.
+
+Le nouveau connecteur `html` décrit des sélecteurs CSS simples et le chargement
+`http` ou `chromium`. Le backend extrait titres, liens, vignettes et durées sans
+exécuter de code généré. Les liens relatifs et durées textuelles sont normalisés.
+Les pseudo-classes CSS et scripts personnalisés sont refusés. La pagination utilise
+un lien suivant ou un numéro de page ; sans pagination validée, seule la première
+page est annoncée. Une recherche HTML est plafonnée à 100 résultats et dix pages.
+
+Les recherches HTML doivent être reproductibles par une URL GET. Les formulaires
+POST, CAPTCHA, connexions, défilement infini et interactions spécifiques ne sont
+pas automatiquement transformés en connecteurs. Une source « Navigateur requis »
+utilise la passerelle à chaque recherche : sa disponibilité est nécessaire aussi
+après la découverte. Browserless direct reste incompatible avec le champ de
+configuration ; conserver la passerelle AnyTube `http://source-browser:8010`.
+
+Avant ajout, deux recherches, un témoin improbable et la pagination sont contrôlés.
+Pour le HTML, toutes les URL vidéo des deux échantillons doivent également exposer
+une balise vidéo ou des métadonnées Open Graph/VideoObject. Une absence de preuve
+conserve un brouillon ; la lecture, les collections et l’extraction restent non
+vérifiées. Trois nouveaux candidats au maximum, deux corrections au total.
+
+« Ajouter des exemples et reprendre » crée une tentative liée à la précédente.
+Les pages et preuves sont rechargées, aucune preuve périmée ne déclenche un ajout.
+La reprise conserve propriétaire, réglages, exemples et comparaison de source.
+Les anciennes tâches restent lisibles et expirent après trente jours.
+
+API : les champs facultatifs `video_examples`, `search_example_url` et
+`search_example_query` complètent `POST /api/source-assistant/jobs`.
+`POST /api/source-assistant/jobs/{id}/resume` accepte ces trois champs et `minutes`.
+Une liste fournie remplace les exemples antérieurs ; l’interface les préremplit.
+Les tâches actives et les choix de domaine ne peuvent pas être repris.
+
+Les documents HTML et réponses réseau sont bornés à 2 Mo, les documents analysés
+à 20 000 éléments, les sélecteurs à 200 caractères. Le navigateur ne conserve pas
+de profil ; ses requêtes passent toujours par le contrôle réseau public. Les
+secrets des services restent dans le backend et ne sont pas remis aux extracteurs.
+
+Recette reproductible du navigateur : `scripts/check-html-browser.py`, dans
+l’image d’observation avec les tests montés et les dépendances de test installées.
+Le script utilise un site simulé dans une vraie session Chromium isolée et une
+base temporaire, puis vérifie découverte, ajout et recherche via l’API normale.
+Il ne modifie aucune source de production.
+
 ## Utilisation
 
 Dans **Mes sources → Découvrir une source**, indiquer une URL publique ou un nom.
@@ -42,7 +91,7 @@ Les services sont partagés, tandis que les tâches, sources et propositions son
   `response_format: {"type":"json_object"}`.
 - Le fournisseur sélectionné est le seul utilisé. Aucun basculement payant,
   téléchargement de modèle ou plafond financier n'est géré par AnyTube.
-- Le mode Sans IA conserve reconnaissance, formulaires HTTP et inférence JSON.
+- Le mode Sans IA conserve reconnaissance, formulaires HTTP et inférence JSON/HTML.
 
 Les secrets réutilisent AES-GCM et la clé externe `ANYTUBE_VAULT_KEY_FILE` du coffre.
 Le namespace des services est réservé et ne correspond à aucun compte utilisateur.
@@ -78,7 +127,7 @@ Toutes les requêtes HTTP du navigateur sont interceptées puis servies par des
 workers avec contrôle DNS public. Son accès direct utilise un proxy local fermé,
 les WebSockets sont fermés, les service workers bloqués, aucun cookie importé.
 Les sessions sont détruites après l'observation et les échantillons ne sont pas
-conservés. Observation plafonnée à 55 secondes et 80 requêtes, réponses à 2 Mo.
+conservés. Observation plafonnée à 85 secondes et 80 requêtes, réponses à 2 Mo.
 
 Référence technique : [interception Playwright](https://playwright.dev/python/docs/api/class-browsercontext#browser-context-route).
 
@@ -88,8 +137,8 @@ Référence technique : [interception Playwright](https://playwright.dev/python/
 2. Reconnaissance d'une instance PeerTube via son endpoint public de configuration.
 3. Lecture HTML, formulaires de recherche GET, liens API/documentation/scripts,
    recherche documentaire via le moteur choisi.
-4. Observation optionnelle d'un champ de recherche et de ses réponses JSON GET.
-5. Inférence d'un connecteur JSON et propositions IA strictement déclaratives.
+4. Observation optionnelle d’un champ de recherche, de ses réponses JSON GET et du HTML rendu.
+5. Inférence de connecteurs JSON/HTML et propositions IA strictement déclaratives.
 6. Deux recherches distinctes, témoin aléatoire, contrôle des titres/URL et pagination.
 
 Un connecteur inféré sans preuve de pagination reçoit le mode **Première page
@@ -100,7 +149,7 @@ L'IA n'a aucun outil de terminal, édition du dépôt ou exécution de code.
 
 Limites : formulaires complexes, POST JavaScript, réponses nécessitant des cookies,
 CAPTCHA, DRM et connecteurs non exprimables dans le schéma existant ne sont pas
-automatiquement résolus. Deux corrections IA au maximum par candidat ; au plus dix
+automatiquement résolus. Deux corrections IA au total ; au plus trois nouveaux
 candidats, six endpoints inférés et trente lectures HTTP de découverte. Les tailles,
 la durée globale et les limites des workers s'appliquent aussi.
 
@@ -180,6 +229,6 @@ compatible sur ce site n'est pas validée. Un champ de localisation de salles es
 exclu de la sélection automatique de recherche générale.
 
 Une observation connectée sans API JSON exploitable ne rend pas le site compatible.
-Le générateur ne transforme pas encore une recherche HTML arbitraire en connecteur.
+Depuis 0.5.0, le HTML reproductible par URL GET est pris en charge sous les contrôles décrits plus haut ; la couverture reste partielle.
 Les bilans distinguent désormais connexion navigateur, absence de JSON, absence de
 candidat IA et contrôles de recherche échoués.

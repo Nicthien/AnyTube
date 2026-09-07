@@ -22,4 +22,4 @@ class JsonAdapter:
 
 
 def native_pagination(config):
-    return config.get('kind') == 'json' and config.get('pagination', {}).get('mode', 'prefix') != 'prefix'
+    return config.get('kind') in ('json','html') and config.get('pagination', {}).get('mode', 'prefix') != 'prefix'

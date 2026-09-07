@@ -84,6 +84,7 @@ function renderSources() {
   for (const source of state.sources) {
     const row = node('div', 'source-row'); const details = node('div', 'source-detail');
     details.append(node('h3', '', source.name), node('p', '', source.search ? (source.connector.extractor ? 'Recherche de vidéos + ouverture par URL' : 'Recherche · aucun extracteur de lecture associé') : 'URL uniquement · pas de recherche intégrée'));
+    if(source.connector.html?.rendering==='chromium')details.append(node('p','hint','Navigateur requis'));
     const check=source.verifications?.filter(entry=>entry.feature==='search').at(-1);
     const labels={verified:'Recherche vérifiée',empty:'Résultat vide',temporarily_unavailable:'Temporairement indisponible',authentication_required:'Authentification requise',not_exposed:'Fonctionnalité non exposée',to_develop:'À développer'};
     details.append(node('p','hint',check?`${labels[check.status]||check.status} · ${new Date(check.date).toLocaleString('fr')} · yt-dlp ${check.yt_dlp}`:'Aucune vérification actuelle pour cette configuration.'));

@@ -69,7 +69,7 @@ async def lifespan(app):
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-app = FastAPI(title='AnyTube', version='0.4.1-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
+app = FastAPI(title='AnyTube', version='0.5.0-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
 app.include_router(account_routes)
 app.include_router(library_routes)
 app.include_router(vault_routes)
@@ -294,7 +294,7 @@ def delete_source(source_id: str):
 def worker_platform(config):
     """Extractor aliases share a provider budget; independent JSON hosts do not."""
     from urllib.parse import urlsplit
-    if config.get('kind') == 'json':
+    if config.get('kind') in ('json','html'):
         return urlsplit(config.get('search_url', '')).hostname or 'unknown'
     from app.registry import identities
     extractor = config.get('extractor', '')
@@ -321,6 +321,13 @@ async def run_worker(payload, timeout=55):
 
 async def _run_worker(payload, timeout=55):
     config = payload.get('connector') or {}
+    if payload.get('mode') == 'search' and config.get('kind') == 'html':
+        from app.html_search import search
+        try:
+            async with workers, asyncio.timeout(timeout):
+                return await search(payload)
+        except TimeoutError:
+            raise SourceFailure('timeout')
     identifier = config.get('credential_id')
     if payload.get('mode') != 'search':
         identifier = config.get('media_credential_id') or identifier
