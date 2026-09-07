@@ -4,12 +4,17 @@
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.3.1-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.4.0-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Support on Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/nthstudio)
 
 This project is developed in my spare time. If you would like to support it, you can buy me a [Ko-fi](https://ko-fi.com/nthstudio). Thank you!
+
+**Source discovery assistant:** integrated discovery, PeerTube reuse, JSON inference,
+configurable SearXNG/JSON search and optional Ollama/OpenAI-compatible AI. Sources are
+added after search checks; playback is not certified. See the [configuration guide](docs/SOURCE-ASSISTANT.md)
+(French). The optional Chromium service still requires Docker validation.
 
 ## Features
 

@@ -1,0 +1,146 @@
+{
+  "environment": "local Windows, isolated test database",
+  "ui_reopen_verified": true,
+  "ui_cancel_verified": true,
+  "search_from_added_source_verified": true,
+  "mobile_width": 390,
+  "themes_checked": [
+    "dark",
+    "light"
+  ],
+  "duplicate_sources": 1,
+  "runs": [
+    {
+      "scenario": "PeerTube framatube.org from browser UI",
+      "status": "added",
+      "elapsed_seconds": 5.96,
+      "evidence": {
+        "search": "verified",
+        "pagination": "verified",
+        "checks": [
+          {
+            "query": "science",
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/54f9f8fc-2864-4b73-9560-c13b20420458",
+              "https://framatube.org/videos/watch/8f2ff4b5-d640-4cbd-ad4b-839f543257cd",
+              "https://framatube.org/videos/watch/b758ff53-c69c-4d01-a09b-4c360fc036f8"
+            ]
+          },
+          {
+            "query": "music",
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/2c13bc09-68ef-4516-9fab-6e649ae5e2cb",
+              "https://share.tube/videos/watch/24059c59-5c02-4988-a666-836b8d54c27c",
+              "https://tube.rebellion.global/videos/watch/dfb0a182-56ee-4ca3-b917-76284f63d9be"
+            ]
+          },
+          {
+            "query": "anytube-no-result-ef0b26c803a94744bf45d6f6893b1e48",
+            "count": 0,
+            "urls": []
+          },
+          {
+            "query": "science",
+            "offset": 3,
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/66204e95-ad05-4ce9-bd57-86023faa9bdc",
+              "https://skeptikon.fr/videos/watch/c02484a7-f73e-482e-8f42-70c5aea8f7c0",
+              "https://video.lqdn.fr/videos/watch/6baf47c5-2268-4f6a-95da-7bd29626c668"
+            ]
+          }
+        ],
+        "unverified": [
+          "extraction",
+          "collections",
+          "browser_playback",
+          "audio",
+          "live",
+          "subtitles",
+          "download"
+        ],
+        "engine": "9fb9f365ef32e451",
+        "date": 1788810720.852423,
+        "discovery_requests": 0
+      },
+      "metrics": null,
+      "manual_connector_edits": 0
+    },
+    {
+      "scenario": "PeerTube framatube.org from browser UI",
+      "status": "cancelled",
+      "elapsed_seconds": 0.598,
+      "evidence": null,
+      "metrics": {
+        "http_requests": 0,
+        "search_checks": 1,
+        "ai_calls": 0
+      },
+      "manual_connector_edits": 0
+    },
+    {
+      "scenario": "PeerTube framatube.org from browser UI",
+      "status": "added",
+      "elapsed_seconds": 7.392,
+      "evidence": {
+        "search": "verified",
+        "pagination": "verified",
+        "checks": [
+          {
+            "query": "science",
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/54f9f8fc-2864-4b73-9560-c13b20420458",
+              "https://framatube.org/videos/watch/8f2ff4b5-d640-4cbd-ad4b-839f543257cd",
+              "https://framatube.org/videos/watch/b758ff53-c69c-4d01-a09b-4c360fc036f8"
+            ]
+          },
+          {
+            "query": "music",
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/2c13bc09-68ef-4516-9fab-6e649ae5e2cb",
+              "https://share.tube/videos/watch/24059c59-5c02-4988-a666-836b8d54c27c",
+              "https://tube.rebellion.global/videos/watch/dfb0a182-56ee-4ca3-b917-76284f63d9be"
+            ]
+          },
+          {
+            "query": "anytube-no-result-47ceb35a395740eeae1ae868b55d1290",
+            "count": 0,
+            "urls": []
+          },
+          {
+            "query": "science",
+            "offset": 3,
+            "count": 3,
+            "urls": [
+              "https://framatube.org/videos/watch/66204e95-ad05-4ce9-bd57-86023faa9bdc",
+              "https://skeptikon.fr/videos/watch/c02484a7-f73e-482e-8f42-70c5aea8f7c0",
+              "https://video.lqdn.fr/videos/watch/6baf47c5-2268-4f6a-95da-7bd29626c668"
+            ]
+          }
+        ],
+        "unverified": [
+          "extraction",
+          "collections",
+          "browser_playback",
+          "audio",
+          "live",
+          "subtitles",
+          "download"
+        ],
+        "engine": "91c35b4bb077b59d",
+        "date": 1788811177.0632927,
+        "discovery_requests": 0
+      },
+      "metrics": {
+        "http_requests": 0,
+        "search_checks": 4,
+        "ai_calls": 0
+      },
+      "manual_connector_edits": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+services:
+  source-browser:
+    build:
+      context: .
+      dockerfile: Dockerfile.browser
+    profiles: [discovery]
+    init: true
+    restart: unless-stopped
+    environment:
+      ANYTUBE_BROWSER_TOKEN: ${ANYTUBE_BROWSER_TOKEN:?Set a private browser service token}
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    shm_size: 256m
+    mem_limit: 2g
+    pids_limit: 256
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true

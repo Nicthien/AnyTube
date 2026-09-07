@@ -4,7 +4,7 @@
 
 Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher des vidéos, les lire et conserver ses médias dans une bibliothèque privée.
 
-**Statut : version de développement · 0.3.1-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+**Statut : version de développement · 0.4.0-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
 
 [![Licence MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)](LICENSE)
 [![Soutenir sur Ko-fi](https://img.shields.io/badge/Soutenir-Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/nthstudio)
@@ -12,6 +12,8 @@ Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher 
 Ce projet est développé sur mon temps libre. Si vous souhaitez le soutenir, vous pouvez m'offrir un [Ko-fi](https://ko-fi.com/nthstudio). Merci !
 
 ## Fonctionnalités
+
+- **Découvrir une source** : assistant intégré, réutilisation PeerTube, inférence JSON, recherche SearXNG/adaptable et IA locale ou API compatible OpenAI facultatives. Ajout après contrôles de recherche, sans promesse de lecture. [Configuration et limites](docs/SOURCE-ASSISTANT.md). Le service Chromium optionnel reste à valider sur Docker.
 
 - **Explorer ses sources** : accueil par source, recherche fédérée, sélection multiple, classements et chargement supplémentaire selon les connecteurs. Les erreurs d'une source ne masquent pas les autres résultats.
 - **Configurer ses connecteurs** : catalogue yt-dlp, modèles de recherche, API JSON GET/POST, sources par URL, copie et test d'une configuration avant enregistrement.

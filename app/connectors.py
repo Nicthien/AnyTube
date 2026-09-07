@@ -68,7 +68,7 @@ class Mapping(BaseModel):
 
 class Pagination(BaseModel):
     model_config = ConfigDict(extra='forbid')
-    mode: Literal['prefix', 'page', 'offset'] = 'prefix'
+    mode: Literal['prefix', 'page', 'offset', 'single'] = 'prefix'
     parameter: str = Field(default='page', max_length=100, pattern=r'^\$?[A-Za-z_][A-Za-z0-9_]*(?:\[[A-Za-z_][A-Za-z0-9_]*\])?$')
     has_more_path: str = Field(default='', max_length=300)
     # Documented ceiling of the provider window; 0 means the provider states no limit.
@@ -381,6 +381,8 @@ class PublicRedirect(HTTPRedirectHandler):
 
 def search_json(config, query, limit, home=False, *, offset=None, credential=None, return_page=False):
     config = Connector.model_validate(config)
+    if config.pagination.mode == 'single' and offset:
+        return {'items': [], 'native_page': True, 'has_more': False} if return_page else []
     if config.pagination.fixed_page_size:
         size = config.pagination.fixed_page_size
         start = offset or 0
@@ -410,7 +412,7 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
     url = pattern.format(query=quote(query, safe=''), limit=limit)
     body = {key: value.format(query=query, limit=limit) if isinstance(value, str) else value for key, value in config.body.items()}
     native = offset is not None and config.pagination.mode != 'prefix'
-    if native:
+    if native and config.pagination.mode != 'single':
         value = offset // limit + config.pagination.first_page if config.pagination.mode == 'page' else offset
         if config.method == 'POST':
             body[config.pagination.parameter] = value
@@ -510,6 +512,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
             'uploader': values['channel'][:300] if isinstance(values['channel'], str) else '',
             'duration': values['duration'], 'view_count': values['views'], 'upload_date': values['published']})
     if return_page:
+        if config.pagination.mode == 'single':
+            return {'items': items, 'native_page': True, 'has_more': False}
         has_more = pointer(data, config.pagination.has_more_path) if config.pagination.has_more_path else len(entries) >= limit
         if total is not None and not config.pagination.has_more_path:
             has_more = (offset or 0) + len(entries) < total

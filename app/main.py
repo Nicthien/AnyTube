@@ -32,6 +32,7 @@ from app.failures import SourceFailure
 from app.adapters import native_pagination
 from app.discovery import router as discovery_routes, select_source
 from app.playback import router as playback_routes
+from app import source_assistant
 
 logger = logging.getLogger('anytube')
 workers = asyncio.Semaphore(4)
@@ -48,6 +49,7 @@ platform_cooldowns = {}
 async def lifespan(app):
     initialize()
     initialize_accounts(app)
+    source_assistant.initialize()
     home_cache.clear()
     platform_locks.clear()
     platform_cooldowns.clear()
@@ -59,6 +61,7 @@ async def lifespan(app):
     cleanup_cache()
     maintenance = asyncio.create_task(maintain_cache())
     yield
+    await source_assistant.shutdown()
     maintenance.cancel()
     await asyncio.gather(maintenance, return_exceptions=True)
     for task in list(tasks):
@@ -66,12 +69,13 @@ async def lifespan(app):
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-app = FastAPI(title='AnyTube', version='0.3.1-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
+app = FastAPI(title='AnyTube', version='0.4.0-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
 app.include_router(account_routes)
 app.include_router(library_routes)
 app.include_router(vault_routes)
 app.include_router(discovery_routes)
 app.include_router(playback_routes)
+app.include_router(source_assistant.router)
 
 
 @app.exception_handler(RequestValidationError)
@@ -329,6 +333,7 @@ async def _run_worker(payload, timeout=55):
         payload = {**payload, '_credential': reveal(identifier)}
     async with workers:
         process = await asyncio.create_subprocess_exec(sys.executable, '-m', 'app.worker',
+            env={k: v for k, v in os.environ.items() if not k.startswith('ANYTUBE_SERVICE_')},
             stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
             start_new_session=os.name != 'nt', cwd=Path(__file__).resolve().parent.parent)
         try:
@@ -561,6 +566,7 @@ async def maintain_cache():
     while True:
         await asyncio.sleep(60)
         cleanup_cache()
+        source_assistant.cleanup()
 
 
 @app.get('/api/admin/diagnostics')

@@ -37,6 +37,7 @@ jsonFields.append(node('p', 'hint', '{query} est remplacé par la recherche ; {l
 const methodSelect = field(jsonFields, 'method', 'Méthode HTTP', '', 'select'); option(methodSelect, 'GET', 'GET'); option(methodSelect, 'POST', 'POST avec corps JSON');
 const bodyInput = field(jsonFields, 'body', 'Corps JSON pour POST (champs simples)', '', 'textarea'); bodyInput.rows = 3; bodyInput.placeholder = '{"query":"{query}","limit":"{limit}"}';
 const pageSelect = field(jsonFields, 'pagination_mode', 'Pagination', '', 'select');
+option(pageSelect, 'single', 'Première page uniquement (pagination non vérifiée)');
 option(pageSelect, 'prefix', 'Rechargement limité à 100 résultats'); option(pageSelect, 'page', 'Numéro de page (première page : 1)'); option(pageSelect, 'offset', 'Position dans les résultats (première position : 0)');
 field(jsonFields, 'pagination_parameter', 'Paramètre de page ou de position', 'page');
 field(jsonFields, 'pagination_more', 'Chemin du booléen « page suivante » (facultatif)', '/has_more');

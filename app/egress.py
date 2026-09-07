@@ -3,6 +3,7 @@ import asyncio
 import ipaddress
 import socket
 import os
+import hmac
 from urllib.parse import urlsplit
 
 
@@ -12,9 +13,9 @@ def is_public(value):
     return address.is_global and (mapped is None or mapped.is_global)
 
 
-async def public_connection(host,port):
+async def public_connection(host,port, trusted=False):
     addresses=await asyncio.get_running_loop().getaddrinfo(host,port,type=socket.SOCK_STREAM)
-    if not addresses or any(not is_public(info[4][0]) for info in addresses):
+    if not addresses or (not trusted and any(not is_public(info[4][0]) for info in addresses)):
         raise ValueError('Adresse réseau interdite')
     for family,_,_,_,address in addresses:
         try:
@@ -38,21 +39,27 @@ async def client(reader,writer):
         header=await asyncio.wait_for(reader.readuntil(b'\r\n\r\n'),10)
         if len(header)>16384:raise ValueError()
         lines=header.decode('iso-8859-1').split('\r\n')
+        trusted = os.environ.get('ANYTUBE_SERVICE_MODE') == '1'
+        if trusted:
+            credentials = [line.split(':',1)[1].strip() for line in lines[1:] if line.lower().startswith('proxy-authorization:')]
+            expected = 'Bearer ' + os.environ['ANYTUBE_SERVICE_TOKEN']
+            if len(credentials) != 1 or not hmac.compare_digest(credentials[0], expected):
+                raise ValueError('Service authentication required')
         method,target,version=lines[0].split(' ')
         if version not in ('HTTP/1.0','HTTP/1.1'):raise ValueError()
         if method=='CONNECT':
             parts=urlsplit('//'+target)
-            if parts.port!=443 or parts.username or parts.password or parts.path:raise ValueError()
-            remote,upstream=await public_connection(parts.hostname,443)
+            if (not trusted and parts.port!=443) or not parts.port or parts.username or parts.password or parts.path:raise ValueError()
+            remote,upstream=await public_connection(parts.hostname,parts.port,trusted)
             writer.write(b'HTTP/1.1 200 Connection established\r\n\r\n');await writer.drain()
         else:
             parts=urlsplit(target)
-            if method not in ('GET','HEAD','POST') or parts.scheme!='http' or (parts.port or 80)!=80 or parts.username or parts.password:raise ValueError()
-            remote,upstream=await public_connection(parts.hostname,80)
+            if method not in ('GET','HEAD','POST') or parts.scheme!='http' or (not trusted and (parts.port or 80)!=80) or parts.username or parts.password:raise ValueError()
+            remote,upstream=await public_connection(parts.hostname,parts.port or 80,trusted)
             path=parts.path or '/'
             if parts.query:path+='?'+parts.query
             forwarded=[line for line in lines[1:] if line and line.split(':',1)[0].lower() not in ('proxy-authorization','proxy-connection','connection','host')]
-            host=parts.hostname
+            host=parts.netloc
             forwarded.extend([f'Host: {host}','Connection: close'])
             upstream.write((f'{method} {path} {version}\r\n'+'\r\n'.join(forwarded)+'\r\n\r\n').encode('iso-8859-1'))
             await upstream.drain()
@@ -75,7 +82,7 @@ async def main():
     async def bounded(reader,writer):
         if gate.locked():writer.close();return
         async with gate:await client(reader,writer)
-    server=await asyncio.start_server(bounded,os.environ.get('ANYTUBE_EGRESS_BIND','0.0.0.0'),3128,limit=16384)
+    server=await asyncio.start_server(bounded,os.environ.get('ANYTUBE_EGRESS_BIND','0.0.0.0'),int(os.environ.get('ANYTUBE_EGRESS_PORT','3128')),limit=16384)
     async with server:await server.serve_forever()
 
 

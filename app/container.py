@@ -18,19 +18,23 @@ def firewall(binary, ipv6=False):
     rule(binary, '-P', 'OUTPUT', 'DROP')
     rule(binary, '-F', 'OUTPUT')
     rule(binary, '-A', 'OUTPUT', '-m', 'conntrack', '--ctstate', 'ESTABLISHED,RELATED', '-j', 'ACCEPT')
+    # Only the authenticated administrator-service proxy can reach LAN services.
+    rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10004', '-p', 'tcp', '-j', 'ACCEPT')
+    rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10004', '-p', 'udp', '--dport', '53', '-j', 'ACCEPT')
     if ipv6:
         return
-    for uid, port in (('10001', '3128'), ('10003', '8000')):
+    for uid, port in (('10001', '3128'), ('10001', '3129'), ('10003', '8000')):
         rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', uid, '-d', '127.0.0.1', '-p', 'tcp', '--dport', port, '-j', 'ACCEPT')
     # Embedded Docker DNS has a random destination port after DNAT.
     rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10002', '-d', '127.0.0.11', '-p', 'udp', '-j', 'ACCEPT')
+    rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10004', '-d', '127.0.0.11', '-p', 'udp', '-j', 'ACCEPT')
     for network in ('0.0.0.0/8', '10.0.0.0/8', '100.64.0.0/10', '127.0.0.0/8', '169.254.0.0/16', '172.16.0.0/12', '192.0.0.0/24', '192.0.2.0/24', '192.168.0.0/16', '198.18.0.0/15', '198.51.100.0/24', '203.0.113.0/24', '224.0.0.0/4', '240.0.0.0/4'):
         rule(binary, '-A', 'OUTPUT', '-d', network, '-j', 'REJECT')
     rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10002', '-p', 'tcp', '-m', 'multiport', '--dports', '80,443', '-j', 'ACCEPT')
 
 
-def spawn(module, *args, uid=10001):
-    return subprocess.Popen(['setpriv', '--reuid', str(uid), '--regid', str(uid), '--clear-groups', '--bounding-set=-all', '--inh-caps=-all', '--ambient-caps=-all', '--no-new-privs', sys.executable, '-m', module, *args])
+def spawn(module, *args, uid=10001, env=None):
+    return subprocess.Popen(['setpriv', '--reuid', str(uid), '--regid', str(uid), '--clear-groups', '--bounding-set=-all', '--inh-caps=-all', '--ambient-caps=-all', '--no-new-privs', sys.executable, '-m', module, *args], env=env)
 
 
 def main():
@@ -70,6 +74,8 @@ def main():
     signal.signal(signal.SIGINT, stop)
     try:
         children.append(spawn('app.egress', uid=10002))
+        os.environ.update(ANYTUBE_SERVICE_PROXY='http://127.0.0.1:3129', ANYTUBE_SERVICE_TOKEN=secrets.token_hex(32))
+        children.append(spawn('app.egress', uid=10004, env={**os.environ, 'ANYTUBE_SERVICE_MODE':'1', 'ANYTUBE_EGRESS_PORT':'3129'}))
         children.append(spawn('uvicorn', 'app.main:app', '--host', '0.0.0.0', '--port', '8000', '--no-proxy-headers'))
         children.append(spawn('app.backups', '--daily'))
         # Only CAP_KILL remains in the supervisor, to stop both service UIDs.
