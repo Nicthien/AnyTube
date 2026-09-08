@@ -1,5 +1,7 @@
 # AnyTube
 
+Version 0.5.5 : bilan indépendant par page, ajout explicite avec validation partielle et bouton **Exporter les résultats** (ZIP texte + JSON). Voir les [conditions et la recette](docs/SOURCE-PARTIAL-VALIDATION.md). La lecture reste non vérifiée.
+
 Version 0.5.4 : les recherches rejettent les pages d’erreur et les témoins non vides ; une répétition contrôle la stabilité. L’inférence distingue le titre du lien d’image. Aucun nouveau site public n’est annoncé compatible.
 
 Depuis 0.5.3, la découverte conserve désormais la provenance des endpoints, le détail des contrôles et les tentatives identiques évitées. Les motifs d’échec et les actions proposées sont consultables dans la modale. Voir le [bilan de validation locale](docs/SOURCE-DIAGNOSTICS.md).
@@ -8,7 +10,7 @@ Depuis 0.5.3, la découverte conserve désormais la provenance des endpoints, le
 
 Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher des vidéos, les lire et conserver ses médias dans une bibliothèque privée.
 
-**Statut : version de développement · 0.5.4-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+**Statut : version de développement · 0.5.5-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
 
 Si les preuves vidéo sont absentes du HTML initial, l’assistant consulte aussi le rendu navigateur lorsqu’il est configuré. Un manque de preuves ne déclenche plus de corrections IA des sélecteurs de recherche. Sans preuve suffisante, le candidat reste un brouillon ; le diagnostic distingue le navigateur absent, indisponible et le rendu sans preuve. Les lecteurs vides restent refusés.
 

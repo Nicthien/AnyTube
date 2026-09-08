@@ -56,7 +56,7 @@ class SearchControls(unittest.IsolatedAsyncioTestCase):
         c=config();c['pagination']['mode']='single'
         for responses,error in cases:
             worker=AsyncMock(side_effect=[items(ids) for ids in responses])
-            with patch('app.main.run_worker',worker):
+            with patch('app.main.run_worker',worker),patch.object(sa,'http',AsyncMock(return_value={'text':'<video src="https://example.org/fixture.mp4"></video>'})):
                 if error:
                     with self.assertRaises(ControlError) as raised:await sa.verify(c,['science','music'])
                     self.assertEqual(raised.exception.code,error)

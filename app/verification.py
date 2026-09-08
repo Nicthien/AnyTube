@@ -18,7 +18,7 @@ def engine_version():
     # checkout, otherwise a Windows clone would declare every stored proof obsolete.
     root = Path(__file__).parent
     return hashlib.sha256(b''.join((root / name).read_bytes().replace(b'\r\n', b'\n') for name in
-        ('search_response.py','source_assistant.py','source_diagnostics.py','assistant_http.py','html_search.py', 'assistant_browser.py', 'connectors.py', 'microsoft.py', 'arte.py', 'patreon.py', 'toongoggles.py', 'tubetugraz.py', 'worker.py', 'catalog.py', 'pagination.py', 'verification.py', 'registry.py', 'vault.py', 'failures.py', 'adapters.py', 'access.py', 'discovery.py', 'relay.py', 'playback.py', 'main.py', 'library.py', 'egress.py', 'static/playback.js', 'static/vendor/shaka-player.js'))).hexdigest()[:16]
+        ('source_pages.py','source_partial.py','search_response.py','source_assistant.py','source_diagnostics.py','assistant_http.py','html_search.py', 'assistant_browser.py', 'connectors.py', 'microsoft.py', 'arte.py', 'patreon.py', 'toongoggles.py', 'tubetugraz.py', 'worker.py', 'catalog.py', 'pagination.py', 'verification.py', 'registry.py', 'vault.py', 'failures.py', 'adapters.py', 'access.py', 'discovery.py', 'relay.py', 'playback.py', 'main.py', 'library.py', 'egress.py', 'static/playback.js', 'static/vendor/shaka-player.js'))).hexdigest()[:16]
 
 
 def revision(config):

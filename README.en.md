@@ -1,5 +1,7 @@
 # AnyTube
 
+Version 0.5.5: independent page evidence, explicit partial acceptance and **Export results** (text + JSON ZIP). See [conditions and validation](docs/SOURCE-PARTIAL-VALIDATION.md#english). Playback remains unverified.
+
 Version 0.5.4 rejects error pages and nonempty control queries, and repeats a query to check stability. HTML inference distinguishes card titles from image links. No additional public site compatibility is claimed.
 
 Since 0.5.3, discovery now records endpoint provenance, individual checks and skipped duplicate attempts. The dialog explains failures and next actions. See the [local validation report](docs/SOURCE-DIAGNOSTICS.md) (French).
@@ -8,7 +10,7 @@ Since 0.5.3, discovery now records endpoint provenance, individual checks and sk
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.5.4-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.5.5-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
 
 When video evidence is absent from initial HTML, the assistant also checks browser-rendered metadata if configured. Missing evidence no longer triggers AI corrections to search selectors. Candidates remain drafts without sufficient evidence; diagnostics distinguish a missing browser, an unavailable observer and rendered pages without evidence. Empty players are still rejected.
 

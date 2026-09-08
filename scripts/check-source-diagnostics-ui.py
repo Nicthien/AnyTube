@@ -1,5 +1,5 @@
 """Local browser acceptance against in-memory public-site fixtures."""
-import asyncio,json,os,socket,sys,tempfile,threading,time
+import asyncio,json,os,socket,sys,tempfile,threading,time,zipfile
 from contextlib import ExitStack
 from pathlib import Path
 from unittest.mock import patch
@@ -65,6 +65,31 @@ def main():
                     expect(page.locator('.assistant-diagnostic').first).to_be_visible()
                     page.get_by_role('button',name='Fermer',exact=True).click()
                 page.get_by_role('button',name='Découvrir une source',exact=True).click()
+                fill_target(page,'https://example.org/mixed/')
+                page.get_by_role('button',name='Découvrir la source',exact=True).click()
+                expect(page.get_by_role('button',name='Ajouter avec validation partielle',exact=True)).to_be_visible(timeout=90000)
+                expect(page.get_by_text('Recherche contrôlée — 6 pages reconnues',exact=False)).to_be_visible()
+                for width in (1400,390):
+                    page.set_viewport_size({'width':width,'height':900})
+                    for theme in ('light','dark'):
+                        page.evaluate('(theme)=>document.documentElement.dataset.theme=theme',theme)
+                        assert page.locator('dialog[open]').evaluate('(d)=>d.scrollWidth<=d.clientWidth+1')
+                        page.screenshot(path=str(artifacts/f'partial-{width}-{theme}.png'))
+                export=page.get_by_role('link',name='Exporter les résultats',exact=True)
+                export.focus()
+                with page.expect_download() as download_info:page.keyboard.press('Enter')
+                download=download_info.value
+                with zipfile.ZipFile(download.path()) as archive:
+                    report=json.loads(archive.read('diagnostic.json'))
+                    assert report['job']['evidence']['page_summary']['eligible_partial']
+                    assert '6' in archive.read('resume.txt').decode() or len(report['job']['evidence']['pages'])==8
+                page.get_by_role('button',name='Ajouter avec validation partielle',exact=True).click()
+                expect(page.get_by_text('Source enregistrée avec validation partielle ; lecture non vérifiée.',exact=True)).to_be_visible()
+                expect(page.get_by_role('button',name='Ajouter des exemples et reprendre',exact=True)).to_be_visible()
+                page.get_by_role('button',name='Fermer',exact=True).click()
+                expect(page.get_by_text('Validation partielle des pages · lecture non vérifiée',exact=True)).to_be_visible()
+                page.set_viewport_size({'width':1400,'height':1000})
+                page.get_by_role('button',name='Découvrir une source',exact=True).click()
                 page.get_by_label('Adresse du site ou nom de la plateforme').fill('https://example.org/broken/')
                 page.get_by_role('button',name='Découvrir la source',exact=True).click()
                 try:
@@ -90,6 +115,10 @@ def main():
                 page.get_by_role('button',name='Découvrir une source',exact=True).click()
                 page.get_by_label('Adresse du site ou nom de la plateforme').fill('https://example.org/slow/')
                 page.get_by_role('button',name='Découvrir la source',exact=True).click()
+                with page.expect_download() as active_download:
+                    page.get_by_role('link',name='Exporter les résultats',exact=True).click()
+                with zipfile.ZipFile(active_download.value.path()) as archive:
+                    assert json.loads(archive.read('diagnostic.json'))['active']
                 page.get_by_role('button',name='Arrêter',exact=True).click()
                 expect(page.get_by_text('Arrêtée — https://example.org/slow/',exact=True)).to_be_visible(timeout=10000)
                 page.get_by_role('button',name='Fermer',exact=True).click()
@@ -100,7 +129,7 @@ def main():
                 expect(page.locator('#results > *').first).to_be_visible(timeout=30000)
                 assert not errors,errors
                 browser.close()
-                print(json.dumps({'ui':'passed','scenarios':['html','json','rendered','broken','rotating','cancel'],'viewports':[1400,390],'themes':['light','dark'],'keyboard':True,'reopen':True}),flush=True)
+                print(json.dumps({'ui':'passed','scenarios':['html','json','rendered','mixed-partial-export','broken','rotating','cancel'],'viewports':[1400,390],'themes':['light','dark'],'keyboard':True,'reopen':True}),flush=True)
         except Exception:
             try:
                 page.screenshot(path=str(artifacts/'source-diagnostics-ui-failure.png'))

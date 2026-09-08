@@ -83,6 +83,10 @@ async function showAssistantJob(id) {
   const diagnostics=node('details','assistant-diagnostics'),diagnosticRows=node('ol');
   diagnostics.append(node('summary','','Détail des contrôles'),diagnosticRows);
   assistantDialog.append(status,diagnosisSummary,progress,diagnostics,result,actions);
+  const pageSummary=node('div');diagnosisSummary.append(pageSummary);
+  const download=node('a','secondary','Exporter les résultats');download.href=`/api/source-assistant/jobs/${id}/export`;download.download=`anytube-diagnostic-${id}.zip`;
+  actions.append(download);
+  assistantDialog.append(node('p','hint','Le rapport contient les titres, URL publiques et termes de recherche. Aucun envoi automatique.'));
   let diagnosticCount=-1;
   const stop=button('Arrêter','secondary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/cancel`,{method:'POST'});await refresh();}catch(e){assistantError(e);}});
   stop.hidden=true;
@@ -96,6 +100,15 @@ async function showAssistantJob(id) {
       const active=['queued','running'].includes(job.status);
       status.textContent=`${assistantStatuses[job.status]||job.status} — ${job.target}${active&&job.deadline?' · Budget restant : '+Math.max(0,Math.ceil(job.deadline-Date.now()/1000))+' s':''}`;
       stop.hidden=!active;
+      pageSummary.replaceChildren();
+      const pageProof=job.evidence?.page_summary;
+      if(pageProof) {
+        const c=pageProof.counts;
+        pageSummary.append(node('p','notice',`Recherche contrôlée — ${c.recognized} pages reconnues, ${c.unrecognized_player} ambiguës, ${c.deleted+c.access_required+c.network_error} indisponibles, ${c.non_video} non vidéo, ${c.unchecked} non contrôlées — lecture non vérifiée`));
+        const pages=node('details');pages.append(node('summary','','Bilan des pages'));
+        for(const page of job.evidence.pages||[])pages.append(node('p','',`${page.url} — ${{recognized:'reconnue',deleted:'supprimée',access_required:'accès nécessaire',network_error:'erreur réseau',unrecognized_player:'lecteur non reconnu',non_video:'contenu non vidéo',unchecked:'non contrôlée'}[page.status]||page.status} : ${page.reason}`));
+        pageSummary.append(pages);
+      }
       progress.replaceChildren(...(job.steps||[]).map(step=>node('li','',step.message)));
       if((job.diagnostics||[]).length!==diagnosticCount) {
         diagnosticCount=(job.diagnostics||[]).length;
@@ -110,6 +123,7 @@ async function showAssistantJob(id) {
         if(job.elapsed_seconds!==undefined)result.append(node('p','hint',`Durée : ${job.elapsed_seconds} s · ${job.metrics?.search_checks||0} contrôles de recherche · ${job.metrics?.ai_calls||0} appels IA · ${job.metrics?.skipped_attempts||0} tentatives identiques évitées`));
         if(job.status==='choice') for(const choice of job.choices||[]) result.append(button(choice.url,'secondary full',async()=>{try {const next=await api(`/api/source-assistant/jobs/${id}/choose`,{method:'POST',body:JSON.stringify({url:choice.url})});await showAssistantJob(next.id);}catch(e){assistantError(e);}}));
         if(job.candidate||job.evidence) {const details=node('details');details.append(node('summary','','Configuration et preuves'),node('pre','connector-json',JSON.stringify({candidate:job.candidate,evidence:job.evidence,changes:job.changes},null,2)));result.append(details);}
+        if(pageProof?.eligible_partial&&!['added','updated'].includes(job.status))result.append(button(job.source_id?'Appliquer la mise à jour partielle':'Ajouter avec validation partielle','primary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/accept-partial`,{method:'POST'});await loadSources();await showAssistantJob(id);}catch(e){assistantError(e);}}));
         if(job.status==='ready')result.append(button('Appliquer la mise à jour','primary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/apply`,{method:'POST'});await loadSources();await showAssistantJob(id);}catch(e){assistantError(e);}}));
         if(job.status==='needs_input'&&job.candidate)result.append(button('Préciser la configuration','secondary',()=>{assistantDialog.close();openSourceEditor(null,job.candidate).catch(assistantError);}));
         if(['added','updated'].includes(job.status))await loadSources();

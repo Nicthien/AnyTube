@@ -27,6 +27,10 @@ def result(query, offset=0):
 
 
 class PipelineTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.page_fetch=patch.object(sa,'http',new=AsyncMock(return_value={'text':'<video src="https://example.org/fixture.mp4"></video>'}))
+        self.page_fetch.start();self.addCleanup(self.page_fetch.stop)
+
     async def test_queries_and_negative_control(self):
         async def worker(payload, **kwargs):
             return result(payload['query'])
@@ -158,6 +162,7 @@ class AssistantAPITests(unittest.TestCase):
     def test_discovery_from_public_form_to_saved_connector(self):
         job=self.start()
         async def fetch(url,**kwargs):
+            if any('/'+term+'/' in url for term in ('science','music')):return {'text':'<video src="https://example.org/fixture.mp4"></video>'}
             if url.endswith('/api/v1/config'):
                 return {'text':'{}'}
             if '/search?' in url:
@@ -175,6 +180,7 @@ class AssistantAPITests(unittest.TestCase):
     def test_peertube_recognition_reuses_instance_connector(self):
         job=self.start()
         async def fetch(url,**kwargs):
+            if any('/'+term+'/' in url for term in ('science','music')):return {'text':'<video src="https://example.org/fixture.mp4"></video>'}
             return {'text':json.dumps({'instance':{'name':'Test'},'serverVersion':'1'})}
         async def worker(payload,**kwargs):
             return result(payload['query'],payload.get('offset',0))
@@ -189,6 +195,7 @@ class AssistantAPITests(unittest.TestCase):
         job=self.start()
         settings=sa.Settings(browser=sa.Service(url='http://browser:8010'))
         async def fetch(url,**kwargs):
+            if any('/'+term+'/' in url for term in ('science','music')):return {'text':'<video src="https://example.org/fixture.mp4"></video>'}
             if url.endswith('/observe'):
                 return {'text':json.dumps({'samples':[{'search_url':'https://example.org/api?q={query}','data':{'items':[]}}]})}
             if '/api?q=' in url:

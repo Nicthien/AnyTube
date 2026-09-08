@@ -17,7 +17,7 @@ from discovery_fixtures import fetch,guarded,Opener,json_worker,counts
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--browser',action='store_true');parser.add_argument('--configured-browser',action='store_true');args=parser.parse_args()
     if args.configured_browser: args.browser=True
-    cases=['html','json','broken','rotating']+(['rendered','rendered-error'] if args.browser else [])
+    cases=['html','json','mixed','broken','rotating']+(['rendered','rendered-error'] if args.browser else [])
     output=[]
     with tempfile.TemporaryDirectory() as directory,patch.dict(os.environ,{'ANYTUBE_DATA':directory,'ANYTUBE_BROWSER_CDP_URL':os.environ.get('ANYTUBE_BROWSER_CDP_URL','') if args.configured_browser else ''}),TestClient(app) as client,patch.object(sa,'http',side_effect=fetch),patch.object(browser,'guarded_fetch',side_effect=guarded),patch('app.main._run_worker',side_effect=json_worker),patch('app.connectors.build_opener',return_value=Opener()):
         for case in cases:
@@ -31,6 +31,11 @@ def main():
                 if case in ('broken','rotating','rendered-error'):
                     assert saved['status']=='unresolved' and ('accueil' if case=='broken' else 'erreur') in saved['message'],saved
                 else:
+                    if case=='mixed':
+                        assert saved['status']=='needs_input' and saved['evidence']['page_summary']['eligible_partial'],saved
+                        accepted=client.post('/api/source-assistant/jobs/'+job['id']+'/accept-partial',headers={'X-AnyTube':'1'})
+                        assert accepted.status_code==200,accepted.text
+                        saved=accepted.json()
                     assert saved['status']=='added',saved
                     result=client.post('/api/search',headers={'X-AnyTube':'1'},json={'query':'science','sources':[saved['added_source']],'limit':3}).json()
                     assert len(result['items'])==3 and not result['errors'],result

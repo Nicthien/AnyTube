@@ -61,6 +61,7 @@ def initialize():
         db.execute('CREATE TABLE IF NOT EXISTS credentials(owner TEXT NOT NULL,id TEXT NOT NULL,name TEXT NOT NULL,kind TEXT NOT NULL,encrypted TEXT NOT NULL,revision TEXT NOT NULL,updated REAL NOT NULL,version INTEGER NOT NULL,PRIMARY KEY(owner,id))')
         db.execute('CREATE TABLE IF NOT EXISTS feature_evidence(id INTEGER PRIMARY KEY AUTOINCREMENT,owner TEXT NOT NULL,revision TEXT NOT NULL,feature TEXT NOT NULL,payload TEXT NOT NULL)')
         db.execute('CREATE INDEX IF NOT EXISTS feature_evidence_owner ON feature_evidence(owner,revision)')
+        db.execute('CREATE TABLE IF NOT EXISTS source_validation(owner TEXT NOT NULL,source_id TEXT NOT NULL,signature TEXT NOT NULL,payload TEXT NOT NULL,PRIMARY KEY(owner,source_id))')
         db.execute('INSERT OR IGNORE INTO schema_migrations(version) VALUES (1)')
 
 
@@ -68,6 +69,10 @@ def saved_sources():
     from app.connectors import default_connector
     with connect() as db:
         items = [dict(row) for row in db.execute('SELECT * FROM sources WHERE owner=? ORDER BY name COLLATE NOCASE', (owner(),))]
+        qualifications={row['source_id']:dict(row) for row in db.execute('SELECT * FROM source_validation WHERE owner=?',(owner(),))}
+    from app.pagination import signature
     for item in items:
         item['connector'] = json.loads(item['connector']) if item['connector'] else default_connector(item['id'])
+        proof=qualifications.get(item['id'])
+        if proof and proof['signature']==signature(item['connector']):item['validation']=json.loads(proof['payload'])
     return items

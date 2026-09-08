@@ -225,7 +225,7 @@ async def http(url, *, trusted=False, method='GET', body=None, headers=None, tim
         if value.get('error'):
             emit(outcome='failed',code='network_unavailable',requested_url=url if not trusted else '',http_status=value.get('status'),duration=round(time.monotonic()-started,3))
             raise DiscoveryError('access_required' if value.get('status') == 401 else 'unresolved',
-                                 f"Réponse HTTP {value['status']} du service." if value.get('status') else 'Connexion impossible ou réponse trop volumineuse.')
+                                 f"Réponse HTTP {value['status']} du service." if value.get('status') else 'Connexion impossible ou réponse trop volumineuse.', http_status=value.get('status'))
         if not trusted:
             emit(outcome='observed',requested_url=url,final_url=value.get('url',url),http_status=value.get('status'),content_type=value.get('content_type',''),duration=round(time.monotonic()-started,3))
         return value
@@ -236,7 +236,8 @@ async def http(url, *, trusted=False, method='GET', body=None, headers=None, tim
 
 
 class DiscoveryError(Exception):
-    def __init__(self, status, message):
+    def __init__(self, status, message, http_status=None):
+        self.http_status = http_status
         self.status, self.message = status, message
         super().__init__(message)
 
@@ -528,30 +529,13 @@ class VideoEvidenceMissing(ValueError):
 
 
 async def confirm_video_page(url, candidate):
-    from app.html_search import search_destination,video_page_evidence
-    try:
-        response=await http(url)
-    except DiscoveryError:
-        response={'text':'','url':url}
-    final=response.get('url',url)
-    if search_destination(final,candidate['search_url']):
-        raise VideoEvidenceMissing('Pages vidéo non confirmées : redirection vers une recherche.')
-    if video_page_evidence(response['text'],final):
-        return 'http_metadata'
-    browser=settings().browser
-    if not browser.url:
-        raise VideoEvidenceMissing('Pages vidéo non confirmées par leurs métadonnées HTTP. Navigateur non configuré ; le candidat est conservé sans ajout.')
-    try:
-        observed=json.loads((await http(browser.url.rstrip('/')+'/observe',trusted=True,method='POST',
-            body={'url':url,'query':'video','submit_search':False},headers=service_headers('browser'),timeout=95))['text'])
-        if metrics.get() is not None:
-            metrics.get()['browser_requests']=metrics.get().get('browser_requests',0)+observed.get('requests',0)
-        rendered_url=public_url(observed.get('url',url))
-        if not search_destination(rendered_url,candidate['search_url']) and video_page_evidence(observed.get('html',''),rendered_url):
-            return 'rendered_metadata'
-    except (DiscoveryError,ValueError,KeyError):
-        raise VideoEvidenceMissing('Pages vidéo non confirmées : observation navigateur indisponible ou invalide. Le candidat est conservé sans ajout.')
-    raise VideoEvidenceMissing('Pages vidéo non confirmées après rendu navigateur. Modifier les sélecteurs de recherche ne résout pas ce manque de preuves.')
+    """Compatibility wrapper; the pipeline consumes the full structured observation."""
+    from app.source_pages import observe
+    page=await observe(url,candidate)
+    if page['status']=='recognized':
+        return 'rendered_metadata' if page['method']=='chromium' else 'http_metadata'
+    suffix='après rendu navigateur' if page['method']=='chromium' else 'par HTTP ; navigateur non configuré ou observation indisponible'
+    raise VideoEvidenceMissing('Pages vidéo non confirmées '+suffix+'. '+page['reason'])
 
 
 async def verify(candidate, queries):
@@ -566,7 +550,7 @@ async def verify(candidate, queries):
         with scope(phase='witness' if len(sets)==2 else 'search',query=query):
             emit(outcome='started')
             result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':20,'page_size':20,'_discovery_diagnostics':True}, timeout=90 if candidate['kind']=='html' else 25)
-        items = result.get('items', [])
+        items = result.get('items', [])[:20]
         listing_evidence.update(result.get('listing_evidence',{}))
         if not sets:
             first_page_size=max(3,result.get('source_page_size',3))
@@ -584,7 +568,7 @@ async def verify(candidate, queries):
     with scope(phase='repeat',query=queries[0]):
         emit(outcome='started')
         repeated=await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':20,'page_size':20,'_discovery_diagnostics':True},timeout=90 if candidate['kind']=='html' else 25)
-        repeat_urls=checked_urls(repeated.get('items',[]))
+        repeat_urls=checked_urls(repeated.get('items',[])[:20])
         stability=len(repeat_urls & sets[0])/max(1,min(len(repeat_urls),len(sets[0])))
         emit(outcome='extracted' if stability>=0.5 else 'failed',code='' if stability>=0.5 else 'unstable_results',stability=stability,valid_count=len(repeat_urls),examples=[{'title':i.get('title',''),'url':i.get('url','')} for i in repeated.get('items',[])[:3]])
         if not repeat_urls or stability<0.5:raise ControlError('unstable_results','Les résultats changent trop pour une même recherche : recherche non confirmée.')
@@ -616,25 +600,28 @@ async def verify(candidate, queries):
             raise ControlError('pagination_repeated','Seconde page non distincte : pagination non validée.',True)
         evidence.append({'query':queries[0], 'offset':first_page_size, 'count':len(urls), 'urls':sorted(urls)})
         pagination='verified'
-    if candidate['kind']=='html':
-        from app.html_search import search_destination
-        for url in sorted(sets[0]|sets[1]):
-            if search_destination(url,candidate['search_url']):
-                raise ValueError('Des recherches associées ont été confondues avec des vidéos.')
-            if url in listing_evidence:
-                continue
-            with scope(phase='video',requested_url=url):
-                emit(outcome='started')
-                method=await confirm_video_page(url,candidate)
-                emit(outcome='passed',method=method)
-            listing_evidence[url]={'method':method,'url':url}
+    proof = {'search':'verified', 'pagination':pagination, 'checks':evidence, 'listing_evidence':listing_evidence,
+             'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
+             'engine':engine_version(), 'date':time.time()}
+    from app.source_pages import validate
+    await validate(candidate, proof, sets)
+    if not proof['page_summary']['complete']:
+        failure=VideoEvidenceMissing('Des recherches associées ou contenus non vidéo ont été identifiés ; ajout refusé.' if proof['page_summary']['counts']['non_video'] else 'Pages vidéo non confirmées en totalité ; recherche contrôlée et observations conservées.')
+        failure.evidence=proof
+        raise failure
     if not candidate['extractor'] and sets[0]:
         from yt_dlp.extractor import gen_extractor_classes
         matches=[cls.ie_key() for cls in gen_extractor_classes() if cls.ie_key()!='Generic' and all(cls.suitable(url) for url in sets[0]|sets[1])]
         if len(matches)==1:candidate['extractor']=matches[0]
-    return {'search':'verified', 'pagination':pagination, 'checks':evidence,'listing_evidence':listing_evidence,
-            'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
-            'engine':engine_version(), 'date':time.time()}
+    from app.source_pages import checkpoint
+    checkpoint(candidate, proof)
+    return proof
+
+
+
+def retain_pages(identifier, candidate, exc):
+    return update(identifier, 'needs_input', candidate=candidate, evidence=getattr(exc,'evidence',{}),
+                  message=str(exc), next_action='Consultez les pages contrôlées ; ajoutez avec validation partielle si le bilan le permet, ou reprenez avec des exemples.')
 
 
 def commit_candidate(identifier, candidate, evidence):
@@ -658,8 +645,22 @@ def commit_candidate(identifier, candidate, evidence):
                 break
         else:
             db.execute('INSERT INTO sources(id,name,connector,owner) VALUES (?,?,?,?)', (source_id, host, json.dumps(candidate), owner()))
+        db.execute('DELETE FROM source_validation WHERE owner=? AND source_id=?',(owner(),source_id))
     record(candidate, job['queries'][0], 'verified', evidence['checks'][0]['count'], detail='Assistant : recherche uniquement.')
     return update(identifier, 'added', candidate=candidate, evidence=evidence, added_source=source_id, message='Source ajoutée. Recherche contrôlée ; lecture non vérifiée.')
+
+
+@router.get('/jobs/{identifier}/export')
+def export_results(identifier: str):
+    from app.source_reports import export_job
+    from app.main import app
+    return export_job(load(identifier), app.version)
+
+
+@router.post('/jobs/{identifier}/accept-partial')
+def accept_partial(identifier: str):
+    from app.source_partial import accept
+    return accept(identifier)
 
 
 @router.post('/jobs/{identifier}/apply')
@@ -677,6 +678,7 @@ def apply_update(identifier: str):
             raise HTTPException(409, 'La source a changé depuis cette analyse. Relancez-la pour conserver vos modifications.')
         db.execute('INSERT INTO source_assistant_backups VALUES (?,?,?,?,?)', (uuid.uuid4().hex, owner(), job['source_id'], time.time(), json.dumps(old)))
         db.execute('UPDATE sources SET connector=? WHERE id=? AND owner=?', (json.dumps(job['candidate']), job['source_id'], owner()))
+        db.execute('DELETE FROM source_validation WHERE owner=? AND source_id=?',(owner(),job['source_id']))
     return update(identifier, 'updated', message='Mise à jour appliquée ; configuration précédente sauvegardée.')
 
 
@@ -747,6 +749,9 @@ async def discover(identifier, config):
                 evidence=await control(candidate)
                 evidence['discovery_requests']=requests
                 commit_candidate(identifier,candidate,evidence)
+                return True
+            except VideoEvidenceMissing as exc:
+                retain_pages(identifier,candidate,exc)
                 return True
             except Exception:
                 continue
@@ -908,7 +913,8 @@ async def discover(identifier, config):
                     step(identifier,safe_text(error,300))
                     if isinstance(exc,VideoEvidenceMissing):
                         step(identifier,'Correction IA ignorée : les résultats de recherche ne sont pas la cause du manque de preuves vidéo.')
-                        break
+                        retain_pages(identifier,candidate,exc)
+                        return True
                     if corrections>=2 or config.ai.kind=='none' or not isinstance(exc,ControlError) or not exc.correctable or not state.get('confirmed'):
                         break
                     corrections+=1
@@ -990,7 +996,10 @@ async def execute(identifier):
             metrics.get()['skipped_attempts']=metrics.get().get('skipped_attempts',0)+1
         current=load(identifier)
         entries=current.get('diagnostics',[])
-        update(identifier,diagnostics=(entries+[row])[-400:],diagnostics_version=1)
+        update(identifier,diagnostics=(entries+[row])[-400:],diagnostics_version=1,history_truncated=current.get('history_truncated',False) or len(entries)>=400,metrics=dict(metrics.get() or current.get('metrics',{})))
+    from app.source_pages import cache, progress
+    cache_token=cache.set({})
+    progress_token=progress.set(lambda candidate,evidence: update(identifier,candidate=candidate,evidence=evidence))
     diagnostic_token=sink.set(persist_diagnostic)
     metric_token=metrics.set({'http_requests':0,'search_checks':0,'ai_calls':0})
     update(identifier,'running',deadline=time.time()+job['minutes']*60,engine=engine_version(),diagnostics_version=1)
@@ -1009,5 +1018,7 @@ async def execute(identifier):
     except Exception:
         update(identifier,'unresolved',message='Découverte non résolue : réponse ou configuration inexploitable.')
     finally:
+        cache.reset(cache_token)
+        progress.reset(progress_token)
         sink.reset(diagnostic_token)
         metrics.reset(metric_token)

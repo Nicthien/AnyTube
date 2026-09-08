@@ -134,7 +134,7 @@ class HtmlAPITests(unittest.TestCase):
             asyncio.run(sa.execute(job['id']))
             saved=sa.load(job['id'])
             self.assertEqual(saved['status'],'needs_input')
-            self.assertIn('non configuré',saved['last_error'])
+            self.assertEqual(saved['evidence']['page_summary']['counts']['unrecognized_player'],6)
             ai.assert_not_awaited()
 
     def test_full_discovery_then_normal_search_and_resume(self):

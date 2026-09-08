@@ -13,7 +13,7 @@ def response(url):
     home=f'<form action="/{scenario}/search"><input name="q" type="search"><input type="hidden" name="kind" value="video"></form>'
     kind='text/html'
     if '/api/v1/config' in parts.path:text='{}';kind='application/json'
-    elif '/watch/' in parts.path:text='<video src="https://example.org/fixture.mp4"></video>'
+    elif '/watch/' in parts.path:text='<video></video>' if scenario=='mixed' and parts.path.endswith('-0') else '<video src="https://example.org/fixture.mp4"></video>'
     elif scenario=='rotating' and parts.path.endswith('/search'):
         text='<h1>Page not found</h1>'+''.join(f'<article><a href="https://example.org/watch/{counts["http"]}-{i}">Film {i}</a></article>' for i in range(4))
     elif scenario=='broken':text=home
