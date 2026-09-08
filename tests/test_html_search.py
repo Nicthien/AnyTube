@@ -107,7 +107,7 @@ class HtmlAsyncTests(unittest.IsolatedAsyncioTestCase):
         async def ordinary(url,**kwargs):
             if '/watch/' in url:return {'text':'<h1>ordinary article</h1>'}
             return await fetch(url,**kwargs)
-        with patch.object(sa,'http',side_effect=ordinary):
+        with patch.object(sa,'http',side_effect=ordinary),patch.object(sa,'settings',return_value=sa.Settings()):
             with self.assertRaisesRegex(ValueError,'vidéo non confirmées'):await sa.verify(config(),['science','music'])
 
     async def test_cancel_network(self):
