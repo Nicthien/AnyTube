@@ -56,7 +56,9 @@ def main():
                     fill_target(page,'https://example.org/'+case+'/')
                     page.get_by_role('button',name='Découvrir la source',exact=True).click()
                     expect(page.get_by_text('Source ajoutée. Recherche contrôlée ; lecture non vérifiée.',exact=True)).to_be_visible(timeout=90000)
+                    expect(page.get_by_role('button',name='Ajouter des exemples et reprendre',exact=True)).to_be_visible()
                     page.get_by_role('button',name='Fermer',exact=True).click()
+                    expect(page.locator('dialog[open]')).to_have_count(0)
                     page.get_by_role('button',name='Découvrir une source',exact=True).click()
                     page.get_by_role('button',name='https://example.org/'+case+'/ — Source ajoutée',exact=True).click()
                     summary=page.locator('.assistant-diagnostics > summary');summary.focus();page.keyboard.press('Enter')
@@ -65,7 +67,17 @@ def main():
                 page.get_by_role('button',name='Découvrir une source',exact=True).click()
                 page.get_by_label('Adresse du site ou nom de la plateforme').fill('https://example.org/broken/')
                 page.get_by_role('button',name='Découvrir la source',exact=True).click()
-                expect(page.get_by_text('Les deux recherches renvoient l’accueil ; endpoint non confirmé.',exact=True)).to_be_visible(timeout=90000)
+                try:
+                    expect(page.locator('dialog[open]').get_by_text('Les deux termes renvoient la page d’accueil.',exact=True).first).to_be_visible(timeout=15000)
+                except Exception:
+                    page.screenshot(path=str(artifacts/'054-ui-failure.png'))
+                    print(page.locator('body').inner_text(),flush=True)
+                    raise
+                page.get_by_role('button',name='Fermer',exact=True).click()
+                page.get_by_role('button',name='Découvrir une source',exact=True).click()
+                page.get_by_label('Adresse du site ou nom de la plateforme').fill('https://example.org/rotating/')
+                page.get_by_role('button',name='Découvrir la source',exact=True).click()
+                expect(page.get_by_text('Le titre principal indique une erreur.',exact=True).first).to_be_visible(timeout=90000)
                 for width in (1400,390):
                     page.set_viewport_size({'width':width,'height':900})
                     for theme in ('light','dark'):
@@ -88,7 +100,7 @@ def main():
                 expect(page.locator('#results > *').first).to_be_visible(timeout=30000)
                 assert not errors,errors
                 browser.close()
-                print(json.dumps({'ui':'passed','scenarios':['html','json','rendered','broken','cancel'],'viewports':[1400,390],'themes':['light','dark'],'keyboard':True,'reopen':True}),flush=True)
+                print(json.dumps({'ui':'passed','scenarios':['html','json','rendered','broken','rotating','cancel'],'viewports':[1400,390],'themes':['light','dark'],'keyboard':True,'reopen':True}),flush=True)
         except Exception:
             try:
                 page.screenshot(path=str(artifacts/'source-diagnostics-ui-failure.png'))

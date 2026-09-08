@@ -14,12 +14,15 @@ def response(url):
     kind='text/html'
     if '/api/v1/config' in parts.path:text='{}';kind='application/json'
     elif '/watch/' in parts.path:text='<video src="https://example.org/fixture.mp4"></video>'
+    elif scenario=='rotating' and parts.path.endswith('/search'):
+        text='<h1>Page not found</h1>'+''.join(f'<article><a href="https://example.org/watch/{counts["http"]}-{i}">Film {i}</a></article>' for i in range(4))
     elif scenario=='broken':text=home
     elif parts.path.endswith('/search'):
         if scenario=='json':text=json.dumps({'items':rows});kind='application/json'
         else:
-            cards=''.join(f'<article class="video"><a href="{r["url"]}">{r["title"]}</a></article>' for r in rows)
-            text='<main>'+cards+'</main>' if scenario!='rendered' else '<main id="results"></main><script>document.getElementById("results").innerHTML='+json.dumps(cards)+'</script>'
+            cards=''.join(f'<article class="video"><a href="{r["url"]}"><img></a><h3><a href="{r["url"]}">{r["title"]}</a></h3></article>' for r in rows)
+            if scenario=='rendered-error':cards='<h1>Page not found</h1>'+cards
+            text='<main>'+cards+'</main>' if not scenario.startswith('rendered') else '<main id="results"></main><script>document.getElementById("results").innerHTML='+json.dumps(cards)+'</script>'
     else:text=home
     return {'url':url,'status':200,'text':text,'content_type':kind,'base64':base64.b64encode(text.encode()).decode()}
 

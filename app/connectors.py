@@ -450,6 +450,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
         emit(requested_url=url,final_url=final_url if isinstance(final_url,str) else url,http_status=http_status if isinstance(http_status,int) else None,content_type=content_type if isinstance(content_type,str) else '',outcome='observed')
     if len(raw) > 2 * 1024 * 1024:
         raise ValueError('La réponse dépasse 2 Mo.')
+    from app.search_response import require_usable
+    require_usable(raw.decode('utf-8',errors='replace'),final_url if isinstance(final_url,str) else url,http_status,content_type)
     data = json.loads(raw)
     if config.pagination.page_url_path:
         target = pointer(data, config.pagination.page_url_path)

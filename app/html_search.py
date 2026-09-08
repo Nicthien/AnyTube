@@ -22,7 +22,7 @@ def selector(value):
 class HtmlField(BaseModel):
     model_config = ConfigDict(extra='forbid')
     selector: str = ''
-    attribute: Literal['text', 'href', 'src', 'data-src', 'title', 'content', 'datetime', 'aria-label', 'mmeta', 'vrhm'] = 'text'
+    attribute: Literal['text', 'href', 'src', 'data-src', 'title', 'content', 'datetime', 'aria-label', 'alt', 'mmeta', 'vrhm'] = 'text'
     path: Literal['', '/murl', '/turl', '/vt', '/du'] = ''
 
     @model_validator(mode='after')
@@ -160,14 +160,15 @@ def extract(text, base, config):
     spec = HtmlSpec.model_validate(config['html'])
     soup = document(text)
     items, seen = [], set()
-    for node in soup.select(spec.items, limit=101):
+    nodes=soup.select(spec.items,limit=101)
+    for index,node in enumerate(nodes):
         title, link = read_field(node, spec.title), read_field(node, spec.link)
-        if link and spec.url_path_prefix and not urlsplit(urljoin(base,link)).path.startswith(spec.url_path_prefix):
-            continue
         if not title or not link:
             from app.source_diagnostics import ControlError,emit
-            emit(selected_count=len(soup.select(spec.items,limit=101)),valid_count=len(items),outcome='failed',code='missing_fields')
-            raise ControlError('missing_fields','Un résultat HTML ne possède pas de titre ou de lien.',True)
+            emit(selected_count=len(nodes),inspected_count=index+1,valid_count=len(items),card_index=index+1,missing_field='title' if not title else 'link',selector=(spec.title if not title else spec.link).selector,outcome='failed',code='missing_fields')
+            raise ControlError('missing_fields',f'Carte {index+1} : champ {"titre" if not title else "lien"} absent.',True)
+        if spec.url_path_prefix and not urlsplit(urljoin(base,link)).path.startswith(spec.url_path_prefix):
+            continue
         url = clean_url(base, link)
         if search_destination(url,config['search_url']):
             raise ValueError('Les résultats pointent vers des recherches associées, pas vers des vidéos.')
@@ -203,9 +204,51 @@ def template_from_example(url, query):
     raise ValueError('Le terme doit apparaître une seule fois dans l’URL de recherche.')
 
 
+def card_fields(nodes, base, search_url, examples=()):
+    """Infer one consistent mapping, with an unambiguous destination per card."""
+    def links(node):
+        return {urljoin(base,a['href']) for a in node.select('a[href]')
+                if (urljoin(base,a['href']) in examples or re.search(r'(?i)(/videos?/|/watch(?:/|\?)|/w/|[?&]v=)',urljoin(base,a['href'])))
+                and not search_destination(urljoin(base,a['href']),search_url)}
+    if not nodes or any(len(links(n))!=1 for n in nodes):return None
+    options=[]
+    for node in nodes[:5]:
+        for tag in node.select('a[href], h2, h3, img',limit=40):
+            classes=[c for c in tag.get('class',[]) if re.fullmatch(r'[A-Za-z_][\w-]*',c)]
+            css=tag.name+(''.join('.'+c for c in classes[:3]))
+            previous=tag.find_previous_sibling()
+            parent_classes=[c for c in tag.parent.get('class',[]) if re.fullmatch(r'[A-Za-z_][\w-]*',c)]
+            if tag.parent is not node and parent_classes:css=tag.parent.name+''.join('.'+c for c in parent_classes[:3])+' '+css
+            elif previous is not None and not classes:css=previous.name+' + '+css
+            for attr in ('text','title','aria-label','alt'):
+                if attr=='alt' and tag.name!='img':continue
+                if attr=='text' and tag.name=='img':continue
+                spec={'selector':css+(f'[{attr}]' if attr!='text' else ''),'attribute':attr}
+                if spec not in options:options.append(spec)
+    link_options=['h2 a[href]','h3 a[href]','a[href]']
+    for option in options:
+        for link_css in link_options:
+            valid=True
+            for node in nodes:
+                expected=next(iter(links(node)))
+                title_node=node.select_one(option['selector'])
+                link_node=node.select_one(link_css)
+                if title_node is None or link_node is None or urljoin(base,link_node['href'])!=expected:
+                    valid=False;break
+                anchor=title_node if title_node.name=='a' else title_node.find_parent('a')
+                if anchor and urljoin(base,anchor.get('href',''))!=expected:
+                    valid=False;break
+                if not read_field(node,HtmlField.model_validate(option)):
+                    valid=False;break
+            if valid:return option,{'selector':link_css,'attribute':'href'}
+    return None
+
+
 def infer(text, base, search_url, examples=(), rendering='http'):
     """Rank repeated cards using video semantics or multiple example links."""
     from app.connectors import Connector
+    from app.search_response import require_usable
+    require_usable(text,base)
     soup = document(text)
     if urlsplit(base).hostname in ('www.bing.com','bing.com') and soup.select_one('div.mc_vtvc[mmeta]'):
         candidate=Connector(kind='html',search_url=search_url,pagination={'mode':'single'},html={
@@ -232,23 +275,32 @@ def infer(text, base, search_url, examples=(), rendering='http'):
         semantic = bool(re.search(r'(?i)(/videos?/|/watch(?:/|\?)|/w/|[?&]v=)', url))
         if not semantic and url not in examples:
             continue
-        parent = anchor.find_parent(['article','li']) or anchor.find_parent('div')
-        if parent is None:
-            continue
-        classes = [c for c in parent.get('class',[]) if re.fullmatch(r'[A-Za-z_][\w-]*',c)]
-        css = parent.name + ('.'+'.'.join(classes[:3]) if classes else '')
-        groups.setdefault(css, set()).add(url)
+        card=anchor.find_parent(['article','li'])
+        parents=[card] if card is not None else anchor.find_parents('div',limit=3)
+        for parent in parents:
+            classes = [c for c in parent.get('class',[]) if re.fullmatch(r'[A-Za-z_][\w-]*',c)]
+            css = parent.name + ('.'+'.'.join(classes[:3]) if classes else '')
+            groups.setdefault(css, set()).add(url)
     ranked = sorted(groups, key=lambda css:(len(groups[css]&examples),len(groups[css])), reverse=True)
     result = []
     for css in ranked[:3]:
         if len(groups[css]) < 2:
             continue
-        first = soup.select_one(css)
+        nodes=soup.select(css,limit=101)
+        first = nodes[0]
         link_selector = 'a[href]'
         if first.select_one('h2 a[href], h3 a[href]'):
             link_selector = 'h2 a[href], h3 a[href]'
         spec = {'rendering':rendering,'items':css,'title':{'selector':link_selector},
                 'link':{'selector':link_selector,'attribute':'href'}}
+        fields=card_fields(nodes,base,search_url,examples)
+        if fields:
+            spec['title'],spec['link']=fields
+        else:
+            from app.source_diagnostics import emit
+            emit(outcome='inconclusive',code='ambiguous_cards',selected_count=len(nodes),selector=css,
+                 message='Association titre et destination ambiguë dans les cartes sélectionnées.')
+            continue
         prefixes={urlsplit(u).path.split('/')[1] for u in groups[css] if len(urlsplit(u).path.split('/'))>2}
         if len(prefixes)==1 and re.fullmatch(r'[A-Za-z0-9_-]+',next(iter(prefixes))):
             spec['url_path_prefix']='/'+next(iter(prefixes))+'/'
@@ -314,6 +366,8 @@ async def search(payload):
         else:
             response = await http(url)
             text, final = response['text'], response.get('url',url)
+        from app.search_response import require_usable
+        require_usable(text,final,response.get('status'),response.get('content_type','text/html'))
         entries, next_url = extract(text,final,config)
         from app.source_diagnostics import emit
         emit(requested_url=url,final_url=final,http_status=response.get('status'),content_type=response.get('content_type','text/html'),selected_count=len(document(text).select(spec['items'],limit=101)),valid_count=len(entries),outcome='observed')
@@ -333,7 +387,7 @@ async def search(payload):
             pairs.append((paging['parameter'],str(paging['first_page']+index+1)))
             next_url=urlunsplit((parts.scheme,parts.netloc,parts.path,urlencode(pairs),'')) if entries else None
         more = bool(next_url)
-        if len(collected)>=offset+size or not next_url:
+        if (payload.get('_discovery_diagnostics') and offset==0) or len(collected)>=offset+size or not next_url:
             break
         url=next_url
     return {'items':[normalize(i) for i in collected[offset:offset+size]],'native_page':True,

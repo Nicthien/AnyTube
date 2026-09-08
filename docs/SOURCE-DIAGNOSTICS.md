@@ -57,3 +57,31 @@ Mesures sur fixtures, comprenant la création puis une recherche normale pour le
 Les requêtes de pages incluent celles effectuées dans les observations Chromium ; les deux colonnes ne s’additionnent pas. Aucun doublon n’est proposé dans ces quatre parcours. Le test dédié aux corrections identiques vérifie qu’aucun contrôle supplémentaire n’est exécuté pour une configuration déjà essayée. Ces durées de fixtures ne prédisent pas celles d’un site réel.
 
 **Docker local non vérifié** : le démon Docker Desktop Linux est indisponible (`dockerDesktopLinuxEngine` absent). Aucun recours à Unraid n’a été effectué pour remplacer ce contrôle. Aucun site public supplémentaire n’a été validé.
+
+
+## Correctif 0.5.4
+
+Les réponses HTTP et Chromium sont classées avant extraction : erreur, accès nécessaire, ambiguïté ou réponse à contrôler. Les routes d’erreur et les messages dominants sont refusés, même en HTTP 200. L’observateur conserve le statut et suit les redirections publiques avant de rendre la page.
+
+Deux termes distincts, un témoin vide et une répétition stable sont requis. Chaque réponse est comparée sur au plus 20 URL ; la répétition doit retrouver au moins 50 % du plus petit ensemble. Les contrôles HTML restent sur la première page, la pagination étant vérifiée séparément. Un moteur qui retourne des recommandations pour toute requête improbable reste un brouillon : cette règle privilégie l’absence de faux ajout.
+
+Les titres sont associés à la destination de chaque carte, avec texte, attributs title/aria-label ou alt de l’image associée. Les cartes ambiguës ne sont pas supprimées silencieusement. Les diagnostics distinguent éléments sélectionnés et inspectés, champ absent et indice de carte. Les événements « Résultats extraits » ne confirment pas encore une recherche.
+
+Validation locale : fixtures HTML, JSON et Chromium jusqu’à la recherche normale ; erreurs avec recommandations variables refusées ; interface 1400/390 px, clair/sombre, clavier, fermeture/réouverture et annulation. Durées indicatives : HTML 1,22 s (16 requêtes), JSON 0,21 s (8), Chromium 13,21 s (17 requêtes, 6 observations), erreur variable 0,07 s (3 requêtes, aucun contrôle vidéo). Les exemples de cartes contiennent un lien d’image vide précédant le titre.
+
+La suite locale comporte 227 tests : 226 réussissent ; le test préexistant du proxy rencontre une réinitialisation de connexion Windows. Docker Desktop est indisponible. La suite complète doit donc également réussir dans un conteneur temporaire sur Unraid avant publication. Aucun résultat ne prouve la compatibilité du site signalé.
+
+### Validation des images 0.5.4 sur Unraid
+
+227 tests réussis dans l’image Docker (130,809 s), y compris le proxy. Le test Chromium complet réussit en 49,578 s. Les conteneurs de test utilisent des bases temporaires et des pages simulées.
+
+| Parcours | Résultat | Durée (s) | Requêtes | Observations |
+|---|---|---:|---:|---:|
+| html | added | 6.321 | 16 | 0 |
+| json | added | 2.972 | 8 | 0 |
+| broken | unresolved | 0.924 | 4 | 0 |
+| rotating | unresolved | 0.749 | 3 | 0 |
+| rendered | added | 20.333 | 17 | 6 |
+| rendered-error | unresolved | 3.841 | 4 | 1 |
+
+Aucune édition manuelle de connecteur sur ces parcours. Les doublons évités sont vérifiés par les tests déterministes ; ces fixtures ne produisent pas de proposition IA répétée. Les avertissements de fermeture de transport Windows n’ont pas empêché les assertions d’interface de réussir.

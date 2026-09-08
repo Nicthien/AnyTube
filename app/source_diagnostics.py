@@ -53,6 +53,10 @@ class Attempts:
         return True
 
 NEXT_ACTIONS={
+    'error_page':'L’endpoint aboutit à une page d’erreur ; vérifiez l’URL issue du formulaire.',
+    'access_required':'La page demande un accès ; aucun ajout automatique possible.',
+    'ambiguous':'Précisez un exemple de recherche ; la réponse reste ambiguë.',
+    'unstable_results':'Les listes sont instables ; vérifiez qu’elles proviennent de la recherche.',
     'empty_results':'Précisez un terme de contrôle présent dans le catalogue ou ajoutez un exemple de recherche.',
     'same_results':'Vérifiez le formulaire et le paramètre qui transmet le terme de recherche.',
     'witness_repeated':'Le témoin reproduit les résultats ordinaires ; vérifiez que le terme est bien transmis.',

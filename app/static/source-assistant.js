@@ -5,8 +5,8 @@ document.body.append(assistantDialog);
 let assistantTimer, assistantJob, assistantSource = '';
 const assistantStatuses = {queued:'En attente',running:'Découverte en cours',choice:'Site à choisir',added:'Source ajoutée',ready:'Mise à jour proposée',updated:'Mise à jour appliquée',unresolved:'Découverte non résolue',access_required:'Accès nécessaire',timeout:'Délai dépassé',cancelled:'Arrêtée',interrupted:'Interrompue'};
 assistantStatuses.needs_input='Proposition à préciser';
-const diagnosticPhases={endpoint:'Endpoint',search:'Recherche',witness:'Recherche témoin',pagination:'Pagination',video:'Page vidéo',candidate:'Candidat',ai:'IA',task:'Découverte'};
-const diagnosticOutcomes={started:'En cours',observed:'Observé',hypothesis:'Hypothèse',confirmed:'Confirmé',accepted:'Accepté',retained:'Conservé sans ajout',passed:'Contrôle réussi',failed:'Échec',skipped:'Tentative ignorée',inconclusive:'Non concluant',unsupported:'Non pris en charge',interrupted:'Interrompu'};
+const diagnosticPhases={endpoint:'Endpoint',search:'Recherche',repeat:'Répétition de contrôle',inference:'Extraction des cartes',witness:'Recherche témoin',pagination:'Pagination',video:'Page vidéo',candidate:'Candidat',ai:'IA',task:'Découverte'};
+const diagnosticOutcomes={extracted:'Résultats extraits',started:'En cours',observed:'Observé',hypothesis:'Hypothèse',confirmed:'Confirmé',accepted:'Accepté',retained:'Conservé sans ajout',passed:'Contrôle réussi',failed:'Échec',skipped:'Tentative ignorée',inconclusive:'Non concluant',unsupported:'Non pris en charge',interrupted:'Interrompu'};
 const diagnosticOrigins={model:'Modèle existant',example:'Exemple fourni',form:'Formulaire GET',documentation:'Documentation',ai:'Proposition IA',browser_request:'Requête navigateur',browser_form:'Formulaire observé dans le navigateur'};
 function diagnosticItem(row) {
   const item=node('li','assistant-diagnostic');
@@ -14,7 +14,7 @@ function diagnosticItem(row) {
   if(row.message)item.append(node('p','',row.message));
   const details=node('details');details.append(node('summary','','Données du contrôle'));
   if(row.code)details.append(node('p','hint',row.code));
-  for(const [label,value] of [['Candidat',row.candidate_id],['Origine',diagnosticOrigins[row.provenance]],['URL demandée',row.requested_url],['URL finale',row.final_url],['HTTP',row.http_status],['Type de contenu',row.content_type],['Durée (s)',row.duration],['Résultats sélectionnés',row.selected_count],['Résultats valides',row.valid_count]]) {
+  for(const [label,value] of [['Candidat',row.candidate_id],['Origine',diagnosticOrigins[row.provenance]],['URL demandée',row.requested_url],['URL finale',row.final_url],['HTTP',row.http_status],['Type de contenu',row.content_type],['Durée (s)',row.duration],['Classification',row.classification],['Raison',row.classification_reason],['Éléments inspectés',row.inspected_count],['Carte',row.card_index],['Champ manquant',row.missing_field],['Sélecteur',row.selector],['Stabilité',row.stability],['Résultats sélectionnés',row.selected_count],['Résultats valides',row.valid_count]]) {
     if(value!==undefined&&value!==null&&value!=='')details.append(node('p','',`${label} : ${value}`));
   }
   for(const example of row.examples||[])details.append(node('p','',`${example.title} — ${example.url}`));

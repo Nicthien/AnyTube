@@ -565,33 +565,41 @@ async def verify(candidate, queries):
         started=time.monotonic()
         with scope(phase='witness' if len(sets)==2 else 'search',query=query):
             emit(outcome='started')
-            result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3,'_discovery_diagnostics':True}, timeout=90 if candidate['kind']=='html' else 25)
+            result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':20,'page_size':20,'_discovery_diagnostics':True}, timeout=90 if candidate['kind']=='html' else 25)
         items = result.get('items', [])
         listing_evidence.update(result.get('listing_evidence',{}))
         if not sets:
             first_page_size=max(3,result.get('source_page_size',3))
         urls = checked_urls(items)
-        emit(phase='witness' if len(sets)==2 else 'search',query=query,outcome='passed' if urls else 'inconclusive',code='' if urls else 'empty_results',selected_count=result.get('source_page_size',len(items)),valid_count=len(urls),duration=round(time.monotonic()-started,3),examples=[{'title':i.get('title',''),'url':i.get('url') or i.get('webpage_url','')} for i in items[:3]])
+        emit(phase='witness' if len(sets)==2 else 'search',query=query,outcome='extracted' if urls else 'inconclusive',code='' if urls else 'empty_results',selected_count=result.get('source_page_size',len(items)),valid_count=len(urls),duration=round(time.monotonic()-started,3),examples=[{'title':i.get('title',''),'url':i.get('url') or i.get('webpage_url','')} for i in items[:3]])
         sets.append(urls)
         evidence.append({'query':query, 'count':len(urls), 'urls':sorted(urls)})
     if not sets[0] or not sets[1]:
         raise ControlError('empty_results','Un terme ordinaire ne donne aucun résultat : contrôle non concluant.')
     if sets[0]==sets[1]:
         raise ControlError('same_results','Les deux recherches donnent les mêmes résultats.')
-    if sets[2] in sets[:2]:
-        raise ControlError('witness_repeated','La recherche témoin reproduit les résultats ordinaires.')
-    emit(phase='endpoint',outcome='confirmed',message='Les recherches distinctes et le témoin confirment le fonctionnement de la recherche.')
+    if sets[2]:
+        raise ControlError('witness_repeated','Le témoin donne des résultats : résultats de secours ou recherche non confirmée.')
+    if metrics.get() is not None:metrics.get()['search_checks'] += 1
+    with scope(phase='repeat',query=queries[0]):
+        emit(outcome='started')
+        repeated=await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':20,'page_size':20,'_discovery_diagnostics':True},timeout=90 if candidate['kind']=='html' else 25)
+        repeat_urls=checked_urls(repeated.get('items',[]))
+        stability=len(repeat_urls & sets[0])/max(1,min(len(repeat_urls),len(sets[0])))
+        emit(outcome='extracted' if stability>=0.5 else 'failed',code='' if stability>=0.5 else 'unstable_results',stability=stability,valid_count=len(repeat_urls),examples=[{'title':i.get('title',''),'url':i.get('url','')} for i in repeated.get('items',[])[:3]])
+        if not repeat_urls or stability<0.5:raise ControlError('unstable_results','Les résultats changent trop pour une même recherche : recherche non confirmée.')
+    emit(phase='endpoint',outcome='confirmed',message='Recherche confirmée par les termes distincts, le témoin vide et la répétition stable.')
     if confirmation.get() is not None:confirmation.get()['confirmed']=True
     pagination = 'first_page_only'
     if candidate['pagination']['mode'] == 'prefix':
         emit(phase='pagination',query=queries[0],outcome='started')
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
-        result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':6}, timeout=25)
-        following = result.get('items', [])[3:]
+        result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':40}, timeout=25)
+        following = result.get('items', [])[20:]
         urls = checked_urls(following)
         if urls-sets[0]:
-            evidence.append({'query':queries[0], 'offset':3, 'count':len(urls), 'urls':sorted(urls)})
+            evidence.append({'query':queries[0], 'offset':20, 'count':len(urls), 'urls':sorted(urls)})
             pagination='verified'
         elif candidate['kind']=='json':
             candidate['pagination']['mode']='single'
@@ -809,6 +817,12 @@ async def discover(identifier, config):
             return probed[endpoint]
         with scope(phase='endpoint',provenance=origins.get(endpoint,'ai'),requested_url=endpoint):
             response=await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3))
+            from app.search_response import require_usable
+            try:
+                require_usable(response['text'],response.get('url',target),response.get('status'),response.get('content_type',''))
+            except ControlError as exc:
+                probed[endpoint]=exc
+                raise
             homepage=page.get('url',target).rstrip('/')
             same_home=response.get('url','').rstrip('/')==homepage or response.get('text','').strip()==page['text'].strip()
             if same_home:
@@ -837,7 +851,8 @@ async def discover(identifier, config):
                     inferred['pagination']['mode']='single'
                     candidates.append(inferred)
                 except ValueError:
-                    candidates.extend(infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)])
+                    with scope(phase='inference',provenance=origins.get(endpoint,'ai'),requested_url=endpoint):
+                        candidates.extend(infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)])
             except (ValueError, KeyError, DiscoveryError) as exc:
                 if isinstance(exc,ControlError):update(identifier,last_error=str(exc),next_action=NEXT_ACTIONS.get(exc.code,''))
                 elif isinstance(exc,DiscoveryError):update(identifier,last_error=exc.message,next_action=NEXT_ACTIONS['network_unavailable'])
@@ -855,6 +870,12 @@ async def discover(identifier, config):
                     await probe_endpoint(proposed['search_url'])
                     candidates.append(proposed)
                 step(identifier,f"IA : {len(proposal.get('endpoints',[]))} endpoint(s) proposé(s), "+('un candidat.' if proposal.get('connector') else 'aucun candidat.'))
+        except ControlError as exc:
+            emit(phase='endpoint',outcome='failed',code=exc.code,message=str(exc))
+            step(identifier,'Endpoint proposé par l’IA rejeté : '+str(exc))
+        except DiscoveryError:
+            emit(phase='ai',outcome='failed',code='ai_unavailable',message='Fournisseur IA indisponible.')
+            step(identifier,'Fournisseur IA indisponible ; aucun basculement.')
         except Exception:
             emit(phase='ai',outcome='failed',code='ai_invalid',message='Proposition IA invalide ou indisponible.')
             step(identifier,'Proposition IA invalide ou indisponible ; aucun basculement de fournisseur.')
@@ -934,7 +955,12 @@ async def discover(identifier, config):
             try:
                 rendered_template=template_from_example(rendered_url,job['queries'][0])
                 register(rendered_template,'browser_form')
-                candidates.extend(infer(observation.get('html',''),rendered_url,rendered_template,job.get('video_examples',[]),'chromium'))
+                with scope(phase='inference',provenance='browser_form',requested_url=rendered_template):
+                    from app.search_response import require_usable
+                    require_usable(observation.get('html',''),rendered_url,observation.get('status'))
+                    candidates.extend(infer(observation.get('html',''),rendered_url,rendered_template,job.get('video_examples',[]),'chromium'))
+            except ControlError as exc:
+                step(identifier,str(exc))
             except ValueError:
                 step(identifier,'Aucune URL GET de recherche reproductible reconnue dans le navigateur.')
         except DiscoveryError as exc:
@@ -950,6 +976,10 @@ async def discover(identifier, config):
     has_candidate=bool(load(identifier).get('candidate'))
     message = 'Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.' if candidates else 'Aucune recherche compatible trouvée. Aucun modèle, JSON ou sélecteur HTML fiable n’a été identifié ; ajoutez deux liens vidéo et une URL de recherche avec son terme. Les formulaires POST et interactions spécifiques nécessitent un connecteur dédié.'
     last=load(identifier)
+    failures=[d for d in last.get('diagnostics',[]) if d.get('message') and d.get('code') and d.get('outcome') in ('failed','inconclusive','retained') and d.get('phase')!='ai']
+    if failures:
+        best=max(enumerate(failures),key=lambda pair: (pair[1].get('provenance') in ('example','form','browser_form'),pair[1].get('phase') in ('video','pagination','repeat'),pair[0]))[1]
+        last['last_error']=best['message'];last['next_action']=NEXT_ACTIONS.get(best['code'],'Consultez le détail de ce contrôle et précisez les exemples.')
     return update(identifier,'needs_input' if has_candidate else 'unresolved',message=last.get('last_error') or message,next_action=last.get('next_action') or ('Ajoutez une URL de recherche avec son terme.' if not has_candidate else 'Consultez le détail des contrôles avant de reprendre.'))
 
 

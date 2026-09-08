@@ -108,6 +108,7 @@ async def observe(body):
     requests=0
     json_responses=0
     search_submitted=False
+    main_response={}
     network=asyncio.Semaphore(4)
     async with slots,async_playwright() as p:
         browser=await open_browser(p)
@@ -123,6 +124,13 @@ async def observe(body):
                 try:
                     async with network:
                         response=await guarded_fetch(request.url,request.method,request.post_data,request.headers)
+                    if request.resource_type=='document' and request.frame==page.main_frame:
+                        final=response.get('url',request.url)
+                        public_url(final)
+                        if final!=request.url:
+                            await route.fulfill(status=302,headers={'Location':final},body='')
+                            return
+                        main_response.update(status=response.get('status'),content_type=response.get('content_type',''))
                     endpoint=search_template(request.url,body.query)
                     if 'json' in response['content_type']:
                         json_responses+=1
@@ -133,7 +141,7 @@ async def observe(body):
                                 samples.append({'search_url':endpoint,'data':data})
                         except ValueError:
                             pass
-                    await route.fulfill(status=200,content_type=response['content_type'],headers=response.get('headers',{}),body=base64.b64decode(response['base64']))
+                    await route.fulfill(status=response.get('status',200),content_type=response['content_type'],headers=response.get('headers',{}),body=base64.b64decode(response['base64']))
                 except Exception:
                     await route.abort()
             await context.route('**/*',route_request)
@@ -165,7 +173,7 @@ async def observe(body):
                 raise ValueError('Document rendu trop volumineux.')
             public_url(page.url)
             return {'samples':samples,'requests':requests,'json_responses':json_responses,
-                    'search_submitted':search_submitted,'html':rendered,'url':page.url}
+                    'search_submitted':search_submitted,'html':rendered,'url':page.url,**main_response}
         finally:
             await browser.close()
 
