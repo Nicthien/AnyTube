@@ -1,5 +1,7 @@
 # AnyTube
 
+Version 0.6.0 : Chromium interactif, sessions de site chiffrées et réseau sortant Direct/proxy/VPN. Les vérifications restent effectuées par l’utilisateur. [Configuration et limites](docs/INTERACTIVE-NETWORK.fr.md).
+
 Version 0.5.5 : bilan indépendant par page, ajout explicite avec validation partielle et bouton **Exporter les résultats** (ZIP texte + JSON). Voir les [conditions et la recette](docs/SOURCE-PARTIAL-VALIDATION.md). La lecture reste non vérifiée.
 
 Version 0.5.4 : les recherches rejettent les pages d’erreur et les témoins non vides ; une répétition contrôle la stabilité. L’inférence distingue le titre du lien d’image. Aucun nouveau site public n’est annoncé compatible.
@@ -10,7 +12,7 @@ Depuis 0.5.3, la découverte conserve désormais la provenance des endpoints, le
 
 Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher des vidéos, les lire et conserver ses médias dans une bibliothèque privée.
 
-**Statut : version de développement · 0.5.5-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+**Statut : version de développement · 0.6.0-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
 
 Si les preuves vidéo sont absentes du HTML initial, l’assistant consulte aussi le rendu navigateur lorsqu’il est configuré. Un manque de preuves ne déclenche plus de corrections IA des sélecteurs de recherche. Sans preuve suffisante, le candidat reste un brouillon ; le diagnostic distingue le navigateur absent, indisponible et le rendu sans preuve. Les lecteurs vides restent refusés.
 
@@ -29,7 +31,7 @@ Ce projet est développé sur mon temps libre. Si vous souhaitez le soutenir, vo
 
 ## Fonctionnalités
 
-- **Découvrir une source** : assistant intégré, réutilisation PeerTube, inférence JSON, recherche SearXNG/adaptable et IA locale ou API compatible OpenAI facultatives. Ajout après contrôles de recherche, sans promesse de lecture. [Configuration et limites](docs/SOURCE-ASSISTANT.md). Le service Chromium optionnel reste à valider sur Docker.
+- **Découvrir une source** : assistant intégré, réutilisation PeerTube, inférence JSON, recherche SearXNG/adaptable et IA locale ou API compatible OpenAI facultatives. Ajout après contrôles de recherche, sans promesse de lecture. [Configuration et limites](docs/SOURCE-ASSISTANT.md). Le service Chromium intégré a été testé dans une pile Docker isolée ; les limites restent décrites dans le guide.
 
 - **Explorer ses sources** : accueil par source, recherche fédérée, sélection multiple, classements et chargement supplémentaire selon les connecteurs. Les erreurs d'une source ne masquent pas les autres résultats.
 - **Configurer ses connecteurs** : catalogue yt-dlp, modèles de recherche, API JSON GET/POST, sources par URL, copie et test d'une configuration avant enregistrement.

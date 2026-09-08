@@ -7,6 +7,7 @@ from fastapi.responses import Response
 
 FIELDS = set('id status created updated target resolved_target minutes queries video_examples search_example_url search_example_query source_id parent_job message next_action elapsed_seconds deadline engine date search pagination unverified configuration_signature history_truncated diagnostics_version format_version total complete eligible_partial recognized_per_term counts recognized deleted access_required network_error unrecognized_player non_video unchecked terms url final_url requested_url title reason method http_status duration hints player_present metadata_present outcome phase candidate_id provenance code content_type classification classification_reason inspected_count selected_count valid_count card_index missing_field selector stability query count offset time browser_requests http_requests search_checks ai_calls skipped_attempts discovery_requests'.split())
 CANDIDATE_FIELDS = set('kind search_url search_trending_url search_views_url search_recent_url query_escape method results_path results_total_path result_base_url duration_unit item_url video_url home_query home_kind home_url extractor prefix'.split())
+FIELDS.update({'access_type', 'session_state', 'network_revision', 'remaining_seconds'})
 NESTED = {
     'html': set('rendering items next_selector url_path_prefix'.split()),
     'pagination': set('mode parameter has_more_path maximum_results fixed_page_size first_page page_url_path initial_results_path'.split()),
@@ -50,6 +51,9 @@ def export_job(job, version):
                  'Recherches : '+', '.join(snapshot.get('queries',[])),
                  'Tentative précédente : '+str(snapshot.get('parent_job') or 'aucune'),
                  'Durée (secondes) : '+str(snapshot.get('elapsed_seconds','en cours')), ''])
+    text.extend(['Accès détecté : '+str(snapshot.get('access_type','non identifié')),
+                 'Session : '+str(snapshot.get('session_state','aucune')),
+                 'Révision réseau : '+str(snapshot.get('network_revision','indisponible')), ''])
     evidence=snapshot.get('evidence',{})
     labels={'recognized':'reconnue','deleted':'supprimée','access_required':'accès nécessaire',
             'network_error':'erreur réseau','unrecognized_player':'lecteur non reconnu','non_video':'contenu non vidéo','unchecked':'non contrôlée'}

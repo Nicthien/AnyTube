@@ -5,6 +5,7 @@ document.body.append(assistantDialog);
 let assistantTimer, assistantJob, assistantSource = '';
 const assistantStatuses = {queued:'En attente',running:'Découverte en cours',choice:'Site à choisir',added:'Source ajoutée',ready:'Mise à jour proposée',updated:'Mise à jour appliquée',unresolved:'Découverte non résolue',access_required:'Accès nécessaire',timeout:'Délai dépassé',cancelled:'Arrêtée',interrupted:'Interrompue'};
 assistantStatuses.needs_input='Proposition à préciser';
+assistantStatuses.intervention_needed='Intervention nécessaire';
 const diagnosticPhases={endpoint:'Endpoint',search:'Recherche',repeat:'Répétition de contrôle',inference:'Extraction des cartes',witness:'Recherche témoin',pagination:'Pagination',video:'Page vidéo',candidate:'Candidat',ai:'IA',task:'Découverte'};
 const diagnosticOutcomes={extracted:'Résultats extraits',started:'En cours',observed:'Observé',hypothesis:'Hypothèse',confirmed:'Confirmé',accepted:'Accepté',retained:'Conservé sans ajout',passed:'Contrôle réussi',failed:'Échec',skipped:'Tentative ignorée',inconclusive:'Non concluant',unsupported:'Non pris en charge',interrupted:'Interrompu'};
 const diagnosticOrigins={model:'Modèle existant',example:'Exemple fourni',form:'Formulaire GET',documentation:'Documentation',ai:'Proposition IA',browser_request:'Requête navigateur',browser_form:'Formulaire observé dans le navigateur'};
@@ -68,6 +69,7 @@ async function openSourceAssistant(source='',previous=null) {
     assistantDialog.append(form);
     if(previous){target.readOnly=true;submit.textContent='Reprendre avec ces paramètres';}
     if(state.account?.admin)assistantDialog.append(button('Paramètres de découverte','secondary',()=>openAssistantSettings().catch(assistantError)));
+    assistantDialog.append(button('Sessions des sites','secondary',()=>showBrowserSessions().catch(assistantError)));
     if(listing.items.length) {
       assistantDialog.append(node('h3','','Découvertes récentes'));
       for(const job of listing.items)assistantDialog.append(button(`${job.target} — ${assistantStatuses[job.status]||job.status}`,'secondary full',()=>showAssistantJob(job.id).catch(assistantError)));
@@ -128,6 +130,10 @@ async function showAssistantJob(id) {
         if(job.status==='needs_input'&&job.candidate)result.append(button('Préciser la configuration','secondary',()=>{assistantDialog.close();openSourceEditor(null,job.candidate).catch(assistantError);}));
         if(['added','updated'].includes(job.status))await loadSources();
         if(job.status!=='choice')result.append(button('Ajouter des exemples et reprendre','secondary',()=>openSourceAssistant(job.source_id,job).catch(assistantError)));
+        if(!['added','updated','choice'].includes(job.status))result.append(button('Ouvrir la session','secondary',()=>openBrowserSession(job.resolved_target||job.target,job.source_id||'',job.browser_session_id||'',async sessionId=>{
+          const resumed=await api(`/api/source-assistant/jobs/${id}/resume`,{method:'POST',body:JSON.stringify({browser_session_id:sessionId})});
+          await showAssistantJob(resumed.id);
+        }).catch(assistantError)));
       }
       if(active)assistantTimer=setTimeout(refresh,2000);
     }catch(e){status.textContent=e.message;}

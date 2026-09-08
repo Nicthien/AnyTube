@@ -66,11 +66,11 @@ async def observe(url, candidate):
     started = time.monotonic()
     for method in ('http', 'chromium'):
         if method not in entry:
-            if method == 'chromium' and not sa.settings().browser.url: break
+            if method == 'chromium' and not sa.runtime_settings().browser.url: break
             try:
                 if method == 'http': response = await sa.http(url)
                 else:
-                    response = json.loads((await sa.http(sa.settings().browser.url.rstrip('/')+'/observe', trusted=True,
+                    response = json.loads((await sa.http(sa.runtime_settings().browser.url.rstrip('/')+'/observe', trusted=True,
                         method='POST', body={'url': url, 'query': 'video', 'submit_search': False},
                         headers=sa.service_headers('browser'), timeout=95))['text'])
                     if not isinstance(response,dict):raise ValueError('Observation structurée attendue.')
@@ -87,7 +87,9 @@ async def observe(url, candidate):
         final = result['final_url']
         if search_destination(final, candidate.get('search_url','')) or re.search(r'/(?:categor(?:y|ies)|tags?)(?:/|$)', urlsplit(final).path):
             result.update(status='non_video', reason='Destination identifiée comme recherche ou catégorie, pas comme page vidéo.')
-        if result['status'] in ('recognized','non_video','deleted','access_required'): break
+        from app.browser_state import active_session
+        if result['status'] in ('recognized','non_video','deleted'): break
+        if result['status']=='access_required' and (method=='chromium' or not active_session.get()): break
     result['duration'] = round(time.monotonic()-started,3)
     result['observations'] = [dict(v) for v in entry.values()]
     return result

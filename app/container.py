@@ -23,7 +23,7 @@ def firewall(binary, ipv6=False):
     rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10004', '-p', 'udp', '--dport', '53', '-j', 'ACCEPT')
     if ipv6:
         return
-    for uid, port in (('10001', '3128'), ('10001', '3129'), ('10003', '8000')):
+    for uid, port in (('10001', '3128'), ('10001', '3129'), ('10002', '8000'), ('10002', '3129'), ('10003', '8000')):
         rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', uid, '-d', '127.0.0.1', '-p', 'tcp', '--dport', port, '-j', 'ACCEPT')
     # Embedded Docker DNS has a random destination port after DNAT.
     rule(binary, '-A', 'OUTPUT', '-m', 'owner', '--uid-owner', '10002', '-d', '127.0.0.11', '-p', 'udp', '-j', 'ACCEPT')
@@ -52,6 +52,9 @@ def main():
                 exists = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='credentials'").fetchone()
                 if exists and db.execute('SELECT count(*) FROM credentials').fetchone()[0]:
                     raise RuntimeError('Restore the vault key: existing credentials must not receive a new key.')
+                sessions = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='browser_sessions'").fetchone()
+                if sessions and db.execute('SELECT count(*) FROM browser_sessions').fetchone()[0]:
+                    raise RuntimeError('Restore the vault key: encrypted browser sessions already exist.')
         with key_path.open('xb') as target:
             target.write(secrets.token_bytes(32))
     if key_path.stat().st_size != 32:
@@ -73,8 +76,13 @@ def main():
     signal.signal(signal.SIGTERM, stop)
     signal.signal(signal.SIGINT, stop)
     try:
-        children.append(spawn('app.egress', uid=10002))
         os.environ.update(ANYTUBE_SERVICE_PROXY='http://127.0.0.1:3129', ANYTUBE_SERVICE_TOKEN=secrets.token_hex(32))
+        os.environ['ANYTUBE_ROUTE_CONTROL']='http://127.0.0.1:8000/_internal/network'
+        children.append(spawn('app.egress', uid=10002))
+        if os.environ.get('ANYTUBE_BROWSER_EGRESS_TOKEN'):
+            children.append(spawn('app.egress', uid=10002, env={**os.environ,
+                'ANYTUBE_EGRESS_BIND':'0.0.0.0', 'ANYTUBE_EGRESS_PORT':'3130',
+                'ANYTUBE_EGRESS_AUTH_TOKEN':os.environ['ANYTUBE_BROWSER_EGRESS_TOKEN']}))
         children.append(spawn('app.egress', uid=10004, env={**os.environ, 'ANYTUBE_SERVICE_MODE':'1', 'ANYTUBE_EGRESS_PORT':'3129'}))
         children.append(spawn('uvicorn', 'app.main:app', '--host', '0.0.0.0', '--port', '8000', '--no-proxy-headers'))
         children.append(spawn('app.backups', '--daily'))

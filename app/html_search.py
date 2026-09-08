@@ -204,12 +204,31 @@ def template_from_example(url, query):
     raise ValueError('Le terme doit apparaître une seule fois dans l’URL de recherche.')
 
 
+def card_links(node, base, search_url, examples=()):
+    """Recognize card destinations from their structure, not a URL-prefix catalogue."""
+    found = set()
+    for anchor in node.select('a[href]', limit=40):
+        href = anchor.get('href', '')
+        url = urljoin(base, href)
+        if not href or href.startswith(('#', 'javascript:', 'mailto:')) or search_destination(url, search_url):
+            continue
+        if urlsplit(url).hostname != urlsplit(base).hostname:
+            continue
+        # Association with an image/heading or media metadata is stronger than a
+        # path shape. Multiple competing destinations remain ambiguous.
+        associated = anchor.select_one('img,video,picture,h2,h3,[itemprop="thumbnailUrl"]') is not None
+        heading = anchor.find_parent(['h2', 'h3']) is not None
+        media_card = node.select_one('img,video,picture,[itemprop="duration"]') is not None
+        same_image = any(urljoin(base, a.get('href', '')) == url for a in node.select('a:has(img),a:has(picture)'))
+        if url in examples or associated or heading or (media_card and same_image):
+            found.add(url)
+    return found
+
+
 def card_fields(nodes, base, search_url, examples=()):
     """Infer one consistent mapping, with an unambiguous destination per card."""
     def links(node):
-        return {urljoin(base,a['href']) for a in node.select('a[href]')
-                if (urljoin(base,a['href']) in examples or re.search(r'(?i)(/videos?/|/watch(?:/|\?)|/w/|[?&]v=)',urljoin(base,a['href'])))
-                and not search_destination(urljoin(base,a['href']),search_url)}
+        return card_links(node, base, search_url, examples)
     if not nodes or any(len(links(n))!=1 for n in nodes):return None
     options=[]
     for node in nodes[:5]:
@@ -272,12 +291,11 @@ def infer(text, base, search_url, examples=(), rendering='http'):
             continue
         if urlsplit(url).hostname != urlsplit(base).hostname:
             continue
-        semantic = bool(re.search(r'(?i)(/videos?/|/watch(?:/|\?)|/w/|[?&]v=)', url))
-        if not semantic and url not in examples:
-            continue
         card=anchor.find_parent(['article','li'])
         parents=[card] if card is not None else anchor.find_parents('div',limit=3)
         for parent in parents:
+            if url not in card_links(parent, base, search_url, examples):
+                continue
             classes = [c for c in parent.get('class',[]) if re.fullmatch(r'[A-Za-z_][\w-]*',c)]
             css = parent.name + ('.'+'.'.join(classes[:3]) if classes else '')
             groups.setdefault(css, set()).add(url)
@@ -323,7 +341,7 @@ def infer(text, base, search_url, examples=(), rendering='http'):
 
 
 async def search(payload):
-    from app.source_assistant import http, settings, service_headers
+    from app.source_assistant import http, runtime_settings, service_headers
     from app.connectors import Connector
     from app.worker import normalize
     from app.failures import SourceFailure
@@ -349,7 +367,7 @@ async def search(payload):
             raise ValueError('La pagination répète une page.')
         visited.add(url)
         if spec['rendering'] == 'chromium':
-            service = settings().browser
+            service = runtime_settings().browser
             if not service.url:
                 raise SourceFailure('browser_unavailable')
             try:

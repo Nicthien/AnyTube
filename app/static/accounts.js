@@ -67,6 +67,7 @@ async function openAccount() {
   const old=labeled(form,'Mot de passe actuel','password'),next=labeled(form,'Nouveau mot de passe','password');old.required=true;next.required=true;next.minLength=12;old.autocomplete='current-password';next.autocomplete='new-password';
   const save=node('button','primary','Enregistrer le mot de passe');form.append(save);form.addEventListener('submit',async event=>{event.preventDefault();save.disabled=true;try{await api('/api/account/password',{method:'POST',body:JSON.stringify({current_password:old.value,new_password:next.value})});old.value='';next.value='';toast('Mot de passe modifié ; les autres sessions ont été révoquées.');}catch(e){toast(e.message);}finally{save.disabled=false;}});accountDialog.append(form);
   if(state.account.admin){
+    accountDialog.append(button('Réseau sortant','secondary',()=>{accountDialog.close();openNetworkSettings().catch(assistantError);}));
     accountDialog.append(button('Découverte des sources','secondary',()=>{accountDialog.close();openAssistantSettings().catch(assistantError);}));
     const invitation=node('div');invitation.append(node('h3','','Inviter un membre'));
     const link=labeled(invitation,'Lien privé d’invitation');link.readOnly=true;

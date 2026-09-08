@@ -102,6 +102,7 @@ function renderSources() {
     remove.setAttribute('aria-label', `Supprimer ${source.name}`);
     const edit = button('Configurer', 'secondary', () => openSourceEditor(source));
     edit.setAttribute('aria-label', `Configurer ${source.name}`);
+    if(source.browser_session)details.append(button('Ouvrir la session','secondary',()=>openBrowserSession(source.browser_session.site,source.id,source.browser_session.id).catch(assistantError)));
     row.append(node('div', 'source-avatar', icons[source.id] || source.name[0].toUpperCase()), details, edit, toggle, remove); $('source-list').append(row);
   }
 }
@@ -212,7 +213,7 @@ function renderCard(item) {
   const open = () => collection ? browseCollection(item.url, item.source_id) : streamVideo(item.url, item.title, item.source_id);
   const card = node('article', 'card'); const thumb = button('', 'thumbnail', open); thumb.setAttribute('aria-label', `${collection ? 'Parcourir' : 'Regarder'} ${item.title}`);
   const placeholder = node('span', 'placeholder', '▷'); thumb.append(placeholder);
-  if (safeUrl(item.thumbnail)) { const img = node('img'); img.src = item.thumbnail; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; img.addEventListener('error', () => img.remove()); thumb.append(img); placeholder.hidden = true; img.addEventListener('error', () => { placeholder.hidden = false; }); }
+  if (safeUrl(item.thumbnail)) { const img = node('img'); img.src = '/api/thumbnails?url='+encodeURIComponent(item.thumbnail); img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; img.addEventListener('error', () => img.remove()); thumb.append(img); placeholder.hidden = true; img.addEventListener('error', () => { placeholder.hidden = false; }); }
   if (duration(item.duration)) thumb.append(node('span', 'duration', duration(item.duration)));
   const content = node('div', 'card-content'); const title = node('h3'); title.append(button(item.title, 'title-button', open));
   content.append(node('span', 'source-badge', item.source), title, node('div', 'metadata', [item.channel, item.published ? new Date(item.published).toLocaleDateString('fr') : '', Number.isFinite(item.views) ? `${new Intl.NumberFormat('fr', { notation: 'compact' }).format(item.views)} vues` : ''].filter(Boolean).join(' · ')), node('p', 'description', item.description || 'Description non fournie par cette source.'));

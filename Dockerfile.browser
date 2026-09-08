@@ -4,6 +4,7 @@ WORKDIR /app
 COPY requirements.lock ./requirements.lock
 ARG INSTALL_CHROMIUM=true
 RUN pip install --no-cache-dir -r requirements.lock playwright==1.62.0 \
+    && apt-get update && apt-get install -y --no-install-recommends iptables util-linux && rm -rf /var/lib/apt/lists/* \
     && if [ "$INSTALL_CHROMIUM" = true ]; then python -m playwright install --with-deps chromium; fi \
     && useradd --uid 10003 --create-home observer \
     && mkdir -p /opt/browsers && chmod -R a+rX /opt/browsers

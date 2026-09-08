@@ -1,0 +1,12 @@
+chromium-seccomp.json is derived from Microsoft Playwright v1.62.0:
+https://github.com/microsoft/playwright/blob/v1.62.0/utils/docker/seccomp_profile.json
+
+Playwright is licensed under Apache License 2.0:
+https://github.com/microsoft/playwright/blob/v1.62.0/LICENSE
+
+This is a deny-by-default Docker seccomp profile with the namespace operations
+required by Chromium's own sandbox. It is not an unconfined profile.
+
+AnyTube modification: allow the chroot syscall without the Docker outer
+CAP_SYS_CHROOT condition. Chromium uses it inside its isolated user namespace;
+the container and browser workers are not granted host CAP_SYS_CHROOT.

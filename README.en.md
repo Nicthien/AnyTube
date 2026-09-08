@@ -1,5 +1,7 @@
 # AnyTube
 
+Version 0.6.0: interactive Chromium, encrypted site sessions and Direct/proxy/VPN routing. Users perform site verification themselves. [Setup and limits](docs/INTERACTIVE-NETWORK.en.md).
+
 Version 0.5.5: independent page evidence, explicit partial acceptance and **Export results** (text + JSON ZIP). See [conditions and validation](docs/SOURCE-PARTIAL-VALIDATION.md#english). Playback remains unverified.
 
 Version 0.5.4 rejects error pages and nonempty control queries, and repeats a query to check stability. HTML inference distinguishes card titles from image links. No additional public site compatibility is claimed.
@@ -10,7 +12,7 @@ Since 0.5.3, discovery now records endpoint provenance, individual checks and sk
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.5.5-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.6.0-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
 
 When video evidence is absent from initial HTML, the assistant also checks browser-rendered metadata if configured. Missing evidence no longer triggers AI corrections to search selectors. Candidates remain drafts without sufficient evidence; diagnostics distinguish a missing browser, an unavailable observer and rendered pages without evidence. Empty players are still rejected.
 
@@ -38,7 +40,7 @@ This project is developed in my spare time. If you would like to support it, you
 **Source discovery assistant:** integrated discovery, PeerTube reuse, JSON inference,
 configurable SearXNG/JSON search and optional Ollama/OpenAI-compatible AI. Sources are
 added after search checks; playback is not certified. See the [configuration guide](docs/SOURCE-ASSISTANT.md)
-(French). The optional Chromium service still requires Docker validation.
+(French). Integrated Chromium and the Browserless option are covered by the [0.6.0 validation report](docs/VALIDATION-0.6.0.md).
 
 ## Features
 

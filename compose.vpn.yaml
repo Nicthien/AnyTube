@@ -1,0 +1,50 @@
+# Optional: merge explicitly and enable --profile vpn. Direct remains selected in AnyTube.
+services:
+  anytube:
+    networks: [default, vpn-link]
+  vpn-config:
+    profiles: [vpn]
+    image: anytube:family
+    user: '0:0'
+    entrypoint: [python, -m, app.vpn_config]
+    environment:
+      VPN_TYPE: ${ANYTUBE_VPN_TYPE:-wireguard}
+    volumes:
+      - ${ANYTUBE_VPN_CONFIG:?Path to server-only vpn.conf}:/input/vpn.conf:ro
+      - vpn-validated:/output
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  vpn:
+    profiles: [vpn]
+    image: qmcgaw/gluetun:v3.41.3
+    cap_add: [NET_ADMIN]
+    devices: [/dev/net/tun:/dev/net/tun]
+    environment:
+      VPN_SERVICE_PROVIDER: custom
+      VPN_TYPE: ${ANYTUBE_VPN_TYPE:-wireguard}
+      OPENVPN_CUSTOM_CONFIG: /gluetun/custom.conf
+      OPENVPN_USER: ${ANYTUBE_OPENVPN_USER:-}
+      OPENVPN_PASSWORD: ${ANYTUBE_OPENVPN_PASSWORD:-}
+      HTTPPROXY: 'on'
+      HTTPPROXY_USER: ${ANYTUBE_VPN_PROXY_USER:-}
+      HTTPPROXY_PASSWORD: ${ANYTUBE_VPN_PROXY_PASSWORD:-}
+      HTTPPROXY_LOG: 'off'
+      FIREWALL: 'on'
+    volumes:
+      - vpn-validated:/gluetun
+    networks:
+      vpn-link:
+        ipv4_address: ${ANYTUBE_VPN_IP:-172.30.90.3}
+    depends_on:
+      vpn-config:
+        condition: service_completed_successfully
+    restart: unless-stopped
+networks:
+  vpn-link:
+    ipam:
+      config:
+        - subnet: ${ANYTUBE_VPN_SUBNET:-172.30.90.0/24}
+volumes:
+  vpn-validated:

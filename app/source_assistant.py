@@ -2,6 +2,7 @@
 import asyncio
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -89,6 +90,22 @@ def settings():
     return Settings.model_validate(json.loads(row[0]) if row else {})
 
 
+def integrated_observation(config=None):
+    """Saved Browserless settings remain intact; isolated sessions use our service."""
+    if not os.environ.get('ANYTUBE_INTERACTIVE_URL'):
+        return False
+    from app.browser_state import active_session
+    from app.network_settings import settings as network_settings
+    return bool(active_session.get() or not (config or settings()).browser.url or network_settings()['mode'] != 'direct')
+
+
+def runtime_settings():
+    config = settings().model_copy(deep=True)
+    if integrated_observation(config):
+        config.browser.url = os.environ['ANYTUBE_INTERACTIVE_URL']
+    return config
+
+
 def initialize():
     with connect() as db:
         db.execute('CREATE TABLE IF NOT EXISTS source_assistant_jobs(id TEXT PRIMARY KEY,owner TEXT NOT NULL,status TEXT NOT NULL,created REAL NOT NULL,updated REAL NOT NULL,payload TEXT NOT NULL)')
@@ -149,6 +166,8 @@ def step(identifier, message):
 
 
 def service_headers(name):
+    if name == 'browser' and integrated_observation():
+        return {'Authorization': 'Bearer ' + os.environ['ANYTUBE_INTERACTIVE_TOKEN']}
     from app.vault import reveal
     token = current_user.set('__source_assistant_services__')
     try:
@@ -220,8 +239,16 @@ async def http(url, *, trusted=False, method='GET', body=None, headers=None, tim
         stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL,
         cwd=Path(__file__).resolve().parent.parent)
     try:
-        raw, _ = await asyncio.wait_for(process.communicate(json.dumps(dict(url=url, trusted=trusted, method=method, body=body, headers=headers or {},timeout=max(1,timeout-1))).encode()), timeout)
+        from app.browser_state import active_session, read
+        state = read(active_session.get()) if active_session.get() and not trusted else None
+        if active_session.get() and trusted and url.endswith('/observe'):
+            body = {**(body or {}), 'state': read(active_session.get())}
+        raw, _ = await asyncio.wait_for(process.communicate(json.dumps(dict(url=url, trusted=trusted, method=method, body=body, headers=headers or {},timeout=max(1,timeout-1),browser_state=state)).encode()), timeout)
         value = json.loads(raw)
+        cookies = value.pop('_session_cookies', None)
+        if cookies is not None and state is not None:
+            from app.browser_state import save
+            save(active_session.get(), {**state, 'cookies': cookies})
         if value.get('error'):
             emit(outcome='failed',code='network_unavailable',requested_url=url if not trusted else '',http_status=value.get('status'),duration=round(time.monotonic()-started,3))
             raise DiscoveryError('access_required' if value.get('status') == 401 else 'unresolved',
@@ -312,7 +339,7 @@ async def ai_proposal(config, material):
 @router.post('/settings/test/{name}')
 async def test_service(name: Literal['search','ai','browser']):
     require_admin()
-    config = settings()
+    config = runtime_settings()
     try:
         if name == 'search':
             return {'items': await web_search('PeerTube documentation', config)}
@@ -340,6 +367,7 @@ class Start(BaseModel):
     target: str = Field(min_length=1, max_length=2000)
     minutes: int | None = Field(default=None, ge=1, le=60)
     source_id: str = Field(default='', max_length=160)
+    browser_session_id: str = Field(default='', max_length=32)
     queries: list[str] = Field(default_factory=lambda:['science', 'music'], min_length=2, max_length=2)
     video_examples: list[str] = Field(default_factory=list,max_length=5)
     search_example_url: str = Field(default='',max_length=2000)
@@ -391,6 +419,12 @@ async def start(body: Start):
 
 
 def create_job(body, parent=None):
+    if body.browser_session_id:
+        from app.browser_state import get, read, site_origin
+        session = get(body.browser_session_id)
+        read(body.browser_session_id)
+        if not session['validated'] or session['site'] != site_origin(body.target):
+            raise HTTPException(409, 'Validez une session correspondant au site avant la reprise.')
     baseline = None
     if body.source_id:
         with connect() as db:
@@ -402,6 +436,8 @@ def create_job(body, parent=None):
     payload = {**body.model_dump(), 'minutes':body.minutes or settings().minutes, 'steps':[], 'baseline':baseline,
                'format_version':2,'diagnostics_version':1,'diagnostics':[],'parent_job':parent['id'] if parent else '',
                'previous_candidate':parent.get('candidate') if parent else None}
+    if parent and parent.get('status') == 'intervention_needed':
+        payload['remaining_seconds'] = parent.get('remaining_seconds', payload['minutes'] * 60)
     with connect() as db:
         db.execute('BEGIN IMMEDIATE')
         rows = list(db.execute("SELECT owner FROM source_assistant_jobs WHERE status IN ('queued','running')"))
@@ -415,7 +451,7 @@ def create_job(body, parent=None):
 @router.post('/jobs/{identifier}/cancel')
 async def cancel(identifier: str):
     job = load(identifier)
-    if job['status'] in ACTIVE:
+    if job['status'] in (*ACTIVE, 'intervention_needed'):
         task = running.get(identifier)
         if task:
             task.cancel()
@@ -439,6 +475,7 @@ async def choose(identifier: str, body: Choice):
 
 
 class Resume(BaseModel):
+    browser_session_id: str | None = Field(default=None, max_length=32)
     queries: list[str] | None = Field(default=None,min_length=2,max_length=2)
     model_config = ConfigDict(extra='forbid')
     video_examples: list[str] | None = Field(default=None,max_length=5)
@@ -646,6 +683,9 @@ def commit_candidate(identifier, candidate, evidence):
         else:
             db.execute('INSERT INTO sources(id,name,connector,owner) VALUES (?,?,?,?)', (source_id, host, json.dumps(candidate), owner()))
         db.execute('DELETE FROM source_validation WHERE owner=? AND source_id=?',(owner(),source_id))
+    if job.get('browser_session_id'):
+        from app.browser_state import bind
+        bind(job['browser_session_id'], source_id)
     record(candidate, job['queries'][0], 'verified', evidence['checks'][0]['count'], detail='Assistant : recherche uniquement.')
     return update(identifier, 'added', candidate=candidate, evidence=evidence, added_source=source_id, message='Source ajoutée. Recherche contrôlée ; lecture non vérifiée.')
 
@@ -666,6 +706,12 @@ def accept_partial(identifier: str):
 @router.post('/jobs/{identifier}/apply')
 def apply_update(identifier: str):
     job = load(identifier)
+    from app.network_settings import settings as network_settings
+    if job.get('network_revision', 'direct') != network_settings()['revision']:
+        raise HTTPException(409, 'Le trajet réseau a changé ; reprenez la découverte.')
+    if job.get('browser_session_id'):
+        from app.browser_state import read
+        read(job['browser_session_id'])
     if job['status'] != 'ready' or not job['source_id']:
         raise HTTPException(409, 'Aucune mise à jour prête.')
     if job.get('evidence',{}).get('engine') != engine_version():
@@ -679,6 +725,8 @@ def apply_update(identifier: str):
         db.execute('INSERT INTO source_assistant_backups VALUES (?,?,?,?,?)', (uuid.uuid4().hex, owner(), job['source_id'], time.time(), json.dumps(old)))
         db.execute('UPDATE sources SET connector=? WHERE id=? AND owner=?', (json.dumps(job['candidate']), job['source_id'], owner()))
         db.execute('DELETE FROM source_validation WHERE owner=? AND source_id=?',(owner(),job['source_id']))
+        if job.get('browser_session_id'):
+            db.execute('UPDATE browser_sessions SET source=? WHERE id=? AND owner=?', (job['source_id'],job['browser_session_id'],owner()))
     return update(identifier, 'updated', message='Mise à jour appliquée ; configuration précédente sauvegardée.')
 
 
@@ -769,6 +817,25 @@ async def discover(identifier, config):
         return
     step(identifier, 'Lecture des pages publiques et recherche de documentation.')
     page = await public_fetch(target)
+    from app.search_response import classify, access_gate
+    from app.html_search import document
+    category, reason = classify(page.get('text',''), page.get('url',target), page.get('status'), page.get('content_type',''))
+    if category == 'access_required':
+        from app.browser_state import active_session
+        if active_session.get() and config.browser.url:
+            # Storage-only logins may need Chromium even though HTTP still
+            # presents the gate. No automated interaction is performed.
+            rendered=json.loads((await http(config.browser.url.rstrip('/')+'/observe', trusted=True,
+                method='POST',body={'url':target,'query':job['queries'][0],'submit_search':False},
+                headers=service_headers('browser'),timeout=85))['text'])
+            page={**rendered,'text':rendered.get('html','')}
+            category,reason=classify(page['text'],page.get('url',target),page.get('status'),page.get('content_type',''))
+        if category == 'access_required':
+            gate=access_gate(document(page.get('text',''))) or {'type':'access_unknown'}
+            update(identifier,access_type=gate['type'])
+            emit(phase='access',provenance='example',outcome='retained',code='access_required',
+                 classification=category,message=reason,requested_url=target,final_url=page.get('url',target))
+            raise DiscoveryError('access_required',reason)
     parser = Page(target)
     parser.feed(page['text'])
     for endpoint in parser.forms[:3]:register(endpoint,'form')
@@ -857,7 +924,11 @@ async def discover(identifier, config):
                     candidates.append(inferred)
                 except ValueError:
                     with scope(phase='inference',provenance=origins.get(endpoint,'ai'),requested_url=endpoint):
-                        candidates.extend(infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)])
+                        proposed = infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)]
+                        candidates.extend(proposed)
+                        if not proposed:
+                            emit(outcome='inconclusive',code='cards_unrecognized',
+                                 message='La page de recherche a été chargée, mais aucune association fiable entre cartes, titres et destinations n’a permis de construire un candidat.')
             except (ValueError, KeyError, DiscoveryError) as exc:
                 if isinstance(exc,ControlError):update(identifier,last_error=str(exc),next_action=NEXT_ACTIONS.get(exc.code,''))
                 elif isinstance(exc,DiscoveryError):update(identifier,last_error=exc.message,next_action=NEXT_ACTIONS['network_unavailable'])
@@ -991,6 +1062,8 @@ async def discover(identifier, config):
 
 async def execute(identifier):
     job=load(identifier)
+    from app.browser_state import active_session
+    session_token = active_session.set(job.get('browser_session_id', ''))
     def persist_diagnostic(row):
         if row.get('code')=='duplicate' and metrics.get() is not None:
             metrics.get()['skipped_attempts']=metrics.get().get('skipped_attempts',0)+1
@@ -1002,10 +1075,23 @@ async def execute(identifier):
     progress_token=progress.set(lambda candidate,evidence: update(identifier,candidate=candidate,evidence=evidence))
     diagnostic_token=sink.set(persist_diagnostic)
     metric_token=metrics.set({'http_requests':0,'search_checks':0,'ai_calls':0})
-    update(identifier,'running',deadline=time.time()+job['minutes']*60,engine=engine_version(),diagnostics_version=1)
+    budget = max(.1, min(job['minutes']*60, job.get('remaining_seconds', job['minutes']*60)))
+    started = time.monotonic()
+    from app.network_settings import settings as network_settings
+    update(identifier,'running',deadline=time.time()+budget,engine=engine_version(),diagnostics_version=1,
+           network_revision=network_settings()['revision'],session_state='validated' if job.get('browser_session_id') else 'none')
     try:
-        async with asyncio.timeout(job['minutes']*60):
-            await discover(identifier,settings())
+        async with asyncio.timeout(budget):
+            await discover(identifier,runtime_settings())
+            final = load(identifier)
+            access_pages = [p for p in final.get('evidence', {}).get('pages', []) if p.get('status') == 'access_required']
+            observed_access = [d for d in final.get('diagnostics', []) if d.get('code') == 'access_required'
+                               and d.get('provenance') in ('example', 'form', 'browser_form', 'model')]
+            if final['status'] == 'access_required' or (final['status'] in ('needs_input','unresolved') and (access_pages or observed_access)):
+                update(identifier, 'intervention_needed', remaining_seconds=max(0, budget-(time.monotonic()-started)),
+                       access_type='age_verification' if any('âge' in p.get('reason', '') for p in access_pages) else 'access_unknown',
+                       message='Une intervention personnelle est nécessaire sur le site. Le budget d’analyse est suspendu.',
+                       next_action='Ouvrez la session, effectuez la vérification, puis reprenez l’analyse.')
     except asyncio.CancelledError:
         emit(phase='task',outcome='interrupted',code='cancelled',message='Découverte interrompue ; contrôles partiels conservés.')
         update(identifier,'interrupted',message='Découverte interrompue.')
@@ -1014,10 +1100,13 @@ async def execute(identifier):
         emit(phase='task',outcome='interrupted',code='deadline',message='Échéance atteinte ; contrôles partiels conservés.')
         update(identifier,'timeout',message='Durée maximale atteinte. Vous pouvez relancer avec une durée différente.')
     except DiscoveryError as exc:
-        update(identifier,exc.status,message=exc.message,next_action=NEXT_ACTIONS['network_unavailable'])
+        update(identifier,'intervention_needed' if exc.status=='access_required' else exc.status,message=exc.message,
+               remaining_seconds=max(0,budget-(time.monotonic()-started)),
+               next_action='Ouvrez la session, effectuez la vérification, puis reprenez l’analyse.' if exc.status=='access_required' else NEXT_ACTIONS['network_unavailable'])
     except Exception:
         update(identifier,'unresolved',message='Découverte non résolue : réponse ou configuration inexploitable.')
     finally:
+        active_session.reset(session_token)
         cache.reset(cache_token)
         progress.reset(progress_token)
         sink.reset(diagnostic_token)

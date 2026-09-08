@@ -14,6 +14,12 @@ from app.source_pages import summarize
 def accept(identifier):
     from app.source_assistant import load, update, ACTIVE
     job=load(identifier)
+    from app.network_settings import settings as network_settings
+    if job.get('network_revision', 'direct') != network_settings()['revision']:
+        raise HTTPException(409, 'Le trajet réseau a changé ; reprenez la découverte.')
+    if job.get('browser_session_id'):
+        from app.browser_state import read
+        read(job['browser_session_id'])
     if job.get('partial_accepted') and job['status'] in ('added','updated'):return job
     evidence=job.get('evidence',{})
     try:candidate=Connector.model_validate(job.get('candidate')).model_dump()
@@ -42,6 +48,8 @@ def accept(identifier):
                 if signature(existing)==signature(candidate):source_id=row['id'];break
             else:db.execute('INSERT INTO sources(id,name,connector,owner) VALUES (?,?,?,?)',(source_id,host,json.dumps(candidate),owner()))
         db.execute('INSERT OR REPLACE INTO source_validation VALUES (?,?,?,?)',(owner(),source_id,signature(candidate),json.dumps(qualification)))
+        if job.get('browser_session_id'):
+            db.execute('UPDATE browser_sessions SET source=? WHERE id=? AND owner=?', (source_id,job['browser_session_id'],owner()))
         # Source and accepted task state are committed atomically, including repeat clicks.
         job.update(status='updated' if job.get('source_id') else 'added',added_source=source_id,partial_accepted=True,
                    message='Source enregistrée avec validation partielle ; lecture non vérifiée.')

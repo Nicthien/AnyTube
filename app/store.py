@@ -63,6 +63,8 @@ def initialize():
         db.execute('CREATE INDEX IF NOT EXISTS feature_evidence_owner ON feature_evidence(owner,revision)')
         db.execute('CREATE TABLE IF NOT EXISTS source_validation(owner TEXT NOT NULL,source_id TEXT NOT NULL,signature TEXT NOT NULL,payload TEXT NOT NULL,PRIMARY KEY(owner,source_id))')
         db.execute('INSERT OR IGNORE INTO schema_migrations(version) VALUES (1)')
+    from app.browser_state import initialize as initialize_browser_state
+    initialize_browser_state()
 
 
 def saved_sources():
@@ -70,9 +72,13 @@ def saved_sources():
     with connect() as db:
         items = [dict(row) for row in db.execute('SELECT * FROM sources WHERE owner=? ORDER BY name COLLATE NOCASE', (owner(),))]
         qualifications={row['source_id']:dict(row) for row in db.execute('SELECT * FROM source_validation WHERE owner=?',(owner(),))}
+        sessions = {row['source']: dict(row) for row in db.execute('SELECT * FROM browser_sessions WHERE owner=? AND source!=\'\' ORDER BY validated', (owner(),))}
     from app.pagination import signature
     for item in items:
         item['connector'] = json.loads(item['connector']) if item['connector'] else default_connector(item['id'])
         proof=qualifications.get(item['id'])
         if proof and proof['signature']==signature(item['connector']):item['validation']=json.loads(proof['payload'])
+        if item['id'] in sessions:
+            from app.browser_state import metadata
+            item['browser_session'] = metadata(sessions[item['id']])
     return items

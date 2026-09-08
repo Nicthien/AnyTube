@@ -1,0 +1,33 @@
+# Merge with compose.unraid.yaml. No browser/debugging port is published.
+services:
+  anytube:
+    environment:
+      ANYTUBE_INTERACTIVE_URL: http://interactive-browser:8010
+      ANYTUBE_INTERACTIVE_TOKEN: ${ANYTUBE_INTERACTIVE_TOKEN:?Configure a server-only interactive token}
+      ANYTUBE_BROWSER_EGRESS_TOKEN: ${ANYTUBE_BROWSER_EGRESS_TOKEN:?Configure a separate gateway token}
+  interactive-browser:
+    build:
+      context: .
+      dockerfile: Dockerfile.browser
+      args:
+        INSTALL_CHROMIUM: 'true'
+    image: anytube:interactive-browser
+    user: '0:0'
+    command: [python, -m, app.browser_container]
+    restart: unless-stopped
+    init: true
+    environment:
+      ANYTUBE_BROWSER_TOKEN: ${ANYTUBE_INTERACTIVE_TOKEN:?}
+      ANYTUBE_PROXY: http://anytube:3130
+      ANYTUBE_PUBLIC_PROXY_TOKEN: ${ANYTUBE_BROWSER_EGRESS_TOKEN:?}
+    read_only: true
+    tmpfs: ['/tmp:size=512m,mode=1777', '/run:size=8m']
+    shm_size: 256mb
+    cap_drop: [ALL]
+    cap_add: [NET_ADMIN, SETUID, SETGID, SETPCAP, KILL]
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=${ANYTUBE_CHROMIUM_SECCOMP:-./deploy/chromium-seccomp.json}
+    depends_on:
+      anytube:
+        condition: service_healthy

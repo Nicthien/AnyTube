@@ -16,7 +16,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from yt_dlp.version import __version__
@@ -33,6 +33,8 @@ from app.adapters import native_pagination
 from app.discovery import router as discovery_routes, select_source
 from app.playback import router as playback_routes
 from app import source_assistant
+from app import browser_state, browser_sessions
+from app.network_settings import router as network_routes
 
 logger = logging.getLogger('anytube')
 workers = asyncio.Semaphore(4)
@@ -69,13 +71,15 @@ async def lifespan(app):
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-app = FastAPI(title='AnyTube', version='0.5.5-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
+app = FastAPI(title='AnyTube', version='0.6.0-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
 app.include_router(account_routes)
 app.include_router(library_routes)
 app.include_router(vault_routes)
 app.include_router(discovery_routes)
 app.include_router(playback_routes)
 app.include_router(source_assistant.router)
+app.include_router(browser_sessions.router)
+app.include_router(network_routes)
 
 
 @app.exception_handler(RequestValidationError)
@@ -98,7 +102,7 @@ async def security(request: Request, call_next):
     from urllib.parse import urlsplit
     public_url = os.environ.get('ANYTUBE_PUBLIC_URL', '').rstrip('/')
     canonical = urlsplit(public_url)
-    if canonical.scheme == 'https' and canonical.netloc and request.url.netloc.lower() != canonical.netloc.lower() and request.url.path != '/api/health':
+    if canonical.scheme == 'https' and canonical.netloc and request.url.netloc.lower() != canonical.netloc.lower() and request.url.path not in ('/api/health', '/_internal/network'):
         if request.method in ('GET', 'HEAD'):
             target = public_url + request.url.path
             if request.url.query:
@@ -121,12 +125,30 @@ async def security(request: Request, call_next):
         response = await call_next(request)
     finally:
         current_user.reset(context)
-    if request.url.path.startswith('/api/'):
+    if request.url.path.startswith(('/api/', '/_internal/')):
         response.headers['Cache-Control'] = 'no-store'
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['Referrer-Policy'] = 'no-referrer'
-    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: http:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
     return response
+
+
+@app.get('/api/thumbnails')
+async def thumbnail(url: str = Query(max_length=2000)):
+    import base64
+    from app.connectors import public_url
+    try:
+        public_url(url)
+        result = await run_worker({'mode': 'fetch', 'url': url}, timeout=20)
+        mime = result.get('headers', {}).get('Content-Type', '').split(';')[0].lower()
+        if mime not in ('image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'):
+            raise ValueError()
+        data = base64.b64decode(result['data'], validate=True)
+        if len(data) > 2 * 1024 * 1024:
+            raise ValueError()
+        return Response(data, media_type=mime, headers={'Cache-Control': 'private, max-age=300'})
+    except (ValueError, RuntimeError, KeyError):
+        raise HTTPException(404, 'Vignette indisponible.')
 
 
 @app.get('/api/health')
@@ -320,6 +342,15 @@ async def run_worker(payload, timeout=55):
 
 
 async def _run_worker(payload, timeout=55):
+    from app.browser_state import active_session, for_connector
+    token = active_session.set(for_connector(payload.get('connector') or {}))
+    try:
+        return await _run_worker_with_session(payload, timeout)
+    finally:
+        active_session.reset(token)
+
+
+async def _run_worker_with_session(payload, timeout=55):
     config = payload.get('connector') or {}
     if payload.get('mode') == 'search' and config.get('kind') == 'html':
         from app.html_search import search
@@ -338,9 +369,26 @@ async def _run_worker(payload, timeout=55):
     if identifier:
         from app.vault import reveal
         payload = {**payload, '_credential': reveal(identifier)}
+    else:
+        from app.browser_state import active_session, read, get
+        if active_session.get():
+            from urllib.parse import urlsplit
+            session = get(active_session.get())
+            state = read(session['id'])
+            records = []
+            for cookie in state.get('cookies', []):
+                fields = [cookie['domain'], 'TRUE' if cookie['domain'].startswith('.') else 'FALSE',
+                          cookie.get('path', '/'), 'TRUE' if cookie.get('secure') else 'FALSE',
+                          str(max(0, int(cookie.get('expires', -1)))), cookie['name'], cookie['value']]
+                if any(any(c in field for c in '\t\r\n\x00') for field in fields):
+                    continue
+                records.append('\t'.join(fields))
+            if records:
+                payload = {**payload, '_credential': {'kind': 'cookies', 'domains': [urlsplit(session['site']).hostname],
+                           'value': '# Netscape HTTP Cookie File\n' + '\n'.join(records)}}
     async with workers:
         process = await asyncio.create_subprocess_exec(sys.executable, '-m', 'app.worker',
-            env={k: v for k, v in os.environ.items() if not k.startswith('ANYTUBE_SERVICE_')},
+            env={k: v for k, v in os.environ.items() if not k.startswith(('ANYTUBE_SERVICE_', 'ANYTUBE_INTERACTIVE_', 'ANYTUBE_BROWSER_'))},
             stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
             start_new_session=os.name != 'nt', cwd=Path(__file__).resolve().parent.parent)
         try:
@@ -580,6 +628,7 @@ async def maintain_cache():
         await asyncio.sleep(60)
         cleanup_cache()
         source_assistant.cleanup()
+        browser_state.prune()
 
 
 @app.get('/api/admin/diagnostics')

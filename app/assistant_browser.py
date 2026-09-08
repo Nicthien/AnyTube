@@ -5,6 +5,7 @@ import json
 import os
 import secrets
 import re
+import html
 import sys
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from fastapi import FastAPI, HTTPException, Request
@@ -12,6 +13,8 @@ from pydantic import BaseModel, Field
 from app.connectors import public_url
 
 app = FastAPI(docs_url=None, redoc_url=None)
+from app.interactive_browser import router as interactive_routes
+app.include_router(interactive_routes)
 slots = asyncio.Semaphore(2)
 
 
@@ -19,6 +22,7 @@ class Observation(BaseModel):
     url: str = Field(max_length=2000)
     query: str = Field(min_length=1,max_length=100)
     submit_search: bool = True
+    state: dict | None = None
 
 
 def authorize(request):
@@ -85,13 +89,18 @@ def search_template(url, query):
         urlencode([(k,'{query}' if v==query else v) for k,v in pairs]).replace('%7Bquery%7D','{query}'),''))
 
 
-async def guarded_fetch(url, method, body, headers):
+async def guarded_fetch(url, method, body, headers, *, interactive=False):
     public_url(url)
     process=await asyncio.create_subprocess_exec(sys.executable,'-m','app.assistant_http',
+        env={k:v for k,v in os.environ.items() if k not in ('ANYTUBE_BROWSER_TOKEN','ANYTUBE_BROWSER_CDP_TOKEN','ANYTUBE_INTERACTIVE_TOKEN')},
         stdin=asyncio.subprocess.PIPE,stdout=asyncio.subprocess.PIPE,stderr=asyncio.subprocess.DEVNULL)
     try:
-        raw,_=await asyncio.wait_for(process.communicate(json.dumps({'url':url,'method':method,'body':body,
-            'headers':{k:v for k,v in headers.items() if k.lower() in ('accept','content-type')},'binary':True}).encode()),18)
+        payload={'url':url,'method':method,'body':body if not isinstance(body,bytes) else None,
+            'headers':{k:v for k,v in headers.items() if k.lower() in
+                       (('accept','content-type','cookie','origin','referer','user-agent') if interactive else ('accept','content-type'))},
+            'binary':True, 'single_hop':interactive}
+        if isinstance(body,bytes):payload['body_base64']=base64.b64encode(body).decode()
+        raw,_=await asyncio.wait_for(process.communicate(json.dumps(payload).encode()),18)
         value=json.loads(raw)
         if value.get('error'):
             raise ValueError()
@@ -113,7 +122,9 @@ async def observe(body):
     async with slots,async_playwright() as p:
         browser=await open_browser(p)
         try:
-            context=await browser.new_context(**context_options())
+            if body.state and len(json.dumps(body.state).encode()) > 1024*1024:
+                raise ValueError('État trop volumineux.')
+            context=await browser.new_context(**context_options(), **({'storage_state':body.state} if body.state else {}))
             await context.route_web_socket('**/*',lambda ws:ws.close())
             async def route_request(route):
                 nonlocal requests,json_responses
@@ -123,12 +134,29 @@ async def observe(body):
                     return await route.abort()
                 try:
                     async with network:
-                        response=await guarded_fetch(request.url,request.method,request.post_data,request.headers)
+                        if body.state:
+                            response=await guarded_fetch(request.url,request.method,request.post_data_buffer,await request.all_headers(),interactive=True)
+                            if response.get('location'):
+                                from urllib.parse import urljoin
+                                destination=urljoin(request.url,response['location']);public_url(destination)
+                                if request.is_navigation_request() and (request.method == 'GET' or response.get('status') in (301,302,303)):
+                                    headers={}
+                                    if response.get('set_cookies'):
+                                        headers['set-cookie']='\n'.join(response['set_cookies'])
+                                    await route.fulfill(status=200,content_type='text/html',headers=headers,
+                                        body='<meta http-equiv="refresh" content="0;url='+html.escape(destination,quote=True)+'">')
+                                    return
+                                raise ValueError('Redirection interactive non prise en charge.')
+                            if response.get('set_cookies'):
+                                response.setdefault('headers',{})['set-cookie']='\n'.join(response['set_cookies'])
+                        else:
+                            response=await guarded_fetch(request.url,request.method,request.post_data,request.headers)
                     if request.resource_type=='document' and request.frame==page.main_frame:
                         final=response.get('url',request.url)
                         public_url(final)
                         if final!=request.url:
-                            await route.fulfill(status=302,headers={'Location':final},body='')
+                            await route.fulfill(status=200,content_type='text/html',
+                                body='<meta http-equiv="refresh" content="0;url='+html.escape(final,quote=True)+'">')
                             return
                         main_response.update(status=response.get('status'),content_type=response.get('content_type',''))
                     endpoint=search_template(request.url,body.query)

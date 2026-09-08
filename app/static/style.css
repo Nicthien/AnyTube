@@ -12,3 +12,4 @@
 .assistant-diagnostics{max-width:100%;margin-block:1rem;overflow-wrap:anywhere}
 .assistant-diagnostic{margin-block:.8rem;min-width:0}
 .assistant-diagnostic p{margin-block:.35rem}
+.browser-session-dialog{width:min(1320px,96vw);max-width:96vw}.browser-session-screen{display:block;width:100%;height:auto;background:#111;touch-action:none}.browser-session-screen:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.browser-session-address{overflow-wrap:anywhere;font-family:monospace}.browser-session-dialog .dialog-actions{flex-wrap:wrap}
