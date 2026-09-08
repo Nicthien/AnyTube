@@ -502,6 +502,37 @@ def checked_urls(items):
     return urls
 
 
+class VideoEvidenceMissing(ValueError):
+    """Changing search selectors cannot establish evidence on destination pages."""
+
+
+async def confirm_video_page(url, candidate):
+    from app.html_search import search_destination,video_page_evidence
+    try:
+        response=await http(url)
+    except DiscoveryError:
+        response={'text':'','url':url}
+    final=response.get('url',url)
+    if search_destination(final,candidate['search_url']):
+        raise VideoEvidenceMissing('Pages vidéo non confirmées : redirection vers une recherche.')
+    if video_page_evidence(response['text'],final):
+        return 'http_metadata'
+    browser=settings().browser
+    if not browser.url:
+        raise VideoEvidenceMissing('Pages vidéo non confirmées par leurs métadonnées HTTP. Navigateur non configuré ; le candidat est conservé sans ajout.')
+    try:
+        observed=json.loads((await http(browser.url.rstrip('/')+'/observe',trusted=True,method='POST',
+            body={'url':url,'query':'video','submit_search':False},headers=service_headers('browser'),timeout=95))['text'])
+        if metrics.get() is not None:
+            metrics.get()['browser_requests']=metrics.get().get('browser_requests',0)+observed.get('requests',0)
+        rendered_url=public_url(observed.get('url',url))
+        if not search_destination(rendered_url,candidate['search_url']) and video_page_evidence(observed.get('html',''),rendered_url):
+            return 'rendered_metadata'
+    except (DiscoveryError,ValueError,KeyError):
+        raise VideoEvidenceMissing('Pages vidéo non confirmées : observation navigateur indisponible ou invalide. Le candidat est conservé sans ajout.')
+    raise VideoEvidenceMissing('Pages vidéo non confirmées après rendu navigateur. Modifier les sélecteurs de recherche ne résout pas ce manque de preuves.')
+
+
 async def verify(candidate, queries):
     from app.main import run_worker
     evidence, sets = [], []
@@ -549,15 +580,14 @@ async def verify(candidate, queries):
         evidence.append({'query':queries[0], 'offset':first_page_size, 'count':len(urls), 'urls':sorted(urls)})
         pagination='verified'
     if candidate['kind']=='html':
-        from app.html_search import search_destination,video_page_evidence
+        from app.html_search import search_destination
         for url in sorted(sets[0]|sets[1]):
             if search_destination(url,candidate['search_url']):
                 raise ValueError('Des recherches associées ont été confondues avec des vidéos.')
             if url in listing_evidence:
                 continue
-            response=await http(url)
-            if search_destination(response.get('url',url),candidate['search_url']) or not video_page_evidence(response['text'],response.get('url',url)):
-                raise ValueError('Pages vidéo non confirmées par leurs métadonnées : ajoutez des exemples ou précisez le candidat.')
+            method=await confirm_video_page(url,candidate)
+            listing_evidence[url]={'method':method,'url':url}
     return {'search':'verified', 'pagination':pagination, 'checks':evidence,'listing_evidence':listing_evidence,
             'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
             'engine':engine_version(), 'date':time.time()}
@@ -767,6 +797,9 @@ async def discover(identifier, config):
                     error = str(exc) if isinstance(exc,ValueError) else 'Contrôle réseau non concluant.'
                     update(identifier,candidate=candidate,message=safe_text(error,300),last_error=safe_text(error,300))
                     step(identifier,safe_text(error,300))
+                    if isinstance(exc,VideoEvidenceMissing):
+                        step(identifier,'Correction IA ignorée : les résultats de recherche ne sont pas la cause du manque de preuves vidéo.')
+                        break
                     if corrections>=2 or config.ai.kind=='none':
                         break
                     corrections+=1

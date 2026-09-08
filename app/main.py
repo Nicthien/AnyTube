@@ -69,7 +69,7 @@ async def lifespan(app):
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-app = FastAPI(title='AnyTube', version='0.5.1-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
+app = FastAPI(title='AnyTube', version='0.5.2-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
 app.include_router(account_routes)
 app.include_router(library_routes)
 app.include_router(vault_routes)

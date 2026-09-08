@@ -125,6 +125,18 @@ class HtmlAPITests(unittest.TestCase):
     tearDown=existing.AssistantAPITests.tearDown
     start=existing.AssistantAPITests.start
 
+    def test_missing_video_evidence_does_not_trigger_ai_corrections(self):
+        job=self.start()
+        async def ordinary(url,**kwargs):
+            if '/watch/' in url:return {'text':'<video></video>'}
+            return await fetch(url,**kwargs)
+        with patch.object(sa,'http',side_effect=ordinary),patch.object(sa,'settings',return_value=sa.Settings(ai=sa.Service(kind='ollama'))),patch.object(sa,'ai_proposal',new=AsyncMock()) as ai:
+            asyncio.run(sa.execute(job['id']))
+            saved=sa.load(job['id'])
+            self.assertEqual(saved['status'],'needs_input')
+            self.assertIn('non configuré',saved['last_error'])
+            ai.assert_not_awaited()
+
     def test_full_discovery_then_normal_search_and_resume(self):
         job=self.start(video_examples=[ROOT+'/watch/science-1-0',ROOT+'/watch/science-1-1'],search_example_url=ROOT+'/search?q=science',search_example_query='science')
         with patch.object(sa,'http',side_effect=fetch):

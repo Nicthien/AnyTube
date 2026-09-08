@@ -29,7 +29,7 @@ def markup(query):
 async def fixture(url,method='GET',body=None,headers=None):
     parts=urlsplit(url)
     if '/watch/' in parts.path:
-        text='<meta property="og:video" content="https://example.org/video.mp4">'
+        text='<html><video id="player"></video><script>document.getElementById("player").src="https://example.org/video.mp4";</script></html>'
     elif parts.path=='/search':
         query=parse_qs(parts.query).get('q',[''])[0]
         text='<html><main id="results"></main><script>document.getElementById("results").innerHTML='+json.dumps(markup(query))+';</script></html>'
@@ -57,6 +57,7 @@ def main():
             saved=sa.load(job['id'])
             assert saved['status']=='added', (saved['status'],saved.get('last_error'),saved['steps'])
             assert saved['candidate']['html']['rendering']=='chromium'
+            assert all(proof['method']=='rendered_metadata' for proof in saved['evidence']['listing_evidence'].values())
             search=client.post('/api/search',headers=headers,json={'query':'science','sources':[saved['added_source']],'limit':3})
             search.raise_for_status();assert len(search.json()['items'])==3,search.json()
             print(json.dumps({'scenario':'javascript-rendered-html','status':'passed','seconds':round(time.monotonic()-started,3),'metrics':saved['metrics'],'manual_connector_edits':0}),flush=True)

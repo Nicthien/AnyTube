@@ -4,7 +4,9 @@
 
 Plateforme vidéo personnelle auto-hébergée : réunir ses sources, rechercher des vidéos, les lire et conserver ses médias dans une bibliothèque privée.
 
-**Statut : version de développement · 0.5.1-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+**Statut : version de développement · 0.5.2-preview.** Les capacités dépendent de chaque source et les validations restent partielles. Un extracteur installé ne garantit ni la recherche, ni la lecture, ni le téléchargement.
+
+Si les preuves vidéo sont absentes du HTML initial, l’assistant consulte aussi le rendu navigateur lorsqu’il est configuré. Un manque de preuves ne déclenche plus de corrections IA des sélecteurs de recherche. Sans preuve suffisante, le candidat reste un brouillon ; le diagnostic distingue le navigateur absent, indisponible et le rendu sans preuve. Les lecteurs vides restent refusés.
 
 Le correctif 0.5.1 refuse les suggestions de recherche prises pour des vidéos et les lecteurs HTML vides comme preuves. Bing Vidéo utilise les destinations externes de ses cartes vidéo, avec identité et titre concordants dans leurs métadonnées. La recherche est limitée à la première page ; le nombre de résultats dépend de la réponse Bing. Cette preuve de classement vidéo ne valide pas la lecture ni l’extraction. Une ancienne source incorrecte doit être réanalysée puis mise à jour ; sa configuration précédente est sauvegardée.
 
