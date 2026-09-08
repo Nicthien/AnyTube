@@ -10,6 +10,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Literal
 from contextvars import ContextVar
+from app.source_diagnostics import emit, scope, sink, identity, Attempts, ControlError, NEXT_ACTIONS, confirmation
 from urllib.parse import urlencode, urljoin, urlsplit, quote
 
 from fastapi import APIRouter, HTTPException
@@ -119,6 +120,8 @@ def load(identifier):
     result.update(json.loads(result.pop('payload')))
     for key, default in (('format_version',1),('video_examples',[]),('search_example_url',''),('search_example_query',''),('parent_job','')):
         result.setdefault(key, default)
+    result.setdefault('diagnostics',[])
+    result.setdefault('diagnostics_version',0)
     return result
 
 
@@ -210,6 +213,7 @@ def put_settings(body: Settings):
 
 
 async def http(url, *, trusted=False, method='GET', body=None, headers=None, timeout=20):
+    started=time.monotonic()
     if metrics.get() is not None:
         metrics.get()['http_requests'] += 1
     process = await asyncio.create_subprocess_exec(sys.executable, '-m', 'app.assistant_http',
@@ -219,8 +223,11 @@ async def http(url, *, trusted=False, method='GET', body=None, headers=None, tim
         raw, _ = await asyncio.wait_for(process.communicate(json.dumps(dict(url=url, trusted=trusted, method=method, body=body, headers=headers or {},timeout=max(1,timeout-1))).encode()), timeout)
         value = json.loads(raw)
         if value.get('error'):
+            emit(outcome='failed',code='network_unavailable',requested_url=url if not trusted else '',http_status=value.get('status'),duration=round(time.monotonic()-started,3))
             raise DiscoveryError('access_required' if value.get('status') == 401 else 'unresolved',
                                  f"Réponse HTTP {value['status']} du service." if value.get('status') else 'Connexion impossible ou réponse trop volumineuse.')
+        if not trusted:
+            emit(outcome='observed',requested_url=url,final_url=value.get('url',url),http_status=value.get('status'),content_type=value.get('content_type',''),duration=round(time.monotonic()-started,3))
         return value
     finally:
         if process.returncode is None:
@@ -236,6 +243,9 @@ class DiscoveryError(Exception):
 
 def safe_text(value, size=12000):
     text = str(value)
+    text = re.sub(r'(?i)(https?://)[^/\s@]+@',r'\1[secret]@',text)
+    text = re.sub(r'(?i)([?&][^=&#\s]*(?:token|secret|password|signature|credential|session|authorization|api[_-]?key)[^=&#\s]*=)[^&\s"<>]+',r'\1[secret]',text)
+    text = re.sub(r'(?i)([?&](?:password|secret|cookie|authorization|csrf|session|auth)=)[^\s&"<>]+',r'\1[secret]',text)
     text = re.sub(r'(?i)(bearer\s+)[\w.\-]+', '[secret]', text)
     text = re.sub(r'(?i)([?&](?:token|key|api_key|access_token|signature)=)[^\s&"<>]+', r'\1[secret]', text)
     text = re.sub(r'''(?i)(["']?(?:api[_-]?key|access[_-]?token|token|password|secret|authorization|cookie)["']?\s*[:=]\s*)["'][^"']*["']''', r'\1"[secret]"', text)
@@ -389,7 +399,7 @@ def create_job(body, parent=None):
         baseline = json.loads(row[0]) if row[0] else default_connector(body.source_id)
     identifier, now = uuid.uuid4().hex, time.time()
     payload = {**body.model_dump(), 'minutes':body.minutes or settings().minutes, 'steps':[], 'baseline':baseline,
-               'format_version':2,'parent_job':parent['id'] if parent else '',
+               'format_version':2,'diagnostics_version':1,'diagnostics':[],'parent_job':parent['id'] if parent else '',
                'previous_candidate':parent.get('candidate') if parent else None}
     with connect() as db:
         db.execute('BEGIN IMMEDIATE')
@@ -428,6 +438,7 @@ async def choose(identifier: str, body: Choice):
 
 
 class Resume(BaseModel):
+    queries: list[str] | None = Field(default=None,min_length=2,max_length=2)
     model_config = ConfigDict(extra='forbid')
     video_examples: list[str] | None = Field(default=None,max_length=5)
     search_example_url: str | None = Field(default=None,max_length=2000)
@@ -453,6 +464,7 @@ class Page(HTMLParser):
     def __init__(self, base):
         super().__init__()
         self.base, self.links, self.forms, self.text = base, [], [], []
+        self.unsupported_forms=0
         self.form = None
 
     def handle_starttag(self, tag, attrs):
@@ -462,13 +474,22 @@ class Page(HTMLParser):
             if link and len(self.links)<30:
                 self.links.append(urljoin(self.base, link))
         if tag == 'form':
-            self.form = {'url':urljoin(self.base, a.get('action','')), 'method':a.get('method','get').upper()}
+            self.form = {'url':urljoin(self.base, a.get('action','')), 'method':a.get('method','get').upper(),'fields':[],'query':None}
         if tag == 'input' and self.form and a.get('name') and (a.get('type')=='search' or a['name'] in ('q','query','search','s')):
-            if self.form['method']=='GET':
-                self.forms.append(self.form['url']+('?' if '?' not in self.form['url'] else '&')+a['name']+'={query}')
+            self.form['query']=a['name']
+        if tag=='input' and self.form and a.get('name') and a.get('type','text')=='hidden' and 'disabled' not in a:
+            if not re.search(r'(?i)token|key|password|secret|csrf|session',a['name']):
+                self.form['fields'].append((a['name'],a.get('value','')))
 
     def handle_endtag(self, tag):
         if tag=='form':
+            if self.form and self.form['query']:
+                if self.form['method']=='GET':
+                    from urllib.parse import parse_qsl,urlunsplit
+                    parts=urlsplit(self.form['url']);name=self.form['query']
+                    fields=[(k,v) for k,v in parse_qsl(parts.query,keep_blank_values=True)+self.form['fields'] if k!=name]
+                    self.forms.append(urlunsplit((parts.scheme,parts.netloc,parts.path,urlencode(fields+[(name,'{query}')],safe='{}'),'')))
+                else:self.unsupported_forms+=1
             self.form=None
 
     def handle_data(self, data):
@@ -494,7 +515,7 @@ def checked_urls(items):
     urls=set()
     for item in items:
         if not isinstance(item.get('title'),str) or not item['title'].strip():
-            raise ValueError('Titre invalide.')
+            raise ControlError('missing_fields','Titre invalide.',True)
         url=public_url(item.get('url') or item.get('webpage_url'))
         if re.search(r'(?i)[?&](token|key|api_key|access_token|signature)=',url):
             raise ValueError('URL de résultat contenant un jeton.')
@@ -541,23 +562,29 @@ async def verify(candidate, queries):
     for query in [*queries, 'anytube-no-result-'+uuid.uuid4().hex]:
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
-        result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3}, timeout=90 if candidate['kind']=='html' else 25)
+        started=time.monotonic()
+        with scope(phase='witness' if len(sets)==2 else 'search',query=query):
+            emit(outcome='started')
+            result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3,'_discovery_diagnostics':True}, timeout=90 if candidate['kind']=='html' else 25)
         items = result.get('items', [])
         listing_evidence.update(result.get('listing_evidence',{}))
         if not sets:
             first_page_size=max(3,result.get('source_page_size',3))
         urls = checked_urls(items)
+        emit(phase='witness' if len(sets)==2 else 'search',query=query,outcome='passed' if urls else 'inconclusive',code='' if urls else 'empty_results',selected_count=result.get('source_page_size',len(items)),valid_count=len(urls),duration=round(time.monotonic()-started,3),examples=[{'title':i.get('title',''),'url':i.get('url') or i.get('webpage_url','')} for i in items[:3]])
         sets.append(urls)
         evidence.append({'query':query, 'count':len(urls), 'urls':sorted(urls)})
-    if not candidate['extractor'] and sets[0]:
-        from yt_dlp.extractor import gen_extractor_classes
-        matches=[cls.ie_key() for cls in gen_extractor_classes() if cls.ie_key()!='Generic' and all(cls.suitable(url) for url in sets[0]|sets[1])]
-        if len(matches)==1:
-            candidate['extractor']=matches[0]
-    if not sets[0] or not sets[1] or sets[0]==sets[1] or sets[2] in sets[:2]:
-        raise ValueError('La recherche est vide, identique entre requêtes, ou ignore la requête témoin.')
+    if not sets[0] or not sets[1]:
+        raise ControlError('empty_results','Un terme ordinaire ne donne aucun résultat : contrôle non concluant.')
+    if sets[0]==sets[1]:
+        raise ControlError('same_results','Les deux recherches donnent les mêmes résultats.')
+    if sets[2] in sets[:2]:
+        raise ControlError('witness_repeated','La recherche témoin reproduit les résultats ordinaires.')
+    emit(phase='endpoint',outcome='confirmed',message='Les recherches distinctes et le témoin confirment le fonctionnement de la recherche.')
+    if confirmation.get() is not None:confirmation.get()['confirmed']=True
     pagination = 'first_page_only'
     if candidate['pagination']['mode'] == 'prefix':
+        emit(phase='pagination',query=queries[0],outcome='started')
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
         result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':6}, timeout=25)
@@ -569,14 +596,16 @@ async def verify(candidate, queries):
         elif candidate['kind']=='json':
             candidate['pagination']['mode']='single'
         else:
-            raise ValueError('Pagination du moteur non vérifiée.')
+            raise ControlError('pagination_repeated','Pagination du moteur non vérifiée.',True)
     if candidate['pagination']['mode'] not in ('prefix', 'single'):
+        emit(phase='pagination',query=queries[0],outcome='started')
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
         result = await run_worker({'mode':'search','connector':candidate,'query':queries[0],'limit':3,'page_size':3,'offset':first_page_size}, timeout=90 if candidate['kind']=='html' else 25)
         urls = checked_urls(result.get('items', []))
+        emit(phase='pagination',query=queries[0],selected_count=len(result.get('items',[])),valid_count=len(urls),outcome='passed' if urls-sets[0] else 'failed',code='' if urls-sets[0] else 'pagination_repeated')
         if not urls-sets[0]:
-            raise ValueError('Seconde page non distincte : pagination non validée.')
+            raise ControlError('pagination_repeated','Seconde page non distincte : pagination non validée.',True)
         evidence.append({'query':queries[0], 'offset':first_page_size, 'count':len(urls), 'urls':sorted(urls)})
         pagination='verified'
     if candidate['kind']=='html':
@@ -586,8 +615,15 @@ async def verify(candidate, queries):
                 raise ValueError('Des recherches associées ont été confondues avec des vidéos.')
             if url in listing_evidence:
                 continue
-            method=await confirm_video_page(url,candidate)
+            with scope(phase='video',requested_url=url):
+                emit(outcome='started')
+                method=await confirm_video_page(url,candidate)
+                emit(outcome='passed',method=method)
             listing_evidence[url]={'method':method,'url':url}
+    if not candidate['extractor'] and sets[0]:
+        from yt_dlp.extractor import gen_extractor_classes
+        matches=[cls.ie_key() for cls in gen_extractor_classes() if cls.ie_key()!='Generic' and all(cls.suitable(url) for url in sets[0]|sets[1])]
+        if len(matches)==1:candidate['extractor']=matches[0]
     return {'search':'verified', 'pagination':pagination, 'checks':evidence,'listing_evidence':listing_evidence,
             'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
             'engine':engine_version(), 'date':time.time()}
@@ -595,6 +631,7 @@ async def verify(candidate, queries):
 
 def commit_candidate(identifier, candidate, evidence):
     job = load(identifier)
+    update(identifier,last_error=None,next_action='')
     if job['source_id']:
         return update(identifier, 'ready', candidate=candidate, evidence=evidence,
                       changes=differences(job['baseline'], candidate), message='Mise à jour prête à comparer et appliquer.')
@@ -652,11 +689,32 @@ async def discover(identifier, config):
     public_url(target)
     update(identifier, resolved_target=target)
     candidates, material, endpoints = [], [], []
+    attempts=Attempts(bool(config.browser.url))
+    origins={}
+    def register(endpoint,origin):
+        if not isinstance(endpoint,str) or not endpoint:return
+        origins.setdefault(endpoint,origin)
+        if endpoint not in endpoints:
+            endpoints.append(endpoint)
+            emit(phase='endpoint',requested_url=endpoint,provenance=origin,outcome='hypothesis' if origin=='ai' else 'observed')
+    async def control(candidate):
+        with scope(candidate_id=identity(candidate),provenance=origins.get(candidate.get('search_url'),'model'),phase='candidate'):
+            emit(outcome='started')
+            try:
+                proof=await verify(candidate,job['queries'])
+                emit(outcome='accepted')
+                return proof
+            except Exception as exc:
+                code=exc.code if isinstance(exc,ControlError) else 'video_evidence_missing' if isinstance(exc,VideoEvidenceMissing) else 'network_unavailable' if not isinstance(exc,ValueError) else 'endpoint_unconfirmed'
+                message=safe_text(str(exc),300)
+                emit(outcome='retained',code=code,message=message)
+                update(identifier,last_error=message,next_action=NEXT_ACTIONS.get(code,''),candidate=candidate)
+                raise
     if job['baseline']:
         candidates.append(job['baseline'])
         endpoint=job['baseline'].get('search_url','')
         if '{query}' in endpoint and urlsplit(endpoint).hostname==urlsplit(target).hostname:
-            endpoints.append(endpoint)
+            register(endpoint,'model')
     # Match only exact known endpoint domains, never an inferred extractor family.
     from app.catalog import catalog
     host = urlsplit(target).hostname
@@ -664,6 +722,7 @@ async def discover(identifier, config):
         c = default_connector(entry['id'])
         if c['kind'] != 'url' and any(urlsplit(c.get(key,'')).hostname==host for key in ('search_url','result_base_url')):
             candidates.append(c)
+            origins[c.get('search_url','')]='model'
     async def public_fetch(url):
         nonlocal requests
         requests += 1
@@ -675,8 +734,9 @@ async def discover(identifier, config):
         for raw in candidates[:8]:
             try:
                 candidate=validate_candidate(raw)
+                if not attempts.claim(candidate):continue
                 step(identifier,'Contrôle du modèle existant avant toute exploration.')
-                evidence=await verify(candidate,job['queries'])
+                evidence=await control(candidate)
                 evidence['discovery_requests']=requests
                 commit_candidate(identifier,candidate,evidence)
                 return True
@@ -698,13 +758,17 @@ async def discover(identifier, config):
     page = await public_fetch(target)
     parser = Page(target)
     parser.feed(page['text'])
-    endpoints.extend(parser.forms[:3])
+    for endpoint in parser.forms[:3]:register(endpoint,'form')
+    if parser.unsupported_forms:
+        emit(phase='endpoint',outcome='unsupported',code='unsupported_form',message='Formulaire POST détecté ; aucune URL GET inventée.')
+        step(identifier,'Formulaire POST détecté : connecteur dédié nécessaire pour ce formulaire.')
     candidates=[]
     from app.html_search import infer, template_from_example
     if job.get('search_example_url'):
         endpoint=template_from_example(job['search_example_url'],job['search_example_query'])
         if urlsplit(endpoint).hostname==host:
-            endpoints.insert(0,endpoint)
+            register(endpoint,'example')
+            endpoints.remove(endpoint);endpoints.insert(0,endpoint)
         else:
             step(identifier,'Exemple de recherche externe : indice conservé, domaine non autorisé automatiquement.')
     for example in job.get('video_examples',[]):
@@ -725,7 +789,7 @@ async def discover(identifier, config):
             try:
                 response=await public_fetch(link)
                 material.append({'url':link,'text':safe_text(response['text'],5000)})
-                endpoints.extend(re.findall(r'https?://[^\s"<>]+\{query\}[^\s"<>]*', response['text'])[:3])
+                for endpoint in re.findall(r'https?://[^\s"<>]+\{query\}[^\s"<>]*', response['text'])[:3]:register(endpoint,'documentation')
             except (DiscoveryError,ValueError):
                 continue
     if config.search.url:
@@ -738,6 +802,25 @@ async def discover(identifier, config):
         except (DiscoveryError, ValueError):
             step(identifier, 'Recherche documentaire indisponible ; poursuite avec le site.')
     visited_endpoints=set()
+    probed={}
+    async def probe_endpoint(endpoint):
+        if endpoint in probed:
+            if isinstance(probed[endpoint],Exception):raise probed[endpoint]
+            return probed[endpoint]
+        with scope(phase='endpoint',provenance=origins.get(endpoint,'ai'),requested_url=endpoint):
+            response=await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3))
+            homepage=page.get('url',target).rstrip('/')
+            same_home=response.get('url','').rstrip('/')==homepage or response.get('text','').strip()==page['text'].strip()
+            if same_home:
+                emit(outcome='inconclusive',message='La réponse correspond à l’accueil ; comparaison avec le second terme.')
+                other=await public_fetch(endpoint.format(query=quote(job['queries'][1]),limit=3))
+                if other.get('url','').rstrip('/')==homepage or other.get('text','').strip()==page['text'].strip():
+                    emit(outcome='failed',code='endpoint_unconfirmed',message='Les deux termes renvoient la page d’accueil.',final_url=other.get('url'),http_status=other.get('status'))
+                    probed[endpoint]=ControlError('endpoint_unconfirmed','Les deux recherches renvoient l’accueil ; endpoint non confirmé.')
+                    raise probed[endpoint]
+            emit(outcome='observed',final_url=response.get('url'),http_status=response.get('status'),content_type=response.get('content_type'))
+            probed[endpoint]=response
+            return response
     async def infer_endpoints():
         for endpoint in list(dict.fromkeys(e for e in endpoints if isinstance(e,str)))[:6]:
             if len(candidates)>=3:
@@ -746,7 +829,7 @@ async def discover(identifier, config):
                 continue
             visited_endpoints.add(endpoint)
             try:
-                response=await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3))
+                response=await probe_endpoint(endpoint)
                 material.append({'url':endpoint,'html_or_json':safe_text(response['text'],5000)})
                 try:
                     sample=json.loads(response['text'])
@@ -755,7 +838,9 @@ async def discover(identifier, config):
                     candidates.append(inferred)
                 except ValueError:
                     candidates.extend(infer(response['text'],response.get('url',target),endpoint,job.get('video_examples',[]))[:3-len(candidates)])
-            except (ValueError, KeyError, DiscoveryError):
+            except (ValueError, KeyError, DiscoveryError) as exc:
+                if isinstance(exc,ControlError):update(identifier,last_error=str(exc),next_action=NEXT_ACTIONS.get(exc.code,''))
+                elif isinstance(exc,DiscoveryError):update(identifier,last_error=exc.message,next_action=NEXT_ACTIONS['network_unavailable'])
                 continue
     await infer_endpoints()
     if not candidates and config.ai.kind!='none':
@@ -763,33 +848,36 @@ async def discover(identifier, config):
         try:
             proposal=await ai_proposal(config,material)
             if proposal:
-                endpoints.extend(proposal.get('endpoints',[])[:3])
+                for endpoint in proposal.get('endpoints',[])[:3]:register(endpoint,'ai')
                 if proposal.get('connector'):
-                    candidates.append(validate_candidate(proposal['connector']))
+                    proposed=validate_candidate(proposal['connector'])
+                    register(proposed.get('search_url'),'ai')
+                    await probe_endpoint(proposed['search_url'])
+                    candidates.append(proposed)
                 step(identifier,f"IA : {len(proposal.get('endpoints',[]))} endpoint(s) proposé(s), "+('un candidat.' if proposal.get('connector') else 'aucun candidat.'))
         except Exception:
+            emit(phase='ai',outcome='failed',code='ai_invalid',message='Proposition IA invalide ou indisponible.')
             step(identifier,'Proposition IA invalide ou indisponible ; aucun basculement de fournisseur.')
     await infer_endpoints()
-    seen=set()
     corrections=0
-    async def check_candidates():
+    browser_candidates=set()
+    async def check_candidates(browser_phase=False):
         nonlocal corrections
-        for raw in sorted(candidates,key=lambda c: (c.get('html') or {}).get('rendering')=='chromium'):
+        for raw in (candidates if browser_phase else sorted(candidates,key=lambda c: (c.get('html') or {}).get('rendering')=='chromium')):
             try:
                 candidate=validate_candidate(raw)
                 if candidate['kind']=='html' and urlsplit(candidate['search_url']).hostname!=host:
                     raise ValueError('Candidat HTML sur un domaine externe refusé.')
             except ValueError:
                 continue
-            if signature(candidate) in seen:
-                continue
-            if len(seen)>=3:
-                return False
-            seen.add(signature(candidate))
+            if not attempts.claim(candidate,browser=browser_phase and identity(candidate) in browser_candidates):continue
             for attempt in range(3):
                 step(identifier, 'Contrôle de deux recherches, du témoin et de la pagination.')
                 try:
-                    evidence=await verify(candidate,job['queries'])
+                    state={}
+                    token=confirmation.set(state)
+                    try:evidence=await control(candidate)
+                    finally:confirmation.reset(token)
                     evidence['discovery_requests']=requests
                     commit_candidate(identifier,candidate,evidence)
                     return True
@@ -800,7 +888,7 @@ async def discover(identifier, config):
                     if isinstance(exc,VideoEvidenceMissing):
                         step(identifier,'Correction IA ignorée : les résultats de recherche ne sont pas la cause du manque de preuves vidéo.')
                         break
-                    if corrections>=2 or config.ai.kind=='none':
+                    if corrections>=2 or config.ai.kind=='none' or not isinstance(exc,ControlError) or not exc.correctable or not state.get('confirmed'):
                         break
                     corrections+=1
                     step(identifier, 'Correction déclarative du candidat ('+str(corrections)+'/2).')
@@ -809,12 +897,17 @@ async def discover(identifier, config):
                         candidate=validate_candidate(proposal['connector'])
                         if candidate['kind']=='html' and urlsplit(candidate['search_url']).hostname!=host:
                             raise ValueError('Domaine externe refusé pour la correction HTML.')
+                        if not attempts.claim(candidate,correction=True):break
+                        if candidate.get('search_url')!=raw.get('search_url'):
+                            register(candidate.get('search_url'),'ai')
+                            await probe_endpoint(candidate['search_url'])
                     except Exception:
                         break
         return False
     if await check_candidates():
         return
-    if len(seen)<3 and config.browser.url:
+    if attempts.initial<3 and config.browser.url:
+        before_browser=len(candidates)
         step(identifier, 'Observation des requêtes publiques dans le navigateur.')
         try:
             observation=json.loads((await http(config.browser.url.rstrip('/')+'/observe', trusted=True,
@@ -828,7 +921,7 @@ async def discover(identifier, config):
             for item in observation.get('samples',[])[:4]:
                 endpoint=item.get('search_url','')
                 if '{query}' in endpoint:
-                    endpoints.append(endpoint)
+                    register(endpoint,'browser_request')
                     material.append({'url':endpoint,'sample':item.get('data')})
                     try:
                         data=json.loads((await public_fetch(endpoint.format(query=quote(job['queries'][0]),limit=3)))['text'])
@@ -840,6 +933,7 @@ async def discover(identifier, config):
             rendered_url=observation.get('url',target)
             try:
                 rendered_template=template_from_example(rendered_url,job['queries'][0])
+                register(rendered_template,'browser_form')
                 candidates.extend(infer(observation.get('html',''),rendered_url,rendered_template,job.get('video_examples',[]),'chromium'))
             except ValueError:
                 step(identifier,'Aucune URL GET de recherche reproductible reconnue dans le navigateur.')
@@ -847,30 +941,43 @@ async def discover(identifier, config):
             step(identifier,'Navigateur indisponible : '+exc.message+' Vérifiez la passerelle AnyTube et son jeton (Browserless direct incompatible).')
         except Exception:
             step(identifier,'Observation navigateur interrompue ou réponse non conforme au protocole AnyTube.')
+        browser_candidates.update(identity(c) for c in candidates[before_browser:])
+        candidates=candidates[before_browser:]+candidates[:before_browser]
     if job.get('previous_candidate'):
         candidates.append(job['previous_candidate'])
-    if await check_candidates():
+    if await check_candidates(browser_phase=True):
         return
     has_candidate=bool(load(identifier).get('candidate'))
     message = 'Aucun connecteur ne satisfait les contrôles. Voir les étapes et le candidat éventuel.' if candidates else 'Aucune recherche compatible trouvée. Aucun modèle, JSON ou sélecteur HTML fiable n’a été identifié ; ajoutez deux liens vidéo et une URL de recherche avec son terme. Les formulaires POST et interactions spécifiques nécessitent un connecteur dédié.'
-    return update(identifier,'needs_input' if has_candidate else 'unresolved',message=message)
+    last=load(identifier)
+    return update(identifier,'needs_input' if has_candidate else 'unresolved',message=last.get('last_error') or message,next_action=last.get('next_action') or ('Ajoutez une URL de recherche avec son terme.' if not has_candidate else 'Consultez le détail des contrôles avant de reprendre.'))
 
 
 async def execute(identifier):
     job=load(identifier)
+    def persist_diagnostic(row):
+        if row.get('code')=='duplicate' and metrics.get() is not None:
+            metrics.get()['skipped_attempts']=metrics.get().get('skipped_attempts',0)+1
+        current=load(identifier)
+        entries=current.get('diagnostics',[])
+        update(identifier,diagnostics=(entries+[row])[-400:],diagnostics_version=1)
+    diagnostic_token=sink.set(persist_diagnostic)
     metric_token=metrics.set({'http_requests':0,'search_checks':0,'ai_calls':0})
-    update(identifier,'running',deadline=time.time()+job['minutes']*60,engine=engine_version())
+    update(identifier,'running',deadline=time.time()+job['minutes']*60,engine=engine_version(),diagnostics_version=1)
     try:
         async with asyncio.timeout(job['minutes']*60):
             await discover(identifier,settings())
     except asyncio.CancelledError:
+        emit(phase='task',outcome='interrupted',code='cancelled',message='Découverte interrompue ; contrôles partiels conservés.')
         update(identifier,'interrupted',message='Découverte interrompue.')
         raise
     except TimeoutError:
+        emit(phase='task',outcome='interrupted',code='deadline',message='Échéance atteinte ; contrôles partiels conservés.')
         update(identifier,'timeout',message='Durée maximale atteinte. Vous pouvez relancer avec une durée différente.')
     except DiscoveryError as exc:
-        update(identifier,exc.status,message=exc.message)
+        update(identifier,exc.status,message=exc.message,next_action=NEXT_ACTIONS['network_unavailable'])
     except Exception:
         update(identifier,'unresolved',message='Découverte non résolue : réponse ou configuration inexploitable.')
     finally:
+        sink.reset(diagnostic_token)
         metrics.reset(metric_token)

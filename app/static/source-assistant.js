@@ -5,6 +5,21 @@ document.body.append(assistantDialog);
 let assistantTimer, assistantJob, assistantSource = '';
 const assistantStatuses = {queued:'En attente',running:'Découverte en cours',choice:'Site à choisir',added:'Source ajoutée',ready:'Mise à jour proposée',updated:'Mise à jour appliquée',unresolved:'Découverte non résolue',access_required:'Accès nécessaire',timeout:'Délai dépassé',cancelled:'Arrêtée',interrupted:'Interrompue'};
 assistantStatuses.needs_input='Proposition à préciser';
+const diagnosticPhases={endpoint:'Endpoint',search:'Recherche',witness:'Recherche témoin',pagination:'Pagination',video:'Page vidéo',candidate:'Candidat',ai:'IA',task:'Découverte'};
+const diagnosticOutcomes={started:'En cours',observed:'Observé',hypothesis:'Hypothèse',confirmed:'Confirmé',accepted:'Accepté',retained:'Conservé sans ajout',passed:'Contrôle réussi',failed:'Échec',skipped:'Tentative ignorée',inconclusive:'Non concluant',unsupported:'Non pris en charge',interrupted:'Interrompu'};
+const diagnosticOrigins={model:'Modèle existant',example:'Exemple fourni',form:'Formulaire GET',documentation:'Documentation',ai:'Proposition IA',browser_request:'Requête navigateur',browser_form:'Formulaire observé dans le navigateur'};
+function diagnosticItem(row) {
+  const item=node('li','assistant-diagnostic');
+  item.append(node('strong','',`${diagnosticPhases[row.phase]||'Contrôle'} · ${diagnosticOutcomes[row.outcome]||row.outcome||''}${row.query?' · '+row.query:''}`));
+  if(row.message)item.append(node('p','',row.message));
+  const details=node('details');details.append(node('summary','','Données du contrôle'));
+  if(row.code)details.append(node('p','hint',row.code));
+  for(const [label,value] of [['Candidat',row.candidate_id],['Origine',diagnosticOrigins[row.provenance]],['URL demandée',row.requested_url],['URL finale',row.final_url],['HTTP',row.http_status],['Type de contenu',row.content_type],['Durée (s)',row.duration],['Résultats sélectionnés',row.selected_count],['Résultats valides',row.valid_count]]) {
+    if(value!==undefined&&value!==null&&value!=='')details.append(node('p','',`${label} : ${value}`));
+  }
+  for(const example of row.examples||[])details.append(node('p','',`${example.title} — ${example.url}`));
+  item.append(details);return item;
+}
 function assistantHeader(title) {
   assistantDialog.replaceChildren();
   const header=node('div','dialog-header'), heading=node('h2','',title);
@@ -46,12 +61,12 @@ async function openSourceAssistant(source='',previous=null) {
     form.append(node('p','hint',source?'La mise à jour sera présentée avant application.':'Les nouvelles sources sont ajoutées automatiquement après contrôle de la recherche. La lecture vidéo reste à vérifier.'));
     const submit=node('button','primary','Découvrir la source');submit.type='submit';form.append(submit);
     form.addEventListener('submit',async event=>{event.preventDefault();submit.disabled=true;try {
-      const hints={video_examples:examples.value.split(/\r?\n/).map(v=>v.trim()).filter(Boolean),search_example_url:searchExample.value.trim(),search_example_query:searchTerm.value.trim(),minutes:Number(minutes.value)};
+      const hints={queries:[first.value,second.value],video_examples:examples.value.split(/\r?\n/).map(v=>v.trim()).filter(Boolean),search_example_url:searchExample.value.trim(),search_example_query:searchTerm.value.trim(),minutes:Number(minutes.value)};
       const job=await api(previous?`/api/source-assistant/jobs/${previous.id}/resume`:'/api/source-assistant/jobs',{method:'POST',body:JSON.stringify(previous?hints:{...hints,target:target.value,queries:[first.value,second.value],source_id:assistantSource})});
       await showAssistantJob(job.id);
     }catch(error){assistantError(error);submit.disabled=false;}});
     assistantDialog.append(form);
-    if(previous){target.readOnly=true;first.readOnly=true;second.readOnly=true;submit.textContent='Reprendre avec ces exemples';}
+    if(previous){target.readOnly=true;submit.textContent='Reprendre avec ces paramètres';}
     if(state.account?.admin)assistantDialog.append(button('Paramètres de découverte','secondary',()=>openAssistantSettings().catch(assistantError)));
     if(listing.items.length) {
       assistantDialog.append(node('h3','','Découvertes récentes'));
@@ -63,8 +78,12 @@ async function showAssistantJob(id) {
   clearTimeout(assistantTimer);assistantJob=id;
   assistantHeader('Découverte de la source');
   const status=node('p','notice','Chargement du bilan…');status.setAttribute('aria-live','polite');
+  const diagnosisSummary=node('div');
   const progress=node('ol','assistant-steps'),result=node('div'),actions=node('div','dialog-actions');
-  assistantDialog.append(status,progress,result,actions);
+  const diagnostics=node('details','assistant-diagnostics'),diagnosticRows=node('ol');
+  diagnostics.append(node('summary','','Détail des contrôles'),diagnosticRows);
+  assistantDialog.append(status,diagnosisSummary,progress,diagnostics,result,actions);
+  let diagnosticCount=-1;
   const stop=button('Arrêter','secondary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/cancel`,{method:'POST'});await refresh();}catch(e){assistantError(e);}});
   stop.hidden=true;
   const back=button('Toutes les découvertes','secondary',()=>openSourceAssistant().catch(assistantError));actions.append(stop,back);
@@ -78,11 +97,17 @@ async function showAssistantJob(id) {
       status.textContent=`${assistantStatuses[job.status]||job.status} — ${job.target}${active&&job.deadline?' · Budget restant : '+Math.max(0,Math.ceil(job.deadline-Date.now()/1000))+' s':''}`;
       stop.hidden=!active;
       progress.replaceChildren(...(job.steps||[]).map(step=>node('li','',step.message)));
+      if((job.diagnostics||[]).length!==diagnosticCount) {
+        diagnosticCount=(job.diagnostics||[]).length;
+        diagnosticRows.replaceChildren(...(job.diagnostics||[]).map(diagnosticItem));
+        if(!diagnosticCount&&!job.diagnostics_version)diagnosticRows.append(node('li','','Diagnostic détaillé indisponible pour cette tentative.'));
+      }
       if(!active&&!terminalRendered) {
-        terminalRendered=true;result.append(node('p','',job.message||''));
+        terminalRendered=true;diagnosisSummary.append(node('p','',job.message||''));
+        if(job.next_action)diagnosisSummary.append(node('p','notice',job.next_action));
         if(job.parent_job)result.append(button('Voir la tentative précédente','secondary',()=>showAssistantJob(job.parent_job).catch(assistantError)));
         if(job.candidate?.html?.rendering==='chromium')result.append(node('p','notice','Navigateur requis pour utiliser cette source.'));
-        if(job.elapsed_seconds!==undefined)result.append(node('p','hint',`Durée : ${job.elapsed_seconds} s · ${job.metrics?.search_checks||0} contrôles de recherche · ${job.metrics?.ai_calls||0} appels IA`));
+        if(job.elapsed_seconds!==undefined)result.append(node('p','hint',`Durée : ${job.elapsed_seconds} s · ${job.metrics?.search_checks||0} contrôles de recherche · ${job.metrics?.ai_calls||0} appels IA · ${job.metrics?.skipped_attempts||0} tentatives identiques évitées`));
         if(job.status==='choice') for(const choice of job.choices||[]) result.append(button(choice.url,'secondary full',async()=>{try {const next=await api(`/api/source-assistant/jobs/${id}/choose`,{method:'POST',body:JSON.stringify({url:choice.url})});await showAssistantJob(next.id);}catch(e){assistantError(e);}}));
         if(job.candidate||job.evidence) {const details=node('details');details.append(node('summary','','Configuration et preuves'),node('pre','connector-json',JSON.stringify({candidate:job.candidate,evidence:job.evidence,changes:job.changes},null,2)));result.append(details);}
         if(job.status==='ready')result.append(button('Appliquer la mise à jour','primary',async()=>{try {await api(`/api/source-assistant/jobs/${id}/apply`,{method:'POST'});await loadSources();await showAssistantJob(id);}catch(e){assistantError(e);}}));

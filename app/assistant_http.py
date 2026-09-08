@@ -37,7 +37,7 @@ def fetch(payload):
         from email.message import Message
         content = Message()
         content['content-type'] = response.headers.get('Content-Type','')
-        return {'url': response.url, 'text': data.decode(content.get_content_charset() or 'utf-8', errors='replace'),
+        return {'url': response.url, 'status':response.status, 'text': data.decode(content.get_content_charset() or 'utf-8', errors='replace'),
                 'headers':{k:v for k,v in response.headers.items() if k.lower() in ('access-control-allow-origin','access-control-allow-methods','access-control-allow-headers','access-control-expose-headers','vary')},
                 **({'base64':base64.b64encode(data).decode()} if payload.get('binary') else {}),
                 'content_type': response.headers.get('Content-Type', '')}

@@ -165,7 +165,9 @@ def extract(text, base, config):
         if link and spec.url_path_prefix and not urlsplit(urljoin(base,link)).path.startswith(spec.url_path_prefix):
             continue
         if not title or not link:
-            raise ValueError('Un résultat HTML ne possède pas de titre ou de lien.')
+            from app.source_diagnostics import ControlError,emit
+            emit(selected_count=len(soup.select(spec.items,limit=101)),valid_count=len(items),outcome='failed',code='missing_fields')
+            raise ControlError('missing_fields','Un résultat HTML ne possède pas de titre ou de lien.',True)
         url = clean_url(base, link)
         if search_destination(url,config['search_url']):
             raise ValueError('Les résultats pointent vers des recherches associées, pas vers des vidéos.')
@@ -313,6 +315,8 @@ async def search(payload):
             response = await http(url)
             text, final = response['text'], response.get('url',url)
         entries, next_url = extract(text,final,config)
+        from app.source_diagnostics import emit
+        emit(requested_url=url,final_url=final,http_status=response.get('status'),content_type=response.get('content_type','text/html'),selected_count=len(document(text).select(spec['items'],limit=101)),valid_count=len(entries),outcome='observed')
         if index==0:
             first_count=len(entries)
         new = [entry for entry in entries if entry['url'] not in seen]

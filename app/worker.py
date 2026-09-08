@@ -265,10 +265,16 @@ def run(payload):
 
 if __name__ == '__main__':
     protect_network()
+    from app.source_diagnostics import sink,ControlError
+    diagnostics=[]
+    payload=json.load(sys.stdin)
+    if payload.get('_discovery_diagnostics'):sink.set(lambda row: diagnostics.append(row) if len(diagnostics)<20 else None)
     try:
-        print(json.dumps(run(json.load(sys.stdin)), ensure_ascii=True))
+        result=run(payload)
+        if payload.get('_discovery_diagnostics'):result['_diagnostics']=diagnostics
+        print(json.dumps(result, ensure_ascii=True))
     except Exception as exc:
         from app.failures import classify
         failure = classify(exc)
-        print(json.dumps({'error': str(failure), 'code': failure.code, 'retry_after': failure.retry_after}))
+        print(json.dumps({'error': str(failure), 'code': failure.code, 'retry_after': failure.retry_after,'_diagnostics':diagnostics,'control_error':{'code':exc.code,'message':str(exc),'correctable':exc.correctable} if isinstance(exc,ControlError) else None}))
         sys.exit(1)

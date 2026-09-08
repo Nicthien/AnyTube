@@ -443,6 +443,11 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
     with build_opener(ProxyHandler({'http':proxy,'https':proxy} if proxy else {}), PublicRedirect(credential)).open(Request(url, headers=request_headers,
             data=json.dumps(body).encode() if config.method == 'POST' else None, method=config.method), timeout=12) as response:
         raw = response.read(2 * 1024 * 1024 + 1)
+        from app.source_diagnostics import emit
+        final_url=getattr(response,'url',url)
+        http_status=getattr(response,'status',None)
+        content_type=getattr(response,'headers',{}).get('Content-Type','')
+        emit(requested_url=url,final_url=final_url if isinstance(final_url,str) else url,http_status=http_status if isinstance(http_status,int) else None,content_type=content_type if isinstance(content_type,str) else '',outcome='observed')
     if len(raw) > 2 * 1024 * 1024:
         raise ValueError('La réponse dépasse 2 Mo.')
     data = json.loads(raw)
@@ -476,12 +481,15 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
         if entries is None and total == 0:
             entries = []
     if not isinstance(entries, list):
-        raise ValueError('Le chemin des résultats ne désigne pas une liste JSON.')
+        from app.source_diagnostics import ControlError
+        raise ControlError('missing_fields','Le chemin des résultats ne désigne pas une liste JSON.',True)
     items = []
+    emit(selected_count=len(entries),valid_count=0,outcome='observed')
     for entry in entries[:limit]:
         values = {name: pointer(entry, path) if path else None for name, path in config.mapping.model_dump().items()}
         if not isinstance(values['title'], str) or not values['title'].strip():
-            raise ValueError('Le champ titre est absent ou invalide dans les résultats.')
+            from app.source_diagnostics import ControlError
+            raise ControlError('missing_fields','Le champ titre est absent ou invalide dans les résultats.',True)
         if config.video_url:
             if not isinstance(values['id'], (str, int)) or isinstance(values['id'], bool):
                 raise ValueError('Identifiant vidéo absent ou invalide.')
@@ -493,7 +501,8 @@ def search_json(config, query, limit, home=False, *, offset=None, credential=Non
                 url_template = config.video_url if flag else config.video_url_false
             values['url'] = url_template.format(id=quote(str(values['id']), safe=''))
         if not isinstance(values['url'], str):
-            raise ValueError('Le champ URL vidéo est absent ou invalide.')
+            from app.source_diagnostics import ControlError
+            raise ControlError('missing_fields','Le champ URL vidéo est absent ou invalide.',True)
         if config.result_base_url or values['url'].startswith('/'):
             values['url'] = urljoin(config.result_base_url or url, values['url'])
         public_url(values['url'])

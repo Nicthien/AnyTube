@@ -69,7 +69,7 @@ async def lifespan(app):
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-app = FastAPI(title='AnyTube', version='0.5.2-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
+app = FastAPI(title='AnyTube', version='0.5.3-preview', docs_url=None, redoc_url=None, lifespan=lifespan)
 app.include_router(account_routes)
 app.include_router(library_routes)
 app.include_router(vault_routes)
@@ -346,6 +346,12 @@ async def _run_worker(payload, timeout=55):
         try:
             output, errors = await asyncio.wait_for(process.communicate(json.dumps(payload).encode()), timeout)
             result = json.loads(output)
+            if payload.get('_discovery_diagnostics'):
+                from app.source_diagnostics import emit,ControlError
+                for diagnostic in result.pop('_diagnostics',[])[:20]:emit(**diagnostic)
+                if result.get('control_error'):
+                    error=result['control_error']
+                    raise ControlError(error['code'],error['message'],error.get('correctable',False))
             if process.returncode or result.get('error'):
                 failure = SourceFailure(result.get('code'), result.get('retry_after'))
                 logger.warning('worker: %s', failure.code)

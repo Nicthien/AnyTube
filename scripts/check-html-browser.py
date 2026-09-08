@@ -14,7 +14,7 @@ from urllib.parse import urlsplit,parse_qs
 from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-sys.path.insert(0,'/app/tests')
+sys.path.insert(0,str(Path(__file__).resolve().parents[1] / 'tests'))
 from support import TestClient
 from app import assistant_browser as browser, source_assistant as sa
 from app.main import app
@@ -57,6 +57,7 @@ def main():
             saved=sa.load(job['id'])
             assert saved['status']=='added', (saved['status'],saved.get('last_error'),saved['steps'])
             assert saved['candidate']['html']['rendering']=='chromium'
+            assert saved['diagnostics'] and any(d.get('outcome')=='confirmed' for d in saved['diagnostics'])
             assert all(proof['method']=='rendered_metadata' for proof in saved['evidence']['listing_evidence'].values())
             search=client.post('/api/search',headers=headers,json={'query':'science','sources':[saved['added_source']],'limit':3})
             search.raise_for_status();assert len(search.json()['items'])==3,search.json()

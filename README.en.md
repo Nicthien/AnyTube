@@ -1,10 +1,12 @@
 # AnyTube
 
+Version 0.5.3: discovery now records endpoint provenance, individual checks and skipped duplicate attempts. The dialog explains failures and next actions. See the [local validation report](docs/SOURCE-DIAGNOSTICS.md) (French).
+
 [Français](README.md) · **English**
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.5.2-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.5.3-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
 
 When video evidence is absent from initial HTML, the assistant also checks browser-rendered metadata if configured. Missing evidence no longer triggers AI corrections to search selectors. Candidates remain drafts without sufficient evidence; diagnostics distinguish a missing browser, an unavailable observer and rendered pages without evidence. Empty players are still rejected.
 
