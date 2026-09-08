@@ -506,11 +506,13 @@ async def verify(candidate, queries):
     from app.main import run_worker
     evidence, sets = [], []
     first_page_size=3
+    listing_evidence={}
     for query in [*queries, 'anytube-no-result-'+uuid.uuid4().hex]:
         if metrics.get() is not None:
             metrics.get()['search_checks'] += 1
         result = await run_worker({'mode':'search', 'connector':candidate, 'query':query, 'limit':3}, timeout=90 if candidate['kind']=='html' else 25)
         items = result.get('items', [])
+        listing_evidence.update(result.get('listing_evidence',{}))
         if not sets:
             first_page_size=max(3,result.get('source_page_size',3))
         urls = checked_urls(items)
@@ -547,15 +549,16 @@ async def verify(candidate, queries):
         evidence.append({'query':queries[0], 'offset':first_page_size, 'count':len(urls), 'urls':sorted(urls)})
         pagination='verified'
     if candidate['kind']=='html':
-        from app.html_search import document
+        from app.html_search import search_destination,video_page_evidence
         for url in sorted(sets[0]|sets[1]):
+            if search_destination(url,candidate['search_url']):
+                raise ValueError('Des recherches associées ont été confondues avec des vidéos.')
+            if url in listing_evidence:
+                continue
             response=await http(url)
-            soup=document(response['text'])
-            video=soup.select_one('video, meta[property="og:video"], meta[property="og:video:url"], meta[property="og:video:secure_url"]')
-            structured=any(re.search(r'"@type"\s*:\s*(?:\[\s*)?"VideoObject"',script.get_text()) for script in soup.select('script[type="application/ld+json"]'))
-            if video is None and not structured:
+            if search_destination(response.get('url',url),candidate['search_url']) or not video_page_evidence(response['text'],response.get('url',url)):
                 raise ValueError('Pages vidéo non confirmées par leurs métadonnées : ajoutez des exemples ou précisez le candidat.')
-    return {'search':'verified', 'pagination':pagination, 'checks':evidence,
+    return {'search':'verified', 'pagination':pagination, 'checks':evidence,'listing_evidence':listing_evidence,
             'unverified':['extraction','collections','browser_playback','audio','live','subtitles','download'],
             'engine':engine_version(), 'date':time.time()}
 
@@ -621,6 +624,9 @@ async def discover(identifier, config):
     candidates, material, endpoints = [], [], []
     if job['baseline']:
         candidates.append(job['baseline'])
+        endpoint=job['baseline'].get('search_url','')
+        if '{query}' in endpoint and urlsplit(endpoint).hostname==urlsplit(target).hostname:
+            endpoints.append(endpoint)
     # Match only exact known endpoint domains, never an inferred extractor family.
     from app.catalog import catalog
     host = urlsplit(target).hostname

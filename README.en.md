@@ -4,7 +4,9 @@
 
 A personal, self-hosted video platform: bring your sources together, search for videos, watch them and keep your media in a private library.
 
-**Status: development preview · 0.5.0-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+**Status: development preview · 0.5.1-preview.** Capabilities depend on each source and validation remains partial. An installed extractor does not guarantee search, playback or downloading.
+
+The 0.5.1 fix rejects related searches mistaken for videos and empty HTML players as evidence. Bing Video uses external destinations from video cards with matching identity and title metadata. Search is limited to the first page; result counts depend on Bing's response. This video-listing evidence does not verify playback or extraction. Incorrect existing sources must be analyzed again and explicitly updated; their previous configuration is backed up.
 
 Source discovery now accepts up to five video examples and a search URL with its
 query. It can infer declarative HTML searches using HTTP or isolated Chromium,

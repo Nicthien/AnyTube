@@ -1,5 +1,6 @@
 """Bounded declarative HTML searches. No expressions or generated scripts."""
 import re
+import json
 from urllib.parse import urljoin, urlsplit, urlunsplit, parse_qsl, urlencode, quote
 from bs4 import BeautifulSoup
 import soupsieve
@@ -21,11 +22,14 @@ def selector(value):
 class HtmlField(BaseModel):
     model_config = ConfigDict(extra='forbid')
     selector: str = ''
-    attribute: Literal['text', 'href', 'src', 'data-src', 'title', 'content', 'datetime', 'aria-label'] = 'text'
+    attribute: Literal['text', 'href', 'src', 'data-src', 'title', 'content', 'datetime', 'aria-label', 'mmeta', 'vrhm'] = 'text'
+    path: Literal['', '/murl', '/turl', '/vt', '/du'] = ''
 
     @model_validator(mode='after')
     def check(self):
         selector(self.selector)
+        if bool(self.path) != (self.attribute in ('mmeta','vrhm')):
+            raise ValueError('Un chemin structuré est requis uniquement pour les métadonnées vidéo.')
         return self
 
 
@@ -45,8 +49,8 @@ class HtmlSpec(BaseModel):
     def check(self):
         selector(self.items)
         selector(self.next_selector)
-        if self.link.attribute != 'href':
-            raise ValueError('Le lien vidéo doit lire href.')
+        if self.link.attribute != 'href' and not (self.link.attribute=='mmeta' and self.link.path=='/murl'):
+            raise ValueError('Le lien vidéo doit lire href ou la destination des métadonnées vidéo.')
         return self
 
 
@@ -86,7 +90,70 @@ def read_field(item, field):
     if node is None:
         return ''
     value = node.get_text(' ', strip=True) if field.attribute == 'text' else node.get(field.attribute, '')
+    if field.path:
+        if len(value)>16000:
+            raise ValueError('Métadonnées vidéo trop volumineuses.')
+        try:
+            value=json.loads(value).get(field.path[1:],'')
+        except (ValueError,AttributeError):
+            raise ValueError('Métadonnées vidéo invalides.')
+        if not isinstance(value,str):
+            raise ValueError('Champ de métadonnées vidéo invalide.')
     return str(value).strip()[:3000]
+
+
+def search_destination(url, pattern):
+    """A related query is not a video, even when the listing embeds a player."""
+    destination=urlsplit(url)
+    origin=urlsplit(pattern)
+    path_pattern=re.escape(origin.path.rstrip('/')).replace(re.escape('{query}'), '[^/]*')
+    return (destination.hostname==origin.hostname and
+            re.fullmatch(path_pattern,destination.path.rstrip('/')) is not None)
+
+
+def bing_card_evidence(node, base, url, title):
+    if urlsplit(base).hostname not in ('www.bing.com','bing.com') or urlsplit(base).path!='/videos/search':
+        return None
+    try:
+        meta=json.loads(node.get('mmeta','{}'))
+        details=node.select_one('[vrhm]')
+        detail=json.loads(details.get('vrhm','{}')) if details else {}
+        if (re.fullmatch(r'[0-9A-Fa-f]{20,80}',meta.get('mid','')) and
+            meta['mid']==detail.get('mid') and clean_url(base,meta.get('murl'))==url and
+            clean_url(base,detail.get('murl'))==url and detail.get('vt','').strip()==title and
+            urlsplit(url).hostname not in ('www.bing.com','bing.com')):
+            return {'method':'bing_video_card','url':url,'media_id':meta['mid'],'title':title}
+    except (ValueError,TypeError,KeyError,AttributeError):
+        pass
+    return None
+
+
+def video_page_evidence(text, base):
+    soup=document(text)
+    values=[n.get('src') for n in soup.select('video[src], video source[src]')]
+    values.extend(n.get('content') for n in soup.select('meta[property="og:video"],meta[property="og:video:url"],meta[property="og:video:secure_url"]'))
+    for script in soup.select('script[type="application/ld+json"]'):
+        try:
+            pending=[json.loads(script.get_text())]
+            for _ in range(500):
+                if not pending:break
+                item=pending.pop()
+                if isinstance(item,list):pending.extend(item[:100])
+                elif isinstance(item,dict):
+                    types=item.get('@type',[])
+                    if types=='VideoObject' or isinstance(types,list) and 'VideoObject' in types:
+                        values.extend([item.get('contentUrl'),item.get('embedUrl')])
+                    pending.extend(v for v in item.values() if isinstance(v,(dict,list)))
+        except ValueError:
+            continue
+    for value in values:
+        if isinstance(value,str) and value.strip():
+            try:
+                clean_url(base,value)
+                return True
+            except ValueError:
+                pass
+    return False
 
 
 def extract(text, base, config):
@@ -100,6 +167,8 @@ def extract(text, base, config):
         if not title or not link:
             raise ValueError('Un résultat HTML ne possède pas de titre ou de lien.')
         url = clean_url(base, link)
+        if search_destination(url,config['search_url']):
+            raise ValueError('Les résultats pointent vers des recherches associées, pas vers des vidéos.')
         if url in seen:
             continue
         seen.add(url)
@@ -110,7 +179,8 @@ def extract(text, base, config):
             thumbnail = None
         items.append({'id':url, 'title':title, 'url':url, 'thumbnail':thumbnail,
                       'description':read_field(node,spec.description),
-                      'duration':duration(read_field(node,spec.duration),config.get('duration_unit'))})
+                      'duration':duration(read_field(node,spec.duration),config.get('duration_unit')),
+                      '_listing_evidence':bing_card_evidence(node,base,url,title)})
     following = soup.select_one(spec.next_selector) if spec.next_selector else None
     next_url = clean_url(base, following.get('href')) if following and following.get('href') else None
     if next_url and urlsplit(next_url).hostname != urlsplit(base).hostname:
@@ -135,11 +205,26 @@ def infer(text, base, search_url, examples=(), rendering='http'):
     """Rank repeated cards using video semantics or multiple example links."""
     from app.connectors import Connector
     soup = document(text)
+    if urlsplit(base).hostname in ('www.bing.com','bing.com') and soup.select_one('div.mc_vtvc[mmeta]'):
+        candidate=Connector(kind='html',search_url=search_url,pagination={'mode':'single'},html={
+            'rendering':rendering,'items':'div.mc_vtvc[mmeta]',
+            'title':{'selector':'[vrhm]','attribute':'vrhm','path':'/vt'},
+            'link':{'attribute':'mmeta','path':'/murl'},
+            'thumbnail':{'attribute':'mmeta','path':'/turl'},
+            'duration':{'selector':'[vrhm]','attribute':'vrhm','path':'/du'}}).model_dump()
+        try:
+            entries,_=extract(text,base,candidate)
+            if entries and all(e['_listing_evidence'] for e in entries):
+                return [candidate]
+        except ValueError:
+            pass
     groups = {}
     examples = {clean_url(base,u) for u in examples if urlsplit(u).hostname == urlsplit(base).hostname}
     for anchor in soup.select('a[href]', limit=500):
         href = anchor.get('href','')
         url = urljoin(base, href)
+        if search_destination(url,search_url):
+            continue
         if urlsplit(url).hostname != urlsplit(base).hostname:
             continue
         semantic = bool(re.search(r'(?i)(/videos?/|/watch(?:/|\?)|/w/|[?&]v=)', url))
@@ -248,5 +333,6 @@ async def search(payload):
             break
         url=next_url
     return {'items':[normalize(i) for i in collected[offset:offset+size]],'native_page':True,
+            'listing_evidence':{i['url']:i['_listing_evidence'] for i in collected[offset:offset+size] if i.get('_listing_evidence')},
             'has_more':offset+size < min(100,len(collected)) or (more and offset+size<100),
             'page_urls':list(visited),'source_page_size':first_count}
